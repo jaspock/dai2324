@@ -1,0 +1,233 @@
+<!doctype html>
+<!-- Ejemplo de uso de la API de autenticación de Google Sign-in -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Autenticación de usuarios</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .visible {
+      display: inline;
+    }
+    .invisible {
+      display: none;
+    }
+    #info {
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+    #info p {
+      margin-bottom: 5px;
+      font-size: 90%;
+      font-family: monospace;
+    }
+    section {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    body {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Autenticación de usuarios con Google Sign-in</h1>
+
+  <section>
+    <form id="f0">
+      <label>Mensaje:
+        <input type="text" name="mensaje" required>
+      </label>
+      <button>Envía</button>
+    </form>
+  </section>
+
+  <section>
+    👤 <span id="usuario"></span>
+    <button id="entrar" class="entrar" class="invisible">Identificarse</button>
+    <button id="salir" class="invisible">Salir</button>
+  </section>
+
+  <section id="panel">
+    <div>Información de autenticación:<div id="info"></div></div>
+  </section>
+
+  <!-- Librería para usar Google Sign-in -->
+  <script src="https://apis.google.com/js/platform.js?onload=initGoogleAPI" async defer></script>
+
+<script>
+
+  const base="/mensajes"; // endpoint
+  const cabeceras= {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  }
+
+  // envía una petición al servidor con el texto del mensaje y el token id en la cabecera 'Authorization'
+  function envíaMensaje(event) {
+    event.preventDefault();  // evita que se recargue la página
+    const url= `${base}/nuevomensaje`;
+    const payload= {
+      texto:document.querySelector("#f0 input[name='mensaje']").value,
+    };
+    const request = {
+      method: 'POST', 
+      headers: cabeceras,
+      body: JSON.stringify(payload),
+    };
+    fetch(url,request)
+    .then( response => response.json() )
+    .then( r => {
+      printInfo(`respuesta del servidor: ${JSON.stringify(r)}`);
+      document.querySelector("#f0 input[name='mensaje']").value= '';
+    })
+    .catch( error => printInfo(`problema de conexión: ${error}`) );
+  }
+
+  function loginFirst (event) {
+    event.preventDefault();
+    alert("Identifícate antes de usar la aplicación")
+  }
+
+  // función de inicialización:
+  function initApp () {
+    let e= document.querySelector('#f0');
+    // si no hay token id, el manejador es 'loginFirst'; si no, usa 'envíaMensaje'
+    e.addEventListener('submit',e => id_token?envíaMensaje(e):loginFirst(e),false);
+    e= document.querySelector("#salir");
+    e.addEventListener('click',signOut,false);
+  }
+
+  document.addEventListener('DOMContentLoaded',initApp,false);
+
+  // ---- código que se encarga de la identificación del usuario
+
+  var id_token= null; // token a enviar al servidor
+
+  // id de cliente obtenido en la consola web de Google Cloud Platform:
+  const clientId= 'SUSTITUIR POR El CLIENT_ID OBTENIDO EN GOOGLE CLOUD!!!!!!';
+
+  // muestra el mensaje en la página web junto con la hora:
+  function printInfo (c) {
+    let addZero= (x, n) => { while (x.toString().length < n) x = '0' + x; return x; }
+    let d = new Date();
+    let h = addZero(d.getHours(),2);
+    let m = addZero(d.getMinutes(),2);
+    let s = addZero(d.getSeconds(), 2);
+    let ms = addZero(d.getMilliseconds(), 3);
+
+    let e= document.querySelector('#info');
+    e.innerHTML+= `<p>${h}:${m}:${s}:${ms}: ${c}</p>`;
+  }
+
+  // función que se invoca cuando la librería de Google está cargada; el nombre de esta función
+  // se pasa como parámetro al elemento script:
+  function initGoogleAPI() { 
+    // inicializa el objeto GoogleAuth:
+    gapi.load('auth2', function(){
+      auth2 = gapi.auth2.init({
+          client_id: clientId,
+          scope: 'profile email'
+      });
+
+      const func= 'initGoogleAPI';
+      printInfo(`${func}: valor de isSignedIn: ${auth2.isSignedIn.get()}`);
+
+      document.querySelector('#usuario').textContent= '';
+      // al principio se muestra el botón de identificación y se oculta el de cerrar sesión:
+      document.querySelector('#salir').classList.add('invisible');
+      document.querySelector('#entrar').classList.remove('invisible');
+
+      // registra el botón que permite iniciar el proceso de autenticación y los funciones
+      // callback correspondientes:
+      auth2.attachClickHandler('entrar', {}, onSuccessSignIn, onFailureSignIn);
+
+      // registra la función callback que se invoca cuando cambia el estado de logueado/no logueado del usuario:
+      auth2.isSignedIn.listen(signinChanged);
+
+      // registra la función callback que se llama cada vez que cambia el valor de currentUser:
+      auth2.currentUser.listen(userChanged);
+    });
+  }
+
+  // se ejecuta cuando cambia el estado de login del usuario:
+  var signinChanged = function(val) {
+    const func= 'signinChanged';
+    printInfo(`${func}: el nuevo estado es ${val}`);
+    if (val) {
+      printInfo(`${func}: autenticado como ${auth2.currentUser.get().getBasicProfile().getName()}`);
+      // token que se enviará al servidor para que lo valide e identifique al usuario:
+      id_token= auth2.currentUser.get().getAuthResponse().id_token;
+      // se añade a las cabeceras de las peticiones al servidor el token de autenticación:
+      cabeceras["Authorization"]= `Bearer ${id_token}`;
+      printInfo(`${func}: id token: ${id_token.substr(0,40)}...`);
+      document.querySelector('#usuario').textContent= `${auth2.currentUser.get().getBasicProfile().getName()} `;
+      document.querySelector('#salir').classList.remove('invisible');
+      document.querySelector('#entrar').classList.add('invisible');
+    }
+    else {
+      cabeceras["Authorization"]= '';
+      document.querySelector('#usuario').textContent= '';
+      document.querySelector('#salir').classList.add('invisible');
+      document.querySelector('#entrar').classList.remove('invisible');
+    }
+    printInfo(`${func}: valor de isSignedIn: ${auth2.isSignedIn.get()}`);
+  };
+
+  // esta función se invoca cuando el usuario se loguea tras pulsar el botón; si el usuario estaba identificado
+  // anteriormente y se recarga la página, esta función no se invoca (no se ha pulsado el botón), pero la
+  // librería intenta identificar automáticamente al usuario y, si lo consigue, sí se invoca 'signinChanged' y
+  // 'userChanged':
+  function onSuccessSignIn(user) {
+    const func= 'onSuccessSignIn';
+    printInfo(`${func}: autenticado como ${user.getBasicProfile().getName()}`);
+    // otra forma de obtener el mismo valor:
+    printInfo(`${func}: autenticado como ${auth2.currentUser.get().getBasicProfile().getName()}`);
+
+    var profile = user.getBasicProfile();
+    // no enviar getId al servidor, sino el id token que puede ser validado en el servidor:
+    printInfo(`${func}: id: ${profile.getId()}`); 
+    printInfo(`${func}: name: ${profile.getName()}`);
+    printInfo(`${func}: image URL: ${profile.getImageUrl().substr(0,40)}...`);
+    printInfo(`${func}: email: ${profile.getEmail()}`); // nulo si no usamos el scope 'email'
+    
+    printInfo(`${func}: id token: ${user.getAuthResponse().id_token.substr(0,40)}...`);
+  };
+
+  // función de callback cuando el usuario no puede loguearse:
+  function onFailureSignIn(error) {
+    id_token= null;
+    const func= 'onFailureSignIn';
+    printInfo(`${func}: ${JSON.stringify(error)}`);
+  };
+
+  // manejador del evento de hacer clic en el botón de salir de la sesion:
+  function signOut() {
+    auth2.signOut().then(function () {
+      const func= 'signOut';
+      printInfo(`${func}: el usuario salió`);
+      id_token= null;
+      cabeceras["Authorization"]= '';
+    });
+  }        
+
+  // función de callback invocada cuando cambia el usuario logueado:
+  function userChanged(user) {
+    if(user.getId()){
+      const func= 'userChanged';
+      printInfo(`${func}: id: ${user.getId()}`);
+      var profile = user.getBasicProfile();
+      printInfo(`${func}: name: ${profile.getName()}`);
+    }
+  };
+
+</script>
+
+</body>
+
+</html>

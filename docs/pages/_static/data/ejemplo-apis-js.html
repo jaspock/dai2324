@@ -1,0 +1,194 @@
+<!doctype html>
+<!-- Ejemplos de uso de la API DOM y de la API de eventos del navegador -->
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Ejemplos de uso de la API DOM y de la API de eventos del navegador</title>
+
+    <!-- Es recomendable que tanto estilos como scripts vayan en ficheros aparte, pero
+    en este caso los dejamos aquí por ser una prueba de concepto -->
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+        margin: 10px;
+      }
+      h3.destacado {
+        color: lightseagreen;
+      }
+      h3 {
+        color: black;
+        font-size: 1.3em;
+        display: inline;
+        margin-right: 10px;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      section {
+        border-top: 1px solid lightgray;
+	      margin-top: 10px;
+        padding-top: 5px;
+        margin-bottom: 10px;
+      }
+    </style>
+
+  </head>
+  
+  <body>
+
+    <!-- Formularios: -->
+    <form id="f1">
+      <label>Crea sección con título:</label> 
+      <input type="text" id="título"> 
+      <button>Crea sección</button>
+    </form>
+    <form id="f2">
+      <label>Destaca secciones cuya primera palabra sea:</label> 
+      <input type="text" id="palabra"> 
+      <button>Marca sección</button>
+    </form>
+    <form id="f3">
+      <button>Desmarca todas las secciones</button>
+    </form>
+
+    <!-- El elemento main está vacío inicialmente, pero irá conteniendo las secciones que 
+      se crearán dinámicamente. -->
+    <main></main>
+
+    <script>
+      // Manejador del evento de marcar/desmarcar de una sección individual:
+      function marcaDesmarcaUnaSección (event) {
+        // event.currentTarget es el elemento al que se asoció este manejador;
+        // event.target es el elemento sobre el que se produjo la acción;
+        // parentNode devuelve el nodo padre de un elemento dado;
+        // toggle añade el valor 'destacado' a class si el elemento no lo tiene y lo
+        // borra si lo tiene:
+        event.target.parentNode.querySelector('h3').classList.toggle('destacado');
+      }
+
+      // Manejador del evento de creación de una nueva sección a partir del título
+      // indicado en el formulario; no se declara el parámetro del evento porque 
+      // no se va a usar, pero creaSección se invocará por el navegador con el
+      // argumento del evento igualmente:
+      function creaSección () {
+        // Obtiene el título del formulario; querySelector devuelve el primer nodo
+        // que cumple con el criterio del selector desde el objeto desde el que 
+        // se invoca la función (en este caso, el elemento raíz, document):
+        let título= document.querySelector('#título').value;
+        // Borra el campo del formulario:
+        document.querySelector('#título').value= '';
+        // Crea el elemento padre para la nueva sección:
+        let sección= document.createElement('section');
+        // Una forma de añadir HTML dinámicamente es mediante el atributo innerHTML;
+        // es más cómoda, pero es más fácil cometer errores en el HTML.
+        // Además, innerHTML debe ser usado con prudencia y nunca con cadenas no
+        // generadas por nuestra aplicación; la siguiente instrucción desobedece
+        // esta regla y hace que la aplicación pueda recibir potencialmente
+        // un ataque tipo XSS (por *cross-site scripting*); para comprobarlo, prueba
+        // a introducir como título: <img src="x" onerror="alert('¡Ataque XSS!')">
+        // Para evitar estos ataques, se recomienda usar textContent cuando 
+        // hay contenido no propio o sustituir ciertos caracteres en las cadenas
+        // antes de usar innerHTML:
+        sección.innerHTML= '<h3>'+título+'</h3>';
+        // Otra forma de añadir HTML dinámicamente es mediante la APIS de creación
+        // e inserción de nodos:
+        let botón= document.createElement('button');
+        botón.textContent= 'Marca/desmarca';
+        sección.appendChild(botón);
+        // Todos los botones individuales creados para cada sección tienen el
+        // mismo manejador de evento; el parámetro del manejador nos permitirá
+        // determinar sobre qué botón concreto se ha hecho clic:
+        botón.addEventListener('click',marcaDesmarcaUnaSección,false);
+        // Insertamos la sección dentro de <main>:
+        document.querySelector('main').appendChild(sección);
+      }
+
+      // Itera sobre todos los elementos h3 (por eso usamos querySelectorAll y no 
+      // querySelector)
+      function destacaSecciónSegúnPalabra () {
+        let secciones= document.querySelectorAll('h3');
+        // Obtiene la palabra a buscar del formulario:
+        let palabra= document.querySelector('#palabra').value;
+        // Borra el campo del formulario:
+        document.querySelector('#palabra').value= "";
+        // Itera sobre todos los elementos h3:
+        for (let i=0;i<secciones.length;i++) {
+          // Primera palabra del texto contenido en el h3:
+          let primera= secciones[i].textContent.split(" ")[0];
+          // En JavaScript, el operador == puede realizar conversiones de tipo antes
+          // de la comparación; con el operador === no hay conversiones implícitas:
+          if (primera===palabra) {
+            // Añade 'destacado' como class si la palabra coincide:
+            secciones[i].classList.add('destacado');
+          }
+        }
+      }
+
+      // Desmarca todos los h3 del documento quitando la clase 'destacado'
+      // de sus encabezados:
+      function desmarcaTodasSecciones () {
+        let secciones= document.querySelectorAll('h3');
+        for (let i=0;i<secciones.length;i++) {
+          secciones[i].classList.remove('destacado');
+        }
+      }
+
+      // Función de inicialización:
+      function init () {
+        // Asignación de manejadores de eventos; el segundo parámetro es el nombre de 
+        // una función, pero no se llama (aún) a dicha función; el tercer parámetro se
+        // estudiará más adelante:
+        let e= document.querySelector('#f1 button');
+        e.addEventListener('click',creaSección,false);
+        e= document.querySelector('#f2 button');
+        e.addEventListener('click',destacaSecciónSegúnPalabra,false);
+        e= document.querySelector('#f3 button');
+        e.addEventListener('click',desmarcaTodasSecciones,false);
+        // Se evita para todos los formularios que al aceptar su contenido (pulsando el
+        // botón o enter) se envíe una petición al servidor y se recargue la página:
+        let fs= document.querySelectorAll('form');
+        for(let i=0;i<fs.length;i++) {
+          fs[i].addEventListener(
+            'submit',
+            function (event) {
+              event.preventDefault();
+            }, 
+            false
+          );        
+        }
+
+        // Usando construcciones recientes del lenguaje para iterar sobre un array 
+        // de elementos y para indicar mediante funciones flecha (o lambda) la función
+        // a ejecutar sobre cada elemento, el código anterior sería: 
+        //
+        // Array.from(document.querySelectorAll('form')).forEach(
+        //  (formulario) => {
+        //    formulario.addEventListener(
+        //      'submit',
+        //      (event) => {event.preventDefault();}, 
+        //      false
+        //    )
+        //  }
+        // );
+
+      }
+
+      // Define init como la función que será invocada cuando se dispare el
+      // evento DOMContentLoaded, que señala que el árbol DOM ya está construido
+      // (y sus nodos disponibles en memoria), aunque quizás aún no se hayan
+      // descargado todas las imágenes, aplicados todos los estilos, etc.;
+      // si en lugar de init pusiéramos init() el efecto sería diferente (y
+      // probablemente no deseado):
+      document.addEventListener('DOMContentLoaded',init,false);
+    </script>
+
+  </body>
+
+</html>

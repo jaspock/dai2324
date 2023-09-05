@@ -1,0 +1,8 @@
+# Ficheros que no se han de subir a Google Cloud Platform
+
+.gcloudignore
+.git
+.gitignore
+
+# Dependencias de Node.js:
+node_modules/

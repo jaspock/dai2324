@@ -1,0 +1,88 @@
+
+/* contador para el número de problema y la seción */
+/* todos los contadores se han de asignar de una vez */
+/* cambiar si se reordenan los temas o se añade uno nuevo a la página de problemas */
+body {
+    counter-reset: 
+        problema-marcado 0 seccion-marcado 1
+        problema-estilo 0 seccion-estilo 2
+        problema-cliente 0 seccion-cliente 3
+        problema-servicios 0 seccion-servicios 4
+        problema-componentes 0 seccion-componentes 5
+        problema-rest 0 seccion-rest 6
+        problema-nube 0 seccion-nube 7
+}
+
+/* estilo para añadir el número de problema */
+.problema-contador-marcado::after {
+    counter-increment: problema-marcado; 
+    content: " "  counter(seccion-marcado) "." counter(problema-marcado);
+}
+.problema-contador-estilo::after {
+    counter-increment: problema-estilo; 
+    content: " " counter(seccion-estilo) "." counter(problema-estilo);
+}
+.problema-contador-cliente::after {
+    counter-increment: problema-cliente; 
+    content: " " counter(seccion-cliente) "." counter(problema-cliente);
+}
+.problema-contador-servicios::after {
+    counter-increment: problema-servicios; 
+    content: " " counter(seccion-servicios) "." counter(problema-servicios);
+}
+.problema-contador-componentes::after {
+    counter-increment: problema-componentes; 
+    content: " " counter(seccion-componentes) "." counter(problema-componentes);
+}
+
+.problema-contador-rest::after {
+    counter-increment: problema-rest; 
+    content: " " counter(seccion-rest) "." counter(problema-rest);
+}
+
+.problema-contador-nube::after {
+    counter-increment: problema-nube; 
+    content: " " counter(seccion-nube) "." counter(problema-nube);
+}
+
+
+/* contenido principal más ancho */
+.wy-nav-content {
+    max-width: 1200px !important;
+}
+
+/* encabezado de problemas */
+.problema .admonition-title {
+    background-color: rgb(72,135,199);
+}
+
+/* fondo de problemas */
+.problema.admonition {
+    background-color: rgb(239,239,239);
+}
+
+/* encabezado de hazlotú */
+.hazlotu .admonition-title {
+    background-color: rgb(101,142,169);
+}
+
+/* fondo de hazlotú */
+.hazlotu.admonition {
+    background-color: rgb(229,237,243);
+}
+
+/* tamaño de texto de tablas */
+table.tablita td p {
+    font-size: 92% !important;
+}
+
+/* sobrescribe el no-wrap de las tablas */
+table.tablita td, table.tablita th {
+    white-space: normal;
+}
+
+
+.strike {
+    text-decoration: line-through;
+}
+

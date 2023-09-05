@@ -1,0 +1,77 @@
+<!doctype html>
+<!-- Ejemplo de uso de la API de autenticación de Sign In with Google for Web -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Autenticación de usuarios con 
+    Sign In with Google for Web</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .invisible {
+      display: none;
+    }
+    body {
+      margin: 10px;
+    }
+    #datos {
+      margin-bottom: 10px;
+    }
+  </style>
+
+  <!-- documentación: https://developers.google.com/identity/gsi/web/guides/overview -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js" async defer></script>
+
+  <script>
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      const responsePayload = jwt_decode(response.credential);
+      console.log("ID: " + responsePayload.sub);
+      console.log('Full Name: ' + responsePayload.name);
+      console.log('Given Name: ' + responsePayload.given_name);
+      console.log('Family Name: ' + responsePayload.family_name);
+      console.log("Image URL: " + responsePayload.picture);
+      console.log("Email: " + responsePayload.email);
+      document.querySelector("#datos").textContent= `Usuario: 👤 ${responsePayload.email}`;
+      document.querySelector("#signin_button").classList.add("invisible");
+      document.querySelector("#signout_button").classList.remove("invisible");
+    }
+
+    window.onload = function () {
+      google.accounts.id.initialize({
+        // id de cliente obtenido en la consola web de Google Cloud Platform:
+        client_id: 'AÑADE AQUÍ TU ID DE CLIENTE OBTENIDO DE SIG IN WITH GOOGLE FOR WEB',
+        auto_select: "false",
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("signin_button"),
+        { theme: "outline", size: "large" }  
+      );
+      google.accounts.id.prompt(); // also display the One Tap dialog
+      var button = document.getElementById('signout_button');
+      button.addEventListener("click", () => {
+        google.accounts.id.disableAutoSelect();
+        console.log("Sign out button clicked.");
+        document.querySelector("#datos").textContent= `Usuario sin identificar`;
+        document.querySelector("#signin_button").classList.remove("invisible");
+        document.querySelector("#signout_button").classList.add("invisible");
+      })
+    }
+  </script>
+
+</head>
+<body>
+
+  <h1>Autenticación con Sign In with Google for Web</h1>
+
+  <div id="datos">Usuario sin identificar</div>
+  <div id="signin_button"></div>
+  <button class="invisible g_id_signout" id="signout_button">Salir de la sesión</div>
+
+</body>
+</html>

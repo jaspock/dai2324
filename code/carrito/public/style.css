@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  margin: 20px;
+}
+h1 {
+  color: black;
+  font-size: 1.3em;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+form {
+  padding: 10px;
+  border: 1px solid lightslategray;
+  width: 1000px;
+  margin-bottom: 20px;
+}
+main {
+  margin-top: 10px;
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
+label {
+  margin-right: 10px;
+}
+fieldset {
+  border: 0;
+}
+legend {
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid gainsboro;
+}
+button {
+  display:inline-block;
+  padding:0.2em 1.45em;
+  margin:0.1em;
+  border:0.15em solid lightsteelblue;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:400;
+  font-size: 90%;
+  color:#000000;
+  background-color:lightsteelblue;
+  text-align:center;
+}
+button:focus {
+  outline:0; /* evita que el botón se quede con el borde de color por quedarse selecionado tras pinchar en él */
+}
+button:hover {
+  border-color:steelblue;
+}
+button:active {
+  background-color:#66a2d4;
+}
+main div {
+  margin-bottom: 10px;
+}
+table {
+  border: 1px solid gainsboro;
+  border-spacing: 0px;
+}
+table thead {
+  background-color: gainsboro;
+}
+thead th {
+  width: 10em;
+  padding: 3px;
+}
+tbody td {
+  border-width: 0;
+  border-bottom: 1px solid gainsboro;
+  padding: 3px;
+}
+td, th {
+  text-align: left;
+}

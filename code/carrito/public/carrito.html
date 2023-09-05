@@ -1,0 +1,273 @@
+<!doctype html>
+<!-- Ejemplos de uso de la API web del carrito con la API Fetch del navegador -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <title>Carrito</title>
+</head>
+<body>
+
+  <h1>Gestión de carritos de la compra</h1>
+  <!-- Formularios: -->
+  <form id="f0">
+    <fieldset>
+      <legend>Usar un carrito ya existente</legend>
+      <label>Nombre del carrito:
+        <input type="text" name="nombre" required>
+      </label>
+      <button>Usa</button>
+    </fieldset>
+  </form>
+  <form id="f1">
+    <fieldset>
+      <legend>Crear un nuevo carrito</legend>
+      <button>Crea</button>
+    </fieldset>
+  </form>
+  <form id="f2">
+    <fieldset>
+      <legend>Añadir item al carrito</legend>
+      <label>Nombre del item:
+          <input type="text" name="item" required>
+      </label> 
+      <label>Cantidad:
+          <input type="text" name="cantidad" required pattern="[0-9]+">
+      </label> 
+      <button>Añade</button>
+    </fieldset>
+  </form>
+  <form id="f3">
+    <fieldset>
+      <legend>Actualizar cantidad de un item</legend>
+      <label>Nombre del item:
+          <input type="text" name="item" required>
+      </label> 
+      <label>Nueva cantidad:
+          <input type="text" name="cantidad" required pattern="[0-9]+">
+      </label> 
+      <button>Actualiza</button>
+    </fieldset>
+  </form>
+  <form id="f4">
+    <fieldset>
+      <legend>Borrar un item del carrito</legend>
+      <label>Nombre del item:
+          <input type="text" name="item" required>
+      </label>
+      <button>Borra</button> 
+    </fieldset>
+  </form>
+  <form id="f5">
+    <fieldset>
+      <legend>Eliminar el carrito actual</legend>
+      <button>Elimina</button>
+    </fieldset>
+  </form>
+  
+  <main>
+    <div>Nombre del carrito actual: <span id="nombre"></span></div>
+    <div>Última respuesta del servidor: <span id="mensaje"></span></div>
+    <div>Contenido del carrito:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody id="listado">
+      </tbody>
+    </table>
+  </main>
+
+<script>
+  // Endpoint de la API del carrito:
+  const base="/carrito/v1";
+  
+  var carrito= "";
+  const cabeceras= {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  }
+
+  function print(r) {
+    const e= document.querySelector('#mensaje');  
+    if(r.result) {
+      e.textContent= JSON.stringify(r.result);
+    }
+    else {
+      e.textContent= JSON.stringify(r.error);
+    }
+  }
+
+  function printError(s) {
+    const e= document.querySelector('#mensaje');  
+    e.textContent= `Problema de conexión: ${s}`;
+  }
+
+  
+  function usaCarrito (event) {
+    event.preventDefault(); // evita la recarga de la página
+    const e= document.querySelector("#f0 input[name='nombre']");
+    document.querySelector('#nombre').textContent= carrito= e.value;
+    e.value= "";
+    muestraCarrito();
+  }
+
+
+  function creaCarrito(event) {
+    event.preventDefault();
+    const url= `${base}/creacarrito`;
+    const payload= {};
+    const request = {
+      method: 'POST', 
+      headers: cabeceras,
+      body: JSON.stringify(payload),
+    };
+    fetch(url,request)
+    .then( response => response.json() )
+    .then( r => {
+      carrito= r.result.nombre;
+      document.querySelector("#nombre").textContent= carrito;
+      muestraCarrito();
+      print(r);
+    })
+    .catch( error => printError(error) );
+  }
+
+
+  function muestraCarrito() {
+    const url= `${base}/${carrito}/productos`;
+    const request = {
+      method: 'GET', 
+      headers: cabeceras,
+    };
+    fetch(url,request)
+    .then( response => response.json() )
+    .then( r => {
+      const e= document.querySelector('#listado');
+      e.innerHTML= '';
+      if (r.result) {
+        for(var i=0;i<r.result.length;i++) {
+          e.innerHTML+= `<tr>
+            <td>${r.result[i].item}</td>
+            <td>${r.result[i].cantidad}</td>
+            </tr>`;
+        }
+      }
+    })
+    .catch( error => printError(error) );
+  }
+   
+  
+  function nuevoItem (event) {
+    event.preventDefault();
+    const url= `${base}/${carrito}/productos`;
+    const payload= {
+      item:document.querySelector("#f2 input[name='item']").value,
+      cantidad:document.querySelector("#f2 input[name='cantidad']").value,
+    };
+    const request = {
+      method: 'POST', 
+      headers: cabeceras,
+      body: JSON.stringify(payload),
+    };
+    fetch(url,request)
+    .then( response => response.json() )
+    .then( r => {
+      print(r);
+      document.querySelector("#f2 input[name='item']").value= '';
+      document.querySelector("#f2 input[name='cantidad']").value= '';
+      muestraCarrito();
+    })
+    .catch( error => printError(error) );
+  }
+  
+  
+  function actualizaItem (event) {
+    event.preventDefault();
+    const item= document.querySelector("#f3 input[name='item']").value;
+    const url= `${base}/${carrito}/productos/${item}`;
+    const payload= {
+      cantidad:document.querySelector("#f3 input[name='cantidad']").value,
+    }; 
+    const request = {
+      method: 'PUT', 
+      headers: cabeceras,
+      body: JSON.stringify(payload),
+    };
+    fetch(url,request)
+    .then( response => response.json() )
+    .then( r => {
+      print(r);
+      document.querySelector("#f3 input[name='item']").value= '';
+      document.querySelector("#f3 input[name='cantidad']").value= '';
+      muestraCarrito();
+    })
+    .catch( error => printError(error) );
+  }
+  
+
+  function borraItem (event) {
+    event.preventDefault();
+    const item= document.querySelector("#f4 input[name='item']").value;
+    const url= `${base}/${carrito}/productos/${item}`;
+    const payload= {}; 
+    var request = {
+      method: 'DELETE', 
+      headers: cabeceras,
+      body: JSON.stringify(payload),
+    };
+    fetch(url,request)
+    .then( response => response.json() )
+    .then( r => {
+      print(r);
+      document.querySelector("#f4 input[name='item']").value= '';
+      muestraCarrito();
+    })
+    .catch( error => printError(error) );
+  }
+  
+
+  function eliminaCarrito (event) {
+    event.preventDefault();
+    const url= `${base}/${carrito}`;
+    const payload= {};
+    var request = {
+      method: 'DELETE', 
+      headers: cabeceras,
+      body: JSON.stringify(payload),
+    };
+    fetch(url,request)
+    .then( response => response.json() )
+    .then( r  => {
+      print(r); 
+      muestraCarrito();
+    })
+    .catch( error => printError(error) );
+  }
+
+
+  // Función de inicialización:
+  function init () {
+    let e= document.querySelector('#f0');
+    e.addEventListener('submit',usaCarrito,false); 
+    e= document.querySelector('#f1');
+    e.addEventListener('submit',creaCarrito,false);
+    e= document.querySelector('#f2');
+    e.addEventListener('submit',nuevoItem,false);
+    e= document.querySelector('#f3');
+    e.addEventListener('submit',actualizaItem,false);
+    e= document.querySelector('#f4');
+    e.addEventListener('submit',borraItem,false);
+    e= document.querySelector('#f5');
+    e.addEventListener('submit',eliminaCarrito,false);
+  }
+    
+  document.addEventListener('DOMContentLoaded',init,false);
+</script>
+
+</body>
+
+</html>
