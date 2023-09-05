@@ -3,7 +3,7 @@
 
 ## Compilación local de la documentación
 
-### Documentación y dispositivas:
+### Documentación y dispositivas
 
     [conda activate dai]
     make
@@ -21,3 +21,14 @@
     conda install -c conda-forge pandoc=2.19.2
     pip install -r requirements.txt
     conda deactivate
+
+### Preparación de entorno en Github
+
+    crear repositorio
+    crear rama gh-pages
+    settings/actions: read and write permissions
+    settings/pages: deploy from branch / gh-pages
+    clone
+    añadir ficheros
+    commit / push
+    
