@@ -26,9 +26,8 @@
 
     crear repositorio
     crear rama gh-pages
-    settings/actions: read and write permissions
-    settings/pages: deploy from branch / gh-pages
+    settings/actions: read and write permissions / save
+    settings/pages: deploy from branch / gh-pages / save
     clone
     añadir ficheros
     commit / push
-    
