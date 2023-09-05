@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Desarrollo de Aplicaciones en Internet">
+  <title>Codificación de caracteres</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/theme/simple.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://unpkg.com/reveal.js@3.9.2//css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.9.2//css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://unpkg.com/reveal.js@3.9.2//lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Codificación de caracteres</h1>
+  <p class="author">Desarrollo de Aplicaciones en Internet</p>
+</section>
+
+<section id="codificación-de-caracteres" class="slide level2">
+<h2>Codificación de caracteres</h2>
+<p>Desarrollo de Aplicaciones en Internet</p>
+</section>
+<section id="introducción" class="slide level2">
+<h2>Introducción</h2>
+<ul>
+<li>Los caracteres tanto en memoria como en otros dispositivos de almacenamiento se representan como secuencias de bits</li>
+<li>Un fichero de texto con una sola letra ‘a’ ocupa 1 byte</li>
+<li>Si el fichero es binario (documento de un procesador de textos, por ejemplo) puede ocupar mucho más</li>
+</ul>
+</section>
+<section id="us-ascii" class="slide level2">
+<h2>US-ASCII</h2>
+<ul>
+<li>El estándar US-ASCII (también conocido como ASCII, American Standard Code for Information Interchange) representa cada carácter con 7 bits</li>
+<li>Su origen se remota a la década de 1960</li>
+<li>Se decidió usar 7 bits porque eran suficientes para representar los 128 caracteres deseados y también para reducir el coste de la transmisión</li>
+<li>En la práctica se usan 8 bits para que coincida con un byte</li>
+</ul>
+</section>
+<section id="us-ascii-1" class="slide level2">
+<h2>US-ASCII</h2>
+<div style="width:700px; margin: 0 auto;">
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/c/cf/USASCII_code_chart.png" /></p>
+</div>
+</section>
+<section id="isoiec-8859" class="slide level2">
+<h2>ISO/IEC 8859</h2>
+<ul>
+<li>Una serie de estándares de codificación de caracteres de 8 bits (256 caracteres diferentes)</li>
+<li>15 codificaciones de caracteres para diferentes lenguajes</li>
+<li>Los 128 primeros caracteres (0-127) son compatibles con US-ASCII</li>
+</ul>
+</section>
+<section id="isoiec-8859-1" class="slide level2">
+<h2>ISO/IEC 8859</h2>
+<ul>
+<li>Si no permitimos el cambio de la codificación de caracteres en mitad de un documento, no es posible mezclar textos en español y ruso, por ejemplo</li>
+<li>En el caso de ficheros de texto, como estos no contienen la codificación que usan, es necesario indicarla explícitamente al programa con el que vayamos a visualizarlos o editarlos</li>
+</ul>
+</section>
+<section id="isoiec-8859-1-latin-1" class="slide level2">
+<h2>ISO/IEC 8859-1 (Latin 1)</h2>
+<ul>
+<li>Inglés, islandés, español, francés, catalán…</li>
+</ul>
+<div style="width:500px; margin: 0 auto;">
+<p><img data-src="https://www.charset.org/img/charsets/iso-8859-1.gif" /></p>
+</div>
+</section>
+<section id="isoiec-8859-15" class="slide level2">
+<h2>ISO/IEC 8859-15</h2>
+<ul>
+<li>Añade a ISO/IEC 8859-1 el símbolo del euro y algún otro como la ligadura ‘œ’ del francés (con ISO/IEC 8859-1 se escriben como ‘oe’)</li>
+</ul>
+</section>
+<section id="isoiec-8859-2" class="slide level2">
+<h2>ISO/IEC 8859-2</h2>
+<ul>
+<li>Bosnio, croata, checo, eslovaco, húngaro, serbio…</li>
+</ul>
+<div style="width:500px; margin: 0 auto;">
+<p><img data-src="https://www.charset.org/img/charsets/iso-8859-2.gif" /></p>
+</div>
+</section>
+<section id="isoiec-8859-5" class="slide level2">
+<h2>ISO/IEC 8859-5</h2>
+<ul>
+<li>Ruso, bielorruso, macedonio, serbio, búlgaro…</li>
+</ul>
+<div style="width:500px; margin: 0 auto;">
+<p><img data-src="https://www.charset.org/img/charsets/iso-8859-5.gif" /></p>
+</div>
+</section>
+<section id="otras-codificaciones" class="slide level2">
+<h2>Otras codificaciones</h2>
+<ul>
+<li>Algunos sistemas operativos incluían codificaciones alternativas (Windows-1252, por ejemplo)</li>
+</ul>
+</section>
+<section id="unicode" class="slide level2">
+<h2>Unicode</h2>
+<ul>
+<li>Estándar del Unicode Consortium que intenta reemplazar a todos los anteriores y permite entornos plurilingües</li>
+<li>Cada carácter se identifica mediante un número o punto de código</li>
+<li>Los puntos de código no cambian, pero hay diferentes codificaciones: UTF-8, UTF-16, UTF-32, etc.</li>
+</ul>
+</section>
+<section id="unicode-1" class="slide level2">
+<h2>Unicode</h2>
+<ul>
+<li>El estándar Unicode permite 1.114.112 puntos de código</li>
+<li>Actualmente están asignados unos 140.000, incluyendo emojis (‘🥘’, U+1F958), caracteres de alfabetos antiguos, etc.</li>
+</ul>
+</section>
+<section id="codificaciones-de-caracteres-de-unicode" class="slide level2">
+<h2>Codificaciones de caracteres de Unicode</h2>
+<ul>
+<li>UTF-8 es la más usada en la web: 1 byte para los primeros 128 puntos de código (iguales a los de US-ASCII) y hasta 4 para los restantes</li>
+<li>UTF-16: 2 o 4 bytes por carácter</li>
+<li>UTF-32: 4 bytes por carácter</li>
+</ul>
+</section>
+<section id="cómo-usar-unicode" class="slide level2">
+<h2>Cómo usar Unicode</h2>
+<ul>
+<li>Usar un editor de texto que lo soporte (Unicode suele ser la codificación por defecto hoy en día)</li>
+<li>Usar un lenguaje de programación que lo soporte (muchos lo hacen de forma nativa)</li>
+<li>Usar un tipo de letra adecuado (ningún tipo de letra soporta todos los caracteres de Unicode)</li>
+</ul>
+</section>
+<section id="programar-con-caracteres-de-unicode" class="slide level2">
+<h2>Programar con caracteres de Unicode</h2>
+<ul>
+<li>Ejemplos en Java:</li>
+</ul>
+<pre><code>  var Omega = &#39;Ω&#39;;
+  var Omega = &#39;\u03A9&#39;;  // compatible con cualquier entorno
+
+  public static void m (void) {
+    int ဆဆဆ = 100;  // caracteres en birmano
+    System.out.println(&quot;ကောင်းသောနေ.ပါ &quot; + ဆဆဆ);
+  }</code></pre>
+</section>
+<section id="entidades-de-html" class="slide level2">
+<h2>Entidades de HTML</h2>
+<ul>
+<li>En desuso</li>
+<li>Permiten representar algunos caracteres que no son US-ASCII dentro de un documento HTML</li>
+<li>El carácter ‘Ã’ se puede representar como uno de los siguientes:</li>
+</ul>
+<pre><code>  &amp;#195;
+  &amp;#xC3;
+  &amp;Atilde;</code></pre>
+</section>
+<section id="ejemplos" class="slide level2">
+<h2>Ejemplos</h2>
+<ul>
+<li>El carácter ‘a’ (LATIN SMALL LETTER A, U+0061) en US-ASCII es 01100001 (61 en hexadecimal, x61), igual que en ISO/IEC 8859 y que en UTF-8; en UTF-16 es 11111110 11111111 00000000 01100001 (xFEFF0061)</li>
+<li>El carácter ‘á’ (LATIN SMALL LETTER A WITH ACUTE, U+00E1) se representa en ISO/IEC 8859-15 como xE1 y en UTF-8 como xC3A1</li>
+</ul>
+</section>
+<section id="ejemplos-1" class="slide level2">
+<h2>Ejemplos</h2>
+<ul>
+<li>El carácter ‘Ã’ se representa en ISO/IEC 8859-15 como xC3</li>
+<li>El carácter ‘¡’ se representa en ISO/IEC 8859-15 como xA1</li>
+</ul>
+</section>
+<section id="problema" class="slide level2">
+<h2>Problema</h2>
+<ul>
+<li>Teniendo en cuenta los datos de las diapositivas anteriores, ¿cómo se ve un fichero de texto escrito en UTF-8 que contiene <em>guaraná</em> en un editor de texto configurado para ISO/IEC 8859-15?</li>
+<li>¿Cómo se ve un fichero de texto escrito en ISO/IEC 8859-1 que contiene <em>guaraná</em> en un editor de texto configurado para UTF-8?</li>
+</ul>
+</section>
+<section id="utf-8-en-páginas-web" class="slide level2">
+<h2>UTF-8 en páginas web</h2>
+<ul>
+<li>Configurar el servidor para que informe al cliente de que la codificación es UTF-8: añadir a la petición y a la respuesta la cabecera HTTP:</li>
+</ul>
+<pre><code>  Content-Type: text/html; charset=utf-8</code></pre>
+<ul>
+<li>Indicar la codificación en el <em>head</em> de HTML:</li>
+</ul>
+<pre><code>  &lt;meta charset=&quot;utf-8&quot;&gt;</code></pre>
+<p>o antiguamente:</p>
+<pre><code>  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</code></pre>
+</section>
+<section id="precacuciones" class="slide level2">
+<h2>Precacuciones</h2>
+<ul>
+<li>En JavaScript, que usa UTF-16, “🤦🏻‍♂️”.length == 7 (<em>man facepalming: light skin tone</em>); el número de bytes en memoria es 14</li>
+<li>La cadena contiene 5 valores de Unicode (<a href="https://hsivonen.fi/string-length/">explicación</a>): persona palmeándose la cara, color de piel, ligadura de códigos, hombre, no monocromo</li>
+<li>En otros lenguajes la longitud puede ser diferente, pero pocos lenguajes dan 1 como longitud</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@3.9.2//js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: {37:'prev',38:'prev',39:'next',40:'next'},
+        // Transition style
+        transition: 'linear', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://unpkg.com/reveal.js@3.9.2//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

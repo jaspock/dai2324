@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Computación en la nube &mdash; documentación de Desarrollo de Aplicaciones en Internet - </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="8. Problemas" href="problemas.html" />
+    <link rel="prev" title="6. Implementación de servicios web" href="rest.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Desarrollo de Aplicaciones en Internet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marcado.html">1. Lenguajes de marcado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estilo.html">2. Lenguajes de estilo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cliente.html">3. Programar el lado del cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="servicios.html">4. Acceso a servicios web de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="componentes.html">5. Componentes web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Computación en la  nube</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-del-entorno-de-trabajo-para-google-cloud-platform">7.1. Configuración del entorno de trabajo para Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caso-de-uso-integracion-de-servicios-de-google-cloud-platform">7.2. Caso de uso: integración de servicios de Google Cloud Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#una-definicion-de-computacion-en-la-nube">7.3. Una definición de computación en la nube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publicacion-avanzada-de-la-aplicacion-del-carrito-en-google-app-engine-integrada-con-google-cloud-sql">7.4. Publicación avanzada de la aplicación del carrito en Google App Engine integrada con Google Cloud SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ejecucion-de-contenedores-en-la-nube">7.5. Ejecución de contenedores en la nube</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">8. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">9. Enunciados de las prácticas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Desarrollo de Aplicaciones en Internet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">7. </span>Computación en la  nube</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/nube.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="computacion-en-la-nube">
+<h1><span class="section-number">7. </span>Computación en la  nube<a class="headerlink" href="#computacion-en-la-nube" title="Enlace permanente a este encabezado"></a></h1>
+<p>La computación en la nube se ha convertido en la manera más habitual de gestionar los diferentes recursos necesarios para una aplicación web.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Las habilidades que deberías adquirir con este tema incluyen las siguientes:</p>
+<ul class="simple">
+<li><p>Entender la diferencia entre los distintos niveles de abstracción proporcionados por los diferentes modelos de computación en la nube.</p></li>
+<li><p>Conocer, saber usar y relacionar entre ellos varios de los servicios de infraestructura y plataforma disponibles en la nube.</p></li>
+<li><p>Saber implantar en Google App Engine aplicaciones web escritas en Node.js que usen las bases de datos relacionales de Google Cloud SQL.</p></li>
+</ul>
+</div>
+<section id="configuracion-del-entorno-de-trabajo-para-google-cloud-platform">
+<span id="label-gcloud"></span><h2><span class="section-number">7.1. </span>Configuración del entorno de trabajo para Google Cloud Platform<a class="headerlink" href="#configuracion-del-entorno-de-trabajo-para-google-cloud-platform" title="Enlace permanente a este encabezado"></a></h2>
+<p>En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure, IBM Cloud, Rackspace o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a crear un proyecto en Google Cloud Platform y asignarlo a una cuenta de facturación especial para centros educativos que Google ofrece a los estudiantes de la universidad. Para recibir los créditos educativos, tendrás que usar la cuenta que la universidad te asigna con <a class="reference external" href="https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html">dominio gcloud.ua.es</a>; asegúrate de que la tienes activada antes de seguir leyendo.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Ten en cuenta que en ningún momento has de dar de indicar los datos de ninguna tarjeta de crédito o cuenta bancaria. Si el sistema te pide algo así, es que estás haciendo algo mal.</p>
+</div>
+<p>En las semanas anteriores al estudio de este tema, el profesor compartirá contigo a través de un anuncio en UACloud u otro medio similar un enlace a una página web donde podrás solicitar los créditos educativos. En dicha página, tendrás que indicar tu dirección de correo electrónico de <code class="docutils literal notranslate"><span class="pre">gcloud.ua.es</span></code> y tu nombre. Una vez que hayas enviado el formulario, recibirás un mensaje de confirmación por correo electrónico con un enlace para activar tu cuenta de Google Cloud Platform. Solo se puede obtener un cupón por estudiante. Para comprobar que todo ha ido bien, basta con que accedas al servicio de facturación y compruebes que tienes una cuenta con unos $50 a tu disposición.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Sigue las instrucciones que vienen a continuación para configurar tu entorno de trabajo para las actividades de este tema.</p>
+</div>
+<p>Comienza instalando Node.js y SQLite como se estudió en el tema anterior en la sección «<a class="reference internal" href="rest.html#label-local"><span class="std std-ref">Configuración del entorno de trabajo para ejecutar localmente una aplicación web</span></a>». También necesitarás tener instalado <a class="reference external" href="https://cloud.google.com/sdk/gcloud/?hl=EN">gcloud</a>, un cliente de línea de órdenes (CLI) que permite interactuar con Google Cloud Platform desde la línea de órdenes y que forma pate del Google Cloud SDK (por el inglés <em>software development kit</em>).</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>El fichero <code class="docutils literal notranslate"><span class="pre">dai-bundle-dev</span></code> que se menciona al comienzo del apartado «<a class="reference internal" href="rest.html#label-local"><span class="std std-ref">Configuración del entorno de trabajo para ejecutar localmente una aplicación web</span></a>» del capítulo anterior también te permite instalar el SDK de Google Cloud Platform. Edita el script <code class="docutils literal notranslate"><span class="pre">install.sh</span></code> y cambia, si procede, el valor de las variables de entorno del comienzo para que instale el SDK.</p>
+</div>
+<p>Las <a class="reference external" href="https://cloud.google.com/sdk/docs/downloads-interactive?hl=EN">instrucciones de instalación del SDK</a> cambian de un sistema operativo a otro; para el caso de Linux, y sin necesidad de tener privilegios de administrador, puedes ejecutar lo que sigue; sáltate este paso si has instalado el SDK con el script mencionado antes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sdk</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span> <span class="o">|</span> <span class="n">bash</span>
+</pre></div>
+</div>
+<p>Ahora cierra el terminal actual y abre uno nuevo para que se actualicen los valores de las variables de entorno. Una vez instalado, has de vincular el SDK con tu cuenta de Google Cloud Platform (en este caso, tu cuenta <code class="docutils literal notranslate"><span class="pre">gcloud.ua.es</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">init</span>
+</pre></div>
+</div>
+<p>Si posteriormente el SDK se desvinculara por algún motivo de tu cuenta, puedes volver a emparejarlo haciendo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">auth</span> <span class="n">login</span>
+</pre></div>
+</div>
+<p>Ahora tienes que ejecutar <a class="reference external" href="https://github.com/jaspock/dai2223/blob/main/code/gcp/config-gcloud.sh">este script</a> de Linux para crear un proyecto, vincularlo a tu cuenta y añadir al profesor como administrador. Antes de ejecutarlo edítalo y pon tu cuenta completa de <code class="docutils literal notranslate"><span class="pre">gcloud</span></code> en la variable <code class="docutils literal notranslate"><span class="pre">ESTUDIANTE</span></code> y la cuenta que el profesor te habrá indicado previamente en la variable <code class="docutils literal notranslate"><span class="pre">PROFESOR</span></code>. Es posible que la ejecución del script se demore por unos minutos.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>El script está preparado en principio para Linux. Puedes adaptarlo fácilmente para otros sistemas operativos. Otra opción es abrir el fichero correspondiente e ir copiando una a una sus instrucciones en el terminal.</p>
+</div>
+<p>Ahora deberías poder ver los proyectos que tienes creados en Google Cloud Platform con:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">projects</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>Y para ver cuál es el proyecto por defecto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">config</span> <span class="n">get</span><span class="o">-</span><span class="n">value</span> <span class="n">project</span>
+</pre></div>
+</div>
+<p>Lo más habitual es que solo tengas el proyecto de la asignatura, cuyo nombre comienza por <em>dai</em>, pero si el proyecto seleccionado por defecto es uno diferente (quizás un proyecto que hayas creado tú por tu cuenta) puedes cambiarlo haciendo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">config</span> <span class="nb">set</span> <span class="n">project</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>donde <code class="docutils literal notranslate"><span class="pre">&lt;id&gt;</span></code> sería el id del proyecto obtenido de la lista proporcionada por <code class="docutils literal notranslate"><span class="pre">gcloud</span> <span class="pre">projects</span> <span class="pre">list</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Para no generar gastos innecesarios, recuerda eliminar los recursos que hayas creado y que no vayas a seguir utilizando, cuando acabes una sesión de trabajo con Google Cloud Platform. Establece ahora una <a class="reference external" href="https://console.cloud.google.com/billing/budgets">alarma de gasto</a> en tu cuenta de facturación de Google Cloud Platform.</p>
+</div>
+</section>
+<section id="caso-de-uso-integracion-de-servicios-de-google-cloud-platform">
+<span id="label-gcp"></span><h2><span class="section-number">7.2. </span>Caso de uso: integración de servicios de Google Cloud Platform<a class="headerlink" href="#caso-de-uso-integracion-de-servicios-de-google-cloud-platform" title="Enlace permanente a este encabezado"></a></h2>
+<p>En esta actividad vas a crear una solución que integre diversos servicios de Google Cloud Platform. Ve unos vídeos, explora los documentos de introducción enlazados y, a continuación realiza el ejercicio propuesto.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Ve los vídeos de la lista de reproducción de <a class="reference external" href="https://www.youtube.com/playlist?list=PLy5CQU7Pj3dPZY56AtbNvldglxIuss889">introducción a Google Cloud Platform</a> y toma nota de las principales ideas allí expuestas. Los vídeos tienen los subtítulos correctos en inglés y puedes leerlos en otros idiomas mediante traducción automática (lo que implica que habrá errores con cierta frecuencia). Ten en cuenta que la duración total de todos los vídeos de la lista es de alrededor de 40 minutos.</p>
+</div>
+<p>Para conseguir llevar a cabo la siguiente tarea, necesitarás leerte y practicar con estas guías rápidas (de nuevo la versión recomendada es la original en inglés, pero puedes cambiar el idioma al final de la página):</p>
+<ul class="simple">
+<li><p>Creación de una <a class="reference external" href="https://cloud.google.com/compute/docs/quickstart-linux?hl=EN">máquina virtual con Linux</a> en Compute Engine.</p></li>
+<li><p>Ejecutar un <a class="reference external" href="https://cloud.google.com/compute/docs/tutorials/basic-webserver-apache?hl=EN">servidor Apache básico</a> en Compute Engine.</p></li>
+<li><p><a class="reference external" href="https://cloud.google.com/storage/docs/quickstart-console?hl=EN">Subir ficheros</a> a Cloud Storage. Puede que el tutorial no lo mencione, pero para poder hacer públicos objetos puntuales de un <em>bucket</em>, tendrás que editar las opciones de acceso al <em>bucket</em> y cambiarlas a <em>fine-grained</em>.</p></li>
+<li><p>Implementar una <a class="reference external" href="https://cloud.google.com/appengine/docs/standard/nodejs/quickstart?hl=EN">aplicación sencilla</a> en Node.js en App Engine.</p></li>
+<li><p>Crear <a class="reference external" href="https://cloud.google.com/functions/docs/quickstart-nodejs?hl=EN">una función</a> en Cloud Functions.</p></li>
+<li><p>Crear <a class="reference external" href="https://cloud.google.com/functions/docs/quickstart?hl=EN">una función desde la línea de órdenes</a> en Cloud Functions.</p></li>
+</ul>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Lanza en una estancia de Google Compute Engine un servidor web escrito en Node.js con Express (esto se estudió en el tema anterior) que sirva una página web sencilla y ofrezca un servicio GET que realice una tarea simple, como por ejemplo, invertir una cadena de texto. La página web ha de invocar mediante la API Fetch al servicio web y, además, contener una imagen que previamente habrás subido a Google Cloud Storage. Añade a continuación en Google Cloud Functions una función en JavaScript que devuelva la cadena recibida como parámetro con las vocales eliminadas e invoca también este servicio desde la página web; recuerda que, dado que la invocación del servicio se hará desde una página web descargada desde un servidor diferente, tendrás que añadir <code class="docutils literal notranslate"><span class="pre">res.header(&quot;Access-Control-Allow-Origin&quot;,&quot;*&quot;)</span></code> a tu función para cumplir con el estándar CORS. Para simplificar, usa la consola web de Google Cloud Platform siempre que te sea posible. ¡Elimina todos los recursos reservados cuando acabes!</p>
+</div>
+</section>
+<section id="una-definicion-de-computacion-en-la-nube">
+<span id="label-comp-nube"></span><h2><span class="section-number">7.3. </span>Una definición de computación en la nube<a class="headerlink" href="#una-definicion-de-computacion-en-la-nube" title="Enlace permanente a este encabezado"></a></h2>
+<p>Después de la toma de contacto de la actividad anterior, estamos en disposición de poder caracterizar de forma más precisa a qué nos referimos con la computación en la nube.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Lee detenidamente la definición de computación en la nube dada por el National Institute of Standards and Technology en el documento «<a class="reference external" href="http://dx.doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>» y asegúrate de que entiendes cuáles son las características fundamentales de la computación en la nube, así como los diferentes modelos de servicios e implantación existentes. Lee con calma el documento ya que tiene una gran densidad terminológica y conceptual.</p>
+</div>
+<p>Por elegir algún momento, podemos establecer el inicio de la computación en la nube en 2006 cuando Amazon lanza Amazon Web Services para explotar comercialmente la tecnología que había desarrollado para su propio portal. Comienza entonces una transición desde el <em>hosting</em> tradicional (en el  que uno compraba o alquilaba una cantidad determinada de recursos) a la computación en la nube (en la que los servicios y recursos computacionales son escalables, se ofrecen bajo demanda y se facturan, como el agua o la luz, en base al consumo real realizado).</p>
+<p>Algunas de las principales características de la computación en la nube son:</p>
+<ul class="simple">
+<li><p>Existencia de un <em>pool</em> de recursos computacionales disponible para todos los clientes.</p></li>
+<li><p>Virtualización a todos los niveles para maximizar la utilización del hardware.</p></li>
+<li><p>Escalado elástico (en ambos sentidos) e inmediato según las necesidades.</p></li>
+<li><p>Se paga por lo que se usa (por horas, minutos, GBs o MBs, por ejemplo).</p></li>
+<li><p>Reducción para el cliente de gastos de capital (CAPEX), pero en ocasiones también de gastos operativos (OPEX).</p></li>
+<li><p>Acceso automático vía APIs web o SDKs a todos los servicios.</p></li>
+</ul>
+<p>La siguiente gráfica muestra cómo con la computación en la nube los gastos se ajustan en cada momento a la demanda a diferencia de lo que ocurría con el <em>hosting</em> tradicional:</p>
+<figure class="align-default" id="id1" style="width: 70%">
+<a class="reference external image-reference" href="https://cloudkul.com/blog/traditional-hosting-vs-cloud-hosting/"><img alt="coste de un hosting tradicional y de la nube" src="https://cloudkul.com/blog/wp-content/uploads/2015/11/graph.jpg" /></a>
+<figcaption>
+<p><span class="caption-text">Comparación entre el coste con un servicio de <em>hosting</em> tradicional y con la computación en la nube.</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para crear una nube privada, es decir, un sistema con hardware propio pero con el que se interactúa como con una nube pública, existen varios sistemas de código abierto como <a class="reference external" href="https://www.openstack.org/">OpenStack</a>,  <a class="reference external" href="https://cloudstack.apache.org/">CloudStack</a>, <a class="reference external" href="https://www.cloudfoundry.org/">Cloud Foundry</a> u <a class="reference external" href="https://www.openshift.com/">OpenShift</a> (los dos primeros como <em>infrastructure as a service</em> y los dos últimos como <em>platform as a service</em>).</p>
+</div>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Ve los dos primeros vídeos de la lista de reproducción de <a class="reference external" href="https://www.youtube.com/playlist?list=PLy5CQU7Pj3dNm2vn6tSfrZ58vUaZiK8Sv">centros de datos para computación en la nube</a> y toma nota de las principales ideas allí expuestas. Todos los vídeos tienen subtítulos bien transcritos como mínimo en inglés. Puedes leerlos en otros idiomas mediante traducción automática (lo que implica que habrá errores con cierta frecuencia). Ten en cuenta que la duración total de los dos primeros vídeos de la lista es de alrededor de 45 minutos.</p>
+</div>
+</section>
+<section id="publicacion-avanzada-de-la-aplicacion-del-carrito-en-google-app-engine-integrada-con-google-cloud-sql">
+<span id="label-appengine"></span><h2><span class="section-number">7.4. </span>Publicación avanzada de la aplicación del carrito en Google App Engine integrada con Google Cloud SQL<a class="headerlink" href="#publicacion-avanzada-de-la-aplicacion-del-carrito-en-google-app-engine-integrada-con-google-cloud-sql" title="Enlace permanente a este encabezado"></a></h2>
+<p>Vamos a ver cómo desplegar la aplicación del carrito del tema anterior en Google App Engine, el servicio de plataforma de aplicaciones de Google Cloud Platform, de manera que esta vez los datos tengan auténtica persistencia. Dado que las máquinas virtuales que se asignen a nuestra aplicación de Google App Engine pueden ser eliminadas o creadas en cualquier momento en base a la demanda, necesitamos almacenar los datos que maneje la aplicación en una base de datos alojada en otro lugar: Google Cloud Platform cuenta con Google Cloud SQL, un servicio de bases de datos relacionales en la nube que incluye el gestor MySQL. En el tema anterior vimos que la aplicación del carrito ya estaba configurada para trabajar con MySQL a través de Knex.js, por lo que no es necesario modificar el código. Al comienzo de este tema, en el apartado «<a class="reference internal" href="#label-gcloud"><span class="std std-ref">Configuración del entorno de trabajo para Google Cloud Platform</span></a>», también se explica cómo configurar el cliente de línea de órdenes <code class="docutils literal notranslate"><span class="pre">gcloud</span></code>. Para que la aplicación pueda usar MySQL debemos crear y configurar una instancia de máquina virtual para la base de datos en Google Cloud SQL.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Sigue las instrucciones que vienen a continuación para aprender cómo desplegar una aplicación como la del carrito en Google App Engine.</p>
+</div>
+<p>Para crear la instancia de Cloud SQL desde el terminal es necesario ejecutar desde la línea de órdenes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">instances</span> <span class="n">create</span> <span class="o">&lt;</span><span class="n">instancia</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">tier</span><span class="o">=</span><span class="n">db</span><span class="o">-</span><span class="n">f1</span><span class="o">-</span><span class="n">micro</span> <span class="o">--</span><span class="n">region</span><span class="o">=</span><span class="n">europe</span><span class="o">-</span><span class="n">west3</span> <span class="o">--</span><span class="n">root</span><span class="o">-</span><span class="n">password</span><span class="o">=&lt;</span><span class="n">contraseñaAdmin</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">version</span><span class="o">=</span><span class="n">MYSQL_8_0</span>
+</pre></div>
+</div>
+<p>donde <code class="docutils literal notranslate"><span class="pre">&lt;instancia&gt;</span></code> es el nombre la instancia de base de datos y <code class="docutils literal notranslate"><span class="pre">&lt;contraseñaAdmin&gt;</span></code> la contraseña que queremos para el administrador de la instancia.</p>
+<p>La primera vez que ejecutes la línea anterior, obtendrás un mensaje informando de que la API de SQL no está activada y ofreciéndote la opción de activarla; pídele que la active. Es posible que también se te solicite aceptar las <a class="reference external" href="https://console.developers.google.com/terms/cloud">condiciones del servicio</a>. Muchos servicios de Google Cloud Platform están desactivados inicialmente para evitar que las aplicaciones utilicen servicios de pago que no han sido autorizados explícitamente.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La creación de la instancia de la base de datos puede tardar varios minutos. No sigas con este tutorial hasta que no se confirme su creación. En algunos casos puede llegar hasta unos 15 minutos, así que puedes aprovechar para hacer otra cosa mientras.</p>
+</div>
+<p>Ahora vamos a crear un nuevo usuario alternativo al administrador para acceder a la base de datos. Para ello ejecutamos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">users</span> <span class="n">create</span> <span class="o">&lt;</span><span class="n">usuario</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">host</span><span class="o">=%</span> <span class="o">--</span><span class="n">instance</span><span class="o">=&lt;</span><span class="n">instancia</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">password</span><span class="o">=&lt;</span><span class="n">contraseña</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Recuerda que todas las acciones que estamos ejecutando desde el terminal también podrían llevarse a cabo manualmente desde la consola web de Google Cloud Platform. De esta manera, sin embargo, no son automatizables. Por ejemplo, para crear un usuario alternativo para la bases de datos como acabamos de hacer, también podríamos ir a la <a class="reference external" href="https://console.cloud.google.com/sql/instances/">consola web de administración de instancias de bases de datos</a>, seleccionar la instancia creada anteriormente, y desde la pestaña <span class="guilabel">Usuarios</span> crear una cuenta de usuario que pueda conectarse desde cualquier <em>host</em>.</p>
+<p>A veces hay sutiles diferencias entre ambos enfoques. Por ejemplo, para versiones de MySQL anteriores a la 8, a los usuarios creados desde la línea de órdenes <a class="reference external" href="https://cloud.google.com/sql/docs/mysql/create-manage-users#creating">había que concederles</a> mediante <cite>GRANT</cite> permisos adicionales.</p>
+</div>
+<p>A continuación, creemos una base de datos en la instancia de Cloud SQL para nuestra aplicación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">databases</span> <span class="n">create</span> <span class="o">&lt;</span><span class="n">bd</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">instance</span><span class="o">=&lt;</span><span class="n">instancia</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>donde <code class="docutils literal notranslate"><span class="pre">&lt;bd&gt;</span></code> es el nombre de la base de datos e <code class="docutils literal notranslate"><span class="pre">&lt;instancia&gt;</span></code> es el nombre de la instancia de Cloud SQL que creamos anteriormente.</p>
+<p>Para comprobar que usuario y base de datos han sido creados correctamente, podemos consultar los usuarios y las bases de datos existentes haciendo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">users</span> <span class="nb">list</span> <span class="o">--</span><span class="n">instance</span><span class="o">=&lt;</span><span class="n">instancia</span><span class="o">&gt;</span>
+<span class="n">gcloud</span> <span class="n">sql</span> <span class="n">databases</span> <span class="nb">list</span> <span class="o">--</span><span class="n">instance</span><span class="o">=&lt;</span><span class="n">instancia</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Ahora necesitamos conocer el nombre de conexión de la instancia que aparece en el campo <code class="docutils literal notranslate"><span class="pre">connectionName</span></code> al ejecutar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">instances</span> <span class="n">describe</span> <span class="o">&lt;</span><span class="n">instancia</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>En Linux puedes mostrar solo la línea que contiene el nombre de conexión con:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">instances</span> <span class="n">describe</span> <span class="o">&lt;</span><span class="n">instancia</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">connectionName</span>
+</pre></div>
+</div>
+<p>Ahora, añade los datos anteriores a un fichero llamado <code class="docutils literal notranslate"><span class="pre">.env</span></code> que estará en la misma carpeta que <code class="docutils literal notranslate"><span class="pre">config.js</span></code> y <code class="docutils literal notranslate"><span class="pre">app.js</span></code> de la aplicación del carrito:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">GCP_SQL_USER</span><span class="o">=&lt;</span><span class="n">usuario</span><span class="o">&gt;</span>
+<span class="linenos">2</span><span class="n">GCP_SQL_PASSWORD</span><span class="o">=&lt;</span><span class="n">contraseña</span><span class="o">&gt;</span>
+<span class="linenos">3</span><span class="n">GCP_SQL_DATABASE</span><span class="o">=&lt;</span><span class="n">bd</span><span class="o">&gt;</span>
+<span class="linenos">4</span><span class="n">GCP_SQL_INSTANCE_CONNECTION_NAME</span><span class="o">=/</span><span class="n">cloudsql</span><span class="o">/&lt;</span><span class="n">connectionName</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Observa que el nombre de la conexión va precedido de <code class="docutils literal notranslate"><span class="pre">/cloudsql</span></code> en la última variable de entorno.</p>
+<p>El fichero <code class="docutils literal notranslate"><span class="pre">app.yaml</span></code> contiene información para Google App Engine como, entre otras cosas, las variables de entorno que se inicializarán antes de arrancar la aplicación. A diferencia de Heroku, estas variables de entorno no pueden definirse por medio del cliente de línea de órdenes (<code class="docutils literal notranslate"><span class="pre">gcloud</span></code>) sino únicamente a través de este fichero.</p>
+<p>Para subir el código de la aplicación a Google App Engine y abrirla en el navegador basta con hacer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">app</span> <span class="n">deploy</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Un proyecto de Google Cloud Platform solo puede tener una aplicación de App Engine asociada como máximo. El proyecto que el profesor ha creado para ti ya tiene una aplicación de App Engine asociada; para otros proyectos sin aplicación vinculada, la línea anterior podría mostrar un mensaje ofreciendo crearla en ese momento.</p>
+</div>
+<p>La aplicación ya está desplegada en la nube. Podemos ahora abrirla directamente en el navegador sin necesidad de consultar su URL haciendo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">app</span> <span class="n">browse</span>
+</pre></div>
+</div>
+<p>Para ver todos los mensajes de <em>log</em> emitidos por la aplicación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">app</span> <span class="n">logs</span> <span class="n">read</span>
+</pre></div>
+</div>
+<p>Y para ir viéndolos en un terminal mientras se van generando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">app</span> <span class="n">logs</span> <span class="n">tail</span>
+</pre></div>
+</div>
+<p>En la consola web los <em>logs</em> se muestran dentro de las opciones de <code class="docutils literal notranslate"><span class="pre">Logging</span></code> en el bloque <code class="docutils literal notranslate"><span class="pre">Operations</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Las instancias de Cloud SQL tienen un coste relativamente alto, por lo que tenemos que hacer un uso moderado de ellas para no agotar los créditos disponibles. En primer lugar, asegúrate de que, como se dice más arriba, indicas el tipo de instancia de base de datos <code class="docutils literal notranslate"><span class="pre">db-f1-micro</span></code> (el más <a class="reference external" href="https://cloud.google.com/sql/pricing#2nd-gen-instance-pricing">barato</a>) y ningún otro al crear la instancia. Además, acostúmbrate a <em>dormir</em> tu instancia de base de datos cuando no vayas a trabajar en las siguientes horas con ella (no es necesario que lo hagas constantemente mientras estás desarrollando, pero sí cuando vayas a dejar de hacerlo) ejecutando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">instances</span> <span class="n">patch</span> <span class="o">&lt;</span><span class="n">instancia</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">activation</span><span class="o">-</span><span class="n">policy</span> <span class="n">never</span>
+</pre></div>
+</div>
+<p>Para <em>despertar</em> posteriormente la instancia puedes ejecutar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">instances</span> <span class="n">patch</span> <span class="o">&lt;</span><span class="n">instancia</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">activation</span><span class="o">-</span><span class="n">policy</span> <span class="n">always</span>
+</pre></div>
+</div>
+<p>Es posible que de vez en cuando el profesor ejecute un script que intente mandar a dormir todas las instancias de base de datos por si hay estudiantes que han olvidado hacerlo. Despierta tu instancia si inesperadamente comienzas a recibir errores al acceder a la base de datos, porque lamentablemente con la segunda generación de instancias de MySQL de Google Cloud SQL esto no ocurre automáticamente. Evidentemente, en una aplicación real la base de datos ha de estar siempre disponible o establecerse un procedimiento automático que la despierte, pero para los propósitos de la asignatura y de cara a ahorrar costes, dormir y despertar la instancia de base de datos es razonablemente admisible.</p>
+</div>
+<p>Para poder ejecutar instrucciones de SQL sobre la base de datos y asegurarnos de que nuestro programa está rellenándola correctamente, es necesario ir a la consola web de Google Cloud Platform, abrir el terminal web Cloud Shell y hacer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">connect</span> <span class="o">&lt;</span><span class="n">instancia</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">user</span><span class="o">=&lt;</span><span class="n">usuario</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Desde el terminal web podemos seleccionar nuestra base de datos con <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">&lt;bd&gt;;</span></code>, donde <code class="docutils literal notranslate"><span class="pre">&lt;bd&gt;</span></code> es el nombre correspondiente, y ejecutar instrucciones SQL como <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">*</span> <span class="pre">from</span> <span class="pre">productos;</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La orden anterior de <code class="docutils literal notranslate"><span class="pre">gcloud</span></code> para conectarte a la base de datos también se puede lanzar desde un terminal local, pero es necesario que el sistema tenga MySQL instalado. También se pueden usar clientes de MySQL como <a class="reference external" href="https://www.adminer.org/">Adminer</a> o <a class="reference external" href="https://www.phpmyadmin.net/">phpMyAdmin</a>. Si se desea usar la base de datos de Cloud SQL mientras se desarrolla en modo local se puede hacer con <a class="reference external" href="https://cloud.google.com/sql/docs/mysql/sql-proxy">Cloud SQL Proxy</a>; en este curso, sin embargo, no será necesario porque nuestras aplicaciones usarán SQLite en modo local y MySQL solo cuando se implanten en la nube.</p>
+</div>
+</section>
+<section id="ejecucion-de-contenedores-en-la-nube">
+<h2><span class="section-number">7.5. </span>Ejecución de contenedores en la nube<a class="headerlink" href="#ejecucion-de-contenedores-en-la-nube" title="Enlace permanente a este encabezado"></a></h2>
+<p>Docker es una plataforma que nos permite distribuir <em>contenedores</em>, que incluyen aplicaciones completas y sus dependencias a todos los niveles (sistema operativo, entornos de ejecución, librerías, programas adicionales, ficheros de configuración, etc.). Los contenedores son instancias de una <em>imagen</em>. Cada imagen se define mediante un fichero de texto usualmente denominado <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Lee la página de <a class="reference external" href="https://docs.docker.com/get-started/overview/">introducción a Docker</a>. Después, lee el tutorial sobre cómo <a class="reference external" href="https://docs.docker.com/language/nodejs/build-images/">crear una imagen</a> y <a class="reference external" href="https://docs.docker.com/language/nodejs/run-containers/">lanzar un contenedor</a> para una aplicación web basada en Node.js.</p>
+</div>
+<p>En esta actividad vamos a ver cómo crear una imagen de nuestra aplicación del carrito y lanzar contenedores basados en ellas. Ambas acciones las realizaremos tanto localmente (para ello necesitas tener instalado <code class="docutils literal notranslate"><span class="pre">docker</span></code> en tu ordenador) como en Google Cloud Platform. A diferencia del <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> del tutorial anterior, no nos basaremos en una <a class="reference external" href="https://hub.docker.com/_/node">imagen del registro que ya contiene Node.js</a> (según se indicaba en la orden <code class="docutils literal notranslate"><span class="pre">FROM</span></code>), sino que, para mostrar un ejemplo más general, nuestra imagen se basará en una imagen de Ubuntu.</p>
+<p>Para instalar Docker en Ubuntu se puede hacer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt install docker.io
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+newgrp docker
+</pre></div>
+</div>
+<p>Las tres últimas líneas son para poder ejecutar <code class="docutils literal notranslate"><span class="pre">docker</span></code> sin permisos de administrador.</p>
+<p>Los dos ficheros relevantes de la aplicación del carrito para este apartado son <code class="docutils literal notranslate"><span class="pre">.dockerignore</span></code> (especifica qué ficheros o directorios ignorar en instrucciones como <code class="docutils literal notranslate"><span class="pre">COPY</span></code>) y, principalmente, <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>, cuyo contenido es el siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="mf">20.04</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">ARG</span> <span class="n">DEBIAN_FRONTEND</span><span class="o">=</span><span class="n">noninteractive</span>
+<span class="linenos"> 4</span><span class="n">RUN</span> <span class="n">apt</span> <span class="n">update</span> \
+<span class="linenos"> 5</span>    <span class="o">&amp;&amp;</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">npm</span> <span class="n">nodejs</span> <span class="n">sqlite3</span> \
+<span class="linenos"> 6</span>    <span class="o">&amp;&amp;</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">lists</span><span class="o">/*</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">app</span>
+<span class="linenos"> 9</span><span class="n">WORKDIR</span> <span class="o">/</span><span class="n">app</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">COPY</span> <span class="s2">&quot;package.json&quot;</span> <span class="o">.</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">RUN</span> <span class="n">npm</span> <span class="n">install</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">COPY</span> <span class="o">.</span> <span class="o">.</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">EXPOSE</span> <span class="mi">5000</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="s2">&quot;app.js&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Los pasos para crear una imagen y lanzar un contenedor local desde la línea de órdenes son:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">--</span><span class="n">tag</span> <span class="n">imagen</span><span class="o">-</span><span class="n">carrito</span> <span class="o">.</span>
+<span class="n">docker</span> <span class="n">images</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">detach</span> <span class="o">--</span><span class="n">publish</span> <span class="mi">8001</span><span class="p">:</span><span class="mi">5000</span> <span class="o">--</span><span class="n">name</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span> <span class="n">imagen</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">ps</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>Podemos ahora probar nuestra aplicación en <code class="docutils literal notranslate"><span class="pre">localhost:8001</span></code>. Las siguientes instrucciones detienen el contenedor, vuelven a lanzarlo, ejecutan una sesión del <em>shell</em> dentro de él, lo vuelven a detener y, finalmente, lo eliminan:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">stop</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">start</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">exec</span> <span class="o">--</span><span class="n">interactive</span> <span class="o">--</span><span class="n">tty</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span> <span class="n">bash</span>
+<span class="n">docker</span> <span class="n">stop</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">rm</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+</pre></div>
+</div>
+<p>Un uso habitual de Docker es el de tener contenedores con todo el software necesario para programar una aplicación de forma que nos aseguremos que todos los miembros del equipo tengan exactamente el mismo entorno de desarrollo. En ese caso, es muy ineficiente tener que volver a crear la imagen ante cada cambio en el código que queramos probar. Otro enfoque también ineficiente pasa por editar los ficheros <em>dentro</em> del contenedor, pero en ese caso para hacer esos cambios persistentes, tendríamos que usar ciertas instrucciones que crean una nueva imagen a partir del estado de un contenedor. Una solución mucho mejor es usar <em>volúmenes</em>, que nos permiten enlazar ciertos directorios del contenedor con directorios externos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">detach</span> <span class="o">--</span><span class="n">publish</span> <span class="mi">8001</span><span class="p">:</span><span class="mi">5000</span> <span class="o">--</span><span class="n">volume</span> <span class="s2">&quot;$PWD&quot;</span><span class="p">:</span><span class="o">/</span><span class="n">app</span> <span class="o">--</span><span class="n">name</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span> <span class="n">imagen</span><span class="o">-</span><span class="n">carrito</span>
+</pre></div>
+</div>
+<p>Si editamos el contenido de <code class="docutils literal notranslate"><span class="pre">public/carrito.html</span></code> veremos cómo la aplicación web se actualiza inmediatamente. Cuando tengamos la aplicación lista, podemos crear la imagen copiando, esta vez sí, el contenido local al sistema de ficheros del contenedor. Para terminar, podemos eliminar el contenedor e incluso la imagen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">stop</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">rm</span> <span class="n">contenedor</span><span class="o">-</span><span class="n">carrito</span>
+<span class="n">docker</span> <span class="n">rmi</span> <span class="n">imagen</span><span class="o">-</span><span class="n">carrito</span>
+</pre></div>
+</div>
+<p>Podemos repetir los pasos anteriores (sin necesidad de tener Docker instalado) usando servicios en la nube. En el caso de GCP, la generación de la imagen y su subida a un registro se puede hacer con <a class="reference external" href="https://cloud.google.com/build/docs/quickstart-build?hl=en">Cloud Build</a>, mientras que para el lanzamiento del contenedor podemos usar <a class="reference external" href="https://cloud.google.com/build/docs/quickstart-deploy?hl=en">Cloud Run</a>.</p>
+<blockquote>
+<div></div></blockquote>
+<p>En lo siguiente se asume que la variable <code class="docutils literal notranslate"><span class="pre">PROYECTO</span></code> contiene el identificador del proyecto actual. Recuerda que para obtener el proyecto actual o cambiarlo, si es necesario, puedes hacer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gcloud config get-value project
+gcloud config set project $PROYECTO
+</pre></div>
+</div>
+<p>Los pasos siguientes crean un repositorio para imágenes de Docker (dado que se pueden almacenar otros tipos de objetos, en GCP lo llaman <em>repositorio de artefactos</em>), construye una imagen a partir del <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> y el contenido del directorio actual y, finalmente, la ejecuta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gcloud artifacts repositories create repositorio-docker --repository-format=docker --location europe-west3
+gcloud artifacts repositories list
+gcloud builds submit --tag europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker/imagen-carrito:v1
+gcloud artifacts docker images list europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker
+gcloud run deploy servicio-carrito --image europe-west3-docker.pkg.dev/$PROYECTO/repositorio-docker/imagen-carrito:v1 --platform managed --region europe-west3
+</pre></div>
+</div>
+<p>A la pregunta de si permitir invocaciones no autorizadas en la última orden contestamos que sí. La ejecución de la última orden nos dará el URL donde probar la aplicación. Desde la consola web podemos acceder al Artifact Registry y a Cloud Build para ver el repositorio con la imagen y el contenedor, respectivamente. Para eliminar el contenedor y el repositorio completo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">run</span> <span class="n">services</span> <span class="n">delete</span> <span class="n">servicio</span><span class="o">-</span><span class="n">carrito</span> <span class="o">--</span><span class="n">region</span> <span class="n">europe</span><span class="o">-</span><span class="n">west3</span>
+<span class="n">gcloud</span> <span class="n">artifacts</span> <span class="n">repositories</span> <span class="n">delete</span> <span class="n">repositorio</span><span class="o">-</span><span class="n">docker</span> <span class="o">--</span><span class="n">location</span> <span class="n">europe</span><span class="o">-</span><span class="n">west3</span>
+</pre></div>
+</div>
+<p>Cloud Run, a diferencia de App Engine, no mantiene la instancia ejecutando continuamente o durante unos minutos después de la última solicitud, por lo que su coste es inferior.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="rest.html" class="btn btn-neutral float-left" title="6. Implementación de servicios web" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="problemas.html" class="btn btn-neutral float-right" title="8. Problemas" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022-2023, Juan Antonio Pérez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

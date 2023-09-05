@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Lenguajes de estilo &mdash; documentación de Desarrollo de Aplicaciones en Internet - </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="3. Programar el lado del cliente" href="cliente.html" />
+    <link rel="prev" title="1. Lenguajes de marcado" href="marcado.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Desarrollo de Aplicaciones en Internet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marcado.html">1. Lenguajes de marcado</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Lenguajes de estilo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#selectores-y-propiedades-del-lenguaje-css">2.1. Selectores y propiedades del lenguaje CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conexion-entre-los-estilos-y-el-documento-html">2.2. Conexión entre los estilos y el documento HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elementos-en-linea-y-de-bloque">2.3. Elementos en línea y de bloque</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modelo-de-caja-en-css">2.4. Modelo de caja en CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posicionamiento">2.5. Posicionamiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#posicionamiento-estatico">2.5.1. Posicionamiento estático</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#posicionamiento-relativo">2.5.2. Posicionamiento relativo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#posicionamiento-absoluto">2.5.3. Posicionamiento absoluto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#posicionamiento-fijo">2.5.4. Posicionamiento fijo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#herramientas-para-desarrolladores">2.6. Herramientas para desarrolladores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chuletas-de-resumen">2.7. Chuletas de resumen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cliente.html">3. Programar el lado del cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="servicios.html">4. Acceso a servicios web de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="componentes.html">5. Componentes web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nube.html">7. Computación en la  nube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">8. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">9. Enunciados de las prácticas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Desarrollo de Aplicaciones en Internet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">2. </span>Lenguajes de estilo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/estilo.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lenguajes-de-estilo">
+<h1><span class="section-number">2. </span>Lenguajes de estilo<a class="headerlink" href="#lenguajes-de-estilo" title="Enlace permanente a este encabezado"></a></h1>
+<p>El lenguaje HTML dota de contenido a una página web. El lenguaje JavaScript de interactividad. Y el lenguaje CSS (<em>cascading style sheets</em>), que vamos a estudiar en este tema, es el encargado de representar los aspectos relacionados con la presentación. Sin alterar el HTML de una página, solo modificando su hoja de estilo en CSS, pueden conseguirse <a class="reference external" href="http://csszengarden.com/">vistas completamente diferentes de un mismo documento</a>. El World Wide Web Consortium (W3C) ha ido definiendo varios niveles para CSS (que se corresponden, más o menos, con la idea de versiones) de forma que cada nivel extiende las funcionalidades del nivel anterior. Hasta CSS 2.1 (revisión 1 del nivel 2), la recomendación venía recogida en un único documento, pero a partir del nivel 3 se divide en varias <a class="reference external" href="https://www.w3.org/Style/CSS/">decenas de módulos</a>, cada uno de los cuales puede encontrarse en un estatus diferente (desde borrador a recomendación formal); además, el W3C ya trabaja en algunos módulos del nivel 4.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Las habilidades que deberías adquirir con este tema incluyen las siguientes:</p>
+<ul class="simple">
+<li><p>Entender la diferencia entre un lenguaje de marcas como HTML y un lenguaje de estilo como CSS.</p></li>
+<li><p>Conocer el propósito de los atributos de CSS estudiados en este tema.</p></li>
+<li><p>Entender las regla de herencia y especificidad de CSS.</p></li>
+<li><p>Aplicar el modelo de caja de CSS.</p></li>
+<li><p>Saber posicionar los elementos HTML usando posicionamiento estático, relativo, fijo o absoluto.</p></li>
+<li><p>Saber crear hojas de estilo CSS válidas.</p></li>
+<li><p>Usar las herramientas para desarrolladores integradas en los navegadores, como Chrome DevTools, para inspeccionar el estilo de una parte de un documento HTML.</p></li>
+</ul>
+</div>
+<section id="selectores-y-propiedades-del-lenguaje-css">
+<span id="label-intro-css"></span><h2><span class="section-number">2.1. </span>Selectores y propiedades del lenguaje CSS<a class="headerlink" href="#selectores-y-propiedades-del-lenguaje-css" title="Enlace permanente a este encabezado"></a></h2>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Estudia todos los vídeos de la serie «Selectores y propiedades de CSS» en los que se introducen los elementos principales del lenguaje CSS, especialmente los conceptos de propiedad y selector que se usan a la hora de definir la reglas de estilo: <a class="reference external" href="https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing">parte 1</a>, <a class="reference external" href="https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing">parte 2</a> y <a class="reference external" href="https://drive.google.com/file/d/1PhItC2tHklcq82pHclsrt1sG5eD8PmNl/view?usp=sharing">parte 3</a>.</p>
+</div>
+<p>Como se estudia en los vídeos anteriores, los selectores de CSS permiten identificar uno o más elementos de un documento HTML. Aunque en este tema vamos a usar los selectores como parte de las reglas de CSS, esta notación tiene otros usos que veremos más adelante (como identificar los nodos del árbol DOM sobre los que realizar ciertas operaciones en JavaScript). La sintaxis de los selectores puede ser más elaborada para definir criterios de selección más avanzados. Estudiando algunas de las propiedades de CSS (hay muchas más), has visto también cómo especificar medidas (por ejemplo, el tamaño de la letra), colores o tipos de letra en CSS.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Practica con los diferentes tipos de selectores así como con los diferentes valores de las propiedades hasta tener claro su uso.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>El hecho de introducir propiedades cosméticas a nivel de clase o identificador no debe distraer al desarrollador web de seguir usando los elementos de HTML para indicar la semántica del contenido (Selectores y propiedades de CSS (como se estudió en el tema de lenguajes de marcado), evitando así el abuso de elementos como <code class="docutils literal notranslate"><span class="pre">div</span></code> o <code class="docutils literal notranslate"><span class="pre">span</span></code>: por ejemplo, si queremos aplicar un estilo específico a una cita, definiremos en la hoja de estilo el valor de las propiedades oportunas para el elemento <code class="docutils literal notranslate"><span class="pre">&lt;q&gt;</span></code>, que será el que usemos en el documento HTML en lugar de un elemento del tipo <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;cita&quot;&gt;</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No todas las propiedades se propagan <em>en cascada</em> a los elementos interiores. Las propiedades <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">font-size</span></code> y muchas otras se heredan, pero hay muchas propiedades de CSS no heredadas como <code class="docutils literal notranslate"><span class="pre">border</span></code>, <code class="docutils literal notranslate"><span class="pre">margin</span></code>, <code class="docutils literal notranslate"><span class="pre">padding</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">position</span></code>, etc.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>De la misma manera que un documento HTML puede (y debe) ser validado para asegurar su corrección, existen también validadores de documentos CSS, como el <a class="reference external" href="http://jigsaw.w3.org/css-validator/">validador del W3C</a>. La validación no asegura que el documento se vaya a ver como el desarrollador tiene en la cabeza ni que se muestre de igual manera en todos los navegadores, pero permite detectar errores sintácticos que, por otra parte, posiblemente sean también detectados por el editor de texto que utilices.</p>
+</div>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Practica tu conocimiento de CSS con este entretenido <a class="reference external" href="https://flukeout.github.io/">juego sobre selectores</a>.</p>
+</div>
+</section>
+<section id="conexion-entre-los-estilos-y-el-documento-html">
+<h2><span class="section-number">2.2. </span>Conexión entre los estilos y el documento HTML<a class="headerlink" href="#conexion-entre-los-estilos-y-el-documento-html" title="Enlace permanente a este encabezado"></a></h2>
+<p>La forma más habitual (y normalmente la más correcta) de vincular los estilos a un documento HTML es mediante el elemento <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> empleado en la cabecera (<code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>) del documento:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  ...
+<span class="linenos">3</span>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/style.css&quot;</span><span class="p">&gt;</span>
+<span class="linenos">4</span>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/style2.css&quot;</span><span class="p">&gt;</span>
+<span class="linenos">5</span>  ...
+<span class="linenos">6</span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Observa cómo se puede vincular más de una hoja de estilo a la vez a un documento. Si un elemento recibe estilos incompatibles de más de una regla, se aplican los criterios de <em>especificidad</em> que comentaremos más adelante.</p>
+<p>La segunda manera de vincular estilos con un documento HTML es usando el elemento <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> en la cabecera del documento HTML e incluyendo las reglas CSS en su interior, pero esta forma no es muy recomendable ya que introduce una dependencia excesiva entre contenido y presentación, e impide la aplicación de los mismos estilos a otros documentos.</p>
+<p>Existe una tercera vía que es todavía menos recomendable. La contamos aquí para que conozcas su existencia ya que es posible que te la encuentres en código de terceros. Consiste en usar el atributo <code class="docutils literal notranslate"><span class="pre">style</span></code> sobre un elemento del documento HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  ...
+<span class="linenos">3</span>  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:red; font-style:italic;&quot;</span><span class="p">&gt;</span>
+<span class="linenos">4</span>    ...
+<span class="linenos">5</span>  <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">6</span>  ...
+<span class="linenos">7</span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Esta tercera forma se aleja definitivamente de la idea de separar presentación y contenido, anulando todas sus ventajas.</p>
+<p>Respecto a la <em>especificidad</em>, para los mismos selectores el último en declararse tiene precedencia; además, existe un orden principal establecido por el estilo del documento, el definido por el usuario y el por defecto del navegador, en este orden. En el caso de conflictos, es decir, cuando más de un selector puede aplicarse a un elemento del documento HTML y las propiedades asociadas a cada selector son incompatibles, se aplican las siguientes reglas de cálculo de la especificidad de un selector para determinar el selector <em>ganador</em>:</p>
+<ul class="simple">
+<li><p>un estilo aplicado en línea con el atributo <code class="docutils literal notranslate"><span class="pre">style</span></code> suma 1000 a la especificidad</p></li>
+<li><p>cada identificador (<em>id</em>) que aparezca en el selector suma 100</p></li>
+<li><p>cada selector de clase, de atributo o de pseudo-clase (<code class="docutils literal notranslate"><span class="pre">:hover</span></code>) suma 10</p></li>
+<li><p>cada elemento o pseudo-elemento (<code class="docutils literal notranslate"><span class="pre">::before</span></code>) suma 1</p></li>
+</ul>
+<p>Estos son algunos ejemplos de cálculo de especificidad para diferentes selectores:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Selector</p></th>
+<th class="head"><p>Especificidad</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">div</span> <span class="pre">p</span></code></p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.menu</span></code></p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">div</span> <span class="pre">ul.menu</span></code></p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#activo</span></code></p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">body</span> <span class="pre">#contenido</span> <span class="pre">.principal</span> <span class="pre">p</span></code></p></td>
+<td><p>112</p></td>
+</tr>
+</tbody>
+</table>
+<p>En la tabla anterior aparecen algunos <em>selectores compuestos</em> que estudiarás más adelante.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El criterio de especificidad puede sobrescribirse usando <code class="docutils literal notranslate"><span class="pre">!important</span></code> en la declaración de estilo. Aunque no lo veremos en este curso por ser poco recomendable la mayoría de las veces (normalmente podremos conseguir que el valor de un estilo se aplique sobre otros aumentando la especificidad del selector), puede ser útil cuando no podemos modificar ni el código HTML ni el CSS de una página (por ejemplo, porque son generados automáticamente por una herramienta), sino únicamente aportar una nueva hoja de estilo (en ese contexto, si queremos que alguna propiedad se aplique a un elemento que ya tiene la misma propiedad aplicada con otro valor por la hoja de estilo generada automáticamente y no existe un selector más específico que el ya usado en la hoja de estilo generada, modificaremos la propiedad en nuestra hoja de estilo con <code class="docutils literal notranslate"><span class="pre">!important</span></code>).</p>
+</div>
+</section>
+<section id="elementos-en-linea-y-de-bloque">
+<span id="label-inline-css"></span><h2><span class="section-number">2.3. </span>Elementos en línea y de bloque<a class="headerlink" href="#elementos-en-linea-y-de-bloque" title="Enlace permanente a este encabezado"></a></h2>
+<p>El motor de renderizado (<em>layout engine</em> o <em>rendering engine</em>) es un complejo componente de los navegadores que aplica los diferentes estilos definidos mediante CSS al contenido del documento HTML para mostrarlo en el dispositivo del usuario.  Cuando los motores de renderizado de los navegadores tienen que mostrar un elemento de un documento de HTML, determinan la ubicación, medidas y propiedades de una <em>caja rectangular de píxeles</em> que incluirá el contenido del elemento. La forma en la que se calculan estos parámetros de la caja depende del tipo de elemento.</p>
+<p>La mayoría de los elementos de HTML que pueden aparecer en el cuerpo (<code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>) del documento caen en una de estas dos categorías: de bloque o en línea.</p>
+<p>En el caso de los elementos <em>de bloque</em> (<em>block elements</em>),</p>
+<ul class="simple">
+<li><p>su caja comienza en una nueva línea <em>debajo</em> de la caja anterior y, salvo que se restrinja explícitamente (mediante propiedades como <code class="docutils literal notranslate"><span class="pre">width</span></code>), se extiende completamente a derecha e izquierda hasta ocupar todo el ancho disponible para el elemento padre (elemento contenedor);</p></li>
+<li><p>la caja de cualquier elemento posterior también aparece en una nueva línea;</p></li>
+<li><p>la altura de la caja depende del contenido (si se estrecha la ventana del navegador, la caja se alarga convenientemente para que el contenido quepa en ella), aunque puede fijarse explícitamente con propiedades como <code class="docutils literal notranslate"><span class="pre">height</span></code>;</p></li>
+<li><p>elementos como <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> o <code class="docutils literal notranslate"><span class="pre">&lt;section&gt;</span></code> son ejemplos de elementos de bloque; <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> es un elemento de bloque especial de HTML ya que no tiene una semántica asociada: su propósito es delimitar contenido cuya representación tiene algún estilo diferenciado, pero que no tiene un matiz semántico que se pueda representar mediante un elemento de HTML.</p></li>
+</ul>
+<p>En el caso de los elementos <em>en línea</em> (<em>inline elements</em>),</p>
+<ul class="simple">
+<li><p>estos elementos no se muestran en una nueva línea ni provocan la aparición de una nueva línea al final de ellos;</p></li>
+<li><p>las cajas en línea no afectan al espaciado vertical;</p></li>
+<li><p>el ancho de su caja depende de su contenido (propiedades como <code class="docutils literal notranslate"><span class="pre">width</span></code> y <code class="docutils literal notranslate"><span class="pre">height</span></code> son ignoradas), no del ancho del elemento padre;</p></li>
+<li><p>ejemplos de elementos en línea son <code class="docutils literal notranslate"><span class="pre">&lt;strong&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> o <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code>; al igual que <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> no tiene semántica asociada y su propósito es el mismo que el de <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> pero para contenido en línea.</p></li>
+</ul>
+<p>Los comportamientos de las listas anteriores responden al flujo normal que se aplica por defecto a las cajas y constituye lo que se conoce como posicionamiento <em>estático</em>. Más adelante, veremos que hay otros tipos de posicionamiento.</p>
+<p>Observa el resultado mostrado por el navegador para el siguiente bloque de código (puedes obviar los estilos por ahora) en el que hay tanto elementos en línea (<code class="docutils literal notranslate"><span class="pre">span</span></code>) como de bloque (<code class="docutils literal notranslate"><span class="pre">div</span></code>):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>inline naranja<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">span</span><span class="p">&gt;</span>inline azul<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">3</span>  <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>inline lavanda<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">4</span>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>bloque naranja<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">5</span>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>bloque azul<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">6</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div id="basico">
+  <script>
+    var root = document.querySelector('#basico').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+      .cuadrados {
+        background: gainsboro;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+      }
+      .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+      }
+      .lavender {
+        background: lavender;
+        height: 100px;
+        width: 100px;
+      }
+      </style>
+      <div class="cuadrados">
+        <span class="orange">inline naranja</span><span class="blue">inline azul</span>
+        <span class="lavender">inline lavanda</span>
+        <div class="orange">bloque naranja</div>
+        <div class="blue">bloque azul</div>
+      </div>`;
+  </script>
+</div><div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Mira bien el código HTML y asegúrate de que sabes por qué la caja con el texto <em>inline lavanda</em> está separada de la caja con <em>inline azul</em>, pero esta no lo está de la caja que contiene <em>inline naranja</em>. Observa también cómo el texto <em>bloque naranja</em> se ajusta automáticamente dentro de la caja sin salirse por su margen derecho y prueba a sustituirlo por textos de mayor longitud.</p>
+</div>
+<p>Un elemento en línea puede aparecer dentro de un elemento en línea o de un elemento de tipo bloque. Un elemento de tipo bloque puede estar anidado dentro de otro elemento de tipo bloque; sin embargo, un elemento de tipo bloque no puede aparecer dentro de un elemento en línea.</p>
+</section>
+<section id="modelo-de-caja-en-css">
+<span id="label-caja-css"></span><h2><span class="section-number">2.4. </span>Modelo de caja en CSS<a class="headerlink" href="#modelo-de-caja-en-css" title="Enlace permanente a este encabezado"></a></h2>
+<p>Todos los elementos de HTML se muestran en una caja <em>imaginaria</em> que se extiende alrededor de su contenido. Si bien el posicionamiento o el tamaño de estas cajas sigue reglas por defecto como las que hemos visto, muchas de estas propiedades geométricas pueden modificarse mediante reglas de CSS. Entender el modelo de caja de CSS es fundamental a la hora de dar estilo a una página web. Esto implica, entre otras cosas, entender bien la forma de definir los márgenes, el borde y el relleno (<em>padding</em>) de cada caja.</p>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://weex.apache.org/docs/styles/common-styles.html#box-model"><img alt="modelo de caja CSS" src="https://img.alicdn.com/tfs/TB13u.4n5rpK1RjSZFhXXXSdXXa-377-340.png" /></a>
+<figcaption>
+<p><span class="caption-text">Modelo de caja CSS por Apache Weex</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<p>Esta es una lista de los principales parámetros de una caja que podemos modificar mediente propiedades de CSS:</p>
+<ul class="simple">
+<li><p>El ancho y alto de cada caja se pueden definir explícitamente mediante las propiedades <code class="docutils literal notranslate"><span class="pre">width</span></code> y <code class="docutils literal notranslate"><span class="pre">height</span></code>.</p></li>
+<li><p>Cada caja tiene un borde alrededor. El grosor de este borde se define con las propiedades <code class="docutils literal notranslate"><span class="pre">border-top-width</span></code>, <code class="docutils literal notranslate"><span class="pre">border-right-width</span></code>, <code class="docutils literal notranslate"><span class="pre">border-bottom-width</span></code> y <code class="docutils literal notranslate"><span class="pre">border-bottom-left</span></code>; estas propiedades suelen tener valor cero por defecto. El color del borde se define con las propiedades <code class="docutils literal notranslate"><span class="pre">bottom-top-color</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom-right-color</span></code>, etc. El trazo del borde puede, además, mostrarse con una línea continua (<code class="docutils literal notranslate"><span class="pre">solid</span></code>), con una línea discontinua (<code class="docutils literal notranslate"><span class="pre">dashed</span></code>) o con una línea de puntos (<code class="docutils literal notranslate"><span class="pre">dotted</span></code>), entre otros; estos valores pueden asignarse a las propiedades <code class="docutils literal notranslate"><span class="pre">border-top-style</span></code>, <code class="docutils literal notranslate"><span class="pre">border-right-style</span></code>, etc.</p></li>
+<li><p>Cada caja tiene un relleno (<em>padding</em>), que es la distancia entre el borde y el contenido de la caja; este relleno se define con las propiedades <code class="docutils literal notranslate"><span class="pre">padding-top</span></code>, <code class="docutils literal notranslate"><span class="pre">padding-right</span></code>, etc.</p></li>
+<li><p>Por último, es posible definir los márgenes entre una caja y las cajas de alrededor mediante las propiedades <code class="docutils literal notranslate"><span class="pre">margin-top</span></code>, <code class="docutils literal notranslate"><span class="pre">margin-right</span></code>, etc.</p></li>
+</ul>
+<p>Las separaciones y grosores anteriores se definen en base a las múltiples unidades de medida permitidas en CSS, como <em>píxeles</em> o <em>ems</em>. Si el valor es cero, no es necesario indicar la unidad de medida (0 píxeles y 0 <em>ems</em> es lo mismo en este caso).</p>
+<p>Existen formas compactas de definir algunas de las propiedades anteriores. Así, la propiedad <code class="docutils literal notranslate"><span class="pre">padding:</span> <span class="pre">3em</span> <span class="pre">2em</span> <span class="pre">1em</span> <span class="pre">0</span></code> establece el relleno, por este orden, superior, derecho, inferior e izquierdo; la propiedad <code class="docutils literal notranslate"><span class="pre">padding:</span> <span class="pre">2em</span> <span class="pre">1em</span></code> establece los rellenos superior e inferior (rellenos verticales) a <code class="docutils literal notranslate"><span class="pre">2em</span></code> y el relleno derecho e izquierdo (rellenos horizontales) a <code class="docutils literal notranslate"><span class="pre">1em</span></code>; si solo tiene un valor, la propiedad <code class="docutils literal notranslate"><span class="pre">padding:</span> <span class="pre">2em</span></code> establece todos los rellenos a <code class="docutils literal notranslate"><span class="pre">2em</span></code>. La propiedad <code class="docutils literal notranslate"><span class="pre">margin</span></code> puede tener un número variable de valores, al igual que <code class="docutils literal notranslate"><span class="pre">padding</span></code> y con la misma semántica. Existe también una propiedad para dar valor al grosor de varios bordes a la vez, pero no es <code class="docutils literal notranslate"><span class="pre">border</span></code> (un error bastante común), sino <code class="docutils literal notranslate"><span class="pre">border-width</span></code>. La propiedad <code class="docutils literal notranslate"><span class="pre">border</span></code> a secas cambia el grosor de todos los bordes, su estilo y su color a la vez, como en <code class="docutils literal notranslate"><span class="pre">border:</span> <span class="pre">1px</span> <span class="pre">solid</span> <span class="pre">blue</span></code>.</p>
+<p>Considera el siguiente fragmento de HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;cuadrados&quot;</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">&gt;</span>naranja<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">3</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">&gt;</span>azul<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">4</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;lavender&quot;</span><span class="p">&gt;</span>lavanda<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">5</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Y considera el siguiente código CSS:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">.</span><span class="nc">cuadrados</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">gainsboro</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="p">}</span>
+<span class="linenos"> 5</span><span class="p">.</span><span class="nc">orange</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">orange</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="kc">dotted</span><span class="w"> </span><span class="kc">olive</span>
+<span class="linenos">10</span><span class="p">}</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nc">blue</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lightskyblue</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">18</span><span class="p">}</span>
+<span class="linenos">19</span><span class="p">.</span><span class="nc">lavender</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lavender</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">em</span><span class="w"> </span><span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">  </span><span class="k">border-top-width</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">  </span><span class="k">border-top-color</span><span class="p">:</span><span class="w"> </span><span class="kc">olive</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">  </span><span class="k">border-top-style</span><span class="p">:</span><span class="w"> </span><span class="kc">solid</span><span class="p">;</span>
+<span class="linenos">27</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>La visualización del código anterior por el navegador es la siguiente:</p>
+<div id="estatico1">
+  <script>
+    var root = document.querySelector('#estatico1').attachShadow({mode:'open'});
+    root.innerHTML = `
+    <style>
+      .cuadrados {
+        background: gainsboro;
+        padding: 10px;
+      }
+      .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+        border: 5px dotted olive
+      }
+      .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-bottom: 10px;
+      }
+      .lavender {
+        background: lavender;
+        height: 100px;
+        width: 100px;
+        padding: 1em 2em;
+        border-top-width: 2px;
+        border-top-color: olive;
+        border-top-style: solid;
+      }
+      </style>
+      <div class="cuadrados">
+        <div class="orange">naranja</div>
+        <div class="blue">azul</div>
+        <div class="lavender">lavanda</div>
+      </div>`;
+  </script>
+</div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando estés depurando tus estilos, ten en cuenta que los navegadores suelen <em>colapsar</em> los márgenes de elementos adyacentes. Así, si una caja tiene un margen inferior de 10 píxeles y la caja que aparece bajo esta tiene un margen superior de 15 píxeles, se deja únicamente una separación de 15 píxeles entre ambas.</p>
+</div>
+<p>Dado que los márgenes y rellenos por defecto que aplica el navegador a cada elemento de tipo bloque pueden variar de un navegador a otro, es una práctica muy habitual <em>resetear</em> estos valores de manera que todas las medidas sean predecibles:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w">    </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>De paso, hemos hecho que las medidas de todas las cajas se determinen usando el criterio <code class="docutils literal notranslate"><span class="pre">border-box</span></code>, lo que también constituye una buena práctica. Con el criterio por defecto, <code class="docutils literal notranslate"><span class="pre">content-box</span></code>, si se define el ancho de una caja en 100 píxeles, por ejemplo, la subcaja del contenido del elemento tendrá 100 pixeles de ancho y el ancho de cualquier borde o relleno especificado se sumará al ancho final reflejado; es por ello que las cajas del ejemplo anterior tiene tamaños diferentes. Esto provocaba hace años que a menudo los desarrolladores tuvieran que andar restando al ancho total deseado las medidas del borde y el relleno de cara a obtener el valor adecuado del atributo <code class="docutils literal notranslate"><span class="pre">width</span></code>.  Con el valor <code class="docutils literal notranslate"><span class="pre">border-box</span></code> de la propiedad <code class="docutils literal notranslate"><span class="pre">box-sizing</span></code> la caja completa tendrá 100 píxeles de ancho y, si hay borde o relleno, la subcaja de contenido reducirá su tamaño para que el ancho final mostrado para la caja sea de 100 píxeles. Observa que los márgenes no modifican la caja con uno u otro valor de la propiedad, ya que no definen en sí propiedades de la caja del contenido sino del espacio entre ella y las cajas adyacentes.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Independientemente del tipo (en línea o bloque) que un elemento tenga por defecto en HTML, el tipo puede cambiarse mediante la propiedad <code class="docutils literal notranslate"><span class="pre">display</span></code> usando los valores <code class="docutils literal notranslate"><span class="pre">block</span></code> e <code class="docutils literal notranslate"><span class="pre">inline</span></code>. Además, podemos dar a un elemento el tipo <code class="docutils literal notranslate"><span class="pre">inline-block</span></code> que hace que se comporte como un elemento en línea, pero para el que se tienen en cuenta el ancho, el alto o los márgenes de manera que los elementos circundantes respetan el espacio de la caja, lo que no ocurre con los elementos en línea. La propiedad <code class="docutils literal notranslate"><span class="pre">display</span></code> también puede tomar el valor <code class="docutils literal notranslate"><span class="pre">none</span></code>; en ese caso, el contenido del elemento no se visualiza en la ventana del navegador ni se reserva sitio alguno para él.</p>
+</div>
+</section>
+<section id="posicionamiento">
+<span id="label-posicionamiento-css"></span><h2><span class="section-number">2.5. </span>Posicionamiento<a class="headerlink" href="#posicionamiento" title="Enlace permanente a este encabezado"></a></h2>
+<p>Las opciones anteriores son bastante limitadas y es habitual que necesitemos más libertad a la hora de distribuir el contenido de los elementos en una página web. Una de las formas básicas de conseguirlo es a través del atributo <code class="docutils literal notranslate"><span class="pre">position</span></code>, que puede tener los valores <code class="docutils literal notranslate"><span class="pre">static</span></code>, <code class="docutils literal notranslate"><span class="pre">relative</span></code>, <code class="docutils literal notranslate"><span class="pre">absolute</span></code>, <code class="docutils literal notranslate"><span class="pre">fixed</span></code> y <code class="docutils literal notranslate"><span class="pre">sticky</span></code>.</p>
+<section id="posicionamiento-estatico">
+<h3><span class="section-number">2.5.1. </span>Posicionamiento estático<a class="headerlink" href="#posicionamiento-estatico" title="Enlace permanente a este encabezado"></a></h3>
+<p>El posicionamiento <code class="docutils literal notranslate"><span class="pre">static</span></code> corresponde al comportamiento por defecto que ya hemos visto: por ejemplo, cada elemento de tipo bloque se muestra en la línea siguiente al elemento anterior. Si un elemento no tiene asociado ningún valor en su propiedad <code class="docutils literal notranslate"><span class="pre">position</span></code> esta tomará el valor <code class="docutils literal notranslate"><span class="pre">static</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Normalmente no usaremos explícitamente este valor de <code class="docutils literal notranslate"><span class="pre">position</span></code> por ser el valor por defecto, pero excepcionalmente nos podría interesar sobrescribir un valor diferente que un elemento dado tome de alguna hoja de estilo que no podemos cambiar (por ejemplo, porque se genera automáticamente o porque se define en una librería); esta propiedad no se hereda, en cualquier caso, por lo que se tratará de algo excepcional como hemos comentado.</p>
+</div>
+<p>Considera el siguiente fragmento de HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;cuadrados&quot;</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">&gt;</span>naranja<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">3</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">&gt;</span>azul<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">4</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;lavender&quot;</span><span class="p">&gt;</span>lavanda<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">5</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Y considera el siguiente código CSS:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">.</span><span class="nc">cuadrados</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">gainsboro</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="p">}</span>
+<span class="linenos"> 5</span><span class="p">.</span><span class="nc">orange</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">orange</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="p">}</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nc">blue</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lightskyblue</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">static</span><span class="p">;</span>
+<span class="linenos">15</span><span class="p">}</span>
+<span class="linenos">16</span><span class="p">.</span><span class="nc">lavender</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">17</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lavender</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">20</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Puedes observar cómo el uso de <code class="docutils literal notranslate"><span class="pre">static</span></code> en la propiedad <code class="docutils literal notranslate"><span class="pre">position</span></code> de uno de los cuadrados no introduce ningún cambio respecto a la forma que ya conocíamos de representar los elementos de tipo bloque:</p>
+<div id="estatico">
+  <script>
+    var root = document.querySelector('#estatico').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+      .cuadrados {
+        background: gainsboro;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+      }
+      .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+        position: static;
+      }
+      .lavender {
+        background: lavender;
+        height: 100px;
+        width: 100px;
+      }
+      </style>
+      <div class="cuadrados">
+        <div class="orange">naranja</div>
+        <div class="blue">azul</div>
+        <div class="lavender">lavanda</div>
+      </div>`;
+  </script>
+</div></section>
+<section id="posicionamiento-relativo">
+<h3><span class="section-number">2.5.2. </span>Posicionamiento relativo<a class="headerlink" href="#posicionamiento-relativo" title="Enlace permanente a este encabezado"></a></h3>
+<p>El posicionamiento <code class="docutils literal notranslate"><span class="pre">relative</span></code> nos permite cambiar la posición por defecto de un elemento, moviéndolo de la posición que le habría correspondido por defecto con ayuda de las propiedades <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code> y <code class="docutils literal notranslate"><span class="pre">right</span></code>. Por poner un ejemplo, extensible a las otras tres propiedades, el valor de <code class="docutils literal notranslate"><span class="pre">left</span></code> es aquí la distancia del borde izquierdo de la ubicación donde se habría colocado la caja del elemento por defecto al borde izquierdo de la ubicación en la que finalmente se colocará. Si no se da valor a ninguna de estas cuatro proiedades, el elemento se mostrará exactamente en su lugar por defecto; como veremos más adelante, definir <code class="docutils literal notranslate"><span class="pre">position</span></code> como <code class="docutils literal notranslate"><span class="pre">relative</span></code>, aun sin cambiar ninguna de las propiedades <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code> o <code class="docutils literal notranslate"><span class="pre">right</span></code>, puede ser muy útil para que un elemento se considere como <em>posicionado</em> cuando usemos el posicionamiento de tipo absoluto.</p>
+<p>Este posicionamiento es muy utilizado para realizar pequeños ajustes en la posición por defecto en la que se muestra un determinado elemento.</p>
+<p>Vamos a mover el cuadrado azul a la derecha del lavanda; para ello indicamos que vamos a sumar 100 píxeles a la posición de su parte superior y la misma cantidad a su posición izquierda:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">.</span><span class="nc">blue</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lightskyblue</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="linenos">6</span><span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">7</span><span class="w">  </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">8</span><span class="p">}</span>
+</pre></div>
+</div>
+<div id="relativo">
+  <script>
+    var root = document.querySelector('#relativo').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+      .cuadrados {
+        background: gainsboro;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+      }
+      .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+        position: relative;
+        top: 100px;
+        left: 100px;
+      }
+      .lavender {
+        background: lavender;
+        height: 100px;
+        width: 100px;
+      }
+      </style>
+      <div class="cuadrados">
+        <div class="orange">naranja</div>
+        <div class="blue">azul</div>
+        <div class="lavender">lavanda</div>
+      </div>`;
+  </script>
+</div><p>Observa cómo el espacio por defecto que ocupaba el cuadrado azul no ha sido ocupado por ningún otro elemento. Es como si el motor de visualización del navegador ignorara el posicionamiento relativo en una primera pasada y lo tuviera en cuenta en una segunda pasada tras haber colocado todos los elementos de la página.</p>
+<p>Podemos incluso <em>invadir</em> el espacio de otros cuadrados, usar valores negativos o salirnos del espacio del elemento contenedor:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w">  </span><span class="p">.</span><span class="nc">blue</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lightskyblue</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="linenos">6</span><span class="w">    </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">7</span><span class="w">    </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">-25</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">8</span><span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+<div id="relativo3">
+  <script>
+    var root = document.querySelector('#relativo3').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+      .cuadrados {
+        background: gainsboro;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+      }
+      .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+        position: relative;
+        top: 50px;
+        left: -25px;
+      }
+      .lavender {
+        background: lavender;
+        position: relative;
+        height: 100px;
+        width: 100px;
+      }
+      </style>
+      <div class="cuadrados">
+        <div class="orange">naranja</div>
+        <div class="blue">azul</div>
+        <div class="lavender">lavanda</div>
+      </div>`;
+  </script>
+</div><p>Como ves, la caja lavanda se ha superpuesto a la azul. Para que se quede «debajo», es necesario usar la propiedad <code class="docutils literal notranslate"><span class="pre">z-index</span></code> que permite especificar <em>capas</em> en la página web, de manera que la capa 0 es la capa de visualización por defecto y valores negativos o positivos corresponden a capas más alejadas o cercanas al <em>visualizador</em>, respectivamente:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">.</span><span class="nc">blue</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lightskyblue</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">-25</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="p">}</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nc">lavender</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lavender</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">  </span><span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos">16</span><span class="p">}</span>
+</pre></div>
+</div>
+<div id="relativo4">
+  <script>
+    var root = document.querySelector('#relativo4').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+      .cuadrados {
+        background: gainsboro;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+      }
+      .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+        position: relative;
+        top: 50px;
+        left: -25px;
+        z-index: 2;
+      }
+      .lavender {
+        background: lavender;
+        height: 100px;
+        width: 100px;
+        position: relative;
+        z-index: 1;
+      }
+      </style>
+      <div class="cuadrados">
+        <div class="orange">naranja</div>
+        <div class="blue">azul</div>
+        <div class="lavender">lavanda</div>
+      </div>`;
+  </script>
+</div><p>La propiedad <code class="docutils literal notranslate"><span class="pre">z-index</span></code> solo funciona si el elemento <em>está posicionado</em>. Diremos que un elemento <em>está posicionado</em> si el valor de su posición es cualquiera excepto <code class="docutils literal notranslate"><span class="pre">static</span></code>. Por ello es por lo que hemos tenido que añadir un posicionamiento relativo a la caja lavanda (pero no hemos cambiado ninguna propiedad como <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code> o <code class="docutils literal notranslate"><span class="pre">right</span></code> para no cambiar su posición).</p>
+<p>Finalmente, observa cómo con el uso adecuado del posicionamiento relativo podemos cambiar el orden en el que se muestra la información en el navegador respecto al orden inicialmente definido en el documento HTML:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">.</span><span class="nc">orange</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">orange</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="p">}</span>
+<span class="linenos"> 8</span><span class="p">.</span><span class="nc">blue</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lightskyblue</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">12</span><span class="p">}</span>
+<span class="linenos">13</span><span class="p">.</span><span class="nc">lavender</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">14</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lavender</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">19</span><span class="p">}</span>
+</pre></div>
+</div>
+<div id="relativo6">
+  <script>
+    var root = document.querySelector('#relativo6').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+      .cuadrados {
+        background: gainsboro;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+        position: relative;
+        top: 200px;
+      }
+      .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+      }
+      .lavender {
+        background: lavender;
+        height: 100px;
+        width: 100px;
+        position: relative;
+        top: -200px;
+      }
+      </style>
+      <div class="cuadrados">
+        <div class="orange">naranja</div>
+        <div class="blue">azul</div>
+        <div class="lavender">lavanda</div>
+      </div>`;
+  </script>
+</div></section>
+<section id="posicionamiento-absoluto">
+<h3><span class="section-number">2.5.3. </span>Posicionamiento absoluto<a class="headerlink" href="#posicionamiento-absoluto" title="Enlace permanente a este encabezado"></a></h3>
+<p>Si el posicionamiento <code class="docutils literal notranslate"><span class="pre">relative</span></code> que acabamos de ver permite colocar un elemento de forma relativa a su posición por defecto, el posicionamiento <code class="docutils literal notranslate"><span class="pre">absolute</span></code> permite colocarlo de forma relativa al elemento padre (más abajo matizaremos esto). En este caso, no <em>deja hueco</em>, porque nunca llega a tener una posición original propia. Además, de nuevo podemos usar las propiedades <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code> y <code class="docutils literal notranslate"><span class="pre">right</span></code> para moverlo. Por poner un ejemplo, extensible a las otras tres propiedades, el valor de <code class="docutils literal notranslate"><span class="pre">left</span></code> es la distancia del borde izquierdo de la caja contenedora al borde izquierdo de la caja que resultará para el nuevo elemento. Un elemento con posicionamiento absoluto no influye en otros elementos ni otros elementos influyen en él.</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">.</span><span class="nc">cuadrados</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">gainsboro</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="p">}</span>
+<span class="linenos"> 6</span><span class="p">.</span><span class="nc">blue</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lightskyblue</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">13</span><span class="p">}</span>
+</pre></div>
+</div>
+<div id="relativo5">
+  <script>
+    var root = document.querySelector('#relativo5').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+      .cuadrados {
+        position: relative;
+        background: gainsboro;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .orange {
+        background: orange;
+        height: 100px;
+        width: 100px;
+      }
+      .blue {
+        background: lightskyblue;
+        height: 100px;
+        width: 100px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .lavender {
+        background: lavender;
+        height: 100px;
+        width: 100px;
+      }
+      </style>
+      <div class="cuadrados">
+        <div class="orange">naranja</div>
+        <div class="blue">azul</div>
+        <div class="lavender">lavanda</div>
+      </div>`;
+  </script>
+</div><p>Observa cómo además de añadir las propiedades <code class="docutils literal notranslate"><span class="pre">position</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code> y <code class="docutils literal notranslate"><span class="pre">right</span></code> al elemento azul, hemos añadido <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">relative</span></code> al padre (esto es, al elemento contenedor). Esto es así porque las reglas son un poco más complejas que las mencionadas anteriormente: en realidad, el posicionamiento absoluto usa como referencia el primer ancestro que <em>esté posicionado</em>, es decir, como ya hemos dicho antes, aquel que tenga un posicionamiento no estático. Si tras ascender por el árbol buscando un ancestro posicionado, el navegador no encontrara ninguno, el elemento con posicionamiento absoluto se posicionaría con respecto al elemento <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es muy recomendable que al usar el posicionamiento absoluto siempre indiques el valor para uno de las desplazamientos <code class="docutils literal notranslate"><span class="pre">left</span></code>/<code class="docutils literal notranslate"><span class="pre">right</span></code> y para uno de los desplazamientos <code class="docutils literal notranslate"><span class="pre">top</span></code>/<code class="docutils literal notranslate"><span class="pre">bottom</span></code>, ya que el comportamiento por defecto puede no coincidir con el esperado. Por ejemplo, si se omiten todos los desplazamientos, estos toman el valor por defecto <code class="docutils literal notranslate"><span class="pre">auto</span></code>, que implica que el elemento permanece en su posición estática, aunque sin ocupar espacio propio por ser un elemento absoluto. Por otro lado, si se indican valores tanto para <code class="docutils literal notranslate"><span class="pre">left</span></code> como para <code class="docutils literal notranslate"><span class="pre">right</span></code> (lo que no es recomendable) el valor de la propiedad <code class="docutils literal notranslate"><span class="pre">left</span></code> prevalece. En el caso de <code class="docutils literal notranslate"><span class="pre">top</span></code> y <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, es el valor de <code class="docutils literal notranslate"><span class="pre">top</span></code> el que gana. En realidad, <code class="docutils literal notranslate"><span class="pre">left</span></code> prevalece si el sentido de escritura es de izquierda a derecha y no de derecha a izquierda como pasa en lenguas como el árabe, pero no entraremos en esos detalles en esta asignatura.</p>
+</div>
+</section>
+<section id="posicionamiento-fijo">
+<h3><span class="section-number">2.5.4. </span>Posicionamiento fijo<a class="headerlink" href="#posicionamiento-fijo" title="Enlace permanente a este encabezado"></a></h3>
+<p>Al igual que con el posicionamiento absoluto, en el posicionamiento <code class="docutils literal notranslate"><span class="pre">fixed</span></code> no se aplica el flujo normal para el elemento correspondiente y este no deja ningún hueco. Las diferencias con el posicionamiento absoluto son:</p>
+<ul class="simple">
+<li><p>Los desplazamientos son relativos a la ventana del documento.</p></li>
+<li><p>La caja se mantiene en esa posición de la ventana aunque el usuario se desplace arriba o abajo (<em>scroll</em>) por el documento.</p></li>
+</ul>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Juega con el posicionamiento fijo y con los otros tipos de posicionamiento estudiados en este tema, usando inicialmente para ello el ejemplo de los cuadrados de colores. Usar un entorno de trabajo como JSFiddle (puedes partir de <a class="reference external" href="https://jsfiddle.net/d0pqgzr7/">este código</a> y modificarlo) te simplificará la tarea ya que puedes ir realizando cambios en las propiedades CSS y viendo inmediatamente su efecto en la visualización del documento pulsando <span class="guilabel">Run</span> o con el atajo de teclado <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Enter</kbd></kbd>. Para poder estudiar bien el posicionamiento fijo tendrás que añadir más contenido al documento hasta conseguir que aparezca la barra de desplazamiento. Cuando un desarrollador web necesita rellenar con texto un documento HTML para observar el resultado en un navegador pero no le interesa el contenido del texto en sí, es habitual que recurra a <a class="reference external" href="https://getlorem.com/">generadores de texto de relleno</a> basados en frases escritas en latín.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las variables de CSS (también conocidas como propiedades personalizables) son muy útiles al jugar con los tamaños y desplazamientos de las diferentes cajas y evitan al desarrollador tener que rehacer los cálculos continuamente. El siguiente ejemplo define una variable <code class="docutils literal notranslate"><span class="pre">--lado</span></code> y ajusta en base a su valor los tamaños y desplazamientos de los diferentes bloques:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="nv">--lado</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="nv">--grisaceo</span><span class="p">:</span><span class="w"> </span><span class="mh">#dadada</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="p">}</span>
+<span class="linenos"> 5</span><span class="p">.</span><span class="nc">cuadrados</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--grisaceo</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">);</span>
+<span class="linenos">11</span><span class="p">}</span>
+<span class="linenos">12</span><span class="p">.</span><span class="nc">orange</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">orange</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">);</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">  </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+<span class="linenos">19</span><span class="p">}</span>
+<span class="linenos">20</span><span class="p">.</span><span class="nc">blue</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">21</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lightskyblue</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">);</span>
+<span class="linenos">24</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">  </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+<span class="linenos">27</span><span class="p">}</span>
+<span class="linenos">28</span><span class="p">.</span><span class="nc">lavender</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">29</span><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">lavender</span><span class="p">;</span>
+<span class="linenos">30</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">);</span>
+<span class="linenos">31</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">);</span>
+<span class="linenos">32</span><span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="linenos">33</span><span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">34</span><span class="w">  </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--lado</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+<span class="linenos">35</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Los espacios en blanco alrededor de los operadores son necesarios. Solo cambiando el valor inicial de la variable se consigue que se recalculen los tamaños y posiciones de todos los elementos (¡pruébalo!). Las propiedades personalizadas también se heredan, por lo que suele ser una práctica común (como en el ejemplo) declararlas para la pseudo-clase <code class="docutils literal notranslate"><span class="pre">:root</span></code> de CSS. Esta pseudo-clase selecciona el elemento raíz del árbol DOM. En HTML, este elemento es <code class="docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code>, aunque la especificidad de <code class="docutils literal notranslate"><span class="pre">:root</span></code> es mayor. Las hojas de estilo pueden aplicarse a documentos escritos en otros lenguajes (XML, por ejemplo), por lo que <code class="docutils literal notranslate"><span class="pre">:root</span></code> es un selector más aconsejable e independiente del documento.</p>
+</div>
+</section>
+</section>
+<section id="herramientas-para-desarrolladores">
+<h2><span class="section-number">2.6. </span>Herramientas para desarrolladores<a class="headerlink" href="#herramientas-para-desarrolladores" title="Enlace permanente a este encabezado"></a></h2>
+<p>Las herramientas para desarrolladores que incorporan los navegadores permiten no solo inspeccionar información referente a HTML, sino también verificar o modificar aspectos relativos a los estilos de CSS.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Familiarízate, siguiendo esta <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/css">página de su documentación</a>, con la sección <span class="guilabel">Styles</span> de la pestaña <span class="guilabel">Elements</span> del entorno de las Chrome DevTools. Después, estudia opciones más avanzadas siguiendo esta <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/css/reference">otra página</a>. Practica las distintas posibilidades de los estilos en DevTools con un documento de HTML como <a class="reference external" href="https://htmldog.com/guides/html/intermediate/sectioning/">este</a>.</p>
+</div>
+</section>
+<section id="chuletas-de-resumen">
+<h2><span class="section-number">2.7. </span>Chuletas de resumen<a class="headerlink" href="#chuletas-de-resumen" title="Enlace permanente a este encabezado"></a></h2>
+<p>Ahora que ya sabes HTML y CSS te puede venir bien tener a mano esta <a class="reference external" href="https://adam-marsden.co.uk/css-cheat-sheet">chuleta de CSS</a> de Adam Marsdem y esta <a class="reference external" href="https://acchou.github.io/html-css-cheat-sheet/html-css-cheat-sheet.html">otra de HTML y CSS</a> de acchou.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="marcado.html" class="btn btn-neutral float-left" title="1. Lenguajes de marcado" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="cliente.html" class="btn btn-neutral float-right" title="3. Programar el lado del cliente" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022-2023, Juan Antonio Pérez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

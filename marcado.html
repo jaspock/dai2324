@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Lenguajes de marcado &mdash; documentación de Desarrollo de Aplicaciones en Internet - </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="2. Lenguajes de estilo" href="estilo.html" />
+    <link rel="prev" title="Materiales de Desarrollo de Aplicaciones en Internet" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Desarrollo de Aplicaciones en Internet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Lenguajes de marcado</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sintaxis-y-elementos-del-lenguaje-html">1.1. Sintaxis y elementos del lenguaje HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#representacion-en-memoria-de-un-documento-html">1.2. Representación en memoria de un documento HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#herramientas-para-desarrolladores">1.3. Herramientas para desarrolladores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#codificacion-de-caracteres">1.4. Codificación de caracteres</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alojamiento-en-un-servidor">1.5. Alojamiento en un servidor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#validacion-de-documentos-html">1.6. Validación de documentos HTML</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estilo.html">2. Lenguajes de estilo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cliente.html">3. Programar el lado del cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="servicios.html">4. Acceso a servicios web de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="componentes.html">5. Componentes web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nube.html">7. Computación en la  nube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">8. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">9. Enunciados de las prácticas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Desarrollo de Aplicaciones en Internet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">1. </span>Lenguajes de marcado</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/marcado.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lenguajes-de-marcado">
+<h1><span class="section-number">1. </span>Lenguajes de marcado<a class="headerlink" href="#lenguajes-de-marcado" title="Enlace permanente a este encabezado"></a></h1>
+<p>HTML (<em>HyperText Markup Language</em>) es el lenguaje <em>declarativo</em> en el que están escritas las páginas web y es la piedra angular de la web. En este tema, aprenderemos sobre HTML centrándonos en las versiones más recientes del lenguaje.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>HTML es un <em>estándar vivo</em>, mantenido por el grupo de trabajo <a class="reference external" href="https://whatwg.org/">WHATWG</a> (Web Hypertext Application Technology Working Group). Échale un vistazo por encima a la <a class="reference external" href="https://html.spec.whatwg.org/multipage/">especificación</a>. Otra entidad, el <a class="reference external" href="https://www.w3.org/">W3C</a> (World Wide Web Consortium), <em>empaqueta</em> la especificación estándar de vez en cuando y le asigna un número de versión (por ejemplo, 5.0 en 2014, 5.1 en 2016 o 5.2 en 2017). El W3C sí es el principal responsable de otros estándares de la web como CSS, que estudiaremos más adelante.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Las habilidades que deberías adquirir con este tema incluyen las siguientes:</p>
+<ul class="simple">
+<li><p>Entender la diferencia entre un lenguaje de marcado con propósito semántico como HTML y un lenguaje de estilo.</p></li>
+<li><p>Conocer la semántica de los elementos de HTML discutidos en clase.</p></li>
+<li><p>Gestionar correctamente diferentes codificaciones de caracteres.</p></li>
+<li><p>Saber crear documentos HTML válidos.</p></li>
+<li><p>Usar correctamente las herramientas de desarrolladores integradas en navegadores; en particular, las Chrome DevTools.</p></li>
+<li><p>Entender el papel jugado por un servidor web y cómo publicar en él contenido estático.</p></li>
+</ul>
+</div>
+<section id="sintaxis-y-elementos-del-lenguaje-html">
+<h2><span class="section-number">1.1. </span>Sintaxis y elementos del lenguaje HTML<a class="headerlink" href="#sintaxis-y-elementos-del-lenguaje-html" title="Enlace permanente a este encabezado"></a></h2>
+<p>HTML es el lenguaje informático básico que se usa para escribir el contenido de las páginas web (por otro lado, CSS se usa para especificar los aspectos estéticos que afectan a la presentación de las páginas y JavaScript para programar los aspectos dinámicos). En esta actividad vas a conocer los elementos fundamentales de HTML. Te basarás para ello en el código de la página web mínima que aparece a continuación, que iremos ampliando con otros elementos del lenguaje.</p>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>La forma normal de trabajar con HTML es usar tu editor de texto favorito para editar el fichero y abrir el documento resultante (con extensión <code class="docutils literal notranslate"><span class="pre">.html</span></code>) en un navegador. No obstante, cuando se dan los primeros pasos en el aprendizaje del lenguaje puede ser más cómodo usar entornos en línea como <a class="reference external" href="http://jsbin.com/">JSBin</a>, que evitan tener que guardar y recargar constantemente. Hay otras herramientas similares como <a class="reference external" href="https://jsfiddle.net/">JSFiddle</a> o <a class="reference external" href="http://codepen.io/">CodePen</a>, pero son menos recomendables desde el punto de vista educativo, ya que ocultan ciertas partes del documento HTML (por ejemplo, la cabecera) para no <em>distraer</em> al usuario con elementos obvios.</p>
+</div>
+<p>Una de los documentos web más sencillos que se pueden escribir es el siguiente. Comienza con la declaración de tipo de documento (<code class="docutils literal notranslate"><span class="pre">doctype</span></code>). Le sigue el <em>elemento</em> (o <em>etiqueta</em>) raíz <code class="docutils literal notranslate"><span class="pre">html</span></code> con un <em>atributo</em> opcional <code class="docutils literal notranslate"><span class="pre">lang</span></code> que indica el idioma del texto. El elemento <code class="docutils literal notranslate"><span class="pre">head</span></code> incluye metadatos sobre el documento: en este caso, la codificación de caracteres utilizada (hablaremos sobre ello más adelante) y el título del documento que aparecerá en la pestaña del navegador. El elemento <code class="docutils literal notranslate"><span class="pre">body</span></code> contiene el texto principal del documento, que en este caso es un único párrafo (elemento <code class="docutils literal notranslate"><span class="pre">p</span></code>) con un saludo.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Un documento HTML válido y corto.</span><a class="headerlink" href="#id1" title="Enlace permanente a este código fuente"></a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;!doctype html&gt;</span>
+<span class="linenos"> 2</span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 3</span>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 4</span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 5</span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Título del documento<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos"> 6</span>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 7</span>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos"> 8</span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>¡Hola, mundo!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos"> 9</span>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos">10</span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Una de las ideas que tienes que tener más claras es que los diferentes elementos de HTML no representan propiedades <em>estéticas</em> de su contenido (como, por ejemplo, si un texto se muestra en negrita o si se ha de mostrar separado del texto precedente por un espacio vertical), sino únicamente propiedades <em>semánticas</em> (este texto enfatiza una determinada idea o este otro texto constituye un párrafo). Los aspectos estéticos se definen mediante lenguajes de estilo como CSS, que estudiaremos más adelante. Esta separación de presentación y contenido hace que el documento HTML sea independiente de la representación visual, táctil o auditiva que hagamos de él: en diferentes contextos podrían usarse diferentes hojas de estilo para el mismo documento; o un <em>screen reader</em> podría usar el contenido del bloque <cite>nav</cite> para permitir a una persona ciega elegir directamente qué sección del documento desea escuchar o consultar en un <a class="reference external" href="https://en.wikipedia.org/wiki/Refreshable_braille_display">terminal braille</a>; o un programa que procesa automáticamente un documento HTML (por poner un ejemplo, un buscador) no tendría que lidiar con aspectos secundarios meramente cosméticos. Además, gracias a la <em>externalización</em> de los estilos en un fichero aparte, es posible reutilizar los mismos estilos en múltiples documentos de HTML sin tener que duplicar su definición.</p>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>Una parte importante de la sociedad tiene alguna discapacidad (visual, motora, intelectual…), ya sea congénita o adquirida (por enfermedad, accidente o edad, por ejemplo), que le puede dificultar la interacción con una página o aplicación web si esta no se desarrolla adecuadamente bajo principios de accesibilidad que atiendan a la diversidad funcional de la sociedad. El uso de HTML como lenguaje de anotación semántica de contenido es uno de los principios fundamentales para cumplir este objetivo.</p>
+</div>
+<p>HTML tiene aproximadamente un centenar de elementos diferentes, cada uno de ellos con un propósito semántico bien definido. En este curso vamos a estudiar un subconjunto de ellos, cuyo cometido puedes consultar en <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">MDN web docs</a> y que se muestran en este documento más <a class="reference external" href="_static/data/franz.html">completo</a>.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>La especificación estándar de HTML es un documento demasiado técnico para los propósitos de este curso y para la mayoría de los desarrolladores. La web <a class="reference external" href="https://developer.mozilla.org/en-US/">MDN</a> muestra esta información de forma más sencilla. En principio, acostúmbrate a usar esta web como referencia, frente a otras que pueden aparecer más arriba en los resultados de los buscadores. Usa la versión en inglés, ya que otros idiomas no siempre están actualizados. Estudia en <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">MDN web docs</a> todos los elementos de HTML que aparecen en este tema y asegúrate de que entiendes su propósito. Elementos adicionales, como los relacionados con los formularios, se estudiarán en otro tema. Reserva cita para tutoría si crees que no lo tienes todo claro.</p>
+</div>
+<p>El código del documento HTML más completo enlazado anteriormente es el siguiente:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos">  2</span><span class="cm">&lt;!-- &lt;!DOCTYPE&gt; informa al navegador de qué versión de HTML se usó para escribir el documento; desde </span>
+<span class="linenos">  3</span><span class="cm">     HTML5 se usa simplemente la forma anterior --&gt;</span>
+<span class="linenos">  4</span>
+<span class="linenos">  5</span><span class="cm">&lt;!-- Definiciones de elementos tomadas de MDN web docs, developer.mozilla.org --&gt;</span>
+<span class="linenos">  6</span>
+<span class="linenos">  7</span><span class="cm">&lt;!-- El elemento &lt;html&gt; contiene todo el documento HTML; el atributo lang indica el idioma del contenido --&gt;</span>
+<span class="linenos">  8</span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+<span class="linenos">  9</span>
+<span class="linenos"> 10</span>  <span class="cm">&lt;!-- El elemento &lt;head&gt; provee información general (metadatos) acerca del documento, incluyendo su </span>
+<span class="linenos"> 11</span><span class="cm">       título y enlaces a scripts y hojas de estilo --&gt;</span>
+<span class="linenos"> 12</span>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 13</span>
+<span class="linenos"> 14</span>    <span class="cm">&lt;!-- El elemento &lt;meta&gt; aporta metainformación del documento; el atributo charset de &lt;meta&gt; indica </span>
+<span class="linenos"> 15</span><span class="cm">      la codificación de caracteres del documento: --&gt;</span>
+<span class="linenos"> 16</span>    <span class="cm">&lt;!-- &lt;meta&gt; es un ejemplo de &quot;elemento vacío&quot;, que no requiere etiqueta de inicio y de fin;</span>
+<span class="linenos"> 17</span><span class="cm">         en versiones anteriores del estándar, estos se elementos se representaban con una barra</span>
+<span class="linenos"> 18</span><span class="cm">         al final: &lt;meta charset=&quot;utf-8&quot;/&gt; --&gt;</span>
+<span class="linenos"> 19</span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 20</span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;author&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;Franz de Copenhague&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 21</span>
+<span class="linenos"> 22</span>    <span class="cm">&lt;!-- El elemento &lt;title&gt; indica el título del documento: --&gt;</span>
+<span class="linenos"> 23</span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Blog del profesor Franz de Copenhague<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos"> 24</span>
+<span class="linenos"> 25</span>    <span class="cm">&lt;!-- El elemento &lt;script&gt; carga la librería de JavaScript MathJax que permite mostrar ecuaciones dentro de páginas</span>
+<span class="linenos"> 26</span><span class="cm">         web: --&gt;</span>
+<span class="linenos"> 27</span>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos"> 28</span>
+<span class="linenos"> 29</span>    <span class="cm">&lt;!-- La librería de JavaScript chessboard-element permite define un componente web que permite usar</span>
+<span class="linenos"> 30</span><span class="cm">         el elemento personalizado chess-board (que no pertenece al estándar) en el documento --&gt;</span>
+<span class="linenos"> 31</span>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/chessboard-element?module&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos"> 32</span>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span>  <span class="cm">&lt;!-- El elemento &lt;body&gt; representa el contenido de un documento HTML; solo puede haber un </span>
+<span class="linenos"> 35</span><span class="cm">       elemento &lt;body&gt; en un documento: --&gt;</span>
+<span class="linenos"> 36</span>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos"> 37</span>
+<span class="linenos"> 38</span>    <span class="cm">&lt;!-- El elemento &lt;header&gt; representa un grupo de datos introductorios o de navegación; puede </span>
+<span class="linenos"> 39</span><span class="cm">         contener algunos elementos de encabezado, así como también un logo, un formulario de búsqueda, un </span>
+<span class="linenos"> 40</span><span class="cm">         nombre de autor y otros componentes --&gt;</span>
+<span class="linenos"> 41</span>    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+<span class="linenos"> 42</span>
+<span class="linenos"> 43</span>      <span class="cm">&lt;!-- Los elementos de encabezado implementan seis niveles de encabezado del documento; &lt;h1&gt; es el </span>
+<span class="linenos"> 44</span><span class="cm">           más importante y &lt;h6&gt; el menos importante; un elemento de encabezado describe brevemente el </span>
+<span class="linenos"> 45</span><span class="cm">           tema de la sección que presenta --&gt;</span>
+<span class="linenos"> 46</span>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Blog del profesor Franz de Copenhague<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos"> 47</span>    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+<span class="linenos"> 48</span>
+<span class="linenos"> 49</span>    <span class="cm">&lt;!-- El elemento &lt;nav&gt; representa una sección de una página cuyo propósito es proporcionar enlaces de </span>
+<span class="linenos"> 50</span><span class="cm">         navegación, ya sea dentro del documento actual o a otros documentos; ejemplos comunes de secciones </span>
+<span class="linenos"> 51</span><span class="cm">         de navegación son menús, tablas de contenido e índices --&gt;</span>
+<span class="linenos"> 52</span>    <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+<span class="linenos"> 53</span>
+<span class="linenos"> 54</span>      <span class="cm">&lt;!-- El elemento &lt;ul&gt;, de &quot;unordered list&quot;, representa una lista no ordenada; cada elemento va </span>
+<span class="linenos"> 55</span><span class="cm">           dentro del elemento &lt;li&gt; --&gt;</span>
+<span class="linenos"> 56</span>      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="linenos"> 57</span>        <span class="cm">&lt;!-- El elemento &lt;a&gt; es la base del hipertexto; a través del atributo &quot;href&quot; se indica el </span>
+<span class="linenos"> 58</span><span class="cm">             documento al que se saltará si se activa el enlace; en este caso, se enlaza a un</span>
+<span class="linenos"> 59</span><span class="cm">             elemento del documento actual etiquetado con un id --&gt;</span>
+<span class="linenos"> 60</span>        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Reflexiones sobre <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#física&quot;</span><span class="p">&gt;</span>física cuántica<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="linenos"> 61</span>        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Reflexiones sobre <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#ia&quot;</span><span class="p">&gt;</span>inteligencia artificial<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="linenos"> 62</span>      <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="linenos"> 63</span>    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<span class="linenos"> 64</span>
+<span class="linenos"> 65</span>    <span class="cm">&lt;!-- El elemento &lt;main&gt; representa el contenido principal del &lt;body&gt; de un documento o aplicación --&gt;</span>
+<span class="linenos"> 66</span>    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="linenos"> 67</span>
+<span class="linenos"> 68</span>      <span class="cm">&lt;!-- El elemento &lt;section&gt; representa una sección genérica de un documento --&gt;</span>
+<span class="linenos"> 69</span>      <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="linenos"> 70</span>        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Reflexiones sobre ciencia del profesor Franz de Copenhague<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos"> 71</span>
+<span class="linenos"> 72</span>        <span class="cm">&lt;!-- El atributo global id define un identificador único que no debe repetirse en todo el documento;</span>
+<span class="linenos"> 73</span><span class="cm">             su propósito es identificar el elemento al vincularlo en scripts, hojas de estilo u enlaces --&gt;</span>
+<span class="linenos"> 74</span>        <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;física&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 75</span>          <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Entradas sobre física cuántica ⚛<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="linenos"> 76</span>          <span class="cm">&lt;!-- Teclear caracteres Unicode en Linux: Ctrl+Mayús+u 269b espacio: ⚛; otros sistemas operativos </span>
+<span class="linenos"> 77</span><span class="cm">               tienen sus propias combinaciones de teclas --&gt;</span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span>          <span class="cm">&lt;!-- El elemento &lt;p&gt; es el apropiado para distribuir el texto en párrafos --&gt;</span>
+<span class="linenos"> 80</span>          <span class="cm">&lt;!-- El elemento &lt;strong&gt; es el apropiado para marcar con especial énfasis las partes más </span>
+<span class="linenos"> 81</span><span class="cm">               importantes de un texto --&gt;</span>
+<span class="linenos"> 82</span>          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta sección incluye mis artículos <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>recientes<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> sobre física cuántica.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos"> 83</span>
+<span class="linenos"> 84</span>          <span class="cm">&lt;!-- El elemento &lt;article&gt; representa una composición auto-contenida en un documento, página, </span>
+<span class="linenos"> 85</span><span class="cm">               o aplicación que se podría distribuir de forma independiente o reutilizable;</span>
+<span class="linenos"> 86</span><span class="cm">               podría ser un mensaje en un foro, un artículo de una revista o un periódico, una entrada de </span>
+<span class="linenos"> 87</span><span class="cm">               blog, un comentario de un usuario o cualquier otro elemento independiente del contenido --&gt;</span>
+<span class="linenos"> 88</span>          <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="linenos"> 89</span>
+<span class="linenos"> 90</span>            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Consecuencias del entrelazamiento cuántico<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="linenos"> 91</span>            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>El entrelazamiento cuántico se define como lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+<span class="linenos"> 92</span>              sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+<span class="linenos"> 93</span>              exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos"> 94</span>
+<span class="linenos"> 95</span>            <span class="cm">&lt;!-- El elemento &lt;table&gt; representa datos en dos o más dimensiones; cada fila se incluye dentro del</span>
+<span class="linenos"> 96</span><span class="cm">                 elemento &lt;tr&gt; y cada celda dentro del elemento &lt;td&gt; (o &lt;th&gt; para el encabezado de la tabla) --&gt;</span>
+<span class="linenos"> 97</span>            <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="linenos"> 98</span>              <span class="cm">&lt;!-- El elemento &lt;thead&gt; representa el encabezado de la tabla donde suelen aparecer los nombres de</span>
+<span class="linenos"> 99</span><span class="cm">                   cada campo --&gt;</span>
+<span class="linenos">100</span>              <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+<span class="linenos">101</span>                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="linenos">102</span>                  <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Encabezado 1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<span class="linenos">103</span>                  <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Encabezado 2<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<span class="linenos">104</span>                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="linenos">105</span>              <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+<span class="linenos">106</span>              <span class="cm">&lt;!-- El elemento &lt;tbody&gt; encapsula una lista de filas de tabla que corresponden al cuerpo de la</span>
+<span class="linenos">107</span><span class="cm">                   tabla --&gt;</span>
+<span class="linenos">108</span>              <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<span class="linenos">109</span>                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="linenos">110</span>                  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>a<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="linenos">111</span>                  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>b<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="linenos">112</span>                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="linenos">113</span>                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="linenos">114</span>                  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>c<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="linenos">115</span>                  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>d<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="linenos">116</span>                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="linenos">117</span>              <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<span class="linenos">118</span>              <span class="cm">&lt;!-- El elemento &lt;tfoot&gt; representa el pie de la tabla --&gt;</span>
+<span class="linenos">119</span>              <span class="p">&lt;</span><span class="nt">tfoot</span><span class="p">&gt;</span>
+<span class="linenos">120</span>                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="linenos">121</span>                  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Pie 1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="linenos">122</span>                  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Pie 2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="linenos">123</span>                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="linenos">124</span>              <span class="p">&lt;/</span><span class="nt">tfoot</span><span class="p">&gt;</span>
+<span class="linenos">125</span>            <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="linenos">126</span>          <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="linenos">127</span>        <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="linenos">128</span> 
+<span class="linenos">129</span>        <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;ia&quot;</span><span class="p">&gt;</span>
+<span class="linenos">130</span>          <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Entradas sobre inteligencia artificial ♟<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="linenos">131</span>          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta sección incluye mis artículos recientes sobre inteligencia artificial.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">132</span>          <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="linenos">133</span>            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Hacia una inteligencia artificial de propósito general<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="linenos">134</span>            <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Introducción<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+<span class="linenos">135</span>            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Los recientes avances lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+<span class="linenos">136</span>              sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+<span class="linenos">137</span>              nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure 
+<span class="linenos">138</span>              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
+<span class="linenos">139</span>              obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+<span class="linenos">140</span>              En una charla reciente, Andrew Ng señalaba que:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">141</span> 
+<span class="linenos">142</span>            <span class="cm">&lt;!-- El elemento &lt;blockquote&gt; indica que el texto rodeado por el elemento es una cita; su atributo</span>
+<span class="linenos">143</span><span class="cm">                 cite indica la fuente de la cita --&gt;</span>
+<span class="linenos">144</span>            <span class="cm">&lt;!-- El atributo lang se define al principio para todo el documento, pero aquí se indica para la cita;</span>
+<span class="linenos">145</span><span class="cm">                 el valor del atributo ha de coincidir con alguno de los códigos de dos letras ISO 639-1: </span>
+<span class="linenos">146</span><span class="cm">                 https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes --&gt;</span> 
+<span class="linenos">147</span>            <span class="cm">&lt;!-- &amp;ldquo; es una entidad que permite introducir el signo de apertura de comillas en documentos</span>
+<span class="linenos">148</span><span class="cm">                 con codificaciones de caracteres que no incluyen dicho simbolo; existe un conjunto de entidades </span>
+<span class="linenos">149</span><span class="cm">                 definidas en el estándar como, por ejemplo, &amp;copy; para el símbolo de copyright --&gt;</span>
+<span class="linenos">150</span>            <span class="p">&lt;</span><span class="nt">blockquote</span> <span class="na">cite</span><span class="o">=</span><span class="s">&quot;http://time.com/4631730/andrew-ng-artificial-intelligence-2017/&quot;</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="linenos">151</span>              <span class="ni">&amp;ldquo;</span>We&#39;re making this analogy that artificial inteligence is the new electricity. Electricity
+<span class="linenos">152</span>              transformed industries: agriculture, transportation, communication, manufacturing. I think we are
+<span class="linenos">153</span>              now in that phase where artificial inteligence technology has advanced to the point where we see
+<span class="linenos">154</span>              a clear path for it to transform multiple industries.<span class="ni">&amp;rdquo;</span>
+<span class="linenos">155</span>            <span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+<span class="linenos">156</span> 
+<span class="linenos">157</span>            <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Modelo matemático<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+<span class="linenos">158</span>            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>De todo lo anterior se deduce que lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+<span class="linenos">159</span>               sed eiusmod tempor incidunt ut labore et dolore magna aliqua.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">160</span>
+<span class="linenos">161</span>            <span class="cm">&lt;!-- Las ecuaciones para la librería MathJax se encierran dentro de $$ y usan una notación propia</span>
+<span class="linenos">162</span><span class="cm">                 de la librería (basada en el lenguaje LaTeX); atención: toda esta notación es específica de la</span>
+<span class="linenos">163</span><span class="cm">                 librería y no es HTML: --&gt;</span>
+<span class="linenos">164</span>            $$
+<span class="linenos">165</span>              [\boldsymbol{\nu}_t,\boldsymbol{\xi}_t] = \mathcal{N}\left(x_t,r^{1}_{t-1},\ldots,r^{R}_{t-1}\right)
+<span class="linenos">166</span>            $$
+<span class="linenos">167</span>
+<span class="linenos">168</span>            <span class="cm">&lt;!--</span>
+<span class="linenos">169</span><span class="cm">            $$</span>
+<span class="linenos">170</span><span class="cm">              I = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}</span>
+<span class="linenos">171</span><span class="cm">            $$</span>
+<span class="linenos">172</span><span class="cm">            --&gt;</span>
+<span class="linenos">173</span>
+<span class="linenos">174</span>            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>No obstante, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt 
+<span class="linenos">175</span>               ut labore et dolore magna aliqua.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">176</span>
+<span class="linenos">177</span>            <span class="cm">&lt;!-- El elemento &lt;pre&gt; representa texto preformateado.; el texto en este elemento típicamente </span>
+<span class="linenos">178</span><span class="cm">                 se muestra en una fuente fija, no proporcional (monoespacio), exactamente como es mostrado en </span>
+<span class="linenos">179</span><span class="cm">                 el archivo: los espacios dentro de este elemento también son mostrados como están escritos --&gt;</span>
+<span class="linenos">180</span>            <span class="cm">&lt;!-- El elemento &lt;code&gt; indica que el contenido es código fuente --&gt;</span>
+<span class="linenos">181</span>            <span class="p">&lt;</span><span class="nt">pre</span><span class="p">&gt;&lt;</span><span class="nt">code</span><span class="p">&gt;</span>
+<span class="linenos">182</span>              interface PrimaryCore {
+<span class="linenos">183</span>                boolean verifyDataLine();
+<span class="linenos">184</span>                void sendData(in sequence<span class="ni">&amp;lt;</span>byte&gt; data);
+<span class="linenos">185</span>                void initSelfDestruct();
+<span class="linenos">186</span>              }
+<span class="linenos">187</span>            <span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
+<span class="linenos">188</span>
+<span class="linenos">189</span>          <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="linenos">190</span>          <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="linenos">191</span>            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>La memoria en las redes neuronales<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="linenos">192</span>            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Tradicionalmente, las <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>redes neuronales<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+<span class="linenos">193</span>               sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+<span class="linenos">194</span>               nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">195</span>
+<span class="linenos">196</span>            <span class="cm">&lt;!-- El elemento &lt;figure&gt; representa contenido independiente, a menudo con un título; si bien se</span>
+<span class="linenos">197</span><span class="cm">                 relaciona con el flujo principal, su posición es independiente de este; por lo general, se trata</span>
+<span class="linenos">198</span><span class="cm">                 de una imagen, una ilustración, un diagrama, un fragmento de código o un esquema al que se hace</span>
+<span class="linenos">199</span><span class="cm">                 referencia en el texto principal, pero que se puede mover a otra página o a un apéndice sin que</span>
+<span class="linenos">200</span><span class="cm">                 afecte al flujo principal --&gt;</span>
+<span class="linenos">201</span>            <span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+<span class="linenos">202</span>
+<span class="linenos">203</span>              <span class="cm">&lt;!-- El elemento &lt;img&gt; representa una imagen en el documento; su atributo src indica el URL de la</span>
+<span class="linenos">204</span><span class="cm">                   imagen; el atributo obligatorio alt define un texto alternativo que describe la imagen --&gt;</span>
+<span class="linenos">205</span>                <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fnature20101/MediaObjects/41586_2016_Article_BFnature20101_Fig4_HTML.jpg&quot;</span>
+<span class="linenos">206</span>                     <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Activaciones de los distintos cabezales de lectura/escritura </span>
+<span class="linenos">207</span><span class="s">                          en una red neuronal derivable.&quot;</span><span class="p">&gt;</span>
+<span class="linenos">208</span>
+<span class="linenos">209</span>              <span class="cm">&lt;!-- El elemento &lt;figcaption&gt; representa un subtítulo o leyenda asociado al contenido del elemento </span>
+<span class="linenos">210</span><span class="cm">                   padre &lt;figure&gt;, pudiendo ser colocado como primer o último hijo --&gt;</span>
+<span class="linenos">211</span>              <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Esquema de una red neuronal derivable<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="linenos">212</span>            <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+<span class="linenos">213</span>          <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="linenos">214</span>        <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="linenos">215</span>
+<span class="linenos">216</span>        <span class="cm">&lt;!-- El elemento &lt;aside&gt; representa una sección de una página que consiste en contenido que está </span>
+<span class="linenos">217</span><span class="cm">             indirectamente relacionado con el contenido principal del documento (por ejemplo, comentarios</span>
+<span class="linenos">218</span><span class="cm">             al margen o publicidad) --&gt;</span>
+<span class="linenos">219</span>        <span class="p">&lt;</span><span class="nt">aside</span><span class="p">&gt;</span>
+<span class="linenos">220</span>          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Al hilo de las reflexiones anteriores, lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+<span class="linenos">221</span>             sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+<span class="linenos">222</span>             quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">223</span>
+<span class="linenos">224</span>          <span class="cm">&lt;!-- Uso del componente web definido en la librería chessboard-element; el uso de style no está</span>
+<span class="linenos">225</span><span class="cm">               recomendado normalmente --&gt;</span>
+<span class="linenos">226</span>          <span class="p">&lt;</span><span class="nt">chess-board</span> <span class="na">position</span><span class="o">=</span><span class="s">&quot;start&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 256px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">chess-board</span><span class="p">&gt;</span>
+<span class="linenos">227</span>        <span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
+<span class="linenos">228</span>      <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="linenos">229</span>    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="linenos">230</span>
+<span class="linenos">231</span>    <span class="cm">&lt;!-- El elemento &lt;footer&gt; representa un pie de página para el contenido de sección más cercano o el</span>
+<span class="linenos">232</span><span class="cm">         elemento raíz de sección; un pie de página típicamente contiene información acerca del autor de la</span>
+<span class="linenos">233</span><span class="cm">         sección, datos de derechos de autor o enlaces a documentos relacionados --&gt;</span>
+<span class="linenos">234</span>    <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="linenos">235</span>      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>© 2020, Franz de Copenhague<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">236</span>    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="linenos">237</span>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos">238</span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="representacion-en-memoria-de-un-documento-html">
+<h2><span class="section-number">1.2. </span>Representación en memoria de un documento HTML<a class="headerlink" href="#representacion-en-memoria-de-un-documento-html" title="Enlace permanente a este encabezado"></a></h2>
+<p>Imaginemos que tenemos que escribir un programa que cargue en memoria un documento HTML para luego realizar algún procesamiento sobre sus elementos (por ejemplo, mostrarlo en la ventana de un navegador, extraer los datos de una tabla desde un programa en Java u obtener sus palabras para indexarlas en la base de datos de un buscador). La estructura de datos que se utiliza para ello es un árbol en el que cada nodo es un objeto que representa una parte del documento. El DOM (<em>Document Object Model</em>) es un conjunto estándar de métodos (una interfaz) independientes del lenguaje para interactuar con este árbol que suele, por tanto, llamarse <em>árbol DOM</em>. En un tema posterior estudiaremos algunos de los métodos del DOM, pero por ahora centrémonos en la forma del árbol.</p>
+<p>La siguiente figura muestra parte de un árbol DOM:</p>
+<figure class="align-default" id="id2">
+<a class="reference external image-reference" href="https://commons.wikimedia.org/wiki/File:DOM-model.svg"><img alt="ejemplo de árbol DOM" src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg" /></a>
+<figcaption>
+<p><span class="caption-text">Árbol DOM por Birger Eriksson</span><a class="headerlink" href="#id2" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Dibuja el árbol DOM de los documentos HTML que hemos estudiado anteriormente y utiliza la herramienta <a class="reference external" href="https://software.hixie.ch/utilities/js/live-dom-viewer/">Live DOM Viewer</a> para comprobar si tu solución es correcta. Observa en especial el tratamiento que se hace de los espacios en blanco entre dos elementos: estos blancos tienen su propio nodo asociado lo que puede ser necesario tener en cuenta al movernos por el árbol. HTML es un lenguaje en el que, en general, las secuencias de más de un espacio en blanco, tabulador o salto de línea se tratan como si fueran un único espacio en blanco.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Consejo</p>
+<p>Podría ser que en alguna ocasión necesites que entre dos elementos (por ejemplo, entre dos palabras) de tu página haya un espacio más grande lo habitual. Podrías en ese caso tener la tentación de usar la entidad <code class="docutils literal notranslate"><span class="pre">&amp;nbsp;</span></code> (también <code class="docutils literal notranslate"><span class="pre">&amp;NonBreakingSpace;</span></code>), repetida varias veces, para obtener aproximadamente este espacio extra. Comprueba una vez cómo funciona (observa la diferencia entre <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;nbsp;&amp;nbsp;</span> <span class="pre">b</span></code> y <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">b</span></code>) y luego no vuelvas a usarla nunca más (salvo para su verdadero propósito; sigue leyendo). Posteriormente veremos que, dentro del espíritu de separar presentación y contenido, son las hojas de estilo las que se han de encargar de definir de forma precisa la separación entre los elementos de una página. ¿Para qué existe entonces una entidad como <code class="docutils literal notranslate"><span class="pre">&amp;nbsp;</span></code>? Su propósito es indicar al navegador que nunca introduzca un salto de línea en el punto en el que aparece la entidad (cosa que el navegador puede decidir hacer con cualquier otro espacio en blanco) y la interprete estrictamente como un espacio en blanco. Escribe una latitud como <code class="docutils literal notranslate"><span class="pre">40°&amp;nbsp;41′&amp;nbsp;21.4”&amp;nbsp;N</span></code> en un documento HTML, cambia el ancho de la ventana del navegador e intenta que se separen sus componentes en dos líneas consecutivas.</p>
+</div>
+</section>
+<section id="herramientas-para-desarrolladores">
+<h2><span class="section-number">1.3. </span>Herramientas para desarrolladores<a class="headerlink" href="#herramientas-para-desarrolladores" title="Enlace permanente a este encabezado"></a></h2>
+<p>Los navegadores suelen incorporar de serie un conjunto de herramientas para facilitar el trabajo de los desarrolladores. En particular, a estas alturas del curso ya puedes usar el panel <span class="guilabel">Elements</span> de las <em>Chrome DevTools</em> para inspeccionar los distintos elementos de tu página; para ello, en el navegador Google Chrome (o Chromium) sitúa el puntero del ratón encima de alguna posición de tu página web y selecciona <span class="guilabel">Inspeccionar</span> en el menú contextual; otra opción para acceder a estas herramientas es abrirlas desde el menú <span class="menuselection">Más herramientas ‣ Herramientas para desarrolladores</span> del navegador o mediante el atajo de teclado <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd> o <kbd class="kbd docutils literal notranslate">F12</kbd>. Existen extensiones similares para otros navegadores, como <em>Firebug</em> para <em>Mozilla Firefox</em>.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Familiarízate, siguiendo esta <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/dom/">página de su documentación</a>, con la pestaña <span class="guilabel">Elements</span> del entorno de las Chrome DevTools, ya que te será extremadamente útil. Práctica después las distintas posibilidades con un documento de HTML más complejo como <a class="reference external" href="https://htmldog.com/guides/html/intermediate/sectioning/">este</a>.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>El panel <span class="guilabel">Elements</span> de las <em>Chrome DevTools</em> muestra una información potencialmente distinta de la opción <span class="guilabel">Ver código fuente la página</span> que aparece en el menú contextual de una página (atajo de teclado <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">U</kbd></kbd>), ya que esta última opción muestra siempre el código inicial descargado por el navegador y no el HTML dinámico que el navegador tiene en memoria en un determinado momento, que puede ser diferente al inicial por manipulaciones del árbol DOM, como veremos en posteriores temas.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Durante el ciclo de desarrollo de una aplicación web es habitual realizar cambios en los ficheros de la aplicación (por ejemplo en el documento HTML, en las hojas de estilo o en el código de JavaScript) y comprobar a continuación cómo queda la aplicación tras recargarla. En algunas ocasiones el navegador puede optar, pese a la recarga, por utilizar el contenido previo almacenado en la caché lo que nos puede llevar a la falsa impresión de que nuestros cambios no tienen efecto. Dentro de la pestaña <code class="docutils literal notranslate"><span class="pre">Network</span></code> de las Chrome DevTools existe una opción <code class="docutils literal notranslate"><span class="pre">Disable</span> <span class="pre">cache</span></code> que hace que el navegador ignore el contenido de la caché, pero solo mientras las herramientas de desarrolladores estén abiertas. Es recomendable tenerla siempre marcada.</p>
+</div>
+</section>
+<section id="codificacion-de-caracteres">
+<h2><span class="section-number">1.4. </span>Codificación de caracteres<a class="headerlink" href="#codificacion-de-caracteres" title="Enlace permanente a este encabezado"></a></h2>
+<p>Aunque hoy día la mayor parte de los sistemas operativos trabajan con la codificación de caracteres de longitud variable UTF-8, que permite representar todos los caracteres del juego de caracteres Unicode, es importante que seas capaz de saber qué codificación de caracteres se usa en tus documentos web, en los de terceros, o en tu servidor web. No tener esto en cuenta puede hacer que tu web se visualice incorrectamente en algunos navegadores. En esta actividad hablaremos de codificación de caracteres siguiendo <a class="reference external" href="./slides/070-codificacion-slides.html">estas diapositivas</a>.</p>
+<p>Puedes ver los valores de los bytes en UTF-8 de los diferentes bytes de una cadena en JavaScript ejecutando:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">e</span><span class="o">=</span><span class="ow">new</span><span class="w"> </span><span class="nx">TextEncoder</span><span class="p">();</span><span class="w"> </span><span class="nx">s</span><span class="o">=</span><span class="s2">&quot;Avión a reacción: ✈&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`&#39;</span><span class="si">${</span><span class="nx">i</span><span class="si">}</span><span class="sb">&#39;: </span><span class="si">${</span><span class="nx">e</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando abres un documento con un editor de texto, el editor lee todos los bytes del fichero y los interpreta (y muestra) en base a la codificación con la que está configurado. Si, por ejemplo, el fichero se ha escrito con un programa que usa una codificación (llamémosla C1) en la que todos los caracteres ocupan un byte, pero se intenta mostrar con un editor configurado con una codificación (llamémosla C2) en la que todos los caracteres ocupan dos bytes, los caracteres mostrados probablemente no coincidirán con los originales, ya que el editor los agrupará de dos en dos. Además, al abrirlo con el editor, el fichero parecerá tener la mitad de caracteres que el original.</p>
+<p>Por ejemplo, puede que los bytes F3 y A1 (representados en hexadecimal) en la codificación C1 correspondan al signo <code class="docutils literal notranslate"><span class="pre">+</span></code> y a la <code class="docutils literal notranslate"><span class="pre">M</span></code>, respectivamente, pero que en la codificación C2 la secuencia de dos bytes F3A1 corresponda al símbolo <code class="docutils literal notranslate"><span class="pre">%</span></code>, que sería lo que mostraría en pantalla el editor que usa C2. Es posible incluso que algunos pares de bytes no representen caracteres válidos en la codificación C2, porque en C2 no se usan todos los posibles valores para representar caracteres; en ese caso, el editor de texto puede hacer varias cosas dependiendo de su configuración: no mostrar nada (saltarse ese carácter) o mostrar un símbolo especial que identifique caracteres inválidos.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los aspectos más relevantes mostrados en las diapositivas son:</p>
+<ul class="simple">
+<li><p>UTF-8 es una codificación que asigna diferentes cantidades de bytes a los caracteres: algunos se representan con un byte, otros con dos, otros con tres y otros con cuatro bytes.</p></li>
+<li><p>Cada uno de los 128 caracteres del ASCII (que se representan con un byte) se representan exactamente con el mismo byte en UTF-8. Los caracteres del ASCII se corresponden aproximadamente con los de un teclado estadounidense, por lo que no se incluyen entre ellos los caracteres acentuados, los kanjis del japonés o los emojis, entre otros muchos.</p></li>
+<li><p>Los caracteres específicos del español o del catalán (á, à, ñ, Ñ, ç, Ç, etc.) ocupan dos bytes en UTF-8.</p></li>
+</ul>
+</div>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Observa que indicar una determinada codificación en el atributo <code class="docutils literal notranslate"><span class="pre">charset</span></code> del elemento <code class="docutils literal notranslate"><span class="pre">meta</span></code> no garantiza que los caracteres del documento usen realmente dicha codificación. Usa un editor de textos que permita redactar documentos bajo diferentes codificaciones y graba tu documento HTML usando las codificaciones <em>UTF-8</em> e <em>ISO-8859-15</em> (Latin-1); prueba a poner el valor correcto y el incorrecto en la directiva <code class="docutils literal notranslate"><span class="pre">meta</span></code> y observa el resultado con los caracteres especiales al abrir el documento en el navegador. Estudia cómo se representan a nivel de bytes los caracteres en las distintas codificaciones con editores hexadecimales como <a class="reference external" href="https://hexed.it/">HexEd.it</a> o el <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor">incorporado</a> en Visual Studio Code.</p>
+</div>
+</section>
+<section id="alojamiento-en-un-servidor">
+<h2><span class="section-number">1.5. </span>Alojamiento en un servidor<a class="headerlink" href="#alojamiento-en-un-servidor" title="Enlace permanente a este encabezado"></a></h2>
+<p>Una página web normalmente se aloja en un servidor web. Si la máquina en la que lo hacemos fuera pública (nuestro ordenador personal normalmente no lo será), se podría acceder entonces al documento desde cualquier máquina conectada a internet usando convenientemente la URL del servidor. Existen muchos servidores web diferentes; algunos de los más conocidos son Apache HTTP Server (HTTPD), nginx, LiteSpeed, Internet Information Services, Apache Tomcat o Jetty. Mientras un programador desarrolla una aplicación web es habitual que lance un servidor en su máquina para ir probando sus cambios; en ese caso, el URL de acceso al servidor suele tener la forma <code class="docutils literal notranslate"><span class="pre">http://localhost:8080</span></code> donde <code class="docutils literal notranslate"><span class="pre">localhost</span></code> es el nombre de la propia máquina como <em>host</em> (IP 127.0.0.1) y <code class="docutils literal notranslate"><span class="pre">8080</span></code> es un puerto libre que es necesario indicar en el URL, ya que de no hacerlo el protocolo HTTP usa por defecto el puerto 80 (y HTTPS el 443), que estará normalmente reservado para comunicarse mediante HTTP con otros ordenadores.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Una de las formas más sencillas de lanzar un servidor local es usar el que Python incluye por defecto. Colócate en el directorio raíz del contenido que quieres servir y haz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span>
+</pre></div>
+</div>
+<p>o con versiones más antiguas de Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span>
+</pre></div>
+</div>
+<p>La extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">LiveServer</a> de Visual Studio Code permite lanzar el servidor local desde el propio editor de texto.</p>
+</div>
+</section>
+<section id="validacion-de-documentos-html">
+<h2><span class="section-number">1.6. </span>Validación de documentos HTML<a class="headerlink" href="#validacion-de-documentos-html" title="Enlace permanente a este encabezado"></a></h2>
+<p>Un aspecto básico de los documentos HTML es que estos cumplan estrictamente con las directrices de HTML, tanto a nivel sintáctico (por ejemplo, las marcas de apertura y clausura respetan el anidamiento entre elementos) como semántico (no hay dos atributos <em>id</em> con el mismo valor o no se usan en un elemento atributos que correspondan a otros elementos). De esta manera, se allana el camino hacia la compatibilidad entre navegadores y la usabilidad de la página web; la validación, sin embargo, no asegura que el documento se vaya a ver como el desarrollador tiene en la cabeza ni que se muestre de igual manera en todos los navegadores.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Usa el <a class="reference external" href="http://validator.w3.org/">validador del W3C</a> para validar alguna de las páginas web usadas en actividades anteriores; corrige todos los errores que te indique el validador hasta conseguir validarla. Algunas de las cosas que puedes probar son:</p>
+<ul class="simple">
+<li><p>dejar una etiqueta sin cerrar</p></li>
+<li><p>mover el elemento <code class="docutils literal notranslate"><span class="pre">meta</span></code> de la cabecera al cuerpo (<code class="docutils literal notranslate"><span class="pre">body</span></code>) del documento</p></li>
+<li><p>mover un párrafo (<code class="docutils literal notranslate"><span class="pre">p</span></code>) a la cabecera (<code class="docutils literal notranslate"><span class="pre">head</span></code>) del documento</p></li>
+<li><p>eliminar el título (<code class="docutils literal notranslate"><span class="pre">title</span></code>) de la cabecera del documento</p></li>
+<li><p>poner una imagen (<code class="docutils literal notranslate"><span class="pre">img</span></code>) sin el atributo <code class="docutils literal notranslate"><span class="pre">alt</span></code></p></li>
+<li><p>colocar un elemento de lista (<code class="docutils literal notranslate"><span class="pre">li</span></code>) fuera de la marca de lista (<code class="docutils literal notranslate"><span class="pre">ul</span></code>)</p></li>
+</ul>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>En <a class="reference external" href="https://html.spec.whatwg.org/multipage/syntax.html#optional-tags">determinadas ocasiones</a> el estándar de HTML permite omitir algunas etiquetas de clausura (por ejemplo, en ciertas ocasiones no es necesario cerrar la etiqueta <code class="docutils literal notranslate"><span class="pre">&lt;/body&gt;</span></code> de antes de <code class="docutils literal notranslate"><span class="pre">&lt;/html&gt;</span></code> y, aun así, el documento sigue siendo válido), pero son situaciones muy específicas, por lo que es más que recomendable crear siempre documentos que son válidos al margen de estas excepciones.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El lenguaje HTML evoluciona como cualquier otro lenguaje informático. Así, lo que hoy en día se representa como:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">utf-8</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>en XHTML o HTML4 se representaba como:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;text/html; charset=iso-8859-1&quot;</span> <span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Ten en cuenta estas diferencias cuando encuentres código de ejemplo en HTML en alguna web. Los navegadores suelen procesar correctamente la mayor parte de la última versión del estándar existente cuando son publicados, pero no debes perder de vista que un gran número de usuarios tendrán probablemente versiones antiguas del navegador. Aunque no las veremos en este curso, existen maneras de desarrollar aplicaciones web teniendo en cuenta estas versiones antiguas sin renunciar necesariamente a la versatilidad de las recientes.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las ventajas de trabajar con documentos validados no son solo para terceros que accedan a tu página, sino también para el desarrollador. Imagina que olvidas la primera línea de un documento HTML, es decir, la que reza <code class="docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">html&gt;</span></code>. Recuerda que hemos comentado que los navegadores son bastante laxos a la hora de mostrar los documentos y los procesan aunque no sean válidos, potencialmente introduciendo efectos colaterales inesperados. En concreto, la ausencia del tipo de documento pone al navegador en un modo especial que se denomina <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode">quirks</a>. En este modo el navegador toma decisiones que lo alejan del estándar, intentando mostrar el documento como lo habrían hecho navegadores antiguos. En este modo, los márgenes o tamaños de ciertos elementos pueden variar, por ejemplo, pero ello puede cambiar de un navegador a otro.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="index.html" class="btn btn-neutral float-left" title="Materiales de Desarrollo de Aplicaciones en Internet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="estilo.html" class="btn btn-neutral float-right" title="2. Lenguajes de estilo" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022-2023, Juan Antonio Pérez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

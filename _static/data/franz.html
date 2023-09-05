@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!-- <!DOCTYPE> informa al navegador de qué versión de HTML se usó para escribir el documento; desde 
+     HTML5 se usa simplemente la forma anterior -->
+
+<!-- Definiciones de elementos tomadas de MDN web docs, developer.mozilla.org -->
+
+<!-- El elemento <html> contiene todo el documento HTML; el atributo lang indica el idioma del contenido -->
+<html lang="es">
+
+  <!-- El elemento <head> provee información general (metadatos) acerca del documento, incluyendo su 
+       título y enlaces a scripts y hojas de estilo -->
+  <head>
+
+    <!-- El elemento <meta> aporta metainformación del documento; el atributo charset de <meta> indica 
+      la codificación de caracteres del documento: -->
+    <!-- <meta> es un ejemplo de "elemento vacío", que no requiere etiqueta de inicio y de fin;
+         en versiones anteriores del estándar, estos se elementos se representaban con una barra
+         al final: <meta charset="utf-8"/> -->
+    <meta charset="utf-8">
+    <meta name="author" content="Franz de Copenhague">
+
+    <!-- El elemento <title> indica el título del documento: -->
+    <title>Blog del profesor Franz de Copenhague</title>
+
+    <!-- El elemento <script> carga la librería de JavaScript MathJax que permite mostrar ecuaciones dentro de páginas
+         web: -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+    <!-- La librería de JavaScript chessboard-element permite define un componente web que permite usar
+         el elemento personalizado chess-board (que no pertenece al estándar) en el documento -->
+    <script type="module" src="https://unpkg.com/chessboard-element?module"></script>
+  </head>
+
+  <!-- El elemento <body> representa el contenido de un documento HTML; solo puede haber un 
+       elemento <body> en un documento: -->
+  <body>
+
+    <!-- El elemento <header> representa un grupo de datos introductorios o de navegación; puede 
+         contener algunos elementos de encabezado, así como también un logo, un formulario de búsqueda, un 
+         nombre de autor y otros componentes -->
+    <header>
+
+      <!-- Los elementos de encabezado implementan seis niveles de encabezado del documento; <h1> es el 
+           más importante y <h6> el menos importante; un elemento de encabezado describe brevemente el 
+           tema de la sección que presenta -->
+      <h1>Blog del profesor Franz de Copenhague</h1>
+    </header>
+
+    <!-- El elemento <nav> representa una sección de una página cuyo propósito es proporcionar enlaces de 
+         navegación, ya sea dentro del documento actual o a otros documentos; ejemplos comunes de secciones 
+         de navegación son menús, tablas de contenido e índices -->
+    <nav>
+
+      <!-- El elemento <ul>, de "unordered list", representa una lista no ordenada; cada elemento va 
+           dentro del elemento <li> -->
+      <ul>
+        <!-- El elemento <a> es la base del hipertexto; a través del atributo "href" se indica el 
+             documento al que se saltará si se activa el enlace; en este caso, se enlaza a un
+             elemento del documento actual etiquetado con un id -->
+        <li>Reflexiones sobre <a href="#física">física cuántica</a></li>
+        <li>Reflexiones sobre <a href="#ia">inteligencia artificial</a></li>
+      </ul>
+    </nav>
+
+    <!-- El elemento <main> representa el contenido principal del <body> de un documento o aplicación -->
+    <main>
+
+      <!-- El elemento <section> representa una sección genérica de un documento -->
+      <section>
+        <h1>Reflexiones sobre ciencia del profesor Franz de Copenhague</h1>
+
+        <!-- El atributo global id define un identificador único que no debe repetirse en todo el documento;
+             su propósito es identificar el elemento al vincularlo en scripts, hojas de estilo u enlaces -->
+        <section id="física">
+          <h2>Entradas sobre física cuántica ⚛</h2>
+          <!-- Teclear caracteres Unicode en Linux: Ctrl+Mayús+u 269b espacio: ⚛; otros sistemas operativos 
+               tienen sus propias combinaciones de teclas -->
+
+          <!-- El elemento <p> es el apropiado para distribuir el texto en párrafos -->
+          <!-- El elemento <strong> es el apropiado para marcar con especial énfasis las partes más 
+               importantes de un texto -->
+          <p>Esta sección incluye mis artículos <strong>recientes</strong> sobre física cuántica.</p>
+
+          <!-- El elemento <article> representa una composición auto-contenida en un documento, página, 
+               o aplicación que se podría distribuir de forma independiente o reutilizable;
+               podría ser un mensaje en un foro, un artículo de una revista o un periódico, una entrada de 
+               blog, un comentario de un usuario o cualquier otro elemento independiente del contenido -->
+          <article>
+
+            <h3>Consecuencias del entrelazamiento cuántico</h3>
+            <p>El entrelazamiento cuántico se define como lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+              exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+
+            <!-- El elemento <table> representa datos en dos o más dimensiones; cada fila se incluye dentro del
+                 elemento <tr> y cada celda dentro del elemento <td> (o <th> para el encabezado de la tabla) -->
+            <table>
+              <!-- El elemento <thead> representa el encabezado de la tabla donde suelen aparecer los nombres de
+                   cada campo -->
+              <thead>
+                <tr>
+                  <th>Encabezado 1</th>
+                  <th>Encabezado 2</th>
+                </tr>
+              </thead>
+              <!-- El elemento <tbody> encapsula una lista de filas de tabla que corresponden al cuerpo de la
+                   tabla -->
+              <tbody>
+                <tr>
+                  <td>a</td>
+                  <td>b</td>
+                </tr>
+                <tr>
+                  <td>c</td>
+                  <td>d</td>
+                </tr>
+              </tbody>
+              <!-- El elemento <tfoot> representa el pie de la tabla -->
+              <tfoot>
+                <tr>
+                  <td>Pie 1</td>
+                  <td>Pie 2</td>
+                </tr>
+              </tfoot>
+            </table>
+          </article>
+        </section>
+ 
+        <section id="ia">
+          <h2>Entradas sobre inteligencia artificial ♟</h2>
+          <p>Esta sección incluye mis artículos recientes sobre inteligencia artificial.</p>
+          <article>
+            <h3>Hacia una inteligencia artificial de propósito general</h3>
+            <h4>Introducción</h4>
+            <p>Los recientes avances lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+              nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure 
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
+              obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+              En una charla reciente, Andrew Ng señalaba que:</p>
+ 
+            <!-- El elemento <blockquote> indica que el texto rodeado por el elemento es una cita; su atributo
+                 cite indica la fuente de la cita -->
+            <!-- El atributo lang se define al principio para todo el documento, pero aquí se indica para la cita;
+                 el valor del atributo ha de coincidir con alguno de los códigos de dos letras ISO 639-1: 
+                 https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes --> 
+            <!-- &ldquo; es una entidad que permite introducir el signo de apertura de comillas en documentos
+                 con codificaciones de caracteres que no incluyen dicho simbolo; existe un conjunto de entidades 
+                 definidas en el estándar como, por ejemplo, &copy; para el símbolo de copyright -->
+            <blockquote cite="http://time.com/4631730/andrew-ng-artificial-intelligence-2017/" lang="en">
+              &ldquo;We're making this analogy that artificial inteligence is the new electricity. Electricity
+              transformed industries: agriculture, transportation, communication, manufacturing. I think we are
+              now in that phase where artificial inteligence technology has advanced to the point where we see
+              a clear path for it to transform multiple industries.&rdquo;
+            </blockquote>
+ 
+            <h4>Modelo matemático</h4>
+            <p>De todo lo anterior se deduce que lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+               sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Las ecuaciones para la librería MathJax se encierran dentro de $$ y usan una notación propia
+                 de la librería (basada en el lenguaje LaTeX); atención: toda esta notación es específica de la
+                 librería y no es HTML: -->
+            $$
+              [\boldsymbol{\nu}_t,\boldsymbol{\xi}_t] = \mathcal{N}\left(x_t,r^{1}_{t-1},\ldots,r^{R}_{t-1}\right)
+            $$
+
+            <!--
+            $$
+              I = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+            $$
+            -->
+
+            <p>No obstante, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt 
+               ut labore et dolore magna aliqua.</p>
+
+            <!-- El elemento <pre> representa texto preformateado.; el texto en este elemento típicamente 
+                 se muestra en una fuente fija, no proporcional (monoespacio), exactamente como es mostrado en 
+                 el archivo: los espacios dentro de este elemento también son mostrados como están escritos -->
+            <!-- El elemento <code> indica que el contenido es código fuente -->
+            <pre><code>
+              interface PrimaryCore {
+                boolean verifyDataLine();
+                void sendData(in sequence&lt;byte> data);
+                void initSelfDestruct();
+              }
+            </code></pre>
+
+          </article>
+          <article>
+            <h3>La memoria en las redes neuronales</h3>
+            <p>Tradicionalmente, las <em>redes neuronales</em> lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+               sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+               nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+
+            <!-- El elemento <figure> representa contenido independiente, a menudo con un título; si bien se
+                 relaciona con el flujo principal, su posición es independiente de este; por lo general, se trata
+                 de una imagen, una ilustración, un diagrama, un fragmento de código o un esquema al que se hace
+                 referencia en el texto principal, pero que se puede mover a otra página o a un apéndice sin que
+                 afecte al flujo principal -->
+            <figure>
+
+              <!-- El elemento <img> representa una imagen en el documento; su atributo src indica el URL de la
+                   imagen; el atributo obligatorio alt define un texto alternativo que describe la imagen -->
+                <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fnature20101/MediaObjects/41586_2016_Article_BFnature20101_Fig4_HTML.jpg"
+                     alt="Activaciones de los distintos cabezales de lectura/escritura 
+                          en una red neuronal derivable.">
+
+              <!-- El elemento <figcaption> representa un subtítulo o leyenda asociado al contenido del elemento 
+                   padre <figure>, pudiendo ser colocado como primer o último hijo -->
+              <figcaption>Esquema de una red neuronal derivable</figcaption>
+            </figure>
+          </article>
+        </section>
+
+        <!-- El elemento <aside> representa una sección de una página que consiste en contenido que está 
+             indirectamente relacionado con el contenido principal del documento (por ejemplo, comentarios
+             al margen o publicidad) -->
+        <aside>
+          <p>Al hilo de las reflexiones anteriores, lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+             sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+             quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+
+          <!-- Uso del componente web definido en la librería chessboard-element; el uso de style no está
+               recomendado normalmente -->
+          <chess-board position="start" style="width: 256px"></chess-board>
+        </aside>
+      </section>
+    </main>
+
+    <!-- El elemento <footer> representa un pie de página para el contenido de sección más cercano o el
+         elemento raíz de sección; un pie de página típicamente contiene información acerca del autor de la
+         sección, datos de derechos de autor o enlaces a documentos relacionados -->
+    <footer>
+      <p>© 2020, Franz de Copenhague</p>
+    </footer>
+  </body>
+</html>

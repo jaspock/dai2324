@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Desarrollo de Aplicaciones en Internet">
+  <title>El lenguaje JavaScript</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/theme/simple.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://unpkg.com/reveal.js@3.9.2//css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.9.2//css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://unpkg.com/reveal.js@3.9.2//lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">El lenguaje JavaScript</h1>
+  <p class="author">Desarrollo de Aplicaciones en Internet</p>
+</section>
+
+<section id="el-lenguaje-javascript" class="slide level2">
+<h2>El lenguaje JavaScript</h2>
+<p>Desarrollo de Aplicaciones en Internet</p>
+<p>Fuente: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">A re-introduction to JavaScript</a></p>
+</section>
+<section id="historia" class="slide level2">
+<h2>Historia</h2>
+<ul>
+<li>Diseñado en 1995 por Netscape Communications para su navegador (heredero de Mosaic, el primer navegador gráfico).</li>
+<li>Se <em>inspira</em> levemente en algunos aspectos de Java, que estaba entonces en auge, pero tiene elementos de lenguajes funcionales como Scheme.</li>
+</ul>
+</section>
+<section id="historia-1" class="slide level2">
+<h2>Historia</h2>
+<ul>
+<li>Bajo el nombre EcmaScript (ES) es un estándar de Ecma International desde pocos meses después de su creación.</li>
+<li>La versión 3 apareció en 1999, la 5 en 2009, la 6 en 2015, la 7 en 2016, la 8 en 2017, etc. (ahora se revisa anualmente).</li>
+</ul>
+</section>
+<section id="características" class="slide level2">
+<h2>Características</h2>
+<ul>
+<li>JavaScript no tiene concepto de entrada/salida.</li>
+<li>Es un lenguaje de script pensado para ser ejecutado en un entorno que es el que aporta mecanismos para la comunicación con el exterior: navegador, formularios en PDFs, Node.js, MondoDB, etc.</li>
+<li>En 1995, Netscape Enterprise Server ya permitía programar en JavaScript en el lado del servidor.</li>
+<li>Lenguaje interpretado (no compilado), aunque muchos motores incorporan la compilación <em>just-in-time</em>.</li>
+</ul>
+</section>
+<section id="introducción" class="slide level2">
+<h2>Introducción</h2>
+<ul>
+<li>Algunas estructuras son similares a Java o C.</li>
+<li>JavaScript no tiene clases, sino prototipos de objetos. ES6 aporta una especie de clases como <em>syntactic sugar</em>.</li>
+<li>Es un lenguaje de tipos <em>débiles</em> y <em>dinámicos</em>.</li>
+<li>Las funciones son objetos de primera clase.</li>
+</ul>
+</section>
+<section id="tipos-de-datos" class="slide level2">
+<h2>Tipos de datos</h2>
+<ul>
+<li>Cada expresión o valor tiene un tipo:
+<ul>
+<li><em>Number</em></li>
+<li><em>String</em></li>
+<li><em>Boolean</em></li>
+<li><em>Symbol</em> (desde ES6)</li>
+<li><em>Object</em> (<em>Function</em>, <em>Array</em>, <em>Date</em>, <em>RegExp</em>…)</li>
+<li><em>null</em>, <em>undefined</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="números" class="slide level2">
+<h2>Números</h2>
+<ul>
+<li>Los números son reales de doble precisión. Como en otros lenguajes, la representación en coma flotante de ciertos valores <a href="https://0.30000000000000004.com/">no es exacta</a>.</li>
+<li>Se pueden usar los operadores aritméticos habituales.</li>
+<li>No existen enteros como tales.</li>
+<li>Existe un objeto predefinido <em>Math</em>.</li>
+</ul>
+<pre><code>0.1 + 0.2 == 0.30000000000000004;  // true
+(0.1+0.2).toFixed(2) == &quot;0.30&quot;;    // true</code></pre>
+<pre><code>Math.sin(3.5);
+var circumference = Math.PI * (r + r);</code></pre>
+</section>
+<section id="conversiones" class="slide level2">
+<h2>Conversiones</h2>
+<pre><code>parseInt(&quot;123&quot;, 10);   // 123 (de cadena a entero en base 10)
+parseFloat(&quot;3.14&quot;);    // 3.14 (de cadena a real)
++ &quot;42&quot;;                // 42 (diferente a 0+&quot;42&quot;)
+parseInt(&quot;hello&quot;, 10); // NaN (not a number)
+NaN + 5;               // NaN
+isNaN(NaN);            // true
+1 / 0;                 // Infinity
+isFinite(-Infinity);   // false</code></pre>
+</section>
+<section id="cadenas" class="slide level2">
+<h2>Cadenas</h2>
+<ul>
+<li>Secuencias de caracteres Unicode en UTF-16: los caracteres se representan con uno o dos bloques de 16 bits.</li>
+<li>Son un tipo de objeto especial.</li>
+</ul>
+<pre><code>&quot;hello&quot;.length;    // 5
+&#39;hello&#39;.length;    // 5
+&quot;hello&quot;.charAt(0); // carácter &quot;h&quot; (representado como cadena)
+&quot;hello, world&quot;.replace(&quot;hello&quot;, &quot;goodbye&quot;); // &quot;goodbye, world&quot;</code></pre>
+</section>
+<section id="otros-tipos" class="slide level2">
+<h2>Otros tipos</h2>
+<ul>
+<li><em>null</em> (indica falta deliberada de valor)</li>
+<li><em>undefined</em> (valor de una variable declarada pero sin valor asignado)</li>
+<li>Los posibles valores de un booleano son <em>true</em> y <em>false</em>.</li>
+<li>Cuando un valor se convierte a <em>Boolean</em> (implícita o explícitamente), <em>false</em>, 0, la cadena vacía (""), <em>NaN</em>, <em>null</em> y <em>undefined</em> son falsos.</li>
+</ul>
+</section>
+<section id="variables" class="slide level2">
+<h2>Variables</h2>
+<ul>
+<li>Se declaran con la palabra reservada <em>var</em> o <em>let</em>.</li>
+</ul>
+<pre><code>var a;    // undefined en este momento
+var name = &quot;simon&quot;;
+nanne = &quot;garfunkel&quot;;   // no da error salvo que usemos &#39;use strict&#39;;</code></pre>
+</section>
+<section id="variables-1" class="slide level2">
+<h2>Variables</h2>
+<ul>
+<li>El ámbito de las variables declaradas con <em>var</em> es el de la función.</li>
+<li>Declarar una variable con <em>var</em> en un bloque equivale a declararla al principio de la función.</li>
+<li>Declarar con <em>var</em> en un bloque una variable homónima a la de un bloque exterior no crea una nueva variable.</li>
+<li>Las variables declaradas con <em>let</em> pertenecen al ámbito del bloque correspondiente.</li>
+</ul>
+</section>
+<section id="variables-2" class="slide level2">
+<h2>Variables</h2>
+<ul>
+<li>Nota: ni <em>console.log</em> ni <em>document.write</em> son parte del estándar del lenguaje.</li>
+</ul>
+<pre><code>function f() {
+  var a = 5;
+  if (true) {
+    var a = 7;            // a ya no vale 5; ¡es la misma variable!
+    console.log(b);       // undefined
+    document.writeln(c);  // excepción ReferenceError (c is not defined)
+  }
+  var b;
+}</code></pre>
+</section>
+<section id="instrucción-let" class="slide level2">
+<h2>Instrucción <em>let</em></h2>
+<ul>
+<li>Desde EcmaScript 6 (2015)</li>
+</ul>
+<pre><code>function letTest() {
+  let x = 1;
+  if (true) {
+    let x = 2;       // variable diferente
+    // otro let x en este ámbito provocaría un error
+    console.log(x);  // 2
+  }
+  console.log(x);    // 1
+}</code></pre>
+</section>
+<section id="instrucción-var" class="slide level2">
+<h2>Instrucción <em>var</em></h2>
+<pre><code>function varTest() {
+  var x = 31;
+  if (true) {
+    var x = 71;      // misma variable!
+    console.log(x);  // 71
+  }
+  console.log(x);  // 71
+}</code></pre>
+</section>
+<section id="operadores" class="slide level2">
+<h2>Operadores</h2>
+<pre><code>x += 5
+x = x + 5
+&quot;hello&quot; + &quot; world&quot;   // &quot;hello world&quot;
+&quot;3&quot; + 4 + 5          // &quot;345&quot; (cadena+entero o entero+cadena -&gt; cadena)
+3 + 4 + &quot;5&quot;          // &quot;75&quot; (se operan 3 y 4 primero)
+17 + &quot;&quot;              // &quot;17&quot; (conversión; entero+cadena -&gt; cadena)
+123 == &quot;123&quot;         // true (conversión implícita)
+1 == true            // true (conversión implícita)
+123 === &quot;123&quot;        // false (no hay conversión con ===)
+1 === true           // false (no hay conversión con ===)
+1 != true            // false
+1 !== true           // true</code></pre>
+</section>
+<section id="operadores-1" class="slide level2">
+<h2>Operadores</h2>
+<ul>
+<li>La evaluación en cortocircuito (presente en otros muchos lenguajes) es útil para comprobar si un objeto es <em>null</em> antes de acceder a sus miembros o para dar valores por defecto.</li>
+</ul>
+<pre><code>var name = o &amp;&amp; o.getName();
+var name = otherName || &quot;default&quot;;</code></pre>
+<pre><code>var allowed = (age &gt; 18) ? &quot;yes&quot; : &quot;no&quot;;</code></pre>
+</section>
+<section id="estructuras-de-control" class="slide level2">
+<h2>Estructuras de control</h2>
+<pre><code>var name = &quot;kittens&quot;;
+if (name == &quot;puppies&quot;) {
+  name += &quot;!&quot;;
+} else if (name == &quot;kittens&quot;) {
+  name += &quot;!!&quot;;
+} else {
+  name = &quot;!&quot; + name;
+}
+name == &quot;kittens!!&quot;  // true</code></pre>
+</section>
+<section id="estructuras-de-control-1" class="slide level2">
+<h2>Estructuras de control</h2>
+<pre><code>while (true) {
+  // an infinite loop!
+}
+
+var input;
+do {
+  input = get_input();
+} while (inputIsNotValid(input))
+
+for (var i = 0; i &lt; 5; i++) {
+  // Will execute 5 times
+}</code></pre>
+</section>
+<section id="estructuras-de-control-2" class="slide level2">
+<h2>Estructuras de control</h2>
+<ul>
+<li>En la instrucción <em>switch</em> se usa === para la comparación (también con cadenas).</li>
+</ul>
+<pre><code>switch(a + 3) {
+  case b + 2:
+    yay();
+    break;   // sale del switch como en C
+  case 7:
+    yey();
+    break;
+  default:
+    neverhappens();
+}</code></pre>
+</section>
+<section id="objetos" class="slide level2">
+<h2>Objetos</h2>
+<ul>
+<li>Los objetos de JavaScript son como colecciones de pares nombre-valor (similar a los diccionarios en Python o los HashMap de Java).</li>
+<li>El nombre es una cadena. El valor es cualquier valor de JavaScript (incluyendo otros objetos).</li>
+<li>Dos formas equivalentes de crear objetos. La segunda es la preferida: sintaxis de objetos literales usada en JSON.</li>
+</ul>
+<pre><code>var obj = new Object();
+var obj = {};</code></pre>
+</section>
+<section id="objetos-1" class="slide level2">
+<h2>Objetos</h2>
+<ul>
+<li>Sintaxis de objetos literales para objetos más complejos.</li>
+</ul>
+<pre><code>var obj = {
+  name: &quot;Carrot&quot;,
+  &quot;for&quot;: &quot;Max&quot;,
+  details: {
+    color: &quot;orange&quot;,
+    size: 12
+  }
+}
+
+obj.details.color; // orange
+var prop= &quot;size&quot;
+obj[&quot;details&quot;][prop]; // 12</code></pre>
+</section>
+<section id="prototipos" class="slide level2">
+<h2>Prototipos</h2>
+<pre><code>function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+// Define una instancia del prototipo:
+var You = new Person(&quot;You&quot;, 24);</code></pre>
+<pre><code>obj.name = &quot;Simon&quot;;
+var name = obj.name;    // esta forma suele ser más eficiente
+
+prop= &quot;name&quot;;  // el valor de prop se puede leer de un fichero o un formulario
+obj[prop] = &quot;Simon&quot;;
+var name = obj[prop]; // esta permite obtener nombres de propiedades durante la ejecución</code></pre>
+</section>
+<section id="arrays" class="slide level2">
+<h2>Arrays</h2>
+<ul>
+<li>Son un tipo especial de objeto.</li>
+<li>Las propiedades numéricas solo se pueden acceder con la sintaxis [].</li>
+</ul>
+<pre><code>var a = new Array();
+a[0] = &quot;dog&quot;;
+a[1] = &quot;cat&quot;;
+a[2] = 42;
+a.length; // 3</code></pre>
+</section>
+<section id="arrays-1" class="slide level2">
+<h2>Arrays</h2>
+<ul>
+<li>Una notación más conveniente es la de literales de arrays:</li>
+</ul>
+<pre><code>var a = [&quot;dog&quot;, &quot;cat&quot;, &quot;hen&quot;];
+a.push(&quot;monkey&quot;);
+a.length; // 4</code></pre>
+<pre><code>var a = [&quot;dog&quot;, &quot;cat&quot;, &quot;hen&quot;];
+a[100] = &quot;fox&quot;;  // a[90] === undefined
+a.length;        // 101</code></pre>
+</section>
+<section id="arrays-2" class="slide level2">
+<h2>Arrays</h2>
+<ul>
+<li>Podemos iterar con un bucle <em>for</em> o usando <em>forEach</em>.</li>
+<li>Métodos disponibles para arrays: <em>toString</em>, <em>concat</em>, <em>join</em>, <em>pop</em>, <em>push</em>, <em>reverse</em>, <em>shift</em>, <em>slice</em>, <em>sort</em>, etc.</li>
+</ul>
+<pre><code>[&quot;dog&quot;, &quot;cat&quot;].forEach(function(currentValue, index, array) {
+  // Hacer algo con currentValue o array[index]
+});</code></pre>
+</section>
+<section id="funciones" class="slide level2">
+<h2>Funciones</h2>
+<ul>
+<li>Las funciones son objetos.</li>
+</ul>
+<pre><code>function add(x, y) {
+  var total = x + y;
+  return total;
+}</code></pre>
+</section>
+<section id="funciones-1" class="slide level2">
+<h2>Funciones</h2>
+<ul>
+<li>Se puede invocar una función sin pasar todos los parámetros (valdrán <em>undefined</em>).</li>
+<li>Se pueden pasar más argumentos que los declarados.</li>
+</ul>
+<pre><code>add(); // NaN
+// No se pueden sumar valores undefined</code></pre>
+<pre><code>add(2, 3, 4); // 5
+// se suman los dos primeros; el 4 se ignora</code></pre>
+</section>
+<section id="funciones-2" class="slide level2">
+<h2>Funciones</h2>
+<ul>
+<li>Lo anterior tiene su utilidad en el caso de funciones variádicas:</li>
+</ul>
+<pre><code>function avg() {
+  var sum = 0;
+  for (var i = 0, j = arguments.length; i &lt; j; i++) {
+    sum += arguments[i];
+  }
+  return sum / arguments.length;
+}
+
+avg(2, 3, 4, 5); // 3.5</code></pre>
+</section>
+<section id="funciones-anónimas" class="slide level2">
+<h2>Funciones anónimas</h2>
+<pre><code>var avg = function() {
+  var sum = 0;
+  for (var i = 0, j = arguments.length; i &lt; j; i++) {
+    sum += arguments[i];
+  }
+  return sum / arguments.length;
+};
+var g=avg;
+
+g(2, 3, 4, 5);</code></pre>
+</section>
+<section id="immediately-invoked-functions" class="slide level2">
+<h2>Immediately-invoked functions</h2>
+<ul>
+<li>Un <em>truco</em> para esconder variables locales dentro de su bloque antes de que existiera <em>let</em>:</li>
+</ul>
+<pre><code>var a = 1;
+var b = 2;
+
+(function() {
+  var b = 3;
+  a += b;
+})();
+
+a; // 4
+b; // 2</code></pre>
+</section>
+<section id="objetos-personalizados" class="slide level2">
+<h2>Objetos personalizados</h2>
+<pre><code>function Person(first, last) {
+  this.first = first;
+  this.last = last;
+  this.fullName = function() {
+    return this.first + &#39; &#39; + this.last;
+  };
+  this.fullNameReversed = function() {
+    return this.last + &#39;, &#39; + this.first;
+  };
+}
+var s = new Person(&quot;Simon&quot;, &quot;Willison&quot;);</code></pre>
+</section>
+<section id="objetos-personalizados-1" class="slide level2">
+<h2>Objetos personalizados</h2>
+<ul>
+<li>Una manera mejor que la anterior que no crea una función por cada objeto:</li>
+</ul>
+<pre><code>function personFullName() {
+  return this.first + &#39; &#39; + this.last;
+}
+function personFullNameReversed() {
+  return this.last + &#39;, &#39; + this.first;
+}
+function Person(first, last) {
+  this.first = first;
+  this.last = last;
+  this.fullName = personFullName;
+  this.fullNameReversed = personFullNameReversed;
+}</code></pre>
+</section>
+<section id="objetos-personalizados-2" class="slide level2">
+<h2>Objetos personalizados</h2>
+<ul>
+<li>Una manera aún mejor es usar los prototipos de JavaScript.</li>
+<li>Cuando se crea una función en JavaScript, el intérprete le añade una propiedad <em>prototype</em>.</li>
+<li>Esta propiedad apunta a un <em>objeto prototipo</em> que será luego también compartido por todos los objetos creados usando la función constructora.</li>
+<li>A este objeto prototipo se puede acceder también desde tales objetos con la propiedad <em>__proto__</em>.</li>
+</ul>
+</section>
+<section id="objetos-personalizados-3" class="slide level2">
+<h2>Objetos personalizados</h2>
+<ul>
+<li><em>Person.prototype</em> es un objeto compartido por todas las instancias de <em>Person</em>.</li>
+</ul>
+<pre><code>function Person(first, last) {
+  this.first = first;
+  this.last = last;
+}
+Person.prototype.fullName = function() {
+  return this.first + &#39; &#39; + this.last;
+};
+Person.prototype.fullNameReversed = function() {
+  return this.last + &#39;, &#39; + this.first;
+};</code></pre>
+</section>
+<section id="objetos-personalizados-4" class="slide level2">
+<h2>Objetos personalizados</h2>
+<ul>
+<li>Al intentar acceder a una propiedad de un objeto <em>Person</em> sin asignación explícita, el intérprete la busca en <em>Person.prototype</em>.</li>
+</ul>
+<pre><code>function Person(first, last) {
+  this.first = first;
+  this.last = last;
+}
+Person.prototype.fullName = function() {
+  return this.first + &#39; &#39; + this.last;
+};
+var s= new Person(&quot;Simon&quot;,&quot;Willison&quot;);
+s.__proto__ === Person.prototype;  // true
+s.age= 32;  // propiedad explícita que no usa el prototipo
+var t= s.fullName() + &quot;, &quot; + s.age;  // &quot;Simon Willison, 32&quot;</code></pre>
+</section>
+<section id="objetos-personalizados-5" class="slide level2">
+<h2>Objetos personalizados</h2>
+<ul>
+<li>Los prototipos se pueden modificar en tiempo de ejecución lo que significa que pueden añadirse métodos a un objeto en cualquier momento.</li>
+</ul>
+<pre><code>s = new Person(&quot;Simon&quot;, &quot;Willison&quot;);
+s.firstNameCaps(); // TypeError on line 1: s.firstNameCaps is not a function
+
+Person.prototype.firstNameCaps = function firstNameCaps() {
+  return this.first.toUpperCase()
+}; // cualquier Person existente responde ahora a esta función
+s.firstNameCaps(); // &quot;SIMON&quot;</code></pre>
+</section>
+<section id="objetos-personalizados-6" class="slide level2">
+<h2>Objetos personalizados</h2>
+<ul>
+<li>Se pueden añadir cosas al prototipo de los objetos predefinidos de JavaScript:</li>
+</ul>
+<pre><code>var s = &quot;Simon&quot;;
+s.reversed(); // TypeError on line 1: s.reversed is not a function
+
+String.prototype.reversed = function reversed() {
+  var r = &quot;&quot;;
+  for (var i = this.length - 1; i &gt;= 0; i--) {
+    r += this[i];
+  }
+  return r;
+};
+
+s.reversed(); // nomiS</code></pre>
+</section>
+<section id="clases-en-es6" class="slide level2">
+<h2>Clases en ES6</h2>
+<pre><code>class SimpleDate {
+  constructor(year, month, day) {
+    // comprueba que es una fecha correcta
+    // ...
+
+    this._year = year;
+    this._month = month;
+    this._day = day;
+  }
+
+  addDays(nDays) {...}
+
+  getDay() {
+    return this._day;
+  }
+}</code></pre>
+</section>
+<section id="clases-en-es6-1" class="slide level2">
+<h2>Clases en ES6</h2>
+<ul>
+<li>No se puede poner una propiedad como privada (existen formas de conseguir algo equivalente que no veremos).</li>
+</ul>
+<pre><code>let today = new SimpleDate(2017, 1, 14);
+today.addDays(1);
+today._day += 1</code></pre>
+</section>
+<section id="clases-en-es6-2" class="slide level2">
+<h2>Clases en ES6</h2>
+<ul>
+<li>Paso implícito o explícito del receptor del mensaje.</li>
+</ul>
+<pre><code>let getDay = SimpleDate.prototype.getDay;
+
+getDay.call(today);
+getDay.call(tomorrow);
+
+tomorrow.getDay();</code></pre>
+</section>
+<section id="clases-en-es6-3" class="slide level2">
+<h2>Clases en ES6</h2>
+<ul>
+<li>Herencia.</li>
+</ul>
+<pre><code>class Employee {
+  constructor(firstName, familyName) {...}
+
+  getFullName() {...};
+  }
+}
+
+class Manager extends Employee {
+  constructor(firstName, familyName) {
+    super(firstName, familyName);
+    this._managedEmployees = [];
+  }
+
+  addEmployee(employee) {
+    this._managedEmployees.push(employee);
+  }
+}</code></pre>
+</section>
+<section id="funciones-anidadas" class="slide level2">
+<h2>Funciones anidadas</h2>
+<ul>
+<li>Las funciones anidadas pueden acceder a variables del ámbito de su función padre.</li>
+</ul>
+<pre><code>function betterExampleNeeded() {
+  var a = 1;
+  function oneMoreThanA() {
+    return a + 1;
+  }
+  return oneMoreThanA();
+}</code></pre>
+</section>
+<section id="clausuras" class="slide level2">
+<h2>Clausuras</h2>
+<ul>
+<li>Son necesarias cuando una función anidada que accede a algunas variables de la función madre sobrevive a esta.</li>
+<li>Una clausura se implementa como un registro que almacena una función y un entorno de la pila.</li>
+</ul>
+<pre><code>function makeAdder(a) {
+  return function(b) {
+    return a + b;
+  };
+}
+var x = makeAdder(5);
+var y = makeAdder(20);
+x(6); // 11
+y(7); // 27</code></pre>
+</section>
+<section id="clausuras-1" class="slide level2">
+<h2>Clausuras</h2>
+<ul>
+<li>Las clausuras llevan fácilmente a confusión si no se entiende bien cómo funcionan.</li>
+</ul>
+<pre><code> function f () {
+   var funcs = [];
+   for (var i = 0; i &lt; 3; i++) {
+     funcs[i] = function() {
+       console.log(&quot;My value: &quot; + i);
+     };
+     funcs[i]();  // Aquí se obtiene un resultado
+   }
+   return funcs;
+ }
+
+ var m= f();
+ for (var j = 0; j &lt; 3; j++) {
+   m[j]();   // Aquí otro diferente
+ }</code></pre>
+</section>
+<section id="clausuras-2" class="slide level2">
+<h2>Clausuras</h2>
+<ul>
+<li>Una posible alternativa es usar una factoría de funciones:</li>
+</ul>
+<pre><code>  function createfunc(i) {
+    return function() { console.log(&quot;My value: &quot; + i); };
+  }
+
+  function f () {
+    var funcs = [];
+
+    for (var i = 0; i &lt; 3; i++) {
+      funcs[i] = createfunc(i);
+    }
+    return funcs;
+  }
+
+  var m= f();
+  for (var j = 0; j &lt; 3; j++) {
+    m[j]();
+  }</code></pre>
+</section>
+<section id="clausuras-3" class="slide level2">
+<h2>Clausuras</h2>
+<ul>
+<li>O bien usar <em>let</em> (ES6):</li>
+</ul>
+<pre><code> function f () {
+   var funcs = [];
+   for (let i = 0; i &lt; 3; i++) {
+     funcs[i] = function() {
+       console.log(&quot;My value: &quot; + i);
+     };
+     funcs[i]();  // 0, 1, 2
+   }
+   return funcs;
+ }
+
+ var m= f();
+ for (var j = 0; j &lt; 3; j++) {
+   m[j]();   // 0, 1, 2
+ }</code></pre>
+</section>
+<section id="clausuras-4" class="slide level2">
+<h2>Clausuras</h2>
+<ul>
+<li>Otro ejemplo (muy habitual) de uso de <em>let</em>:</li>
+</ul>
+<pre><code>var list = document.getElementById(&quot;list&quot;);
+
+for (let i = 1; i &lt;= 5; i++) {
+  let item = document.createElement(&quot;li&quot;);
+  item.appendChild(document.createTextNode(&quot;Item &quot; + i));
+
+  item.addEventListener(&quot;click&quot;, function (ev) {
+    console.log(&quot;Item &quot; + i + &quot; is clicked.&quot;);
+  }, false);
+  list.appendChild(item);
+}</code></pre>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@3.9.2//js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: {37:'prev',38:'prev',39:'next',40:'next'},
+        // Transition style
+        transition: 'linear', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://unpkg.com/reveal.js@3.9.2//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Acceso a servicios web de terceros &mdash; documentación de Desarrollo de Aplicaciones en Internet - </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="5. Componentes web" href="componentes.html" />
+    <link rel="prev" title="3. Programar el lado del cliente" href="cliente.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Desarrollo de Aplicaciones en Internet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marcado.html">1. Lenguajes de marcado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estilo.html">2. Lenguajes de estilo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cliente.html">3. Programar el lado del cliente</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Acceso a servicios web de terceros</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#el-protocolo-http">4.1. El protocolo HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#herramientas-para-desarrolladores">4.2. Herramientas para desarrolladores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#promesas-de-javascript">4.3. Promesas de JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#los-objetos-de-tipo-xmlhttprequest">4.4. Los objetos de tipo XMLHttpRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#la-api-fetch">4.5. La API Fetch</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="componentes.html">5. Componentes web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nube.html">7. Computación en la  nube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">8. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">9. Enunciados de las prácticas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Desarrollo de Aplicaciones en Internet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">4. </span>Acceso a servicios web de terceros</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/servicios.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="acceso-a-servicios-web-de-terceros">
+<h1><span class="section-number">4. </span>Acceso a servicios web de terceros<a class="headerlink" href="#acceso-a-servicios-web-de-terceros" title="Enlace permanente a este encabezado"></a></h1>
+<p>Los <em>servicios web</em> proporcionan una forma estándar de interoperabilidad entre diferentes aplicaciones, posiblemente heterogéneas. En este tema, veremos cómo acceder a servicios desde nuestras aplicaciones web, así como su relación con el estándar HTTP. En este tema nos centraremos en el acceso a servicios web ofrecidos por terceros; posteriormente, veremos cómo definir nuestros propios servicios web.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Las habilidades que deberías adquirir con este tema incluyen las siguientes:</p>
+<ul class="simple">
+<li><p>Saber usar Ajax, especialmente a través de la API Fetch, como una tecnología para crear aplicaciones de una única página.</p></li>
+<li><p>Saber crear y encadenar promesas en un programa de JavaScript.</p></li>
+<li><p>Comprender los fundamentos del protocolo HTTP y la configuración cliente-servidor.</p></li>
+<li><p>Diferenciar los distintos componentes de un navegador.</p></li>
+<li><p>Saber implementar aplicaciones <em>mashups</em> que accedan e integren servicios web de terceros.</p></li>
+</ul>
+</div>
+<section id="el-protocolo-http">
+<span id="label-servicios-http"></span><h2><span class="section-number">4.1. </span>El protocolo HTTP<a class="headerlink" href="#el-protocolo-http" title="Enlace permanente a este encabezado"></a></h2>
+<p>HTTP (por <em>hypertext transfer protocol</em>) es el protocolo de comunicación (a nivel de capa de aplicación) diseñado para permitir el envío de información en la <em>world wide web</em> entre distintos ordenadores. Sus primeras versiones fueron desarrolladas en la década de los noventa a partir de los trabajos de Tim Berners Lee y su equipo (los creadores de la web). Las diferentes versiones del estándar son coordinadas por el <a class="reference external" href="https://httpwg.org/">HTTP Working Group</a> de la Internet Engineering Task Force. HTTP/1.1 se publicó en 1997, HTTP/2 en 2015 y HTTP/3 en 2018, aunque tanto navegadores como servidores siguen soportando las versiones antiguas y son capaces de adaptarse para usar el mismo protocolo: por ejemplo, un navegador reciente que soporte HTTP/3 usará HTTP/2 o incluso HTTP/1.1 al comunicarse con un servidor que no haya sido actualizado en mucho tiempo. HTTP/3, a diferencia de anteriores versiones, ya no se apoya en el protocolo de transporte TCP (<em>transmission control protocol</em>), sino que usa QUIC (que no son siglas, sino un término que pretende evocar a la palabra inglesa <em>quick</em>). QUIC mejora la capacidad de multiplexación de TCP y suele mejorar la latencia y velocidad de las conexiones.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Estudia todos los vídeos de la serie «El protocolo HTTP» en los que se realiza un repaso a los principales elementos del protocolo: <a class="reference external" href="https://drive.google.com/file/d/1Wy4iV-oi7MEypO77wL4AYGPDLfIAWoNy/view?usp=sharing">parte 1-1</a>, <a class="reference external" href="https://drive.google.com/file/d/1scQJsHbPgrznE3qqx4BTqDXWgpEdcJsE/view?usp=sharing">parte 1-2</a> y <a class="reference external" href="https://drive.google.com/file/d/1eAiocuglVBR0WCC_j9L77OMJ7zlsLRq4/view?usp=sharing">parte 1-3</a>.</p>
+</div>
+<p>Los conceptos que tienes que comprender del protocolo HTTP se encuentran recogidos en <a class="reference external" href="./slides/050-http-slides.html">estas diapositivas</a>.</p>
+</section>
+<section id="herramientas-para-desarrolladores">
+<h2><span class="section-number">4.2. </span>Herramientas para desarrolladores<a class="headerlink" href="#herramientas-para-desarrolladores" title="Enlace permanente a este encabezado"></a></h2>
+<p>Las herramientas para desarrolladores que incorporan los navegadores permiten estudiar los detalles de todas las conexiones establecidas por el navegador al ejecutar una aplicación web.</p>
+<p>Las peticiones lanzadas desde la barra de direcciones del navegador son siempre de tipo GET. Para estudiar los otros tipos de peticiones de HTTP, necesitamos crear un formulario para peticiones de tipo POST, o, si queremos poder usar cualquier verbo, escribir código en JavaScript (usando la API Fetch que estudiáremos después) u otro lenguaje de programación. También hay herramientas como <a class="reference external" href="https://www.getpostman.com/">Postman</a>, una aplicación que permite crear cómodamente colecciones de peticiones a APIs (<em>application programming interfaces</em>). La herramienta <a class="reference external" href="https://curl.haxx.se/">curl</a> es similar pero funciona desde la línea de órdenes.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Familiarízate con las opciones de inspección de la actividad en red de la pestaña <span class="guilabel">Network</span> del entorno de las Chrome DevTools siguiendo la página de su documentación <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/network">Inspect Network Activity</a> . Practica las distintas posibilidades en DevTools con peticiones GET por ahora, pero recuerda volver a esta actividad cuando estudies cómo realizar desde JavaScript peticiones con otros verbos.</p>
+</div>
+</section>
+<section id="promesas-de-javascript">
+<span id="label-servicios-promesas"></span><h2><span class="section-number">4.3. </span>Promesas de JavaScript<a class="headerlink" href="#promesas-de-javascript" title="Enlace permanente a este encabezado"></a></h2>
+<p>Los objetos de tipo <code class="docutils literal notranslate"><span class="pre">Promise</span></code> (una clase definida en la API de JavaScript de los navegadores modernos) se usan para representar la finalización con éxito de una tarea (normalmente asíncrona, es decir, que no bloquea el bucle de eventos, sino que define una función de <em>callback</em> que será ejecutada más adelante) o su fracaso. En términos informales, diremos que una promesa se cumple (en caso de éxito), se incumple (en caso de fracaso) o que está pendiente (cuando aún no se ha resuelto); en inglés se usan los términos <em>fullfilled</em>, <em>rejected</em> o <em>pending</em>, respectivamente. Los objetos promesa nos serán muy útiles en tareas como la comunicación con un servidor, que veremos más adelante en este tema.</p>
+<p>Veamos un primer ejemplo. El siguiente código crea un objeto de tipo promesa <code class="docutils literal notranslate"><span class="pre">p</span></code> invocando al constructor de <code class="docutils literal notranslate"><span class="pre">Promise</span></code>. Este constuctor recibe como parámetro una función llamada <em>función ejecutora</em> con el código que nosotros definamos para intentar cumplir la promesa.</p>
+<p>El constructor de <code class="docutils literal notranslate"><span class="pre">Promise</span></code> creará dos funciones: una que nuestro código tendrá que invocar si la tarea prometida se ha podido llevar a cabo; otra que nuestro código invocará en caso contrario. Para poder llamar a estas funciones nuestra función ejecutora tiene dos parámetros por los que recibe referencias a ellas (recuerda que las funciones son objetos en JavaScript). Por tanto, estas dos funciones (parámetros <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y <code class="docutils literal notranslate"><span class="pre">reject</span></code> en el código de abajo) serán invocadas en los lugares de nuestro código en los que determinemos que la tarea se ha desarrollado con éxito (en el caso del primer parámetro) o ha fracasado (para la función pasada como segundo parámetro).</p>
+<p>En este caso, vamos a suponer que nuestra promesa ejecuta una tarea asíncrona muy sencilla: generar tras un segundo un número aleatorio entre 0 y 1; la tarea se considera un éxito si el número es menor de 0,5. En lenguaje de la calle, sería como decir «te prometo que voy a generar (asíncronamente) un número aleatorio y que será menor que 0,5»; como cualquier promesa, en cualquier caso, esta puede cumplirse o no. Observa que la tarea es asíncrona (concretamente, una llamada a <code class="docutils literal notranslate"><span class="pre">setTimeout</span></code>), lo que significa que el hilo de ejecución de nuestro programa no se queda bloqueado esperando a que pase dicho segundo, sino que la cuenta del tiempo se lleva a cabo por el navegador en otro hilo y al cumplirse el tiempo se añade a la cola de eventos la llamada al <em>callback</em> correspondiente.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">let</span> <span class="n">p</span><span class="o">=</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">resolve</span><span class="p">,</span><span class="n">reject</span><span class="p">)</span> <span class="p">{</span>  <span class="o">//</span> <span class="n">función</span> <span class="n">ejecutora</span>
+<span class="linenos"> 2</span>  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Entrando en el constructor de la promesa&#39;</span><span class="p">);</span>
+<span class="linenos"> 3</span>  <span class="n">setTimeout</span><span class="p">(</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos"> 4</span>    <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos"> 5</span>    <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 6</span>      <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;la cosa fue bien&#39;</span><span class="p">);</span>
+<span class="linenos"> 7</span>    <span class="p">}</span>
+<span class="linenos"> 8</span>    <span class="k">else</span> <span class="p">{</span>
+<span class="linenos"> 9</span>      <span class="n">reject</span><span class="p">(</span><span class="s1">&#39;algo salió mal&#39;</span><span class="p">);</span>
+<span class="linenos">10</span>    <span class="p">}</span>
+<span class="linenos">11</span>  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">12</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>A las funciones <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y <code class="docutils literal notranslate"><span class="pre">reject</span></code> les podemos pasar un único argumento que usaremos para dar información adicional relacionada con el éxito o fracaso de la tarea asíncrona; en este caso, es una simple cadena con un mensaje, pero puede ser cualquier objeto de JavaScript.</p>
+<p>Nada más invocar al contructor de <code class="docutils literal notranslate"><span class="pre">Promise</span></code>, este establece el estado de la promesa a <em>pendiente</em> y llama a nuestra función ejecutora que el constructor ha recibido como parámetro. El código de la función ejecutora, como en nuestro ejemplo, normalmente definirá una operación asíncrona (como llamar a <code class="docutils literal notranslate"><span class="pre">setTimeout</span></code> o realizar una petición a un servidor) que terminará llamando a <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y a <code class="docutils literal notranslate"><span class="pre">reject</span></code> en distintos puntos; estas dos funciones (recordemos que son creadas por el sistema y no pertenecen a nuestro código) cambian el estado de la promesa a <em>cumplida</em> o <em>incumplida</em> y llaman a continuación a las funciones que el programador haya definido para manejar ambas situaciones como veremos a continuación.</p>
+<p>El vínculo entre las funciones del sistema <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y <code class="docutils literal notranslate"><span class="pre">reject</span></code> y nuestro código se establece llamando al método <code class="docutils literal notranslate"><span class="pre">then</span></code> sobre el objeto de tipo promesa. Al método <code class="docutils literal notranslate"><span class="pre">then</span></code> se le pasan dos <em>funciones manejadoras de promesas</em> que el objeto de tipo promesa registra internamente: la primera se vincula a <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y la segunda a <code class="docutils literal notranslate"><span class="pre">reject</span></code>. Estas funciones manejadoras pueden tener un parámetro que será el mismo que el usado como argumento en las llamadas a <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y <code class="docutils literal notranslate"><span class="pre">reject</span></code> de la función ejecutora. Las funciones <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y <code class="docutils literal notranslate"><span class="pre">reject</span></code> definidas por el sistema invocarán con su parámetro a la función correspondiente de nuestro código registrada con <code class="docutils literal notranslate"><span class="pre">then()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">p</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">2</span>    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">3</span>  <span class="p">},</span> <span class="n">function</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">4</span>    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Promesa</span> <span class="n">incumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">5</span>  <span class="p">}</span>
+<span class="linenos">6</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Observa cómo todo el proceso puede verse como un <em>partido de tenis</em> en el que la pelota pasa del campo del código de la librería de promesas de JavaScript a nuestro código varias veces. Nuestro código <em>saca</em> creando la promesa. El constructor de la promesa crea entonces las funciones <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y <code class="docutils literal notranslate"><span class="pre">reject</span></code> y llama la función ejecutora. Nuestra función ejecutora crea una tarea asíncrona y le asocia una función de <em>callback</em>. En otro hilo el navegador lleva a cabo la tarea asíncrona y cuando esta se complete encolará la llamada a nuestra función de <em>callback</em>. Mientras tanto, nuestro código principal se sigue ejecutando y registra los dos manejadores llamando al método <code class="docutils literal notranslate"><span class="pre">then</span></code>. Posteriormente, cuando sea desencolada por el bucle de eventos, nuestra función de <em>callback</em> comprobará si la tarea asíncrona se ha realizado con éxito o no. En base a una u otra cosa, nuestra función de <em>callback</em> llamará a <code class="docutils literal notranslate"><span class="pre">resolve</span></code> o <code class="docutils literal notranslate"><span class="pre">reject</span></code>. Cuando una de estas funciones se ejecute invocará una de nuestras funciones manejadoras. Nuestra función manejadora se ejecutará y realizará las acciones que correspondan según la promesa se haya cumplido o no, terminando aquí el <em>punto de juego</em>.</p>
+<p>Además, observa en el código anterior cómo hemos usado <em>cadenas con plantillas</em> (<em>template strings</em>) para imprimir los mensajes por consola. Las cadenas con plantillas de JavaScript usan comillas invertidas en lugar de rectas, pueden contener variables embebidas como en el ejemplo, y pueden también ocupar más de una línea.</p>
+<figure class="align-default" id="id3">
+<a class="reference external image-reference" href="https://www.c-sharpcorner.com/blogs/overview-of-promises-in-javascript"><img alt="diagrama de los elementos implicados en una promesa" src="https://csharpcorner-mindcrackerinc.netdna-ssl.com/UploadFile/BlogImages/01262017214716PM/Screen%20Shot%202017-01-26%20at%208.28.19%20pm.png" /></a>
+<figcaption>
+<p><span class="caption-text">Diagrama de los elementos de una promesa por Sumant Mishra</span><a class="headerlink" href="#id3" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<p>El código anterior es equivalente al siguiente en el que en lugar de pasar dos funciones a <code class="docutils literal notranslate"><span class="pre">then</span></code> se define la función asociada al incumplimiento de la promesa en un método <code class="docutils literal notranslate"><span class="pre">catch</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">let</span> <span class="n">p</span><span class="o">=</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">resolve</span><span class="p">,</span><span class="n">reject</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 2</span>  <span class="n">setTimeout</span><span class="p">(</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos"> 3</span>    <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos"> 4</span>    <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span><span class="n">a</span> <span class="n">introducción</span>
+<span class="linenos"> 5</span>      <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;la cosa fue bien&#39;</span><span class="p">);</span>
+<span class="linenos"> 6</span>    <span class="p">}</span>
+<span class="linenos"> 7</span>    <span class="k">else</span> <span class="p">{</span>
+<span class="linenos"> 8</span>      <span class="n">reject</span><span class="p">(</span><span class="s1">&#39;algo salió mal&#39;</span><span class="p">);</span>
+<span class="linenos"> 9</span>    <span class="p">}</span>
+<span class="linenos">10</span>  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">11</span><span class="p">});</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">p</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">14</span>    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">15</span>  <span class="p">})</span>
+<span class="linenos">16</span>  <span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">17</span>    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Promesa</span> <span class="n">incumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">18</span>  <span class="p">});</span>
+</pre></div>
+</div>
+<p>Además, si encapsulamos el código de creación de la promesa en una función, usamos funciones flecha y gestionamos el error mediante una excepción (clase <code class="docutils literal notranslate"><span class="pre">Error</span></code>), el código anterior se convierte en:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">function</span> <span class="n">aleatorio</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos"> 2</span>  <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span> <span class="p">(</span><span class="n">resolve</span><span class="p">,</span><span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos"> 3</span>    <span class="n">setTimeout</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos"> 4</span>      <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos"> 5</span>      <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 6</span>        <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;la cosa fue bien&#39;</span><span class="p">);</span>
+<span class="linenos"> 7</span>      <span class="p">}</span>
+<span class="linenos"> 8</span>      <span class="k">else</span> <span class="p">{</span>
+<span class="linenos"> 9</span>        <span class="n">reject</span><span class="p">(</span><span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;algo salió mal&#39;</span><span class="p">));</span>
+<span class="linenos">10</span>      <span class="p">}</span>
+<span class="linenos">11</span>    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">12</span>  <span class="p">});</span>
+<span class="linenos">13</span><span class="p">}</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">aleatorio</span><span class="p">()</span>
+<span class="linenos">16</span>  <span class="o">.</span><span class="n">then</span><span class="p">(</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);})</span>
+<span class="linenos">17</span>  <span class="o">.</span><span class="n">catch</span><span class="p">(</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Promesa</span> <span class="n">incumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">}</span><span class="err">`</span><span class="p">);});</span>
+</pre></div>
+</div>
+<p>Las promesas pueden encadenarse simplemente haciendo que la función manejadora asociada al cumplimiento de la promesa (la indicada en la llamada al método <code class="docutils literal notranslate"><span class="pre">then</span></code>) devuelva a su vez una promesa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>  <span class="n">aleatorio</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos"> 2</span>    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Primera</span> <span class="n">promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos"> 3</span>    <span class="k">return</span> <span class="n">aleatorio2</span><span class="p">(</span><span class="mf">0.8</span><span class="p">);</span>
+<span class="linenos"> 4</span>  <span class="p">})</span>
+<span class="linenos"> 5</span>  <span class="o">.</span><span class="n">then</span><span class="p">(</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos"> 6</span>    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Segunda</span> <span class="n">promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos"> 7</span>  <span class="p">})</span>
+<span class="linenos"> 8</span>  <span class="o">.</span><span class="n">catch</span><span class="p">(</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos"> 9</span>    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Una</span> <span class="n">de</span> <span class="n">las</span> <span class="n">promesas</span> <span class="n">fue</span> <span class="n">incumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">10</span>  <span class="p">}</span>
+<span class="linenos">11</span>  <span class="p">);</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>  <span class="n">function</span> <span class="n">aleatorio</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos">14</span>    <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span> <span class="p">(</span><span class="n">resolve</span><span class="p">,</span><span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">15</span>      <span class="n">setTimeout</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">16</span>        <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos">17</span>        <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">18</span>          <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;la cosa fue bien&#39;</span><span class="p">);</span>
+<span class="linenos">19</span>          <span class="p">}</span>
+<span class="linenos">20</span>        <span class="k">else</span> <span class="p">{</span>
+<span class="linenos">21</span>          <span class="n">reject</span><span class="p">(</span><span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;algo salió mal&#39;</span><span class="p">));</span>
+<span class="linenos">22</span>        <span class="p">}</span>
+<span class="linenos">23</span>      <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">24</span>    <span class="p">});</span>
+<span class="linenos">25</span>  <span class="p">}</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>  <span class="n">function</span> <span class="n">aleatorio2</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">28</span>    <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span> <span class="p">(</span><span class="n">resolve</span><span class="p">,</span><span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">29</span>      <span class="n">setTimeout</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">30</span>        <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos">31</span>        <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="n">delta</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">32</span>          <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;me encanta que los planes salgan bien&#39;</span><span class="p">);</span>
+<span class="linenos">33</span>        <span class="p">}</span>
+<span class="linenos">34</span>        <span class="k">else</span> <span class="p">{</span>
+<span class="linenos">35</span>          <span class="n">reject</span><span class="p">(</span><span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;peor imposible&#39;</span><span class="p">));</span>
+<span class="linenos">36</span>        <span class="p">}</span>
+<span class="linenos">37</span>      <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">38</span>    <span class="p">});</span>
+<span class="linenos">39</span>  <span class="p">}</span>
+</pre></div>
+</div>
+<p>En este caso, la segunda promesa establece una clausura con el parámetro de la función que indica el umbral para que la promesa se cumpla. Si encapsulamos todos los bloques en funciones, el código principal queda muy compacto y legible:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">aleatorio</span><span class="p">()</span>
+<span class="linenos"> 2</span>  <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">primerMensaje</span><span class="p">)</span>
+<span class="linenos"> 3</span>  <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">segundoMensaje</span><span class="p">)</span>
+<span class="linenos"> 4</span>  <span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">mensajeError</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">function</span> <span class="n">primerMensaje</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 7</span>  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Primera</span> <span class="n">promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos"> 8</span>  <span class="k">return</span> <span class="n">aleatorio2</span><span class="p">(</span><span class="mf">0.8</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="p">}</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">function</span> <span class="n">segundoMensaje</span> <span class="p">(</span><span class="n">mensaje</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">12</span>  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Segunda</span> <span class="n">promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">13</span><span class="p">}</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">function</span> <span class="n">mensajeError</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">16</span>  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Una</span> <span class="n">de</span> <span class="n">las</span> <span class="n">promesas</span> <span class="n">fue</span> <span class="n">incumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">function</span> <span class="n">aleatorio</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos">20</span>  <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span> <span class="p">(</span><span class="n">resolve</span><span class="p">,</span><span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">21</span>    <span class="n">setTimeout</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">22</span>      <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos">23</span>      <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">24</span>        <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;la cosa fue bien&#39;</span><span class="p">);</span>
+<span class="linenos">25</span>      <span class="p">}</span>
+<span class="linenos">26</span>      <span class="k">else</span> <span class="p">{</span>
+<span class="linenos">27</span>        <span class="n">reject</span><span class="p">(</span><span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;algo salió mal&#39;</span><span class="p">));</span>
+<span class="linenos">28</span>      <span class="p">}</span>
+<span class="linenos">29</span>    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">30</span>  <span class="p">});</span>
+<span class="linenos">31</span><span class="p">}</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="n">function</span> <span class="n">aleatorio2</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">34</span>  <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span> <span class="p">(</span><span class="n">resolve</span><span class="p">,</span><span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">35</span>    <span class="n">setTimeout</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">36</span>      <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos">37</span>      <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="n">delta</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">38</span>        <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;me encanta que los planes salgan bien&#39;</span><span class="p">);</span>
+<span class="linenos">39</span>      <span class="p">}</span>
+<span class="linenos">40</span>      <span class="k">else</span> <span class="p">{</span>
+<span class="linenos">41</span>        <span class="n">reject</span><span class="p">(</span><span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;peor imposible&#39;</span><span class="p">));</span>
+<span class="linenos">42</span>      <span class="p">}</span>
+<span class="linenos">43</span>    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">44</span>  <span class="p">});</span>
+<span class="linenos">45</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Uno de los motivos de la introducción de las promesas en JavaScript fue precisamente el de simplificar la escritura de código en los frecuentes casos que los que un evento asíncrono dispara a su terminación otro evento asíncrono que dispara a su vez un nuevo evento asíncrono, etc. El código sin promesas termina teniendo una cantidad tal de ámbitos que su escritura y su lectura se hacen muy dificultosas como puedes ver a continuación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">function</span> <span class="n">aleatorio</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos"> 2</span>    <span class="n">setTimeout</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos"> 3</span>        <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos"> 4</span>        <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 5</span>          <span class="n">let</span> <span class="n">mensaje</span><span class="o">=</span> <span class="s1">&#39;la cosa fue bien&#39;</span><span class="p">;</span>
+<span class="linenos"> 6</span>          <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Primera</span> <span class="n">promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos"> 7</span>          <span class="n">let</span> <span class="n">delta</span><span class="o">=</span> <span class="mf">0.8</span><span class="p">;</span>
+<span class="linenos"> 8</span>          <span class="n">setTimeout</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos"> 9</span>            <span class="n">const</span> <span class="n">r</span><span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<span class="linenos">10</span>            <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">&lt;</span><span class="n">delta</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">11</span>              <span class="n">let</span> <span class="n">mensaje</span><span class="o">=</span> <span class="s1">&#39;me encanta que los planes salgan bien&#39;</span><span class="p">;</span>
+<span class="linenos">12</span>              <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Segunda</span> <span class="n">promesa</span> <span class="n">cumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">mensaje</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">13</span>            <span class="p">}</span>
+<span class="linenos">14</span>            <span class="k">else</span> <span class="p">{</span>
+<span class="linenos">15</span>              <span class="n">let</span> <span class="n">error</span><span class="o">=</span> <span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;peor imposible&#39;</span><span class="p">);</span>
+<span class="linenos">16</span>              <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Una</span> <span class="n">de</span> <span class="n">las</span> <span class="n">promesas</span> <span class="n">fue</span> <span class="n">incumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">17</span>            <span class="p">}</span>
+<span class="linenos">18</span>          <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">19</span>        <span class="p">}</span>
+<span class="linenos">20</span>        <span class="k">else</span> <span class="p">{</span>
+<span class="linenos">21</span>          <span class="n">let</span> <span class="n">error</span><span class="o">=</span> <span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;algo salió mal&#39;</span><span class="p">);</span>
+<span class="linenos">22</span>          <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Una</span> <span class="n">de</span> <span class="n">las</span> <span class="n">promesas</span> <span class="n">fue</span> <span class="n">incumplida</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">23</span>        <span class="p">}</span>
+<span class="linenos">24</span>  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="linenos">25</span><span class="p">}</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="n">aleatorio</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Finalmente, el código de la función ejecutora tiene un <code class="docutils literal notranslate"><span class="pre">try..catch</span></code> implicito a su alrededor. Por lo tanto, si dentro de la función ejecutora se lanza una excepción, esta se captura y se gestiona como un incumpliento de promesa. Así, el siguiente código:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">2</span>  <span class="n">throw</span> <span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s2">&quot;algo salió mal&quot;</span><span class="p">);</span>
+<span class="linenos">3</span><span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">error</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>es equivalente a este:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">2</span>  <span class="n">reject</span><span class="p">(</span><span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="s2">&quot;algo salió mal&quot;</span><span class="p">));</span>
+<span class="linenos">3</span><span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">error</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Lo mismo pasa en los manejadores de promesas. Si lanzamos una excepción dentro del manejador definido en el <code class="docutils literal notranslate"><span class="pre">then</span></code> se considera como una promesa incumplida y el control se transfiere al manejador de error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">2</span>  <span class="n">resolve</span><span class="p">(</span><span class="s2">&quot;la cosa fue bien&quot;</span><span class="p">);</span>
+<span class="linenos">3</span><span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="linenos">4</span>  <span class="n">throw</span> <span class="n">new</span> <span class="n">Error</span><span class="p">(</span><span class="err">`$</span><span class="p">{</span><span class="n">result</span><span class="p">},</span> <span class="n">pero</span> <span class="n">luego</span> <span class="n">algo</span> <span class="n">salió</span> <span class="n">mal</span><span class="err">`</span><span class="p">);</span>
+<span class="linenos">5</span><span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">error</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="los-objetos-de-tipo-xmlhttprequest">
+<span id="label-servicios-xhr"></span><h2><span class="section-number">4.4. </span>Los objetos de tipo XMLHttpRequest<a class="headerlink" href="#los-objetos-de-tipo-xmlhttprequest" title="Enlace permanente a este encabezado"></a></h2>
+<p>En los primeros años de la web, la mayoría de las aplicaciones web seguían el siguiente patrón de comportamiento al realizar, por ejemplo, una búsqueda de un determinado elemento en una base de datos: el usuario rellenaba los valores correspondientes para buscar el elemento en un formulario y pulsaba el botón de enviar; en ese momento, el navegador realizaba una petición al servidor y borraba la página web actual; el servidor realizaba la búsqueda en la base de datos y devolvía entonces una página web completa que el navegador mostraba en sustitución de la anterior. Además de generar una experiencia incómoda al usuario si se compara con una aplicación tradicional de escritorio (el usuario ha de esperar a que se cargue de nuevo toda la página para seguir interactuando con la aplicación), este procedimiento es muy ineficiente cuando la página web tiene mucho contenido que apenas cambia, y que, sin embargo, es enviado continuamente por el servidor.</p>
+<p>A partir de finales de los noventa y especialmente en los primeros años del siglo XXI, los desarrolladores comienzan a explotar el uso de funcionalidades de los navegadores que permiten realizar peticiones a un servidor sin tener que recargar la página completa. A estas técnicas se les denomina Ajax por razones históricas: el término lo acuñó un desarrollador en 2005 como acrónimo de <em>Asynchronous JavaScript and XML</em>. Con Ajax, los datos devueltos por el servidor se usan para generar dinámicamente HTML que es insertado convenientemente en el árbol DOM, conformando lo que se conoce como <em>aplicaciones de una solo página</em> (<em>single-page applications</em>). La más usada de las técnicas Ajax se basaba en los objetos de clase <code class="docutils literal notranslate"><span class="pre">XMLHttpRequest</span></code> (para abreviar se suele llamar <em>XHR</em>) que permite, como se ha comentado, solicitar (normalmente de forma asícrona) una serie de datos al servidor desde JavaScript en lugar de una página completa que reemplazará a la actual. Estos datos serán, entonces, procesados por una función definida por el programador.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Estudia el vídeo «<a class="reference external" href="https://drive.google.com/file/d/1G6eoew4ZyPd3rnpkXOWanjKY8ACL9nIB/view?usp=sharing">Los objetos de tipo XMLHttpRequest</a>» en el que se realiza una traza del código que aparece a continuación para interactuar con un servicio web mediante un objeto de la clase <code class="docutils literal notranslate"><span class="pre">XMLHttpRequest</span></code>.</p>
+</div>
+<p>El siguiente es un ejemplo típico de uso de un objeto de tipo <code class="docutils literal notranslate"><span class="pre">XMLHttpRequest</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Los datos del servidor se insertarán en el elemento con id &#39;results&#39;:</span>
+<span class="linenos"> 2</span><span class="kd">var</span><span class="w"> </span><span class="nx">resultado</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#results&quot;</span><span class="p">);</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1">// Borra el contenido previo del elemento:</span>
+<span class="linenos"> 5</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1">// Crea el objeto XHR:</span>
+<span class="linenos"> 8</span><span class="kd">var</span><span class="w"> </span><span class="nx">xhr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="linenos"> 9</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span><span class="p">);</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="kd">var</span><span class="w"> </span><span class="nx">url</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://ghibliapi.herokuapp.com/films/&quot;</span><span class="p">;</span>
+<span class="linenos">12</span><span class="c1">// Identifica el verbo, la URL y que la petición será asíncrona:</span>
+<span class="linenos">13</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<span class="linenos">14</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span><span class="p">);</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1">// La función asignada a onreadystatechange es invocada varias veces por</span>
+<span class="linenos">17</span><span class="c1">// el navegador durante el transcurso de las diferentes fases de comunicación</span>
+<span class="linenos">18</span><span class="c1">// con el servidor (conexión establecida, petición recibida, petición en proceso,</span>
+<span class="linenos">19</span><span class="c1">// petición finalizada); la fase de la llamada actual se almacena en readyState;</span>
+<span class="linenos">20</span><span class="c1">// normalmente, nos interesa la llamada en la que readyState tiene el valor 4,</span>
+<span class="linenos">21</span><span class="c1">// que se hace en el momento en el que el servidor ha devuelto todos los</span>
+<span class="linenos">22</span><span class="c1">// datos:</span>
+<span class="linenos">23</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">24</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span><span class="p">);</span>
+<span class="linenos">25</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">26</span><span class="w">    </span><span class="c1">// Código de estado de HTTP:</span>
+<span class="linenos">27</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">28</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Hubo un error (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;)!&quot;</span><span class="p">);</span>
+<span class="linenos">29</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">30</span><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">31</span><span class="w">      </span><span class="c1">// JSON.parse analiza la cadena pasada como argumento y la convierte</span>
+<span class="linenos">32</span><span class="w">      </span><span class="c1">// a un objeto de JavaScript; la respuesta de esta petición es un array</span>
+<span class="linenos">33</span><span class="w">      </span><span class="c1">// que se almacena en r:</span>
+<span class="linenos">34</span><span class="w">      </span><span class="kd">var</span><span class="w"> </span><span class="nx">r</span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w">      </span><span class="c1">// Los datos devueltos están en formato JSON y son de la forma</span>
+<span class="linenos">37</span><span class="w">      </span><span class="c1">// [ {&quot;id&quot;: &quot;0440483e&quot;, &quot;title&quot;: &quot;Princess Mononoke&quot;,</span>
+<span class="linenos">38</span><span class="w">      </span><span class="c1">// &quot;description&quot;: &quot;Ashitaka, a prince of the disappearing Ainu tribe...&quot;,</span>
+<span class="linenos">39</span><span class="w">      </span><span class="c1">// &quot;director&quot;: ..., &quot;producer&quot;: ...},   {&quot;id&quot;: dc2e6bd1&quot;, &quot;title&quot;: &quot;Spirited Away&quot;,</span>
+<span class="linenos">40</span><span class="w">      </span><span class="c1">// &quot;description&quot;: &quot;Spirited Away is an Oscar winning Japanese animated film about</span>
+<span class="linenos">41</span><span class="w">      </span><span class="c1">// a ten year old girl who wanders away from her parents...&quot;, &quot;director&quot;: &quot;Hayao</span>
+<span class="linenos">42</span><span class="w">      </span><span class="c1">// Miyazaki&quot;, ...},  {...},  {...} ]</span>
+<span class="linenos">43</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">44</span><span class="w">        </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">+=</span><span class="w"> </span><span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="o">+</span><span class="s2">&quot;; &quot;</span><span class="p">;</span>
+<span class="linenos">45</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">46</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">47</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">48</span><span class="p">};</span>
+<span class="linenos">49</span><span class="c1">// Realiza la petición:</span>
+<span class="linenos">50</span><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Este código accede a modo de ejemplo a una <a class="reference external" href="https://ghibliapi.herokuapp.com/">API web</a> sobre las películas del estudio Ghibli. Los datos devueltos por esta API web (y por muchas otras) están codificados en una notación independiente del lenguaje denominada JSON (por <em>JavaScript Object Notation</em>), que es muy parecida a la que se usa en JavaScript para definir literalmente un objeto.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las principales diferencias entre el formato JSON y la notación literal de objetos en Javascript son que en el primer caso los atributos van siempre entrecomillados, no pueden usarse comillas simples, no pueden incluirse valores de algunos tipos especiales de JavaScript como, por ejemplo, funciones, y, finalmente, no puede haber una coma tras el último atributo. Este última característica sí que es correcta en JavaScript. Por ejemplo, la siguiente definición de un objeto es correcta en JavaScript, pero la parte de la derecha de la asignación no lo sería en JSON por múltiples motivos:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p>Como ves en el código anterior, la función <code class="docutils literal notranslate"><span class="pre">JSON.parse</span></code> permite convertir una cadena en formato a JSON a objeto de JavaScript; para lo opuesto, puede usarse la función <code class="docutils literal notranslate"><span class="pre">JSON.stringify</span></code>. En APIs web más antiguas se usaba el formato XML en lugar de JSON, de ahí el nombre de <code class="docutils literal notranslate"><span class="pre">XMLHttpRequest</span></code>.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Prueba el código del ejemplo anterior (por ejemplo, en una web como CodePen o JSFiddle) para comprender su funcionamiento y estudia todo el tráfico de red mediante las Chrome DevTools. Asegúrate de crear un elemento con id <code class="docutils literal notranslate"><span class="pre">results</span></code> en el documento HTML. Escribe código para probar también otras APIs públicas, como la de información del juego <a class="reference external" href="https://github.com/martincarrera/clash-royale-api">Clash Royale</a> o la de <a class="reference external" href="https://hp-api.herokuapp.com/">Harry Potter</a>.</p>
+</div>
+</section>
+<section id="la-api-fetch">
+<span id="label-servicios-fetch"></span><h2><span class="section-number">4.5. </span>La API Fetch<a class="headerlink" href="#la-api-fetch" title="Enlace permanente a este encabezado"></a></h2>
+<p>En los últimos años, sin embargo, los navegadores han comenzado a implementar la API Fetch (desarrollada por el WHATWG, Web Hypertext Application Technology Working Group, que también supervisa la evolución de otros estándares como HTML o la API DOM), que es una forma más potente, extensible y flexible de acceder a recursos externos. Usando esta API en lugar de XHR, el código mostrado anteriormente quedaría como sigue:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">var</span><span class="w"> </span><span class="nx">resultado</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#results&quot;</span><span class="p">);</span>
+<span class="linenos"> 2</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://ghibliapi.herokuapp.com/films/&#39;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusText</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="linenos"> 9</span><span class="p">})</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responseAsObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">responseAsObject</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">    </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">+=</span><span class="w"> </span><span class="nx">responseAsObject</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="o">+</span><span class="s2">&quot;; &quot;</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">14</span><span class="p">})</span>
+<span class="linenos">15</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Ha habido un problema: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="linenos">17</span><span class="p">});</span>
+</pre></div>
+</div>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Estudia el vídeo de «<a class="reference external" href="https://drive.google.com/file/d/1MFQSQizsfatfhJT6r2GnLZ2CCoYV5VDd/view?usp=sharing">La API Fetch</a>» en el que se realiza una traza del código anterior.</p>
+</div>
+<p>No te costará entender este código si repasas lo estudiado en una sección anterior sobre las promesas en JavaScript y te decimos que la función <code class="docutils literal notranslate"><span class="pre">fetch</span></code> devuelve una promesa que se cumple cuando el servidor devuelve un resultado (aunque la respuesta incluya un código de error de HTTP) y se incumple cuando por cualquier motivo no es posible establecer la comunicación con el servidor. También debería ser fácil deducir que la función <code class="docutils literal notranslate"><span class="pre">json</span></code> devuelve otra promesa que se cumple si el cuerpo de la respuesta del servidor (que se pasa por la promesa <code class="docutils literal notranslate"><span class="pre">fetch</span></code> a la función <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y de ahí a la función manejadora del primer método <code class="docutils literal notranslate"><span class="pre">then</span></code>) es una cadena en formato JSON que se puede convertir sin errores (usando <code class="docutils literal notranslate"><span class="pre">JSON.parse()</span></code>) en un objeto de JavaScript.</p>
+<p>También debería ser fácil de entender el siguiente código, que añade un paso intermedio al procesamiento de la respuesta del servidor que convierte los títulos de películas almacenados en el objeto de JavaScript a minúsculas. Para ello, define una función que devuelve una promesa que no se cumple únicamente en el caso de que la cadena del atributo <code class="docutils literal notranslate"><span class="pre">title</span></code> sea vacía.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">function</span><span class="w"> </span><span class="nx">minusculas</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">promise</span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;</span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="o">=</span><span class="w"> </span><span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+<span class="linenos"> 6</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos"> 7</span><span class="w">      </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">10</span><span class="w">      </span><span class="nx">reject</span><span class="p">(</span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;String cannot be empty!&quot;</span><span class="p">));</span>
+<span class="linenos">11</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">12</span><span class="w">  </span><span class="p">});</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">promise</span><span class="p">;</span>
+<span class="linenos">14</span><span class="p">}</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="kd">var</span><span class="w"> </span><span class="nx">resultado</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#results&quot;</span><span class="p">);</span>
+<span class="linenos">17</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="linenos">18</span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://ghibliapi.herokuapp.com/films/&#39;</span><span class="p">)</span>
+<span class="linenos">19</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">21</span><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusText</span><span class="p">);</span>
+<span class="linenos">22</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">23</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span><span class="w">  </span><span class="c1">// llama a JSON.parse()</span>
+<span class="linenos">24</span><span class="p">})</span>
+<span class="linenos">25</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">minusculas</span><span class="p">)</span>
+<span class="linenos">26</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responseAsObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">27</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">responseAsObject</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">28</span><span class="w">        </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">+=</span><span class="w"> </span><span class="nx">responseAsObject</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="o">+</span><span class="s2">&quot;; &quot;</span><span class="p">;</span>
+<span class="linenos">29</span><span class="p">}</span>
+<span class="linenos">30</span><span class="p">})</span>
+<span class="linenos">31</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">32</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Ha habido un problema: \n&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="linenos">33</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>Las peticiones realizadas por <code class="docutils literal notranslate"><span class="pre">fetch</span></code> son, por defecto, de tipo GET. Más adelante, veremos como realizar peticiones con otros verbos, añadir información en JSON o dar valor a ciertas cabeceras de HTTP.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="cliente.html" class="btn btn-neutral float-left" title="3. Programar el lado del cliente" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="componentes.html" class="btn btn-neutral float-right" title="5. Componentes web" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022-2023, Juan Antonio Pérez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

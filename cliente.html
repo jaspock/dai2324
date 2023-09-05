@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Programar el lado del cliente &mdash; documentación de Desarrollo de Aplicaciones en Internet - </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="4. Acceso a servicios web de terceros" href="servicios.html" />
+    <link rel="prev" title="2. Lenguajes de estilo" href="estilo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Desarrollo de Aplicaciones en Internet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marcado.html">1. Lenguajes de marcado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estilo.html">2. Lenguajes de estilo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Programar el lado del cliente</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduccion-al-lenguaje-de-programacion-javascript">3.1. Introducción al lenguaje de programación JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#una-aplicacion-web-sencilla">3.2. Una aplicación web sencilla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#las-apis-del-navegador-para-programar-el-lado-del-cliente">3.3. Las APIs del navegador para programar el lado del cliente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#herramientas-para-desarrolladores">3.4. Herramientas para desarrolladores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objetos-y-prototipos">3.5. Objetos y prototipos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ambitos-y-clausuras">3.6. Ámbitos y clausuras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#profundizar-en-javascript">3.7. Profundizar en JavaScript</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="servicios.html">4. Acceso a servicios web de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="componentes.html">5. Componentes web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nube.html">7. Computación en la  nube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">8. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">9. Enunciados de las prácticas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Desarrollo de Aplicaciones en Internet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">3. </span>Programar el lado del cliente</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cliente.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="programar-el-lado-del-cliente">
+<h1><span class="section-number">3. </span>Programar el lado del cliente<a class="headerlink" href="#programar-el-lado-del-cliente" title="Enlace permanente a este encabezado"></a></h1>
+<p>JavaScript es un lenguaje orientado a objetos, funcional, dinámico e interpretado, usado principalmente como el lenguaje de programación de las páginas web en el lado del navegador. Actualmente, sin embargo, se usa también en la parte del servidor en entornos como Node.js o MongoDB. El nombre del estándar que regula JavaScript es ECMAScript. Los navegadores recientes entienden las últimas versiones de ECMAScript; cada año se publica una nueva versión (por ejemplo, ECMAScript 2020, también conocido como ES11).</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Las habilidades que deberías adquirir con este tema incluyen las siguientes:</p>
+<ul class="simple">
+<li><p>Comprender los elementos básicos de JavaScript como lenguaje de programación orientado a objetos.</p></li>
+<li><p>Saber programar en JavaScript la parte del cliente de una aplicación web usando la API de los navegadores para la gestión del DOM, eventos, estilos, etc.</p></li>
+<li><p>Usar las herramientas para desarrolladores integradas en los navegadores, como Chrome DevTools, para depurar un programa escrito en JavaScript.</p></li>
+</ul>
+</div>
+<section id="introduccion-al-lenguaje-de-programacion-javascript">
+<span id="label-intro-js"></span><h2><span class="section-number">3.1. </span>Introducción al lenguaje de programación JavaScript<a class="headerlink" href="#introduccion-al-lenguaje-de-programacion-javascript" title="Enlace permanente a este encabezado"></a></h2>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Estudia todos los vídeos de la serie «Introducción a JavaScript» en los que se presentan los elementos principales del lenguaje: <a class="reference external" href="https://drive.google.com/file/d/1p3ThE3xA1ubg3jJXFd968ucwckVpayKy/view?usp=sharing">parte 1-1</a>, <a class="reference external" href="https://drive.google.com/file/d/1MgFD19HaWSPo6P_CnPUFF6kmCLJJowEx/view?usp=sharing">parte 1-2</a>, <a class="reference external" href="https://drive.google.com/file/d/1GInxvZFxgt8GcS2cWzbMRWEDpNi0kHmG/view?usp=sharing">parte 1-3</a>, <a class="reference external" href="https://drive.google.com/file/d/1SrmuNde9DeOoOOClZ2WDGbf-aZH4vi33/view?usp=sharing">parte 1-4</a>, <a class="reference external" href="https://drive.google.com/file/d/15Z-leYRlWbMmPWQZczqakCt0q3jMLAcJ/view?usp=sharing">parte 1-5</a> y <a class="reference external" href="https://drive.google.com/file/d/1uP37JivyhSZeEgqwzcD57CznQwzLqS-Z/view?usp=sharing">parte 1-6</a>.</p>
+</div>
+<p>Elementos más avanzados del lenguaje o las características adicionales a las que un programador puede acceder cuando escribe programas en JavaScript para ser ejecutados por un navegador se estudiarán más adelante. Los conceptos que tienes que comprender del lenguaje se encuentran recogidos en <a class="reference external" href="./slides/150-js-slides.html">estas diapositivas</a>, que también contiene información sobre elementos más avanzados que estudiaremos más adelante.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Practica con los diferentes conceptos de JavaScript hasta tener claro su uso. Puedes practicar usando la consola de JavaScript de las Chrome Devtools, instalando Node.js, abriendo una <a class="reference external" href="https://jsconsole.com/">consola en línea</a> o creando un proyecto en <a class="reference external" href="https://repl.it/">repl.it</a> de tipo Node.js.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>El izado (<em>hoisting</em>) es el mecanismo por el que las declaraciones de variables y funciones son desplazadas al comienzo del ámbito en el que se encuentran antes de la ejecución. En el caso de las variables, su declaración y su inicialización son dos cosas diferentes, por lo que el siguiente código imprime <em>undefined</em> y <em>Novokribirsk</em>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newcity</span><span class="p">);</span>
+<span class="linenos">2</span><span class="nx">city</span><span class="p">();</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="kd">var</span><span class="w"> </span><span class="nx">newcity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Novokribirsk&quot;</span><span class="p">;</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="kd">function</span><span class="w"> </span><span class="nx">city</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">7</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Kribirsk&quot;</span><span class="p">);</span>
+<span class="linenos">8</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando aparecen en el nivel superior del programa, las funciones y las variables declaradas con <code class="docutils literal notranslate"><span class="pre">var</span></code> se convierten en propiedades del llamado <em>objeto global</em>. Por otro lado, <code class="docutils literal notranslate"><span class="pre">let</span></code> y <code class="docutils literal notranslate"><span class="pre">const</span></code> no crean propiedades del objeto global, sino que se limitan al ámbito en el que se declaran. En el caso de los navegadores, este objeto se suele llamar <code class="docutils literal notranslate"><span class="pre">window</span></code>, por lo que a una variable global declarada como <code class="docutils literal notranslate"><span class="pre">x</span></code> nos podemos referir tanto como <code class="docutils literal notranslate"><span class="pre">x</span></code> o como <code class="docutils literal notranslate"><span class="pre">window.x</span></code>. Como en otros entornos el objeto global recibe otros nombres (por ejemplo, en Node.js se llama <code class="docutils literal notranslate"><span class="pre">global</span></code>), el lenguaje JavaScript permite referirse al objeto global de forma general como <code class="docutils literal notranslate"><span class="pre">globalThis</span></code>. Cuando usamos módulos en JavaScript, las reglas son diferentes, ya que hay que indicar explícitamente qué elementos del espacio de nombres del módulo son visibles desde el exterior.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los módulos son una característica de JavaScript que permite agrupar objetos relacionados en espacios de nombres separados. El siguiente módulo (guardado en el fichero <code class="docutils literal notranslate"><span class="pre">modulo.js</span></code>) exporta una función y un array:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">var</span><span class="w"> </span><span class="nx">frutas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;papaya&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;banana&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;watermelon&#39;</span><span class="p">];</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">function</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="p">(</span><span class="nx">mensaje</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">duplica</span><span class="p">(</span><span class="nx">mensaje</span><span class="p">));</span>
+<span class="linenos"> 5</span><span class="p">}</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kd">function</span><span class="w"> </span><span class="nx">duplica</span><span class="w"> </span><span class="p">(</span><span class="nx">mensaje</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">mensaje</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">mensaje</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="p">}</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">frutas</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Estos elementos pueden ser ahora usados desde el módulo <code class="docutils literal notranslate"><span class="pre">script.js</span></code> de la siguiente forma:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./modulo.js&#39;</span><span class="p">;</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nx">m</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">frutas</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
+<span class="linenos">4</span><span class="nx">m</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">frutas</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>O, equivalentemente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">frutas</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./modulo.js&#39;</span><span class="p">;</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nx">log</span><span class="p">(</span><span class="nx">frutas</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
+<span class="linenos">4</span><span class="nx">log</span><span class="p">(</span><span class="nx">frutas</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Ahora si insertamos la siguiente línea en nuestro documento HTML, obtendremos por la consola <em>papayapapaya</em> y <em>bananabanana</em>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;script.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Los módulos de JavaScript han de cargarse con el atributo <code class="docutils literal notranslate"><span class="pre">type=&quot;module&quot;</span></code>. Si no lo hacemos así, el intérprete intentará cargar el fichero como si fuera un script normal, lo que puede dar lugar a errores.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A diferencia de lo que ocurre en otros lenguajes, el punto y coma actúa en JavaScript como un <em>separador</em> de instrucciones y no como un <em>finalizador</em> de ellas. El estándar establece que su uso es opcional en ciertos casos (básicamente, cuando el intérprete puede determinar dónde acaba una instrucción y empieza la siguiente), pero en ocasiones esto puede llevar a que el motor de JavaScript interprete el código de forma diferente a la que teníamos en mente. Por ejemplo, el código siguiente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span>
+<span class="linenos">2</span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span>
+<span class="linenos">3</span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span>
+<span class="linenos">4</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>produce un error <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">a</span> <span class="pre">function</span></code> porque el intérprete de JavaScript lo analiza como si estuviera escrito así:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="linenos">2</span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="linenos">3</span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Por ello, se recomienda a los novicios del lenguaje que siempre finalicen cada instrucción con punto y coma.</p>
+</div>
+</section>
+<section id="una-aplicacion-web-sencilla">
+<span id="label-app-web-sencilla"></span><h2><span class="section-number">3.2. </span>Una aplicación web sencilla<a class="headerlink" href="#una-aplicacion-web-sencilla" title="Enlace permanente a este encabezado"></a></h2>
+<p>El código que se incluye más abajo muestra <em>en acción</em>, a modo de introducción, los elementos básicos del lenguaje JavaScript (variables, condicionales, bucles, funciones, etc.), así como la utilización de las APIs del navegador relacionadas con la gestión del DOM, de los eventos o de los estilos, para, con todo ello, presentar una <a class="reference external" href="_static/data/ejemplo-apis-js.html">aplicación web muy sencilla</a> que permite añadir dinámicamente contenido a una página web e interactuar con el contenido añadido.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Lee los comentarios para entender el propósito de cada línea, pero ten en cuenta que en actividades posteriores ampliaremos estos elementos. Estudia después todos los vídeos de la serie «Una aplicación web sencilla con JavaScript» en los que se comenta este código con detalle: <a class="reference external" href="https://drive.google.com/file/d/1YUI7AIgzHO9vcGnmxJ9h84YyEZy9MnXi/view?usp=sharing">parte 2-1</a>, <a class="reference external" href="https://drive.google.com/file/d/1g_enM9nz9iVIsGJYmV_HOUORdIs6PUeA/view?usp=sharing">parte 2-2</a>, <a class="reference external" href="https://drive.google.com/file/d/1Iw6z9tf4Jc-XztH7sDa16LANPVF56xDw/view?usp=sharing">parte 2-3</a>, <a class="reference external" href="https://drive.google.com/file/d/1Py4eM_Zu8EHW6hIqw1JXktSVnGuSw47j/view?usp=sharing">parte 2-4</a> y <a class="reference external" href="https://drive.google.com/file/d/16ZE7bQHXPTcRO7xCbqml_9m-nsenmgBB/view?usp=sharing">parte 2-5</a>. Repasa después, otra vez, el código y asegúrate de que ahora comprendes mejor cada una de sus instrucciones.</p>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cp">&lt;!doctype html&gt;</span>
+<span class="linenos">  2</span><span class="cm">&lt;!-- Ejemplos de uso de la API DOM y de la API de eventos del navegador --&gt;</span>
+<span class="linenos">  3</span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+<span class="linenos">  4</span>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos">  5</span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos">  6</span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Ejemplos de uso de la API DOM y de la API de eventos del navegador<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos">  7</span>
+<span class="linenos">  8</span>    <span class="cm">&lt;!-- Es recomendable que tanto estilos como scripts vayan en ficheros aparte, pero</span>
+<span class="linenos">  9</span><span class="cm">    en este caso los dejamos aquí por ser una prueba de concepto --&gt;</span>
+<span class="linenos"> 10</span>    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos"> 11</span><span class="w">      </span><span class="p">@</span><span class="k">import</span><span class="w"> </span><span class="nt">url</span><span class="o">(</span><span class="s1">&#39;https://fonts.googleapis.com/css?family=Lato&amp;display=swap&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="linenos"> 12</span><span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 13</span><span class="w">        </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 14</span><span class="w">        </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 15</span><span class="w">        </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span>
+<span class="linenos"> 16</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos"> 17</span><span class="w">      </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 18</span><span class="w">        </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 19</span><span class="w">        </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Lato&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="linenos"> 20</span><span class="w">        </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 21</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos"> 22</span><span class="w">      </span><span class="nt">h3</span><span class="p">.</span><span class="nc">destacado</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 23</span><span class="w">        </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">lightseagreen</span><span class="p">;</span>
+<span class="linenos"> 24</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos"> 25</span><span class="w">      </span><span class="nt">h3</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 26</span><span class="w">        </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span>
+<span class="linenos"> 27</span><span class="w">        </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.3</span><span class="kt">em</span><span class="p">;</span>
+<span class="linenos"> 28</span><span class="w">        </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline</span><span class="p">;</span>
+<span class="linenos"> 29</span><span class="w">        </span><span class="k">margin-right</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 30</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos"> 31</span><span class="w">      </span><span class="nt">form</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 32</span><span class="w">        </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 33</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos"> 34</span><span class="w">      </span><span class="nt">section</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 35</span><span class="w">        </span><span class="k">border-top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">lightgray</span><span class="p">;</span>
+<span class="linenos"> 36</span><span class="w">	      </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 37</span><span class="w">        </span><span class="k">padding-top</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 38</span><span class="w">        </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 39</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos"> 40</span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos"> 41</span>
+<span class="linenos"> 42</span>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 43</span>  
+<span class="linenos"> 44</span>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos"> 45</span>
+<span class="linenos"> 46</span>    <span class="cm">&lt;!-- Formularios: --&gt;</span>
+<span class="linenos"> 47</span>    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;f1&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 48</span>      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Crea sección con título:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span> 
+<span class="linenos"> 49</span>      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;título&quot;</span><span class="p">&gt;</span> 
+<span class="linenos"> 50</span>      <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Crea sección<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="linenos"> 51</span>    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="linenos"> 52</span>    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;f2&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 53</span>      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Destaca secciones cuya primera palabra sea:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span> 
+<span class="linenos"> 54</span>      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;palabra&quot;</span><span class="p">&gt;</span> 
+<span class="linenos"> 55</span>      <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Marca sección<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="linenos"> 56</span>    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="linenos"> 57</span>    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;f3&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 58</span>      <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Desmarca todas las secciones<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="linenos"> 59</span>    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="linenos"> 60</span>
+<span class="linenos"> 61</span>    <span class="cm">&lt;!-- El elemento main está vacío inicialmente, pero irá conteniendo las secciones que </span>
+<span class="linenos"> 62</span><span class="cm">      se crearán dinámicamente. --&gt;</span>
+<span class="linenos"> 63</span>    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="linenos"> 64</span>
+<span class="linenos"> 65</span>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos"> 66</span><span class="w">      </span><span class="c1">// Manejador del evento de marcar/desmarcar de una sección individual:</span>
+<span class="linenos"> 67</span><span class="w">      </span><span class="kd">function</span><span class="w"> </span><span class="nx">marcaDesmarcaUnaSección</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 68</span><span class="w">        </span><span class="c1">// event.currentTarget es el elemento al que se asoció este manejador;</span>
+<span class="linenos"> 69</span><span class="w">        </span><span class="c1">// event.target es el elemento sobre el que se produjo la acción;</span>
+<span class="linenos"> 70</span><span class="w">        </span><span class="c1">// parentNode devuelve el nodo padre de un elemento dado;</span>
+<span class="linenos"> 71</span><span class="w">        </span><span class="c1">// toggle añade el valor &#39;destacado&#39; a class si el elemento no lo tiene y lo</span>
+<span class="linenos"> 72</span><span class="w">        </span><span class="c1">// borra si lo tiene:</span>
+<span class="linenos"> 73</span><span class="w">        </span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">).</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s1">&#39;destacado&#39;</span><span class="p">);</span>
+<span class="linenos"> 74</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos"> 75</span>
+<span class="linenos"> 76</span><span class="w">      </span><span class="c1">// Manejador del evento de creación de una nueva sección a partir del título</span>
+<span class="linenos"> 77</span><span class="w">      </span><span class="c1">// indicado en el formulario; no se declara el parámetro del evento porque </span>
+<span class="linenos"> 78</span><span class="w">      </span><span class="c1">// no se va a usar, pero creaSección se invocará por el navegador con el</span>
+<span class="linenos"> 79</span><span class="w">      </span><span class="c1">// argumento del evento igualmente:</span>
+<span class="linenos"> 80</span><span class="w">      </span><span class="kd">function</span><span class="w"> </span><span class="nx">creaSección</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 81</span><span class="w">        </span><span class="c1">// Obtiene el título del formulario; querySelector devuelve el primer nodo</span>
+<span class="linenos"> 82</span><span class="w">        </span><span class="c1">// que cumple con el criterio del selector desde el objeto desde el que </span>
+<span class="linenos"> 83</span><span class="w">        </span><span class="c1">// se invoca la función (en este caso, el elemento raíz, document):</span>
+<span class="linenos"> 84</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">título</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#título&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="linenos"> 85</span><span class="w">        </span><span class="c1">// Borra el campo del formulario:</span>
+<span class="linenos"> 86</span><span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#título&#39;</span><span class="p">).</span><span class="nx">value</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="linenos"> 87</span><span class="w">        </span><span class="c1">// Crea el elemento padre para la nueva sección:</span>
+<span class="linenos"> 88</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">sección</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">);</span>
+<span class="linenos"> 89</span><span class="w">        </span><span class="c1">// Una forma de añadir HTML dinámicamente es mediante el atributo innerHTML;</span>
+<span class="linenos"> 90</span><span class="w">        </span><span class="c1">// es más cómoda, pero es más fácil cometer errores en el HTML.</span>
+<span class="linenos"> 91</span><span class="w">        </span><span class="c1">// Además, innerHTML debe ser usado con prudencia y nunca con cadenas no</span>
+<span class="linenos"> 92</span><span class="w">        </span><span class="c1">// generadas por nuestra aplicación; la siguiente instrucción desobedece</span>
+<span class="linenos"> 93</span><span class="w">        </span><span class="c1">// esta regla y hace que la aplicación pueda recibir potencialmente</span>
+<span class="linenos"> 94</span><span class="w">        </span><span class="c1">// un ataque tipo XSS (por *cross-site scripting*); para comprobarlo, prueba</span>
+<span class="linenos"> 95</span><span class="w">        </span><span class="c1">// a introducir como título: &lt;img src=&quot;x&quot; onerror=&quot;alert(&#39;¡Ataque XSS!&#39;)&quot;&gt;</span>
+<span class="linenos"> 96</span><span class="w">        </span><span class="c1">// Para evitar estos ataques, se recomienda usar textContent cuando </span>
+<span class="linenos"> 97</span><span class="w">        </span><span class="c1">// hay contenido no propio o sustituir ciertos caracteres en las cadenas</span>
+<span class="linenos"> 98</span><span class="w">        </span><span class="c1">// antes de usar innerHTML:</span>
+<span class="linenos"> 99</span><span class="w">        </span><span class="nx">sección</span><span class="p">.</span><span class="nx">innerHTML</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;h3&gt;&#39;</span><span class="o">+</span><span class="nx">título</span><span class="o">+</span><span class="s1">&#39;&lt;/h3&gt;&#39;</span><span class="p">;</span>
+<span class="linenos">100</span><span class="w">        </span><span class="c1">// Otra forma de añadir HTML dinámicamente es mediante la APIS de creación</span>
+<span class="linenos">101</span><span class="w">        </span><span class="c1">// e inserción de nodos:</span>
+<span class="linenos">102</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">botón</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+<span class="linenos">103</span><span class="w">        </span><span class="nx">botón</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Marca/desmarca&#39;</span><span class="p">;</span>
+<span class="linenos">104</span><span class="w">        </span><span class="nx">sección</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">botón</span><span class="p">);</span>
+<span class="linenos">105</span><span class="w">        </span><span class="c1">// Todos los botones individuales creados para cada sección tienen el</span>
+<span class="linenos">106</span><span class="w">        </span><span class="c1">// mismo manejador de evento; el parámetro del manejador nos permitirá</span>
+<span class="linenos">107</span><span class="w">        </span><span class="c1">// determinar sobre qué botón concreto se ha hecho clic:</span>
+<span class="linenos">108</span><span class="w">        </span><span class="nx">botón</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">marcaDesmarcaUnaSección</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+<span class="linenos">109</span><span class="w">        </span><span class="c1">// Insertamos la sección dentro de &lt;main&gt;:</span>
+<span class="linenos">110</span><span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">sección</span><span class="p">);</span>
+<span class="linenos">111</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">112</span>
+<span class="linenos">113</span><span class="w">      </span><span class="c1">// Itera sobre todos los elementos h3 (por eso usamos querySelectorAll y no </span>
+<span class="linenos">114</span><span class="w">      </span><span class="c1">// querySelector)</span>
+<span class="linenos">115</span><span class="w">      </span><span class="kd">function</span><span class="w"> </span><span class="nx">destacaSecciónSegúnPalabra</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">116</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">secciones</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">);</span>
+<span class="linenos">117</span><span class="w">        </span><span class="c1">// Obtiene la palabra a buscar del formulario:</span>
+<span class="linenos">118</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">palabra</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#palabra&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="linenos">119</span><span class="w">        </span><span class="c1">// Borra el campo del formulario:</span>
+<span class="linenos">120</span><span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#palabra&#39;</span><span class="p">).</span><span class="nx">value</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="linenos">121</span><span class="w">        </span><span class="c1">// Itera sobre todos los elementos h3:</span>
+<span class="linenos">122</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">secciones</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">123</span><span class="w">          </span><span class="c1">// Primera palabra del texto contenido en el h3:</span>
+<span class="linenos">124</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">primera</span><span class="o">=</span><span class="w"> </span><span class="nx">secciones</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">textContent</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mf">0</span><span class="p">];</span>
+<span class="linenos">125</span><span class="w">          </span><span class="c1">// En JavaScript, el operador == puede realizar conversiones de tipo antes</span>
+<span class="linenos">126</span><span class="w">          </span><span class="c1">// de la comparación; con el operador === no hay conversiones implícitas:</span>
+<span class="linenos">127</span><span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">primera</span><span class="o">===</span><span class="nx">palabra</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">128</span><span class="w">            </span><span class="c1">// Añade &#39;destacado&#39; como class si la palabra coincide:</span>
+<span class="linenos">129</span><span class="w">            </span><span class="nx">secciones</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;destacado&#39;</span><span class="p">);</span>
+<span class="linenos">130</span><span class="w">          </span><span class="p">}</span>
+<span class="linenos">131</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">132</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">133</span>
+<span class="linenos">134</span><span class="w">      </span><span class="c1">// Desmarca todos los h3 del documento quitando la clase &#39;destacado&#39;</span>
+<span class="linenos">135</span><span class="w">      </span><span class="c1">// de sus encabezados:</span>
+<span class="linenos">136</span><span class="w">      </span><span class="kd">function</span><span class="w"> </span><span class="nx">desmarcaTodasSecciones</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">137</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">secciones</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">);</span>
+<span class="linenos">138</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">secciones</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">139</span><span class="w">          </span><span class="nx">secciones</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;destacado&#39;</span><span class="p">);</span>
+<span class="linenos">140</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">141</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">142</span>
+<span class="linenos">143</span><span class="w">      </span><span class="c1">// Función de inicialización:</span>
+<span class="linenos">144</span><span class="w">      </span><span class="kd">function</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">145</span><span class="w">        </span><span class="c1">// Asignación de manejadores de eventos; el segundo parámetro es el nombre de </span>
+<span class="linenos">146</span><span class="w">        </span><span class="c1">// una función, pero no se llama (aún) a dicha función; el tercer parámetro se</span>
+<span class="linenos">147</span><span class="w">        </span><span class="c1">// estudiará más adelante:</span>
+<span class="linenos">148</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">e</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#f1 button&#39;</span><span class="p">);</span>
+<span class="linenos">149</span><span class="w">        </span><span class="nx">e</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">creaSección</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+<span class="linenos">150</span><span class="w">        </span><span class="nx">e</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#f2 button&#39;</span><span class="p">);</span>
+<span class="linenos">151</span><span class="w">        </span><span class="nx">e</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">destacaSecciónSegúnPalabra</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+<span class="linenos">152</span><span class="w">        </span><span class="nx">e</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#f3 button&#39;</span><span class="p">);</span>
+<span class="linenos">153</span><span class="w">        </span><span class="nx">e</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">desmarcaTodasSecciones</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+<span class="linenos">154</span><span class="w">        </span><span class="c1">// Se evita para todos los formularios que al aceptar su contenido (pulsando el</span>
+<span class="linenos">155</span><span class="w">        </span><span class="c1">// botón o enter) se envíe una petición al servidor y se recargue la página:</span>
+<span class="linenos">156</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">fs</span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">);</span>
+<span class="linenos">157</span><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">fs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">158</span><span class="w">          </span><span class="nx">fs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="linenos">159</span><span class="w">            </span><span class="s1">&#39;submit&#39;</span><span class="p">,</span>
+<span class="linenos">160</span><span class="w">            </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">161</span><span class="w">              </span><span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="linenos">162</span><span class="w">            </span><span class="p">},</span><span class="w"> </span>
+<span class="linenos">163</span><span class="w">            </span><span class="kc">false</span>
+<span class="linenos">164</span><span class="w">          </span><span class="p">);</span><span class="w">        </span>
+<span class="linenos">165</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">166</span>
+<span class="linenos">167</span><span class="w">        </span><span class="c1">// Usando construcciones recientes del lenguaje para iterar sobre un array </span>
+<span class="linenos">168</span><span class="w">        </span><span class="c1">// de elementos y para indicar mediante funciones flecha (o lambda) la función</span>
+<span class="linenos">169</span><span class="w">        </span><span class="c1">// a ejecutar sobre cada elemento, el código anterior sería: </span>
+<span class="linenos">170</span><span class="w">        </span><span class="c1">//</span>
+<span class="linenos">171</span><span class="w">        </span><span class="c1">// Array.from(document.querySelectorAll(&#39;form&#39;)).forEach(</span>
+<span class="linenos">172</span><span class="w">        </span><span class="c1">//  (formulario) =&gt; {</span>
+<span class="linenos">173</span><span class="w">        </span><span class="c1">//    formulario.addEventListener(</span>
+<span class="linenos">174</span><span class="w">        </span><span class="c1">//      &#39;submit&#39;,</span>
+<span class="linenos">175</span><span class="w">        </span><span class="c1">//      (event) =&gt; {event.preventDefault();}, </span>
+<span class="linenos">176</span><span class="w">        </span><span class="c1">//      false</span>
+<span class="linenos">177</span><span class="w">        </span><span class="c1">//    )</span>
+<span class="linenos">178</span><span class="w">        </span><span class="c1">//  }</span>
+<span class="linenos">179</span><span class="w">        </span><span class="c1">// );</span>
+<span class="linenos">180</span>
+<span class="linenos">181</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">182</span>
+<span class="linenos">183</span><span class="w">      </span><span class="c1">// Define init como la función que será invocada cuando se dispare el</span>
+<span class="linenos">184</span><span class="w">      </span><span class="c1">// evento DOMContentLoaded, que señala que el árbol DOM ya está construido</span>
+<span class="linenos">185</span><span class="w">      </span><span class="c1">// (y sus nodos disponibles en memoria), aunque quizás aún no se hayan</span>
+<span class="linenos">186</span><span class="w">      </span><span class="c1">// descargado todas las imágenes, aplicados todos los estilos, etc.;</span>
+<span class="linenos">187</span><span class="w">      </span><span class="c1">// si en lugar de init pusiéramos init() el efecto sería diferente (y</span>
+<span class="linenos">188</span><span class="w">      </span><span class="c1">// probablemente no deseado):</span>
+<span class="linenos">189</span><span class="w">      </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span><span class="nx">init</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+<span class="linenos">190</span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">191</span>
+<span class="linenos">192</span>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos">193</span>
+<span class="linenos">194</span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Observa lo que se menciona sobre ataques XSS en los comentarios del código anterior. En un entorno de producción nunca deberías integrar una subcadena no verificada (por ejemplo, un valor introducido por el usuario en un formulario o el resultado devuelto por un servidor) en una cadena que se asigna a un atributo <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code>, ya que el intérprete de JavaScript analiza e interpreta toda la cadena como HTML y podría terminar ejecutando código no deseado. La mejor recomendación es que uses <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code> para crear rápidamente nodos, pero que cuando vayas a añadir contenido de terceros lo metas directamente como valor del atributo <code class="docutils literal notranslate"><span class="pre">node.textContent</span></code>, donde <code class="docutils literal notranslate"><span class="pre">node</span></code> es el nodo donde quieres insertar el texto. El navegador no intenta interpretar el contenido de <code class="docutils literal notranslate"><span class="pre">textContent</span></code> como HTML, sino que lo considera como texto plano, por lo que no hay riesgos en este caso. Modifica el código anterior para que funcione de esta manera.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando se pulsa la tecla <em>enter</em> en un cuadro de texto, la especificación de HTML dicta que se ha de generar el evento de <em>click</em> sobre el <em>botón por defecto</em> del formulario en lo que se denomina un <em>envío implícito</em>. Si este evento tiene un manejador asociado, se ejecutará como de costumbre. Las reglas para determinar cuál es el botón por defecto cuando hay más de uno no son relevantes ahora. En el caso del ejemplo, cada formulario tiene un único botón, por lo que no hay duda posible.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El comportamiento por defecto de un navegador cuando se pulsa el botón de enviar es borrar el contenido actual de la página, realizar una petición al servidor y mostrar en el navegador la respuesta recibida. Si no se ha identificado ninguna dirección para el servidor (usualmente, en el atributo <code class="docutils literal notranslate"><span class="pre">action</span></code> del elemento <code class="docutils literal notranslate"><span class="pre">form</span></code>), el navegador recarga el documento actual.</p>
+<p>En lugar del código del ejemplo que evita esto, también podríamos llamar a <code class="docutils literal notranslate"><span class="pre">preventDefault</span></code> desde las funciones manejadoras del <em>click</em> (<code class="docutils literal notranslate"><span class="pre">creaSección</span></code>, <code class="docutils literal notranslate"><span class="pre">marcaDesmarcaUnaSección</span></code>, etc). Bastaría declarar en ellas un parámetro para la información del evento y llamar al método <code class="docutils literal notranslate"><span class="pre">preventDefault</span></code> sobre él. Lo importante es «interceptar» el evento en algunos de los manejadores asociados y «cortocircuitar» el comportamiento por defecto del navegador. De esta forma, podemos también conseguir efectos como que los caracteres tecleados en un cuadro de entrada no se muestren (el comportamiento por defecto) salvo si son numéricos, por ejemplo.</p>
+</div>
+</section>
+<section id="las-apis-del-navegador-para-programar-el-lado-del-cliente">
+<span id="label-api-web-js"></span><h2><span class="section-number">3.3. </span>Las APIs del navegador para programar el lado del cliente<a class="headerlink" href="#las-apis-del-navegador-para-programar-el-lado-del-cliente" title="Enlace permanente a este encabezado"></a></h2>
+<p>Los navegadores incluyen una serie de librerías estandarizadas para programar la parte de la aplicación web que se ejecuta en el navegador (lo que se conoce como el <em>front-end</em> de la aplicación, en oposición al <em>back-end</em>, que denotaría la parte del servidor). En esta actividad profundizaremos en las APIs para el manejo del árbol DOM, la gestión de eventos y el control de estilos. Otras APIs, como la que permite realizar peticiones asíncronas desde el cliente a un servidor, se explorarán más adelante.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Estudia todos los vídeos de la serie «El API del navegador para JavaScript» en los que se presentan los elementos principales del lenguaje: <a class="reference external" href="https://drive.google.com/file/d/1Q-H8iZpfQ8k2h0DhMbp1hOxRK37SrCQB/view?usp=sharing">parte 3-1</a>, <a class="reference external" href="https://drive.google.com/file/d/1Fa4r4IPDKBHFhWOMCaX9Ca2BLb-TiljQ/view?usp=sharing">parte 3-2</a>, <a class="reference external" href="https://drive.google.com/file/d/1IYKnaNmt6LJO0zMp8jM5AtriYfY6FK1s/view?usp=sharing">parte 3-3</a>, <a class="reference external" href="https://drive.google.com/file/d/1cbN_pIzpt0CPkFp5vv2szHyd7EYCQfS4/view?usp=sharing">parte 3-4</a>, <a class="reference external" href="https://drive.google.com/file/d/1TFYTXsrpO5-vi9aXIdrImPAFu4ZdP4Sz/view?usp=sharing">parte 3-5</a>, <a class="reference external" href="https://drive.google.com/file/d/1ySWqKaravIKkI8s860FL8ZoB73t7cinm/view?usp=sharing">parte 3-6</a> y <a class="reference external" href="https://drive.google.com/file/d/1eJjgloOm5q8RVyeQDtpr6FKUpjlGjJ2w/view?usp=sharing">parte 3-7</a>. Practica después con todas las funciones con la consola de JavaScript de las Chrome Devtools o con entornos como <a class="reference external" href="http://codepen.io/">CodePen</a>.</p>
+</div>
+<p>Los conceptos que tienes que estudiar de estas APIs se encuentran recogidos en <a class="reference external" href="./slides/150-apidom-slides.html">estas otras diapositivas</a>.</p>
+<p>Ten en cuenta que las funciones de <em>callback</em> se ejecutan en el (único) hilo de tu programa pero cuando les toque (se van apilando conforme están listas para ser invocadas). El navegador nunca va a interrumpir la ejecución de tu código hasta que acabe lo que esté haciendo. Por ejemplo, si se está ejecutando un manejador de evento de clic, hasta que la función manejadora no acabe, el intérprete no se irá a la cola a ver si hay alguna otra función de <em>callback</em> esperando a ser llamada.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>A la hora de usar funciones y atributos que permiten acceder a listas de nodos o elementos del árbol DOM es importante que conozcas un par de conceptos.</p>
+<p>Por un lado, las listas pueden ser <em>vivas</em> o <em>estáticas</em>. Por ejemplo, las funciones <code class="docutils literal notranslate"><span class="pre">getElementsByClassName</span></code> o <code class="docutils literal notranslate"><span class="pre">getElementsByTagName</span></code> se usan para obtener una lista de elementos en base al valor del atributo <code class="docutils literal notranslate"><span class="pre">class</span></code> o del tipo de etiqueta, respectivamente, y la lista devuelta está <em>viva</em> en tanto que si con posterioridad a la llamada a la función añadimos un nuevo nodo al DOM que cumpla con el criterio correspondiente, el <em>array</em> se ampliará para incluirlo (haz la prueba). La función <code class="docutils literal notranslate"><span class="pre">querySelectorAll</span></code>, sin embargo, devuelve una lista <em>estática</em> que permanece inalterada por mucho que se incorporen nuevos nodos al árbol (compruébalo).</p>
+<p>Por otro lado, está la distinción entre las funciones (o atributos) que devuelven <em>elementos</em> o <em>listas de elementos</em> (lo que excluye, por ejemplo, a los nodos con texto), y las que devuelven <em>nodos</em> o <em>listas de nodos</em>. Cuando hablamos de listas, las primeras se basan en el tipo <code class="docutils literal notranslate"><span class="pre">HTMLCollection</span></code> y las segundas en <code class="docutils literal notranslate"><span class="pre">NodeList</span></code>. Cuando hablamos de items individuales, los tipos son <code class="docutils literal notranslate"><span class="pre">Element</span></code> y <code class="docutils literal notranslate"><span class="pre">Node</span></code>, respectivamente. Por ejemplo, atributos como <code class="docutils literal notranslate"><span class="pre">childNodes</span></code> o <code class="docutils literal notranslate"><span class="pre">nextSibling</span></code> contienen nodos, mientras que <code class="docutils literal notranslate"><span class="pre">children</span></code> o <code class="docutils literal notranslate"><span class="pre">nextElementSibling</span></code> contienen elementos. Normalmente, nos interesarán las listas de tipo <code class="docutils literal notranslate"><span class="pre">HTMLCollection</span></code> porque querremos recorrer los elementos incluidos en otro elemento, pero en otras ocasiones, puede servir más a nuestro objetivo tener una lista de tipo <code class="docutils literal notranslate"><span class="pre">NodeList</span></code> que no excluye ningún nodo del árbol DOM, ni siquiera los que contienen texto o espacios en blanco.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Una idea básica para comprender la gestión de eventos es el hecho de que cuando, por ejemplo, se hace clic en un pixel concreto de la ventana del navegador, es posible que este evento dispare la ejecución de más de un manejador de eventos. Considera el siguiente código en HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;prnt&quot;</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  hello
+<span class="linenos">3</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;child&quot;</span><span class="p">&gt;</span>
+<span class="linenos">4</span>    bye
+<span class="linenos">5</span>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">6</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Y el siguiente código en JavaScript:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">function</span><span class="w"> </span><span class="nx">prnt</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;parent clicked&quot;</span><span class="p">);}</span>
+<span class="linenos">2</span><span class="kd">function</span><span class="w"> </span><span class="nx">child</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;child clicked&quot;</span><span class="p">);}</span>
+<span class="linenos">3</span><span class="kd">var</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;prnt&quot;</span><span class="p">);</span>
+<span class="linenos">4</span><span class="kd">var</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;child&quot;</span><span class="p">);</span>
+<span class="linenos">5</span><span class="nx">p</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="nx">prnt</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+<span class="linenos">6</span><span class="nx">c</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="nx">child</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Si se hace clic en la palabra <em>bye</em>, se está haciendo clic en ambos <code class="docutils literal notranslate"><span class="pre">div</span></code> y no solo en el más interno, por lo que procede ejecutar ambos manejadores, como puedes comprobar <a class="reference external" href="http://jsfiddle.net/rLv1cob7/">aquí</a>.</p>
+<p>Respecto a la existencia de las dos fases de captura y <em>burbujeo</em>, en la mayoría de los casos no será muy relevante en qué fase se ejecuta un determinado manejador. De hecho, en las primeros años de la web y antes de la estandarización de la gestión de eventos, los navegadores solían implementar una de las dos fases, pero no ambas.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Dado que el objetivo de esta asignatura no es desarrollar aplicaciones con un rendimiento elevado, podemos usar <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code> para añadir contenido a un nodo del árbol DOM. Sin embargo, has de saber que esta práctica puede llegar a ser especialmente ineficiente y, además, producir errores difíciles de detectar para programadores nóveles. Así, considera el siguiente código HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>azul<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="linenos">3</span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Y el siguiente código en JavaScript:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">var</span><span class="w"> </span><span class="nx">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#x&#39;</span><span class="p">);</span>
+<span class="linenos">2</span><span class="kd">var</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lista</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+<span class="linenos">3</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w">  </span><span class="c1">// imprime x</span>
+<span class="linenos">4</span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39;&lt;li lang=&quot;en&quot;&gt;blue&lt;/li&gt;&#39;</span><span class="p">;</span>
+<span class="linenos">5</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w">  </span><span class="c1">// excepción</span>
+</pre></div>
+</div>
+<p>La última línea no tiene el efecto inicialmente esperado y lanza una excepción, porque <code class="docutils literal notranslate"><span class="pre">item.parentNode</span></code> vale <code class="docutils literal notranslate"><span class="pre">null</span></code> y, por tanto, no es posible acceder a ningún atributo <code class="docutils literal notranslate"><span class="pre">id</span></code>. Las cadenas son inmutables en JavaScript por lo que la cuarta línea implica una lectura y una reescritura completas como vamos a ver. Para entender mejor lo que ocurre, recuerda que la penúltima línea es equivalente a:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;li lang=&quot;en&quot;&gt;blue&lt;/li&gt;&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>El operando izquierdo de la concatenación se obtiene recorriendo todo el subárbol interno del nodo apuntado por <code class="docutils literal notranslate"><span class="pre">lista</span></code> y convirtiéndolo a una representación en forma de una nueva cadena en memoria. A continuación, esta cadena se concatena con la cadena literal del operando derecho y el resultado deviene una nueva cadena en memoria. Finalmente, se asigna esta nueva cadena al atributo <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code> del nodo apuntado por <code class="docutils literal notranslate"><span class="pre">lista</span></code>. Como consecuencia de esto último, es necesario analizar la cadena (lo que en inglés se conoce como <em>parsing</em>) e ir construyendo un subárbol (estrictamente, una colección de nodos, ya que no tiene por qué haber un nodo raíz como, de hecho, pasa en este caso) en base a su contenido. Los nuevos nodos reemplazan entonces el contenido anterior del nodo <code class="docutils literal notranslate"><span class="pre">lista</span></code>. En cualquier caso, estos viejos nodos no serían eliminados definitivamente de la memoria si hubiera variables apuntando a ellos, lo que explica que en la última línea del código anterior la variable <code class="docutils literal notranslate"><span class="pre">item</span></code> siga referenciando el nodo original (<code class="docutils literal notranslate"><span class="pre">item.textContent</span></code> sigue valiendo <em>azul</em>, por ejemplo), pero este se haya convertido en un nodo huérfano, con lo que <code class="docutils literal notranslate"><span class="pre">item.parentNode</span></code> valdrá <code class="docutils literal notranslate"><span class="pre">null</span></code>. Todo el proceso, además, es altamente ineficiente, como habrás observado. Y esto se notará especialmente si el subárbol que se está reemplazando es grande.</p>
+<p>En resumen, puedes usar <code class="docutils literal notranslate"><span class="pre">innerHTML</span></code> para añadir contenido a un nodo del árbol DOM, pero hazlo con cuidado y conocimiento de causa. Si quieres escribir código eficiente, el API de JavaScript de los navegadores incluye la función <code class="docutils literal notranslate"><span class="pre">insertAdjacentHTML</span></code> que permite insertar contenido (en diferentes posiciones) en un nodo del árbol DOM sin necesidad de reemplazar todo el contenido existente. Así, para que nuestro código de ejemplo no falle, bastaría con reemplazar las últimas líneas por:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">lista</span><span class="p">.</span><span class="nx">insertAdjacentHTML</span><span class="p">(</span><span class="s1">&#39;beforeend&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;li lang=&quot;en&quot;&gt;blue&lt;/li&gt;&#39;</span><span class="p">);</span>
+<span class="linenos">2</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w">  </span><span class="c1">// imprime x</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="herramientas-para-desarrolladores">
+<h2><span class="section-number">3.4. </span>Herramientas para desarrolladores<a class="headerlink" href="#herramientas-para-desarrolladores" title="Enlace permanente a este encabezado"></a></h2>
+<p>Las herramientas para desarrolladores que incorporan los navegadores permiten depurar el código en JavaScript de la parte del cliente de una aplicación web.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Familiarízate con las opciones de depuración de JavaScript de las pestañas <span class="guilabel">Console</span> y <span class="guilabel">Sources</span> del entorno de las Chrome DevTools siguiendo estas páginas de su documentación: <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/console">Console Overview</a> , <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript">Get Started</a>, <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Pause your Code with Breakpoints</a> y <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript/reference">JS Debugging Reference</a>. Practica las distintas posibilidades en DevTools con una aplicación web como la de la primera actividad de este tema.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Otra opción para pausar la ejecución del código JavaScript en un determinado punto es añadir la instrucción <code class="docutils literal notranslate"><span class="pre">debugger</span></code> (recogida en el estándar de ECMAScript) en una línea. Si las herramientas de desarrolladores están abiertas, la ejecución se detendrá en esa línea como si hubiéramos definido un punto de ruptura:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">foo</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">debugger</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="objetos-y-prototipos">
+<span id="label-js-objetos"></span><h2><span class="section-number">3.5. </span>Objetos y prototipos<a class="headerlink" href="#objetos-y-prototipos" title="Enlace permanente a este encabezado"></a></h2>
+<p>La manera en la que se gestionan los objetos en JavaScript es diferente a la que puedas conocer por otros lenguajes como Java o C++. JavaScript sigue el paradigma de la <em>programación basada en prototipos</em>, que algunos denominan también programación orientada a objetos <em>sin clases</em>. Para familiarizarte con este enfoque de la programación orientada a objetos, vas en esta ocasión a leer un texto en inglés, lo que te permitirá no solo profundizar en el tema, sino desarrollar tu habilidad para leer documentación en este idioma (recuerda que las fuentes primarias de documentación tecnológica suelen estar en inglés y que muchas veces el tiempo necesario para que haya información de calidad en otros idiomas sobre una materia novedosa puede ser inaceptablemente largo). En la actividad «<a class="reference internal" href="#label-intro-js"><span class="std std-ref">Introducción al lenguaje de programación JavaScript</span></a>» ya realizamos una introducción rápida a los objetos en JavaScript. Ahora vamos a estudiarlos con más detalle.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Lee el capítulo «<a class="reference external" href="https://eloquentjavascript.net/06_object.html">The secret life of objects</a>» de la tercera edición del libro con licencia abierta «<a class="reference external" href="https://eloquentjavascript.net/">Eloquent JavaScript</a>». Practica por tu cuenta cada concepto estudiado con un intérprete de JavaScript. Lee únicamente desde el principio hasta el apartado «<a class="reference external" href="https://eloquentjavascript.net/06_object.html#h_oUlUep3Os8">Overriding derived properties</a>» incluido.</p>
+<p>La recomendación es que leas el fragmento del capítulo en su idioma original, pero si te cuesta seguir el texto de este modo, puedes leer una <a class="reference external" href="https://translate.google.es/translate?hl=es&amp;sl=en&amp;tl=es&amp;u=https%3A%2F%2Feloquentjavascript.net%2F06_object.html">versión traducida automáticamente del capítulo</a>. Recuerda que aunque la traducción automática entre lenguas similares ha mejorado mucho en los últimos años, los sistemas aún cometen errores que en ocasiones son difíciles de detectar porque la frase traducida <em>suena bien</em> en español, por ejemplo, pero no refleja el significado de la original en inglés. Desde el enlace anterior puedes ir alternando entre la versión traducida automáticamente y el texto original con los botones de la parte superior; además, si consultas la versión traducida automáticamente y colocas el puntero del ratón sobre una frase, se mostrará un texto flotante con el original. Si lees la versión traducida automáticamente, ve consultando el original para asegurarte de que el sistema no ha alterado su significado. Ten especial cuidado con el código en JavaScript cuyas variables o palabras reservadas, por ejemplo, pueden haber sido traducidas erroneamente.</p>
+</div>
+<p>De cara a comprender mejor el capítulo sobre la vida secreta de los objetos, se muestran a continuación algunas notas que te pueden servir para terminar de comprender los conceptos allí introducidos.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>En primer lugar, no hay que confundir la propiedad <code class="docutils literal notranslate"><span class="pre">prototype</span></code> de una función con el prototipo de un objeto. El prototipo de un objeto, entendido como un segundo objeto que contiene el conjunto de funciones y atributos compartidos con otros objetos, se almacena en una propiedad <em>interna</em> llamada <code class="docutils literal notranslate"><span class="pre">[[Prototype]]</span></code> que no es directamente accesible desde tu código. No obstante, consultar o modificar esta propiedad interna se puede hacer indirectamente de dos formas:</p>
+<ul class="simple">
+<li><p>Usando el atributo <code class="docutils literal notranslate"><span class="pre">__proto__</span></code> de un objeto, atributo que muchos navegadores han venido soportando pero que el estándar de ECMAScript solo ha reconocido recientemente, señalándolo, eso sí, como un atributo en vías de extinción (<em>deprecated</em>). Significa esto que puedes usarlo para acceder rápidamente al prototipo de un objeto mientras haces pruebas desde la consola del navegador o en la fase de desarrollo de un programa, pero nunca deberías usarlo sobre aplicaciones en producción porque futuras versiones de los navegadores podrían no soportarlo.</p></li>
+<li><p>Mediante las funciones <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf()</span></code> y <code class="docutils literal notranslate"><span class="pre">Object.setPrototypeOf()</span></code> reconocidas por el estándar del lenguaje como la forma correcta de acceso al prototipo interno.</p></li>
+</ul>
+<p>El prototipo (interno) por defecto de los objetos de JavaScript es <code class="docutils literal notranslate"><span class="pre">Object.prototype</span></code>, es decir, el prototipo (visible) de la función <code class="docutils literal notranslate"><span class="pre">Object</span></code>.</p>
+<p>Por otro lado, el valor por defecto del prototipo (visible) de una función es un objeto que contiene una única propiedad llamada <code class="docutils literal notranslate"><span class="pre">constructor</span></code> que apunta a la propia función.</p>
+</div>
+<p>Un prototipo no deja de ser un objeto con una serie de funciones como el siguiente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">protoOkapi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">  </span><span class="nx">habla</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡Hola!&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">3</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>La definición anterior no parece seguir la notación que habíamos estudiado para crear objetos literalmente, pero lo que ocurre aquí es simplemente que, si omitimos el nombre de la propiedad, se utilizará para ella el mismo nombre que el de la función correspondiente, por lo que lo anterior es más o menos equivalente a:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">protoOkapi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">  </span><span class="nx">habla</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">habla</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡Hola!&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">3</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Y también es equivalente  a:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">protoOkapi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">  </span><span class="nx">habla</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡Hola!&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">3</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>La función <code class="docutils literal notranslate"><span class="pre">habla</span></code> no tiene en principio nada especial; podemos invocarla para que imprima el saludo con <code class="docutils literal notranslate"><span class="pre">protoOkapi.habla()</span></code>.</p>
+<p>Una vez tenemos nuestro prototipo, podemos crear objetos que lo usen y <em>hereden</em> sus propiedades mediante la función <code class="docutils literal notranslate"><span class="pre">Object.create()</span></code>. Vamos a usarla en una función que, además de crear un objeto con dicho prototipo, asigna a ese objeto en particular un atributo con la edad del animal:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">function</span><span class="w"> </span><span class="nx">creaOkapi</span><span class="p">(</span><span class="nx">proto</span><span class="p">,</span><span class="nx">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">okapi</span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">proto</span><span class="p">);</span>
+<span class="linenos">3</span><span class="w">  </span><span class="nx">okapi</span><span class="p">.</span><span class="nx">edad</span><span class="o">=</span><span class="w"> </span><span class="nx">edad</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">okapi</span><span class="p">;</span>
+<span class="linenos">5</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Con estos ingredientes, podemos crear dos objetos que representen sendos okapis:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">let</span><span class="w"> </span><span class="nx">o1</span><span class="o">=</span><span class="w"> </span><span class="nx">creaOkapi</span><span class="p">(</span><span class="nx">protoOkapi</span><span class="p">,</span><span class="mf">2</span><span class="p">);</span>
+<span class="linenos">2</span><span class="kd">let</span><span class="w"> </span><span class="nx">o2</span><span class="o">=</span><span class="w"> </span><span class="nx">creaOkapi</span><span class="p">(</span><span class="nx">protoOkapi</span><span class="p">,</span><span class="mf">4</span><span class="p">);</span>
+<span class="linenos">3</span><span class="nx">o1</span><span class="p">.</span><span class="nx">habla</span><span class="p">();</span>
+<span class="linenos">4</span><span class="nx">o2</span><span class="p">.</span><span class="nx">habla</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Aunque cada okapi tiene su propio atributo <code class="docutils literal notranslate"><span class="pre">edad</span></code> (puedes imprimir <code class="docutils literal notranslate"><span class="pre">o1.edad</span></code> y <code class="docutils literal notranslate"><span class="pre">o2.edad</span></code>), el código de la función <code class="docutils literal notranslate"><span class="pre">habla</span></code> no está duplicado en memoria, porque solo existe una instancia de la función (recuerda que las funciones son objetos de clase <code class="docutils literal notranslate"><span class="pre">Function</span></code> y podemos, por tanto, manejar referencias a ellas) dentro del prototipo. Cuando escribimos <code class="docutils literal notranslate"><span class="pre">o1.edad</span></code> el atributo se encuentra directamente en el objeto, pero cuando escribimos <code class="docutils literal notranslate"><span class="pre">o1.habla()</span></code> la función no es un atributo directo de <code class="docutils literal notranslate"><span class="pre">o1</span></code>, sino que, al no encontrarlo en el objeto, el intérprete lo busca en su prototipo.</p>
+<p>Como hemos comentado, podemos acceder al prototipo del objeto con <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf(o1)</span></code> y en muchos navegadores, aunque no recomendado, con <code class="docutils literal notranslate"><span class="pre">o1.__proto__</span></code>. De hecho, en un navegador que soporte <code class="docutils literal notranslate"><span class="pre">__proto__</span></code> la comparación <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf(o1)</span> <span class="pre">===</span> <span class="pre">o1.__proto__</span></code> devolverá <code class="docutils literal notranslate"><span class="pre">true</span></code> porque el prototipo no deja de ser un único objeto en memoria. También devolverá cierto la expresión <code class="docutils literal notranslate"><span class="pre">o1.__proto__</span> <span class="pre">===</span> <span class="pre">protoOkapi</span></code> en nuestro caso. Ahora bien, si el prototipo de un objeto es a su vez un objeto, como hemos visto, ¿cuál es el resultado de <code class="docutils literal notranslate"><span class="pre">o1.__proto__.__proto__</span></code> o, dicho de otra forma, cuál es el prototipo del objeto <code class="docutils literal notranslate"><span class="pre">protoOkapi</span></code>? Si mostramos el contenido de la expresión <code class="docutils literal notranslate"><span class="pre">o1.__proto__.__proto__</span></code> por la consola del navegador, veremos un objeto con una serie de métodos como <code class="docutils literal notranslate"><span class="pre">toString</span></code>, entre otros. Estos métodos vienen del prototipo de <code class="docutils literal notranslate"><span class="pre">Object</span></code>, es decir, <code class="docutils literal notranslate"><span class="pre">Object.prototype</span></code>, que es el prototipo usado por defecto para los objetos para los que no se define un prototipo específico. La expresión <code class="docutils literal notranslate"><span class="pre">Object.prototype</span> <span class="pre">===</span> <span class="pre">o1.__proto__.__proto__</span></code> se evalúa, por tanto, a cierto.</p>
+<p>El método <code class="docutils literal notranslate"><span class="pre">habla</span></code> definido anteriormente se limita a imprimir siempre la misma cadena. Los métodos, sin embargo, suelen utilizar los atributos del objeto sobre el que se invocan. Como el intérprete de JavaScript se encarga de vincular <code class="docutils literal notranslate"><span class="pre">this</span></code> al objeto sobre el que se ejecuta un método, podemos hacer que la función <code class="docutils literal notranslate"><span class="pre">habla</span></code> imprima la edad del okapi con otro prototipo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">protoOkapi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">  </span><span class="nx">habla</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡Hola! Tengo &quot;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">+</span><span class="s2">&quot; años.&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">3</span><span class="p">}</span>
+<span class="linenos">4</span><span class="kd">let</span><span class="w"> </span><span class="nx">o3</span><span class="o">=</span><span class="w"> </span><span class="nx">creaOkapi</span><span class="p">(</span><span class="nx">protoOkapi</span><span class="p">,</span><span class="mf">6</span><span class="p">);</span>
+<span class="linenos">5</span><span class="nx">o3</span><span class="p">.</span><span class="nx">habla</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Obviamente, si invocamos <code class="docutils literal notranslate"><span class="pre">habla</span></code> directamente haciendo <code class="docutils literal notranslate"><span class="pre">protoOkapi.habla()</span></code>, la variable <code class="docutils literal notranslate"><span class="pre">this.edad</span></code> valdrá <code class="docutils literal notranslate"><span class="pre">undefined</span></code>. Observa que podemos asociar una nueva función al okapi <code class="docutils literal notranslate"><span class="pre">o1</span></code> haciendo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">o1</span><span class="p">.</span><span class="nx">camina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Caminando voy.&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">2</span><span class="nx">o1</span><span class="p">.</span><span class="nx">camina</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Pero, al no pertenecer al prototipo, la función <code class="docutils literal notranslate"><span class="pre">camina</span></code> solo existe para el objeto <code class="docutils literal notranslate"><span class="pre">o1</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La variable polimórifica <code class="docutils literal notranslate"><span class="pre">this</span></code> se revincula cada vez que se llama a una función por lo que no podremos usarla desde una función interna para referirnos al objeto <code class="docutils literal notranslate"><span class="pre">this</span></code> de la función externa, excepto si la función interna es una función flecha. Para ilustrarlo, considera el siguiente bloque HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;w&quot;</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">&gt;</span>X<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">3</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Cuando se hace clic en la equis mayúscula, el siguiente código de JavaScript muestra por consola la cadena <code class="docutils literal notranslate"><span class="pre">w</span></code> excepto en el segundo caso en el que se produce una excepción por tener <code class="docutils literal notranslate"><span class="pre">this.parentNode</span></code> el valor <code class="docutils literal notranslate"><span class="pre">undefined</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#x&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="p">});</span>
+<span class="linenos"> 5</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#x&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">  </span><span class="p">});</span>
+<span class="linenos">11</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#x&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="linenos">12</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">13</span><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">this2</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">    </span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">this2</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="linenos">16</span><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">  </span><span class="p">});</span>
+<span class="linenos">18</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#x&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="linenos">19</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">21</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="linenos">22</span><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">  </span><span class="p">});</span>
+</pre></div>
+</div>
+<p>Observa cómo en el tercer caso salvaguardar el <code class="docutils literal notranslate"><span class="pre">this</span></code> externo en la variable local <code class="docutils literal notranslate"><span class="pre">this2</span></code> de la función externa garantiza una clausura adecuada entre la función interna y una copia de la referencia a <code class="docutils literal notranslate"><span class="pre">this</span></code>.</p>
+</div>
+<p>Una representación gráfica de la disposición en memoria de los diferentes objetos resultantes del código anterior es la siguiente:</p>
+<figure class="align-default" id="id2" style="width: 70%">
+<a class="reference external image-reference" href="_static/img/okapi1.svg"><img alt="objetos y prototipos en memoria" src="_images/okapi1.svg" /></a>
+<figcaption>
+<p><span class="caption-text">Representación en memoria de los objetos creados en el código de la actividad.</span><a class="headerlink" href="#id2" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<p>JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear objetos. Esta segunda forma se basa en definir una <em>función constructora</em> y utilizar la palabra reservada <code class="docutils literal notranslate"><span class="pre">new</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">function</span><span class="w"> </span><span class="nx">Okapi</span><span class="w"> </span><span class="p">(</span><span class="nx">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">=</span><span class="w"> </span><span class="nx">edad</span><span class="p">;</span>
+<span class="linenos">3</span><span class="p">}</span>
+<span class="linenos">4</span><span class="nx">Okapi</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">charla</span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">5</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¿Qué tal? Tengo &quot;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">+</span><span class="s2">&quot; años.&quot;</span><span class="p">);</span>
+<span class="linenos">6</span><span class="p">}</span>
+<span class="linenos">7</span><span class="kd">let</span><span class="w"> </span><span class="nx">o4</span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Okapi</span><span class="p">(</span><span class="mf">8</span><span class="p">);</span>
+<span class="linenos">8</span><span class="nx">o4</span><span class="p">.</span><span class="nx">charla</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>El operador <code class="docutils literal notranslate"><span class="pre">new</span></code> hace aquí muchas cosas:</p>
+<ul class="simple">
+<li><p>crea un nuevo objeto;</p></li>
+<li><p>asigna como prototipo de este nuevo objeto (es decir, como valor de la propiedad interna e inacesible <code class="docutils literal notranslate"><span class="pre">[[Prototype]]</span></code>, la misma a la que podemos acceder con <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf()</span></code> o en algunos navegadores con <code class="docutils literal notranslate"><span class="pre">__proto__</span></code>) el mismo objeto que el referenciado por la propiedad externa y accesible de nombre <code class="docutils literal notranslate"><span class="pre">prototype</span></code> del constructor (en este caso, <code class="docutils literal notranslate"><span class="pre">Okapi.prototype</span></code>, objeto al que hemos añadido la función <code class="docutils literal notranslate"><span class="pre">charla</span></code>);</p></li>
+<li><p>hace que <code class="docutils literal notranslate"><span class="pre">this</span></code> apunte al nuevo objeto;</p></li>
+<li><p>ejecuta la función constructora;</p></li>
+<li><p>devuelve el objeto creado (que en este caso será asignado a la variable <code class="docutils literal notranslate"><span class="pre">o4</span></code>).</p></li>
+</ul>
+</div>
+<p>Cada vez que creamos una función, el objeto que la representa recibe un atributo <code class="docutils literal notranslate"><span class="pre">prototype</span></code>, que es un objeto con un atributo <code class="docutils literal notranslate"><span class="pre">constructor</span></code> que referencia a la misma función. Además, como cualquier objeto de JavaScript, el objeto de la función tiene un prototipo interno que inicialmente se basa en el prototipo de la clase predefinida <code class="docutils literal notranslate"><span class="pre">Object</span></code>, esto es, <code class="docutils literal notranslate"><span class="pre">Object.prototype</span></code>, que contiene una serie de métodos básicos como <code class="docutils literal notranslate"><span class="pre">toString</span></code>. Cuando sobre el objeto creado (<code class="docutils literal notranslate"><span class="pre">o4</span></code> en nuestro caso) invocamos una función, esta se busca en primer lugar en los atributos del objeto; si no se encuentra allí, se busca en su prototipo (allí el intérprete encontraría, por ejemplo, la función <code class="docutils literal notranslate"><span class="pre">charla</span></code>); si no se encuentra allí, se busca en el prototipo de su prototipo (allí el intérprete se encontraría con la función <code class="docutils literal notranslate"><span class="pre">toString</span></code>) y así sucesivamente hasta llegar al prototipo de <code class="docutils literal notranslate"><span class="pre">Object</span></code>. Observa el paralelismo de este comportamiento con la herencia de lenguajes de programación como Java o C++, aunque su implementación es muy diferente.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En cualquier momento durante la ejecución del programa, podemos añadir nuevos métodos a un prototipo y todos los objetos vinculados a él (tanto los ya existentes como los nuevos que se creen) recibirán dinámicamente el nuevo método.</p>
+</div>
+<p>Más recientemente, JavaScript ha incorporado la palabra reservada <code class="docutils literal notranslate"><span class="pre">class</span></code> que permite crear objetos y asociarles prototipos de una forma más parecida a como otros lenguajes definen clases y crean objetos. En realidad, esta otra manera de definir los objetos es lo que se conoce como <em>azúcar sintáctica</em>, porque no añade nuevas características al lenguaje, sino que el intérprete transforma la nueva notación a la clásica basada en prototipos que hemos visto:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span><span class="w"> </span><span class="nx">OkapiBis</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">=</span><span class="w"> </span><span class="nx">edad</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="nx">charla</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¿Qué tal? Tengo &quot;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">+</span><span class="s2">&quot; años.&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 8</span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="kd">let</span><span class="w"> </span><span class="nx">o5</span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OkapiBis</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span>
+<span class="linenos">11</span><span class="nx">o5</span><span class="p">.</span><span class="nx">charla</span><span class="p">();</span>
+<span class="linenos">12</span><span class="nx">o5</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Finalmente, encadenando prototipos podemos definir relaciones de herencia, lo que con la nueva notación se puede hacer con la palabra reservada <code class="docutils literal notranslate"><span class="pre">extends</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span><span class="w"> </span><span class="nx">Empleado</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="nx">apellidos</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="nx">getNombreCompleto</span><span class="p">()</span><span class="w"> </span><span class="p">{...};</span>
+<span class="linenos"> 4</span><span class="p">}</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kd">class</span><span class="w"> </span><span class="nx">Director</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Empleado</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="nx">apellidos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="nx">apellidos</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_empleados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="linenos">10</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nx">añadeEmpleado</span><span class="p">(</span><span class="nx">empleado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_empleados</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">empleado</span><span class="p">);</span>
+<span class="linenos">13</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">14</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ambitos-y-clausuras">
+<span id="label-js-clausuras"></span><h2><span class="section-number">3.6. </span>Ámbitos y clausuras<a class="headerlink" href="#ambitos-y-clausuras" title="Enlace permanente a este encabezado"></a></h2>
+<p>En JavaScript es habitual definir una función dentro de otra de forma que la función interna utilice variables definidas en el ámbito de la externa y <em>sobreviva</em> a ella, en el sentido de que la función interna acabe ejecutándose cuando la externa ya finalizó:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">function</span><span class="w"> </span><span class="nx">creaLista</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#list&quot;</span><span class="p">);</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="nx">item</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">&quot;Elemento &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">));</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="nx">item</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Se ha hecho clic en el elemento &quot;</span><span class="o">+</span><span class="nx">i</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="nx">list</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">11</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Para que este código funcione es necesario que las variables locales de la función externa no se destruyan al finalizar la ejecución de la función como ocurriría en principio con todas sus variables locales cuando son eliminadas de la pila. Una <em>clausura</em> de JavaScript es la combinación de una función (como la función manejadora de evento del código anterior) junto con las variables locales del ámbito exterior que utiliza (la variable <code class="docutils literal notranslate"><span class="pre">i</span></code> en este caso). Una clausura se implementa como un registro que almacena una función y un entorno de la pila.</p>
+<p>Las clausuras y su relación con las variables declaradas con <code class="docutils literal notranslate"><span class="pre">var</span></code> o <code class="docutils literal notranslate"><span class="pre">let</span></code> es uno de los aspectos que más cuesta entender a los programadores que acaban de empezar con JavaScript (con el permiso de los prototipos, claro). Existen cuatro tipos de ámbitos para las variables en JavaScript:</p>
+<ul class="simple">
+<li><p>ámbito de función: corresponde a las variables locales declaradas con <code class="docutils literal notranslate"><span class="pre">var</span></code>; estas variables se almacenan en la pila y pueden usarse incluso antes de haber sido definidas; esto es así por un mecanismo conocido como <em>izado</em> (<em>hoisting</em>) que aupa las declaraciones de variables locales (pero no sus inicializaciones) al comienzo de la función; declarar dos o más veces una variable con <code class="docutils literal notranslate"><span class="pre">var</span></code> dentro de la misma función equivale a declararla una sola vez al comienzo de esta; si intentamos leer el valor de una variable antes de su declaración en el código y antes de haberle asignado ningún valor obtenemos el valor <em>undefined</em>;</p></li>
+<li><p>ámbito de bloque: corresponde a las variables locales declaradas con <code class="docutils literal notranslate"><span class="pre">let</span></code>; estas variables se almacenan en la pila también, pero no hay ningún proceso de izado y la variable se circunscribe al ámbito en el que ha sido declarada; dos variables declaradas en ámbitos diferentes de una misma función tienen espacios separados en la pila; no se pueden declarar dos variables de este tipo con el mismo nombre dentro del mismo contexto; si se declara una variable con <code class="docutils literal notranslate"><span class="pre">let</span></code> dentro de un bucle, se reserva sitio en la pila para una variable distinta en cada iteración;  el uso de <code class="docutils literal notranslate"><span class="pre">let</span></code> está permitido en el lenguaje desde la versión 6 de ECMAScript, publicada en 2015, por lo que es normal que encuentres muchos ejemplos de código que no lo usan;</p></li>
+<li><p>ámbito global: corresponde a las variables globales declaradas fuera de cualquier función; estas variables se almacenan en el <em>heap</em> y sus declaraciones también son <em>izadas</em> al principio del ámbito global;</p></li>
+<li><p>ámbito léxico: corresponde al hecho de que una función definida dentro de otra función puede acceder a las variables locales de esta última; si una función interna <em>sobrevive</em> a la función contenedora, las variables referenciadas no se borran de la memoria (a la asociación entre la función y las variables externas se le conoce, como hemos mencionado, como <em>clausura</em>);</p></li>
+</ul>
+<p>Las declaraciones de funciones locales y globales también sufren el mecanismo de izado en sus ámbitos respectivos.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Estudia el siguiente código y ejécutalo después de dedicar un rato a pensar qué valores imprime por la consola.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="nx">x</span><span class="p">.</span><span class="nx">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">};</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">  </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">    </span><span class="nx">x</span><span class="p">.</span><span class="nx">f2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos">14</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">();</span>
+<span class="linenos">20</span><span class="nx">x</span><span class="p">.</span><span class="nx">f1</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<p>La variable <code class="docutils literal notranslate"><span class="pre">i</span></code> se declara con <code class="docutils literal notranslate"><span class="pre">var</span></code> y, por tanto, su ámbito es el de la función <code class="docutils literal notranslate"><span class="pre">f</span></code>. No importa que usemos <code class="docutils literal notranslate"><span class="pre">var</span></code> varias veces a continuación dentro de la función, incluso aunque estas declaraciones adicionales estén dentro de un nuevo ámbito. En la pila de ejecución solo se reserva sitio para una variable cuando se ejecuta la función y esta única posición es la que no se destruye al salir de la función debido a las clausuras que se crean por las dos funciones anónimas asignadas a <code class="docutils literal notranslate"><span class="pre">x.f1</span></code> y <code class="docutils literal notranslate"><span class="pre">x.f2</span></code>. La variable <code class="docutils literal notranslate"><span class="pre">i</span></code> vale 2 al salir de la función y este valor es el que se usa al llamar a las dos funciones.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Observa de paso que para introducir nuevos ámbitos no es necesario usar una instrucción condicional o un bucle, sino que en JavaScript, como en la mayoría de lenguajes, basta con encerrar un bloque de código entre llaves para conseguirlo.</p>
+</div>
+<p>Sin embargo, si usamos <code class="docutils literal notranslate"><span class="pre">let</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">var</span></code> en las declaraciones de <code class="docutils literal notranslate"><span class="pre">i</span></code>, el ámbito de cada variable será el del bloque y tendremos tres variables distintas en la pila de ejecución justo antes de salir de la función. La primera de ellas será destruida en ese momento, pero las otras dos se <em>salvarán</em> de dicha destrucción para mantener las clausuras:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="nx">x</span><span class="p">.</span><span class="nx">f1</span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">};</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">  </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">1</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">    </span><span class="nx">x</span><span class="p">.</span><span class="nx">f2</span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);};</span>
+<span class="linenos">14</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">();</span>
+<span class="linenos">20</span><span class="nx">x</span><span class="p">.</span><span class="nx">f1</span><span class="p">();</span>
+<span class="linenos">21</span><span class="nx">x</span><span class="p">.</span><span class="nx">f2</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Las clausuras llevan fácilmente a confusión si no se entiende bien cómo funcionan. Intenta predecir la salida del siguiente código antes de ejecutarlo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">funcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="nx">funcs</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;My value: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">);</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="p">};</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nx">funcs</span><span class="p">[</span><span class="nx">i</span><span class="p">]();</span><span class="w">  </span><span class="c1">// Aquí se obtiene un resultado</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">funcs</span><span class="p">;</span>
+<span class="linenos">10</span><span class="p">}</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">();</span>
+<span class="linenos">13</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">14</span><span class="w">  </span><span class="nx">m</span><span class="p">[</span><span class="nx">j</span><span class="p">]();</span><span class="w">   </span><span class="c1">// Aquí otro diferente</span>
+<span class="linenos">15</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Intenta predecir ahora la salida cuando las variables se declaran con <code class="docutils literal notranslate"><span class="pre">let</span></code> en lugar de con <code class="docutils literal notranslate"><span class="pre">var</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">funcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="nx">funcs</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;My value: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">);</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="p">};</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nx">funcs</span><span class="p">[</span><span class="nx">i</span><span class="p">]();</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">funcs</span><span class="p">;</span>
+<span class="linenos">10</span><span class="p">}</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">();</span>
+<span class="linenos">13</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">14</span><span class="w">  </span><span class="nx">m</span><span class="p">[</span><span class="nx">j</span><span class="p">]();</span>
+<span class="linenos">15</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Al usar <code class="docutils literal notranslate"><span class="pre">let</span></code> se crea un nuevo enlace entre la función interior y la variable del bucle en cada iteración. Comprueba después si tus predicciones eran correctas ejecutando el código en un intérprete de JavaScript.</p>
+</div>
+</section>
+<section id="profundizar-en-javascript">
+<h2><span class="section-number">3.7. </span>Profundizar en JavaScript<a class="headerlink" href="#profundizar-en-javascript" title="Enlace permanente a este encabezado"></a></h2>
+<p>JavaScript tiene obviamente muchos más elementos que los que hemos explorado en este tema. Si quieres ampliar por tu cuenta tu conocimiento del lenguaje, puedes seguir con referencias como «<a class="reference external" href="https://javascript.info/">The Modern JavaScript Tutorial</a>», «<a class="reference external" href="https://exploringjs.com/impatient-js/index.html">JavaScript for impatient programmers</a>», «<a class="reference external" href="https://eloquentjavascript.net/">Eloquent JavaScript</a>» o «<a class="reference external" href="https://exploringjs.com/deep-js/index.html">Deep JavaScript: theory and techniques</a>».</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="estilo.html" class="btn btn-neutral float-left" title="2. Lenguajes de estilo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="servicios.html" class="btn btn-neutral float-right" title="4. Acceso a servicios web de terceros" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022-2023, Juan Antonio Pérez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9. Enunciados de las prácticas &mdash; documentación de Desarrollo de Aplicaciones en Internet - </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="8. Problemas" href="problemas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Desarrollo de Aplicaciones en Internet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marcado.html">1. Lenguajes de marcado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estilo.html">2. Lenguajes de estilo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cliente.html">3. Programar el lado del cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="servicios.html">4. Acceso a servicios web de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="componentes.html">5. Componentes web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nube.html">7. Computación en la  nube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">8. Problemas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Enunciados de las prácticas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#calendario">9.1. Calendario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instrucciones-de-entrega-de-las-practicas">9.2. Instrucciones de entrega de las prácticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#practica-1-una-pagina-web-con-html5">9.3. Práctica 1: una página web con HTML5 🖥️</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#marcado">9.3.1. Marcado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estilo">9.3.2. Estilo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recomendaciones-finales">9.3.3. Recomendaciones finales</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#practica-2-una-aplicacion-web-local">9.4. Práctica 2: una aplicación web local 🖥️</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#eliminacion-de-la-doble-vista">9.4.1. Eliminación de la doble vista</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adicion-del-formulario-para-insertar-un-nuevo-cuestionario">9.4.2. Adición del formulario para insertar un nuevo cuestionario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estilo-del-formulario">9.4.3. Estilo del formulario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documento-html">9.4.4. Documento HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adicion-de-iconos-para-borrar-cada-pregunta">9.4.5. Adición de iconos para borrar cada pregunta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funciones-auxiliares-a-crear">9.4.6. Funciones auxiliares a crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#borrado-de-preguntas">9.4.7. Borrado de preguntas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incorporacion-automatica-de-los-botones-de-borrado">9.4.8. Incorporación automática de los botones de borrado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adicion-de-formularios-de-insercion-de-preguntas">9.4.9. Adición de formularios de inserción de preguntas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#insercion-de-nuevas-preguntas-en-un-cuestionario">9.4.10. Inserción de nuevas preguntas en un cuestionario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incorporacion-automatica-de-los-formularios-de-insercion-de-preguntas">9.4.11. Incorporación automática de los formularios de inserción de preguntas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-nuevos-cuestionarios">9.4.12. Creación de nuevos cuestionarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#captura-de-pantalla">9.4.13. Captura de pantalla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#entrega-de-la-practica">9.4.14. Entrega de la práctica</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#practica-3-una-aplicacion-con-acceso-a-servicios-web-de-terceros-y-con-componentes-web">9.5. Práctica 3: una aplicación con acceso a servicios web de terceros y con componentes web 🖥️</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ejemplo-de-peticiones-get">9.5.1. Ejemplo de peticiones GET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incorporacion-de-informacion-de-la-wikipedia">9.5.2. Incorporación de información de la Wikipedia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incorporacion-de-la-informacion-de-flickr">9.5.3. Incorporación de la información de Flickr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-los-componentes-web">9.5.4. Creación de los componentes web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">9.5.5. Captura de pantalla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">9.5.6. Entrega de la práctica</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#practica-4-una-aplicacion-en-la-nube">9.6. Práctica 4: una aplicación en la nube 🖥️</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#comprobacion-de-la-aplicacion-del-carrito">9.6.1. Comprobación de la aplicación del carrito</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incorporacion-e-implantacion-de-la-aplicacion-de-la-practica-anterior">9.6.2. Incorporación e implantación de la aplicación de la práctica anterior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#caracteristicas-comunes-de-los-servicios-web-a-implementar">9.6.3. Características comunes de los servicios web a implementar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#almacenamiento-de-los-cuestionarios">9.6.4. Almacenamiento de los cuestionarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#representacion-de-los-datos-en-la-base-de-datos">9.6.5. Representación de los datos en la base de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gestion-de-los-temas-de-los-cuestionarios">9.6.6. Gestión de los temas de los cuestionarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gestion-de-las-preguntas-de-los-cuestionarios">9.6.7. Gestión de las preguntas de los cuestionarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autenticacion-de-usuarios">9.6.8. Autenticación de usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">9.6.9. Entrega de la práctica</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#apendice-ejemplos-de-posibles-ejercicios-para-el-examen-practico">9.7. APÉNDICE: Ejemplos de posibles ejercicios para el examen práctico</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#colapsar-los-enunciados-de-las-preguntas">9.7.1. Colapsar los enunciados de las preguntas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#destacar-algunas-preguntas-de-un-cuestionario">9.7.2. Destacar algunas preguntas de un cuestionario</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Desarrollo de Aplicaciones en Internet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">9. </span>Enunciados de las prácticas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/practicas.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="enunciados-de-las-practicas">
+<h1><span class="section-number">9. </span>Enunciados de las prácticas<a class="headerlink" href="#enunciados-de-las-practicas" title="Enlace permanente a este encabezado"></a></h1>
+<section id="calendario">
+<h2><span class="section-number">9.1. </span>Calendario<a class="headerlink" href="#calendario" title="Enlace permanente a este encabezado"></a></h2>
+<p>Este es el calendario de cada uno de los entregables de la asignatura. No se admitirán entregas fuera de plazo.</p>
+<table class="colwidths-given tablita docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entregable</p></th>
+<th class="head"><p>Título</p></th>
+<th class="head"><p>Fecha límite de entrega</p></th>
+<th class="head"><p>Tiempo medio estimado de realización</p></th>
+<th class="head"><p>Porcentaje en la nota de prácticas</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>P1</p></td>
+<td><p><a class="reference internal" href="#practica-1-una-pagina-web-con-html5">Práctica 1: una página web con HTML5 🖥️</a></p></td>
+<td><p>5 octubre 2022</p></td>
+<td><p>8 horas</p></td>
+<td><p>20%</p></td>
+</tr>
+<tr class="row-odd"><td><p>P2</p></td>
+<td><p><a class="reference internal" href="#practica-2-una-aplicacion-web-local">Práctica 2: una aplicación web local 🖥️</a></p></td>
+<td><p>2 noviembre 2022</p></td>
+<td><p>14 horas</p></td>
+<td><p>25%</p></td>
+</tr>
+<tr class="row-even"><td><p>P3</p></td>
+<td><p><a class="reference internal" href="#practica-3-una-aplicacion-con-acceso-a-servicios-web-de-terceros-y-con-componentes-web">Práctica 3: una aplicación con acceso a servicios web de terceros y con componentes web 🖥️</a></p></td>
+<td><p>23 noviembre 2022</p></td>
+<td><p>12 horas</p></td>
+<td><p>25%</p></td>
+</tr>
+<tr class="row-odd"><td><p>P4</p></td>
+<td><p><a class="reference internal" href="#practica-4-una-aplicacion-en-la-nube">Práctica 4: una aplicación en la nube 🖥️</a></p></td>
+<td><p>21 diciembre 2022</p></td>
+<td><p>20 horas</p></td>
+<td><p>30%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="instrucciones-de-entrega-de-las-practicas">
+<h2><span class="section-number">9.2. </span>Instrucciones de entrega de las prácticas<a class="headerlink" href="#instrucciones-de-entrega-de-las-practicas" title="Enlace permanente a este encabezado"></a></h2>
+<p>Realiza tu entrega en un único fichero comprimido a través del <a class="reference external" href="https://pracdlsi.dlsi.ua.es/index.cgi?id=val">servidor web del Departamento</a> antes de las 23.59 del día de la fecha límite. Recuerda que no se admitirán entregas fuera de plazo.</p>
+</section>
+<section id="practica-1-una-pagina-web-con-html5">
+<h2><span class="section-number">9.3. </span>Práctica 1: una página web con HTML5 🖥️<a class="headerlink" href="#practica-1-una-pagina-web-con-html5" title="Enlace permanente a este encabezado"></a></h2>
+<p>En esta práctica vas a crear un documento HTML5 en el que <em>todo</em> el formato recaiga en hojas de estilo CSS (por tanto, no es posible usar atributos como <code class="docutils literal notranslate"><span class="pre">style</span></code> para el formato). Tu documento se llamará <code class="docutils literal notranslate"><span class="pre">index.html</span></code> y tendrá dos vistas diferentes, <em>normal</em> (la vista por defecto) y <em>compacta</em>; el usuario podrá cambiar de vista en cualquier momento usando los enlaces a pie de página. El objetivo es que consigas un documento que se muestre exactamente como puedes ver en estas imágenes de la <a class="reference external" href="_static/img/p1-vista-normal.png">vista normal</a> y de la <a class="reference external" href="_static/img/p1-vista-compacta.png">vista compacta</a>. Tu documento usará tres hojas de estilo: una con todo el contenido común a ambas vistas y dos más correspondientes a cada una de las vistas. Para poder alternar entre ambas hojas de estilo, añade este código a la cabecera (<code class="docutils literal notranslate"><span class="pre">head</span></code>) de tu página:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">changeCSS</span><span class="p">(</span><span class="nx">cssFile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">oldlink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;estilo&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">newlink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">newlink</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;rel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;stylesheet&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">newlink</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text/css&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">newlink</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;estilo&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">newlink</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">cssFile</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mf">0</span><span class="p">].</span><span class="nx">replaceChild</span><span class="p">(</span><span class="nx">newlink</span><span class="p">,</span><span class="w"> </span><span class="nx">oldlink</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Recuerda también añadir posteriormente este código en el pie de la página cuando lo crees:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;changeCSS(&#39;./css/normal.css&#39;);&quot;</span><span class="p">&gt;</span>Vista normal<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> |
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;changeCSS(&#39;./css/compact.css&#39;);&quot;</span><span class="p">&gt;</span>Vista compacta<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Añade, finalmente, un elemento como este a la cabecera de tu documento para que la vista normal sea la que se muestre por defecto:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;estilo&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./css/normal.css&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Es muy importante que cuando implementes tu solución te asegures de que respetas <strong>estrictamente</strong> estas instrucciones, incluidos los nombres de identificadores, nombres de fichero, etc.; respeta las mayúsculas y minúsculas, las tildes, la posición de cada elemento en el documento, etc.</p>
+<section id="marcado">
+<h3><span class="section-number">9.3.1. </span>Marcado<a class="headerlink" href="#marcado" title="Enlace permanente a este encabezado"></a></h3>
+<p>Comienza preparando el documento HTML, sin tener en cuenta, por ahora, los aspectos estilísticos. El documento HTML seguirá los principios del lenguaje estudiados en clase. En particular, tendrá:</p>
+<ul class="simple">
+<li><p>una cabecera (elemento <code class="docutils literal notranslate"><span class="pre">header</span></code>) que incluya el título (elemento <code class="docutils literal notranslate"><span class="pre">h1</span></code>), el párrafo descriptivo y el índice (el índice será un elemento de tipo <code class="docutils literal notranslate"><span class="pre">nav</span></code> que incluirá una lista no numerada, <code class="docutils literal notranslate"><span class="pre">ul</span></code>), los tres como descendientes inmediatos (hijos) del elemento <code class="docutils literal notranslate"><span class="pre">header</span></code>;</p></li>
+<li><p>la cabecera irá seguida de un fragmento principal (encerrado en el elemento <code class="docutils literal notranslate"><span class="pre">main</span></code>) que incluirá ambos cuestionarios;</p></li>
+<li><p>la página acabará con un pie de página (elemento <code class="docutils literal notranslate"><span class="pre">footer</span></code>) con tus datos y los enlaces para cambiar la vista; encierra tu nombre de usuario de <code class="docutils literal notranslate"><span class="pre">alu.ua.es</span></code> (por ejemplo, <code class="docutils literal notranslate"><span class="pre">zawm</span></code>) en un <code class="docutils literal notranslate"><span class="pre">span</span></code> (hijo de <code class="docutils literal notranslate"><span class="pre">footer</span></code>) con identificador <code class="docutils literal notranslate"><span class="pre">nombre</span></code>; utiliza el carácter <code class="docutils literal notranslate"><span class="pre">'|'</span></code> en el documento HTML para separar los diferentes contenidos del pie de página.</p></li>
+</ul>
+<p>Cada cuestionario estará incluido en su propia sección (mediante sendos elementos <code class="docutils literal notranslate"><span class="pre">section</span></code>, que han de incluir atributos <code class="docutils literal notranslate"><span class="pre">id</span></code>, con valores <code class="docutils literal notranslate"><span class="pre">paris</span></code>, sin tilde y todo en minúsculas, y <code class="docutils literal notranslate"><span class="pre">londres</span></code>, todo en minúsculas, que serán referenciados desde el índice) y tendrá un título de segundo nivel (un elemento <code class="docutils literal notranslate"><span class="pre">h2</span></code>, que será hijo de <code class="docutils literal notranslate"><span class="pre">section</span></code>) que incluirá una imagen (que no ha de coincidir necesariamente en tu solución con la de este enunciado, pero no ha de tener tamaño superior a 512x512 píxeles) seguida del texto del título tal como sigue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">section</span> <span class="o">...&gt;</span>
+  <span class="o">&lt;</span><span class="n">h2</span> <span class="o">...&gt;</span>
+    <span class="o">&lt;</span><span class="n">img</span> <span class="o">...&gt;</span>
+    <span class="n">Cuestionario</span> <span class="n">sobre</span><span class="o">...</span>
+  <span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>La forma de codificar cada pregunta será la siguiente:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bloque&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pregunta&quot;</span><span class="p">&gt;</span>
+  La ciudad de París se sitúa a ambos lados del río Sena.
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;respuesta&quot;</span> <span class="na">data-valor</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>El contador de pregunta se ha de inicializar para cada nuevo cuestionario. El atributo <code class="docutils literal notranslate"><span class="pre">data-valor</span></code> es un atributo personalizado de HTML que usaremos para almacenar la respuesta (true/false) a la pregunta. En general, no es posible añadir a un elemento atributos que no estén especificados en el estándar excepto si estos comienzan por el prefijo <code class="docutils literal notranslate"><span class="pre">data-</span></code>.</p>
+<p>Tanto los números de pregunta como el texto usado en la página para indicar la respuesta correcta no pueden aparecer explícitamente en el documento HTML, sino que han de ser generados dinámicamente desde CSS.</p>
+</section>
+<section id="estilo">
+<h3><span class="section-number">9.3.2. </span>Estilo<a class="headerlink" href="#estilo" title="Enlace permanente a este encabezado"></a></h3>
+<p>Una vez tengas el documento HTML finalizado, puedes pasar a diseñar las hojas de estilo. Para el contador de preguntas, añade un número secuencial a cada pregunta obtenido automáticamente mediante un uso adecuado de los <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Counters">contadores de CSS</a>. Para las respuestas usa los <a class="reference external" href="http://www.smashingmagazine.com/2011/07/13/learning-to-use-the-before-and-after-pseudo-elements-in-css/">pseudoelementos CSS</a> <code class="docutils literal notranslate"><span class="pre">::before</span></code> y <code class="docutils literal notranslate"><span class="pre">::after</span></code>.</p>
+<p>Se describen a continuación las características comunes de ambas vistas:</p>
+<ul class="simple">
+<li><p>la página completa (elemento <code class="docutils literal notranslate"><span class="pre">body</span></code>) tiene fondo blanco, letra de color <code class="docutils literal notranslate"><span class="pre">#333333</span></code> y no tiene margen (esto es, el margen se ha de establecer explícitamente a cero);</p></li>
+<li><p>la cabecera (elemento <code class="docutils literal notranslate"><span class="pre">header</span></code>) tiene un ancho máximo de 1080px y márgenes automáticos a derecha e izquierda; su ancho, además, es el 98% del de la página para que siempre haya un pequeño margen entre el contenido de la página y la ventana del navegador; el texto de la cabecera está centrado;</p></li>
+<li><p>los encabezados de nivel 1 usan letra negrita de 36px;</p></li>
+<li><p>los encabezados de nivel 2 usan letra negrita de 25px;</p></li>
+<li><p>el índice no usa ningún adorno especial de lista; los enlaces del índice no aparecen subrayados; lo único que los identifica como enlaces es su color (<code class="docutils literal notranslate"><span class="pre">cornflowerblue</span></code>) y el hecho de que el cursor del ratón cambia al pasar sobre ellos;</p></li>
+<li><p>el fragmento principal (elemento <code class="docutils literal notranslate"><span class="pre">main</span></code>) tiene un ancho máximo de 1080px y márgenes automáticos a derecha e izquierda; su ancho, además, es el 98% del de la página para que siempre haya un pequeño margen entre el contenido de la página y la ventana del navegador;</p></li>
+<li><p>la sección correspondiente a cada cuestionario tiene un margen superior de 80px;</p></li>
+<li><p>cada pregunta (selector <code class="docutils literal notranslate"><span class="pre">.pregunta</span></code>) tiene un margen superior e inferior de 1ex;</p></li>
+<li><p>el texto en otro idioma (<em>arrondissement</em>) se marca con la clase <em>idioma</em> (usa un elemento <code class="docutils literal notranslate"><span class="pre">span</span></code> para rodear la palabra) y se muestra en itálica;</p></li>
+<li><p>la imagen junto al título de cada cuestionario está alineada verticalmente con la parte superior de la línea (<code class="docutils literal notranslate"><span class="pre">text-top</span></code>) y se escala <em>mediante CSS</em> a un tamaño de 50x50 píxels; la separa del encabezado un margen de 10px por la derecha; la imagen tiene un borde de 1px sólido de color <code class="docutils literal notranslate"><span class="pre">lightgray</span></code>;</p></li>
+<li><p>el pie de página (elemento <code class="docutils literal notranslate"><span class="pre">footer</span></code>) tiene una altura de 50px y un margen superior de 100px; el color de fondo es <code class="docutils literal notranslate"><span class="pre">steelblue</span></code> y su anchura abarca el 100% de la ventana del navegador; el texto de una sola línea incluido usa una letra de tamaño 80% de color <code class="docutils literal notranslate"><span class="pre">white</span></code>, excepto para los enlaces, que usan color <code class="docutils literal notranslate"><span class="pre">lightgray</span></code>; el texto, además, está centrado verticalmente, lo que puedes conseguir siguiendo la primera recomendación de <a class="reference external" href="http://stackoverflow.com/questions/9249359/is-it-possible-to-vertically-align-text-within-a-div/14850381#14850381">esta respuesta</a>; ten en cuenta, además, que si el tamaño de la ventana de tu navegador es superior al tamaño de la página (lo que puede suceder si abres la página sin haber añadido los diferentes cuestionarios), el pie de página no quedará pegado al borde inferior de la ventana; el comportamiento anterior es correcto y no has de cambiarlo.</p></li>
+</ul>
+<p>Las características particulares de la vista compacta son:</p>
+<ul class="simple">
+<li><p>usa el tipo de letra <a class="reference external" href="https://fonts.google.com/specimen/Ubuntu?selection.family=Ubuntu">Ubuntu</a> para todo el documento; para ver cómo usar en tus estilos un tipo de letra de Google Fonts, haz clic en <span class="guilabel">Select this font</span> en la página correspondiente al tipo de letra y después haz clic en la caja que aparece en la parte inferior de la ventana;</p></li>
+<li><p>cada pregunta/respuesta (selector <code class="docutils literal notranslate"><span class="pre">.bloque</span></code>) tiene  un margen superior de 10px e inferior de 20px.</p></li>
+</ul>
+<p>Las características particulares de la vista normal son:</p>
+<ul class="simple">
+<li><p>usa el tipo de letra Droid Serif  para todo el documento; la web que <a class="reference external" href="https://fonts.google.com/specimen/Droid+Serif">describía</a> este tipo de letra ya no está en Google Fonts, pero puedes seguir usándola añadiendo lo siguiente a tu página:</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#39;https://fonts.googleapis.com/css?family=Droid+Serif&#39;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#39;stylesheet&#39;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#39;text/css&#39;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>y lo siguiente a tu hoja de estilo:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">font-family</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Droid Serif&#39;</span><span class="o">,</span><span class="w"> </span><span class="nt">serif</span><span class="o">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>cada pregunta/respuesta (selector <code class="docutils literal notranslate"><span class="pre">.bloque</span></code>) tiene un fondo de color <code class="docutils literal notranslate"><span class="pre">whitesmoke</span></code>; su borde es sólido de 1px de ancho y color <code class="docutils literal notranslate"><span class="pre">lightgray</span></code>; el margen superior es de 10px y el inferior de 20px; el relleno (<em>padding</em>) es de 10px; la sombra de la caja se obtiene dando el siguiente valor a la propiedad CSS <code class="docutils literal notranslate"><span class="pre">box-shadow</span></code> (averigua para qué sirve cada parámetro):</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">box-shadow</span><span class="o">:</span><span class="w"> </span><span class="nt">6px</span><span class="w"> </span><span class="nt">6px</span><span class="w"> </span><span class="nt">3px</span><span class="w"> </span><span class="nt">slategray</span><span class="o">;</span>
+</pre></div>
+</div>
+<p>Aunque es una práctica habitual, no resetees a cero los márgenes y el relleno de todos los estilos del documento mediante una regla que use el selector universal <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+</section>
+<section id="recomendaciones-finales">
+<h3><span class="section-number">9.3.3. </span>Recomendaciones finales<a class="headerlink" href="#recomendaciones-finales" title="Enlace permanente a este encabezado"></a></h3>
+<p>Asegúrate de que tus ficheros se validan correctamente con los validadores HTML5 y CSS del W3C (usando la pestaña <span class="guilabel">Validate by File Upload</span> en ambos casos). Además, usa Chrome DevTools para comprobar que el estilo aplicado en cada punto del documento es correcto. Finalmente, asegúrate de que cumple con todas las especificaciones de este enunciado (por ejemplo, los nombres o valores de atributos, elementos o ficheros).</p>
+<p>Recuerda poner tu usuario de la cuenta de <code class="docutils literal notranslate"><span class="pre">alu.ua.es</span></code> (pero sin la arroba y el dominio) en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado <code class="docutils literal notranslate"><span class="pre">p1-dai.zip</span></code> a través del <a class="reference external" href="https://pracdlsi.dlsi.ua.es/index.cgi?id=val">servidor web del Departamento</a>. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, una carpeta <code class="docutils literal notranslate"><span class="pre">css</span></code> con los ficheros con las hojas de estilo que hayas usado y una carpeta <code class="docutils literal notranslate"><span class="pre">img</span></code> con las imágenes.</p>
+<p>Por último, coloca en algún punto del pie de la página un fragmento de HTML como <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">id=&quot;tiempo&quot;&gt;[5</span> <span class="pre">horas]&lt;/span&gt;</span></code> donde has de sustituir el 5 por el número de horas aproximadas que te haya llevado hacer esta prática.</p>
+</section>
+</section>
+<section id="practica-2-una-aplicacion-web-local">
+<h2><span class="section-number">9.4. </span>Práctica 2: una aplicación web local 🖥️<a class="headerlink" href="#practica-2-una-aplicacion-web-local" title="Enlace permanente a este encabezado"></a></h2>
+<p>En esta práctica extenderás la práctica anterior con la incorporación de elementos dinámicos mediante JavaScript. En particular, será posible añadir y eliminar cuestionarios, así como añadir y eliminar sus preguntas; todo ello en el navegador, sin interaccionar con ningún servidor o base de datos. Para ello, la sección <code class="docutils literal notranslate"><span class="pre">main</span></code> del documento tendrá al principio un formulario que permitirá añadir nuevos cuestionarios indicando su título y su imagen asociada; además, al principio de cada cuestionario (tras el título e inmediatamente antes de la primera pregunta, si la hubiera) se mostrará otro formulario que permitirá añadir una nueva pregunta y su respuesta (verdadero o falso) al final del cuestionario correspondiente. Se permitirá, además, borrar individualmente las preguntas de los cuestionarios.</p>
+<p>Asegúrate de que sigues los siguientes pasos en el orden en que aparecen en estas instrucciones para que la realización de la práctica sea más sencilla. Repasa, además, todo lo estudiado en clase sobre JavaScript antes de comenzar la implementación. No puedes utilizar ninguna librería externa en tu solución. Al igual que en la práctica anterior, tu documento ha de ser válido en cada momento.</p>
+<section id="eliminacion-de-la-doble-vista">
+<h3><span class="section-number">9.4.1. </span>Eliminación de la doble vista<a class="headerlink" href="#eliminacion-de-la-doble-vista" title="Enlace permanente a este encabezado"></a></h3>
+<p>Elimina las dos vistas del documento de la práctica anterior y deja únicamente la vista <em>normal</em>. Para ello, borra todo el código JavaScript relacionado con el cambio de estilo, así como los dos enlaces que había en el pie de página para alternar entre los dos estilos. Fusiona todo el CSS que afectaba a la vista <em>normal</em> en un único documento CSS de nombre <code class="docutils literal notranslate"><span class="pre">normal.css</span></code>.</p>
+</section>
+<section id="adicion-del-formulario-para-insertar-un-nuevo-cuestionario">
+<h3><span class="section-number">9.4.2. </span>Adición del formulario para insertar un nuevo cuestionario<a class="headerlink" href="#adicion-del-formulario-para-insertar-un-nuevo-cuestionario" title="Enlace permanente a este encabezado"></a></h3>
+<p>Añade el siguiente código al principio del bloque <code class="docutils literal notranslate"><span class="pre">main</span></code> de tu documento:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;formulario&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nuevoCuestionario&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Tema del cuestionario:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;tema&quot;</span> <span class="na">autofocus</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>URL de la imagen:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;url&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;imagen&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;crea&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Crear nuevo cuestionario&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Este código define los elementos necesarios para el formulario de creación de un nuevo cuestionario. Cada campo a insertar se representa en el formulario con una etiqueta (elemento <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code>) y una entrada (elemento <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code>); ambos se incluyen como elementos dentro de una lista. El botón que se añade como último elemento de la lista ejecutará al ser pulsado el código JavaScript de creación del cuestionario. Es importante que respetes escrupulosamente el fragmento de código anterior, incluyendo los nombres de las clases e identificadores.</p>
+<p>Date cuenta de que, en este caso, no usamos un elemento de tipo <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code>, sino un <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> para contener el formulario, con lo que no es necesario desactivar el envío de datos y la recarga automática de la página que ocurre con los formularios de tipo <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code>.</p>
+<p>Todos los formularios de la aplicación han de permitir añadir nuevos cuestionarios o preguntas pulsando la tecla <code class="docutils literal notranslate"><span class="pre">enter</span></code> dentro del cuadro de texto, además de haciendo clic en el botón correspondiente. Tendrás que basarte para ello en el evento <code class="docutils literal notranslate"><span class="pre">keydown</span></code> y en propiedades como <code class="docutils literal notranslate"><span class="pre">KeyboardEvent.key</span></code>; observa, de paso, que probablemente encontrarás mucha información en la web sobre eventos como <code class="docutils literal notranslate"><span class="pre">keypress</span></code> o propiedades como <code class="docutils literal notranslate"><span class="pre">KeyboardEvent.keyCode</span></code>, pero ambas están obsoletas y desaparecerán de funcionas versiones de los navegadores. En el desarrollo web es importante que siempre te asegures de que las funciones o propiedades son las adecuadas; puedes consultar para ello webs de referencia como Mozilla Developer Network.</p>
+</section>
+<section id="estilo-del-formulario">
+<h3><span class="section-number">9.4.3. </span>Estilo del formulario<a class="headerlink" href="#estilo-del-formulario" title="Enlace permanente a este encabezado"></a></h3>
+<p>Respeta las siguientes directrices a la de hora de dar estilo al formulario. Como más adelante usarás estos mismos estilos para el resto de formularios, basa tus selectores de CSS en la clase <code class="docutils literal notranslate"><span class="pre">.formulario</span></code> y no en el atributo <code class="docutils literal notranslate"><span class="pre">id</span></code> del formulario del apartado anterior:</p>
+<ul class="simple">
+<li><p>el elemento <code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code> que contiene los distintos campos no usa ningún estilo de lista para sus elementos (de lo contrario, aparecería un topo o bala antes de cada elemento de la lista) y no tiene relleno (el <em>padding</em> es cero); además, su margen superior es de 30px, el inferior de 20px y el derecho e izquierdo son de 0px;</p></li>
+<li><p>cada elemento de la lista (elemento <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code>) tiene un relleno (por los cuatro lados) de 12px y un borde inferior sólido de grosor 1px y color <code class="docutils literal notranslate"><span class="pre">#eee</span></code>;</p></li>
+<li><p>además, el primer elemento de la lista tendrá un borde superior sólido de grosor 1px y color #777; el último elemento de la lista tendrá un borde inferior de idénticas características; identifica cuál de las <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements">pseudoclases de CSS</a> te puede ser útil para esto;</p></li>
+<li><p>el contenido de los elementos <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> se ha de mostrar con el valor <code class="docutils literal notranslate"><span class="pre">inline-block</span></code> para la propiedad <code class="docutils literal notranslate"><span class="pre">display</span></code> (que trata el contenido del elemento como una combinación de <code class="docutils literal notranslate"><span class="pre">inline</span></code> y <code class="docutils literal notranslate"><span class="pre">block</span></code>) lo que nos permitirá darle un ancho fijo de 15em y conseguir que las cajas de introducción de texto queden bien alineadas unas respecto a otras;</p></li>
+<li><p>aquellos elementos de tipo <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> del formulario que tengan su atributo <code class="docutils literal notranslate"><span class="pre">type</span></code> con valor <code class="docutils literal notranslate"><span class="pre">text</span></code> o <code class="docutils literal notranslate"><span class="pre">url</span></code> (el botón, por tanto, queda excluido) tendrá un borde sólido de 1px de grosor y color <code class="docutils literal notranslate"><span class="pre">#aaa</span></code>; añádeles, además, estos atributos para conseguir una mayor definición de la caja:</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">box-shadow</span><span class="o">:</span><span class="w"> </span><span class="nt">0px</span><span class="w"> </span><span class="nt">0px</span><span class="w"> </span><span class="nt">3px</span><span class="w"> </span><span class="p">#</span><span class="nn">ccc</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="w"> </span><span class="nt">5px</span><span class="w"> </span><span class="nt">8px</span><span class="w"> </span><span class="p">#</span><span class="nn">eee</span><span class="w"> </span><span class="nt">inset</span><span class="o">;</span>
+<span class="nt">border-radius</span><span class="p">:</span><span class="nd">2px</span><span class="o">;</span>
+</pre></div>
+</div>
+</section>
+<section id="documento-html">
+<h3><span class="section-number">9.4.4. </span>Documento HTML<a class="headerlink" href="#documento-html" title="Enlace permanente a este encabezado"></a></h3>
+<p>Las únicas diferencias en el documento HTML respecto a la práctica anterior es la supresión de todo lo relacionado con el uso de las dos hojas de estilo, la incorporación del formulario de creación de cuestionarios y, evidentemente, la inserción de un elemento <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> para cargar desde un fichero externo (atributo <code class="docutils literal notranslate"><span class="pre">src</span></code> de <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code>) el código JavaScript que escribas. Ten en cuenta que tu documento HTML no puede contener ningún código en CSS ni en JavaScript.</p>
+</section>
+<section id="adicion-de-iconos-para-borrar-cada-pregunta">
+<h3><span class="section-number">9.4.5. </span>Adición de iconos para borrar cada pregunta<a class="headerlink" href="#adicion-de-iconos-para-borrar-cada-pregunta" title="Enlace permanente a este encabezado"></a></h3>
+<p>En primer lugar, vamos a añadir a las (cinco) cajas existentes para bloques de pregunta un icono que permita eliminar el bloque completo (número, enunciado y respuesta) de la página. Crea para ello una función <code class="docutils literal notranslate"><span class="pre">addCruz</span></code> que reciba como parámetro un objeto de tipo nodo que apunte a un elemento de clase <code class="docutils literal notranslate"><span class="pre">.bloque</span></code>. La función creará un nodo que contega un elemento como el siguiente</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;borra&quot;</span><span class="p">&gt;</span>☒<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>y lo insertará como primer hijo del nodo <code class="docutils literal notranslate"><span class="pre">.bloque</span></code> pasado como parámetro. El contenido corresponde al carácter Unicode <a class="reference external" href="http://unicode-table.com/en/2612/">2612</a>.</p>
+<p>El estilo de los elementos de clase <code class="docutils literal notranslate"><span class="pre">.borra</span></code> usará posicionamiento absoluto para situarse a 2px del extremo derecho y 1px del extremo superior de la caja del elemento <code class="docutils literal notranslate"><span class="pre">.bloque</span></code> que lo contiene. <em>Nota:</em> para que este posicionamiento funcione tendrás que <em>posicionar</em> el elemento <code class="docutils literal notranslate"><span class="pre">.bloque</span></code>. Además, el cursor del ratón al pasar por encima de la cruz de borrado adoptará el estilo <code class="docutils literal notranslate"><span class="pre">pointer</span></code>. Ten en cuenta que estos estilos (u otros de esta práctica) no se aplicarán directamente desde el código en JavaScript, sino que este se limitará a asignar determinados valores al atributo <code class="docutils literal notranslate"><span class="pre">class</span></code> de los elementos y será la hoja de estilo CSS la que establezca las propiedades estéticas oportunas.</p>
+<p>Por último, añade un manejador de evento al nuevo nodo de manera que se invoque a una función <code class="docutils literal notranslate"><span class="pre">borraPregunta</span></code> (definida más adelante) cuando se haga clic en el elemento.</p>
+<p>Recuerda que puedes evaluar la corrección de tu función desde la consola de JavaScript del navegador.</p>
+</section>
+<section id="funciones-auxiliares-a-crear">
+<h3><span class="section-number">9.4.6. </span>Funciones auxiliares a crear<a class="headerlink" href="#funciones-auxiliares-a-crear" title="Enlace permanente a este encabezado"></a></h3>
+<p>Durante la implementación de la práctica te serán de utilidad algunas funciones que puedes definir y evaluar ahora:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">insertAsLastChild(padre,nuevoHijo)</span></code>: inserta el nodo <code class="docutils literal notranslate"><span class="pre">nuevoHijo</span></code> como último hijo del nodo <code class="docutils literal notranslate"><span class="pre">padre</span></code>; esta función puede delegar en la función <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append">append</a> directamente.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insertAsFirstChild(padre,nuevoHijo)</span></code>: inserta el nodo <code class="docutils literal notranslate"><span class="pre">nuevoHijo</span></code> como primer hijo del nodo <code class="docutils literal notranslate"><span class="pre">padre</span></code>; esta función puede delegar en <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/prepend">prepend</a> directamente.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insertBeforeChild(padre,hijo,nuevoHijo)</span></code>: inserta el nodo <code class="docutils literal notranslate"><span class="pre">nuevoHijo</span></code> como hijo del nodo <code class="docutils literal notranslate"><span class="pre">padre</span></code> inmediatamente antes del nodo <code class="docutils literal notranslate"><span class="pre">hijo</span></code>; esta función usará <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore">insertBefore</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">removeElement(nodo)</span></code>: elimina del DOM el nodo pasado como parámetro; esta función puede delegar en <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove">remove</a> directamente.</p></li>
+</ul>
+<p>No es obligatorio que definas todas las funciones anteriores. La idea es que tengas presente mientras programas una especie de <em>caja de herramientas</em> de funciones que te pueden ser útiles en uno u otro momento, pero, dado que algunas son extremadamente cortas, puedes usar las funciones adecuadas del API del navegador directamente.</p>
+<p>Además, te será de suma utilidad disponer de una función que funcione de forma similar a <code class="docutils literal notranslate"><span class="pre">querySelector</span></code> pero buscando el primer ancestro (en lugar de descendiente) que concuerde con el selector:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">queryAncestorSelector(node,selector)</span></code>: devuelve el ancestro más cercano a <code class="docutils literal notranslate"><span class="pre">node</span></code> que case con el selector indicado como segundo parámetro o <code class="docutils literal notranslate"><span class="pre">null</span></code> si no existe ninguno; <code class="docutils literal notranslate"><span class="pre">node</span></code> ha de ser un nodo inferior en el árbol a <code class="docutils literal notranslate"><span class="pre">document.body</span></code>.</p></li>
+</ul>
+<p>La siguiente es una posible implementación de la función que puedes copiar en tu práctica después de asegurarte de que la entiendes perfectamente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">queryAncestorSelector</span><span class="w"> </span><span class="p">(</span><span class="nx">node</span><span class="p">,</span><span class="nx">selector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">parent</span><span class="o">=</span><span class="w"> </span><span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">selector</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">found</span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">parent</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nb">document</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">found</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">found</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">found</span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">all</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">parent</span><span class="p">)</span><span class="o">?</span><span class="kc">true</span><span class="o">:</span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">parent</span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">found</span><span class="p">)</span><span class="o">?</span><span class="nx">parent</span><span class="p">.</span><span class="nx">parentNode</span><span class="o">:</span><span class="nx">parent</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">found</span><span class="p">)</span><span class="o">?</span><span class="nx">parent</span><span class="o">:</span><span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Versiones recientes de los navegadores permiten usar la función <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">closest</a> que tiene un comportamiento similar a <code class="docutils literal notranslate"><span class="pre">queryAncestorSelector</span></code>, pero no es necesario que la uses en tu práctica.</p>
+</div>
+<p>Esta función la usaras cuando desde un nodo determinado del DOM quieras acceder a un ancestro para el que conoces un selector, pero no conoces la <em>distancia</em> exacta a la que se encuentra o no te interesa hacer que tu código dependa en exceso de dicha distancia porque en el futuro podría haber más nodos intermedios en el árbol y no quieres tener que modificar el código de JavaScript si esto ocurre. Por ejemplo, considera este fragmento de HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+    ...
+    <span class="p">&lt;</span><span class="nt">c</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">d</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">d</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">c</span><span class="p">&gt;</span>
+    ...
+    <span class="p">&lt;</span><span class="nt">e</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">e</span><span class="p">&gt;</span>
+    ...
+    <span class="p">&lt;</span><span class="nt">f</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">f</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Si <code class="docutils literal notranslate"><span class="pre">x</span></code> representa el nodo correspondiente al elemento <code class="docutils literal notranslate"><span class="pre">d</span></code> y quieres acceder a información del nodo <code class="docutils literal notranslate"><span class="pre">a</span></code>, podría hacerse algo como:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">x</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">parentNode</span>
+</pre></div>
+</div>
+<p>o, con ayuda de la nueva funcion, simplemente</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">queryAncestorSelector</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Otro ejemplo: para acceder al elemento <code class="docutils literal notranslate"><span class="pre">f</span></code> desde <code class="docutils literal notranslate"><span class="pre">x</span></code>, se puede hacer:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">queryAncestorSelector</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">).</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="borrado-de-preguntas">
+<h3><span class="section-number">9.4.7. </span>Borrado de preguntas<a class="headerlink" href="#borrado-de-preguntas" title="Enlace permanente a este encabezado"></a></h3>
+<p>Escribe ahora el código para <code class="docutils literal notranslate"><span class="pre">borraPregunta</span></code>, el manejador del evento discutido en más arriba. Esta función usará el objeto de tipo evento recibido como parámetro para acceder al elemento sobre el que se ha hecho clic. A partir de este elemento, usando <code class="docutils literal notranslate"><span class="pre">queryAncestorSelector</span></code>, accederá al ancestro con selector <code class="docutils literal notranslate"><span class="pre">.bloque</span></code> y lo eliminará del documento, es decir, eliminará el nodo correspondiente del DOM. Además, cuando el cuestionario se quede sin ninguna pregunta, este se eliminará por completo del DOM, así como su entrada en el índice al principio de la página.</p>
+</section>
+<section id="incorporacion-automatica-de-los-botones-de-borrado">
+<h3><span class="section-number">9.4.8. </span>Incorporación automática de los botones de borrado<a class="headerlink" href="#incorporacion-automatica-de-los-botones-de-borrado" title="Enlace permanente a este encabezado"></a></h3>
+<p>Crea una función <code class="docutils literal notranslate"><span class="pre">init</span></code>, que sea invocada por el manejador del evento <code class="docutils literal notranslate"><span class="pre">DOMContentLoaded</span></code> y que recorra todos los elementos de clase <code class="docutils literal notranslate"><span class="pre">.bloque</span></code> e invoque la función <code class="docutils literal notranslate"><span class="pre">addCruz</span></code> (definida anteriormente) sobre cada uno de ellos. En estos momentos, al abrir tu documento, cada pregunta debería tener su icono de borrado y debería ser posible dejar el documento sin cuestionarios tras borrar todos los bloques de preguntas.</p>
+</section>
+<section id="adicion-de-formularios-de-insercion-de-preguntas">
+<h3><span class="section-number">9.4.9. </span>Adición de formularios de inserción de preguntas<a class="headerlink" href="#adicion-de-formularios-de-insercion-de-preguntas" title="Enlace permanente a este encabezado"></a></h3>
+<p>A diferencia del formulario de creación de cuestionarios, el formulario de adición de una nueva pregunta se crea dinámicamente para cada cuestionario. Crea ahora una función <code class="docutils literal notranslate"><span class="pre">addFormPregunta</span></code> que se encargue de ello. Esta función recibe como parámetro el nodo correspondiente al elemento <code class="docutils literal notranslate"><span class="pre">section</span></code> de un determinado cuestionario, crea dinámicamente un formulario como el siguiente y lo inserta a continuación del título del cuestionario (antes de la primera pregunta, si la hubiera):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;formulario&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Enunciado de la pregunta:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;paris_pregunta&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Respuesta:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;paris_respuesta&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;verdadero&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;paris_v&quot;</span> <span class="na">checked</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;paris_v&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;radio&quot;</span><span class="p">&gt;</span>Verdadero<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;paris_respuesta&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;falso&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;paris_f&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;paris_f&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;radio&quot;</span><span class="p">&gt;</span>Falso<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Añadir nueva pregunta&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Un comentario sobre los atributos <code class="docutils literal notranslate"><span class="pre">name</span></code> de los botones de radio: dado que estos no pueden tener los mismos valores para los distintos formularios del documento (de otro modo, todos los botones de radio serían considerados como un único conjunto por el navegador y activar uno de ellos en un cuestionario desactivaría el resto de botones en los otros cuestionarios), en esta práctica has de añadir como prefijo de la cadena que elijas el valor del atributo <code class="docutils literal notranslate"><span class="pre">id</span></code> del elemento <code class="docutils literal notranslate"><span class="pre">section</span></code> correspondiente seguido de un carácter de subrayado. Tendrás que hacer algo similar para evitar duplicados con los atributos <code class="docutils literal notranslate"><span class="pre">id</span></code> y los correspondientes atributos <code class="docutils literal notranslate"><span class="pre">for</span></code> de los botones de radio y las etiquetas asociadas. Por tanto, los valores <code class="docutils literal notranslate"><span class="pre">paris_pregunta</span></code>, <code class="docutils literal notranslate"><span class="pre">paris_respuesta</span></code>, <code class="docutils literal notranslate"><span class="pre">paris_v</span></code> y <code class="docutils literal notranslate"><span class="pre">paris_f</span></code> del código anterior son meramente ilustrativos y han de ser sustituidos por los valores correctos en cada cuestionario.</p>
+<p>Para que las etiquetas (<code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code>) con verdadero y falso que acompañan a los botones de radio no estén excesivamente separadas entre ellas, añade una regla de CSS que establezca un ancho de <code class="docutils literal notranslate"><span class="pre">5em</span></code> para el selector <code class="docutils literal notranslate"><span class="pre">label.radio</span></code>. Observa de paso cómo estos elementos favorecen la accesibilidad al indicar explícitamente mediante el atributo <code class="docutils literal notranslate"><span class="pre">for</span></code> el botón de radio al que complementan.</p>
+<p>La función finalizará especificando la función <code class="docutils literal notranslate"><span class="pre">addPregunta</span></code> (analizada a continuación) como función manejadora del evento de clic sobre el botón.</p>
+</section>
+<section id="insercion-de-nuevas-preguntas-en-un-cuestionario">
+<h3><span class="section-number">9.4.10. </span>Inserción de nuevas preguntas en un cuestionario<a class="headerlink" href="#insercion-de-nuevas-preguntas-en-un-cuestionario" title="Enlace permanente a este encabezado"></a></h3>
+<p>Al igual que la función <code class="docutils literal notranslate"><span class="pre">borraPregunta</span></code>, la función <code class="docutils literal notranslate"><span class="pre">addPregunta</span></code> utilizará también el objeto de tipo evento recibido como parámetro para acceder (con ayuda de funciones como <code class="docutils literal notranslate"><span class="pre">querySelectorAncestor</span></code> o <code class="docutils literal notranslate"><span class="pre">querySelector</span></code>) a los datos introducidos en el formulario correspondiente.</p>
+<p>En primer lugar, la función comprobará que ninguno de los campos del formulario haya quedado sin rellenar; si alguno de los campos estuviera vacío, se mostrará un <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window.alert">diálogo de alerta</a> con un texto descriptivo de la causa del error que puedes escoger libremente. En otro caso, se procederá a crear un nuevo elemento <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> de clase <code class="docutils literal notranslate"><span class="pre">.bloque</span></code> para la nueva pregunta, al que se añadirá el icono de borrado mediante una llamada a la función <code class="docutils literal notranslate"><span class="pre">addCruz</span></code>.</p>
+<p>Finalmente, la función dejará en blanco el contenido de los campos del formulario, excepto el correspondiente a los botones de radio, que se quedará en el valor <em>verdadero</em>.</p>
+</section>
+<section id="incorporacion-automatica-de-los-formularios-de-insercion-de-preguntas">
+<h3><span class="section-number">9.4.11. </span>Incorporación automática de los formularios de inserción de preguntas<a class="headerlink" href="#incorporacion-automatica-de-los-formularios-de-insercion-de-preguntas" title="Enlace permanente a este encabezado"></a></h3>
+<p>Añade código a la función <code class="docutils literal notranslate"><span class="pre">init</span></code> que recorra todos los elementos de tipo <code class="docutils literal notranslate"><span class="pre">section</span></code> del documento inicial e inserte en ellos los formularios de adición de preguntas con la función definida anteriormente.</p>
+</section>
+<section id="creacion-de-nuevos-cuestionarios">
+<h3><span class="section-number">9.4.12. </span>Creación de nuevos cuestionarios<a class="headerlink" href="#creacion-de-nuevos-cuestionarios" title="Enlace permanente a este encabezado"></a></h3>
+<p>Añade también a la función <code class="docutils literal notranslate"><span class="pre">init</span></code> código que asocie la función <code class="docutils literal notranslate"><span class="pre">addCuestionario</span></code> explicada a continuación como manejadora del evento de clic sobre el botón del formulario de creación de nuevo formulario.</p>
+<p>La función <code class="docutils literal notranslate"><span class="pre">addCuestionario</span></code> utilizará el objeto de tipo evento recibido como parámetro para acceder (con ayuda de funciones como <code class="docutils literal notranslate"><span class="pre">querySelectorAncestor</span></code> o <code class="docutils literal notranslate"><span class="pre">querySelector</span></code>) a los datos introducidos en el formulario de creación de cuestionarios. La función comprobará que ninguno de los campos del formulario haya quedado sin rellenar; si alguno de los campos estuviera vacío, se mostrará un diálogo de alerta con un texto descriptivo de la causa del error que puedes escoger libremente. No has de comprobar, en cualquier caso, que la URL indicada sea válida ni corresponda a una imagen existente en internet. Si todos los campos del formulario se han rellenado, se procederá a crear un elemento de tipo <code class="docutils literal notranslate"><span class="pre">&lt;section&gt;</span></code> que acogerá un nuevo formulario y que se añadirá a continuación del último formulario de la página. El título del cuestionario será «Cuestionario sobre » seguido del valor del primer campo del formulario; la URL de la imagen a usar será la indicada en el segundo campo. Recuerda también que has de añadir una nueva entrada al índice de cuestionarios de la cabecera del documento.</p>
+<p>Dado que cada sección ha de tener un atributo de tipo <code class="docutils literal notranslate"><span class="pre">id</span></code> (por ejemplo, para enlazarlo desde el índice), en tu implementación usa como valor del identificador el carácter «c» seguido del valor de una variable global que se inicializará a 1 y se incrementará tras la creación de cada cuestionario. Date cuenta de que los cuestionarios presentes inicialmente en la página web ya tienen sus propios valores de <code class="docutils literal notranslate"><span class="pre">id</span></code>, por lo que el primer cuestionario que se cree tendrá <code class="docutils literal notranslate"><span class="pre">c1</span></code> por <code class="docutils literal notranslate"><span class="pre">id</span></code>, el segundo <code class="docutils literal notranslate"><span class="pre">c2</span></code>, etc. El contador global nunca se decrementará, aunque se borre un cuestionario. Observa, también, que la única manera de borrar un cuestionario es mediante el borrado de la última de sus preguntas, por lo que no es posible en esta práctica borrar un cuestionario para el que no se ha introducido ninguna pregunta aún.</p>
+<p>Tras la creación e inserción del nuevo elemento <code class="docutils literal notranslate"><span class="pre">&lt;section&gt;</span></code>, se procederá a incorporarle el formulario de creación de preguntas mediante la oportuna llamada a <code class="docutils literal notranslate"><span class="pre">addFormPregunta</span></code>.</p>
+<p>Además, la función <code class="docutils literal notranslate"><span class="pre">addCuestionario</span></code> dejará en blanco el contenido de los campos del formulario.</p>
+</section>
+<section id="captura-de-pantalla">
+<h3><span class="section-number">9.4.13. </span>Captura de pantalla<a class="headerlink" href="#captura-de-pantalla" title="Enlace permanente a este encabezado"></a></h3>
+<p>Observa en <a class="reference external" href="_static/img/dai-p2-captura.png">esta imagen</a> como quedaría la página web una vez añadidos dos cuestionarios con sendas preguntas.</p>
+</section>
+<section id="entrega-de-la-practica">
+<h3><span class="section-number">9.4.14. </span>Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Enlace permanente a este encabezado"></a></h3>
+<p>Asegúrate de que tanto tus ficheros iniciales como cualquier estado posterior del DOM se validan correctamente con los validadores HTML5 y CSS del W3C. Además, usa Chrome DevTools para comprobar que el estilo aplicado en cada punto del documento es correcto y para depurar tu código en JavaScript. Finalmente, asegúrate de que tu implementación cumple con todas las especificaciones de este enunciado.</p>
+<p>Recuerda mantener tu nombre de usuario de la universidad en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado <code class="docutils literal notranslate"><span class="pre">p2-dai.zip</span></code> a través del servidor web del Departamento. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, una carpeta <code class="docutils literal notranslate"><span class="pre">css</span></code> con el fichero <code class="docutils literal notranslate"><span class="pre">normal.css</span></code>, una carpeta <code class="docutils literal notranslate"><span class="pre">img</span></code> con las imágenes de Londres y París, y una carpeta <code class="docutils literal notranslate"><span class="pre">js</span></code> con el código en JavaScript.</p>
+<p>Por último, coloca en algún punto del pie de la página un fragmento de HTML como <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">id=&quot;tiempo&quot;&gt;[10</span> <span class="pre">horas]&lt;/span&gt;</span></code> donde has de sustituir el 10 por el número de horas aproximadas que te haya llevado hacer esta práctica.</p>
+</section>
+</section>
+<section id="practica-3-una-aplicacion-con-acceso-a-servicios-web-de-terceros-y-con-componentes-web">
+<h2><span class="section-number">9.5. </span>Práctica 3: una aplicación con acceso a servicios web de terceros y con componentes web 🖥️<a class="headerlink" href="#practica-3-una-aplicacion-con-acceso-a-servicios-web-de-terceros-y-con-componentes-web" title="Enlace permanente a este encabezado"></a></h2>
+<p>En esta práctica ampliarás tu práctica anterior para integrarla con diferentes servicios web proporcionados por terceros a través de APIs; en particular, la imagen a mostrar junto al título de cada cuestionario será tomada de alguna de las imágenes relevantes ofrecidas por <a class="reference external" href="https://www.flickr.com/">Flickr</a>; además, cada cuestionario mostrará un pequeño texto extraido de <a class="reference external" href="https://es.wikipedia.org/">Wikipedia en español</a> sobre el tema en cuestión. En la segunda parte, crearás algunos componentes web para encapsular adecuadamente toda esta información.</p>
+<p>No está permitido usar librerías de terceros para interactuar con los distintos servicios web, sino que lo has de hacer con el API Fetch estándar estudiado en clase. Tampoco está permitido usar librerías de alto nivel para los componentes web.</p>
+<section id="ejemplo-de-peticiones-get">
+<h3><span class="section-number">9.5.1. </span>Ejemplo de peticiones GET<a class="headerlink" href="#ejemplo-de-peticiones-get" title="Enlace permanente a este encabezado"></a></h3>
+<p>Lo siguiente es un ejemplo de la petición que has de realizar para obtener información sobre París:</p>
+<p><a class="reference external" href="https://es.wikipedia.org/w/api.php?origin=*&amp;format=json&amp;action=query&amp;prop=extracts&amp;exintro&amp;explaintext&amp;continue&amp;titles=parís">https://es.wikipedia.org/w/api.php?origin=*&amp;format=json&amp;action=query&amp;prop=extracts&amp;exintro&amp;explaintext&amp;continue&amp;titles=parís</a></p>
+<p>Consulta en la <a class="reference external" href="https://www.mediawiki.org/wiki/API:Main_page/en">documentación del API de Wikipedia</a> el propósito de cada parámetro; la mayor parte de ellos, en cualquier caso, proviene de la <a class="reference external" href="https://www.mediawiki.org/wiki/Extension:TextExtracts">extensión TextExtracts</a>. Usa algunos ejemplos para determinar cuál es la propiedad de la cadena en JSON devuelta que contiene la información que te interesa y qué ocurre cuando el término no se encuentra en la Wikipedia.</p>
+<p>Por otro lado, lo siguiente es un ejemplo de la petición que has de realizar a Flickr para obtener las imágenes más relevantes de París (es necesario indicar un valor correcto de <code class="docutils literal notranslate"><span class="pre">api_key</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">xxxxx</span></code>, según se indica más adelante):</p>
+<p><a class="reference external" href="https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=xxxxx&amp;text=par%C3%ADs&amp;format=json&amp;per_page=10&amp;media=photos&amp;sort=relevance&amp;nojsoncallback=1">https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=xxxxx&amp;text=par%C3%ADs&amp;format=json&amp;per_page=10&amp;media=photos&amp;sort=relevance&amp;nojsoncallback=1</a></p>
+<p>Consulta la <a class="reference external" href="https://www.flickr.com/services/api/">documentación del API de Flickr</a> para entender el propósito de cada parámetro de la llamada anterior; el resultado es una lista de imágenes de la que nos interesa el <em>id</em> de la primera para realizar una segunda llamada que nos permita acceder a la URL de dicha imagen:</p>
+<p><a class="reference external" href="https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&amp;api_key=xxxxxx&amp;photo_id=13942935893&amp;format=json&amp;nojsoncallback=1">https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&amp;api_key=xxxxxx&amp;photo_id=13942935893&amp;format=json&amp;nojsoncallback=1</a></p>
+<p>De la lista de imágenes devuelta por la petición anterior, te has de quedar con la primera de ellas, que corresponderá a la versión de menor tamaño; ten en cuenta, en cualquier caso, que tu estilo CSS seguirá ajustando la imagen a un tamaño concreto, como se hizo en prácticas anteriores. Usa siempre en tu práctica las dos peticiones consecutivas a Flickr y no intentes componer automáticamente la URL de la imagen tras la primera petición. Además, utiliza el protocolo <em>https</em> en todas las peticiones a Wikipedia y Flickr.</p>
+</section>
+<section id="incorporacion-de-informacion-de-la-wikipedia">
+<h3><span class="section-number">9.5.2. </span>Incorporación de información de la Wikipedia<a class="headerlink" href="#incorporacion-de-informacion-de-la-wikipedia" title="Enlace permanente a este encabezado"></a></h3>
+<p>La petición a Wikipedia se hará de forma asíncrona tras añadir el formulario del cuestionario; el resultado devuelto se añadirá inmediatamente antes del nodo del formulario y después del título del cuestionario en un <code class="docutils literal notranslate"><span class="pre">div</span></code> con clase <code class="docutils literal notranslate"><span class="pre">wiki</span></code>. Si no existe ninguna entrada en Wikipedia para el término correspondiente, este <code class="docutils literal notranslate"><span class="pre">div</span></code> ha de incluirse pero sin contenido alguno. El estilo aplicado a los elementos de clase <code class="docutils literal notranslate"><span class="pre">wiki</span></code> utiliza un tamaño de tipo de letra del 90%; este es el único cambio en el CSS que has de realizar por ahora.</p>
+<p>Ten en cuenta que al borrar un cuestionario también se ha de borrar ahora el texto descriptivo asociado. Muestra el contenido del atributo <code class="docutils literal notranslate"><span class="pre">extract</span></code>, cuando exista, de la clave contenida en <code class="docutils literal notranslate"><span class="pre">query.pages</span></code> (<code class="docutils literal notranslate"><span class="pre">query.pages.*.extract</span></code>).</p>
+<p>Comienza modificando la función <code class="docutils literal notranslate"><span class="pre">addFormPregunta</span></code> para que devuelva el nodo del formulario creado. A continuación, crea una función <code class="docutils literal notranslate"><span class="pre">addWikipedia</span></code> que reciba como parámetros la cadena con el término a buscar y el nodo que representa el formulario del cuestionario; esta función utiliza el API de la Wikipedia de forma asíncrona para añadir la descripción devuelta por la Wikipedia para el término indicado; el punto de inserción será antes del formulario cuyo nodo se ha pasado como parámetro.</p>
+<p>Asegúrate de que a la vez que añades los formularios a los cuestionarios existentes inicialmente (sobre París y Londres), también llamas a <code class="docutils literal notranslate"><span class="pre">addWikipedia</span></code> para incorporar la descripción correspondiente. Usa como término a buscar el <code class="docutils literal notranslate"><span class="pre">id</span></code> de cada elemento <code class="docutils literal notranslate"><span class="pre">section</span></code>; para que esto funcione cambia el <code class="docutils literal notranslate"><span class="pre">id</span></code> del primer cuestionario de <code class="docutils literal notranslate"><span class="pre">paris</span></code> a <code class="docutils literal notranslate"><span class="pre">parís</span></code> en el fichero HTML (HTML5 permite casi cualquier carácter como valor de un atributo <em>id</em> por lo que puedes utiliza caracteres acentuados sin problema). <em>Nota:</em> para los cuestionarios añadidos dinámicamente no usarás el <em>id</em>, ya que este tendrá la forma <em>c1</em>, <em>c2</em>, etc., sino que usarás el tema obtenido del formulario de inserción.</p>
+<p>No olvides añadir la correspondiente llamada a <code class="docutils literal notranslate"><span class="pre">addWikipedia</span></code> a la función <code class="docutils literal notranslate"><span class="pre">addCuestionario</span></code>.</p>
+<p>Usa una <a class="reference external" href="https://www.tutorialrepublic.com/javascript-tutorial/javascript-regular-expressions.php">expresión regular</a> y el método <code class="docutils literal notranslate"><span class="pre">replace</span></code> aplicado a cadenas de JavaScript para eliminar todos los números entre corchetes (incluyendo los corchetes) del resultado devuelto por la Wikipedia.</p>
+</section>
+<section id="incorporacion-de-la-informacion-de-flickr">
+<h3><span class="section-number">9.5.3. </span>Incorporación de la información de Flickr<a class="headerlink" href="#incorporacion-de-la-informacion-de-flickr" title="Enlace permanente a este encabezado"></a></h3>
+<p>Créate en primer lugar un usuario en <a class="reference external" href="https://www.flickr.com/">Flickr</a> y accede al <a class="reference external" href="https://www.flickr.com/services/api/misc.api_keys.html">apartado de desarrolladores</a> para obtener una clave (<em>API key</em>) que usar en el parámetro <code class="docutils literal notranslate"><span class="pre">api_key</span></code> de la petición.</p>
+<p>Sigue unos pasos similares a los del texto de la Wikipedia, pero ahora con la imagen. Crea una función <code class="docutils literal notranslate"><span class="pre">addFlickr</span></code> que reciba como parámetros la cadena con el término a buscar y el nodo que representa la imagen del cuestionario; esta función utiliza el API de Flickr de forma asíncrona para colocar (como valor del atributo <code class="docutils literal notranslate"><span class="pre">src</span></code>) en el nodo recibido como parámetro la primera imagen devuelta por Flickr para el término correspondiente según se ha indicado anteriormente. En caso de que no exista ninguna imagen para dicho término, la imagen a mostrar ha de ser <a class="reference external" href="http://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_east_540.jpg">esta del planeta Tierra</a>.</p>
+<p>Asegúrate de que a la vez que añades los formularios y la descripción de la Wikipedia a los cuestionarios existentes inicialmente (sobre París y Londres), también llamas a <code class="docutils literal notranslate"><span class="pre">addFlickr</span></code> para incorporar la imagen correspondiente, que sustituirá a la mostrada inicialmente. Usa de nuevo como término a buscar el <code class="docutils literal notranslate"><span class="pre">id</span></code> de cada elemento <code class="docutils literal notranslate"><span class="pre">section</span></code>.</p>
+<p>Finalmente, añade la correspondiente llamada a <code class="docutils literal notranslate"><span class="pre">addFlickr</span></code> a la función <code class="docutils literal notranslate"><span class="pre">addCuestionario</span></code> y comprueba que se añade correctamente una nueva imagen con cada nuevo cuestionario. Elimina el campo del formulario de nuevo cuestionario que permitía indicar la URL de la imagen a incluir (borra el elemento <code class="docutils literal notranslate"><span class="pre">li</span></code> correspondiente), ya que ya no es necesario; asegúrate también de que no queda rastro de él en el código JavaScript.</p>
+</section>
+<section id="creacion-de-los-componentes-web">
+<h3><span class="section-number">9.5.4. </span>Creación de los componentes web<a class="headerlink" href="#creacion-de-los-componentes-web" title="Enlace permanente a este encabezado"></a></h3>
+<p>En esta parte final de la práctica has de crear un componente web que muestre el encabezado de cada cuestionario. Este componente web sustituirá al actual bloque de HTML que contiene el título, la imagen y la descripción de cada cuestionario, de manera que en lugar de introducirlo con un código similar a este (y con el correspondiente código de JavaScript):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;parís&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;...&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;...&quot;</span><span class="p">&gt;</span>Cuestionario sobre París<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;wiki&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>bastará con hacer:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;parís&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">encabezado-cuestionario</span> <span class="na">data-tema</span><span class="o">=</span><span class="s">&quot;París&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">encabezado-cuestionario</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Si repasas bien los contenidos sobre componentes web estudiados en clase, no te debería costar mucho implementar el componente web en un fichero <code class="docutils literal notranslate"><span class="pre">encabezado-cuestionario.js</span></code>. Ve definiendo el componente sin eliminar hasta el final el código que ya tenías. Ten en cuenta los siguientes detalles:</p>
+<ul class="simple">
+<li><p>Los estilos de <code class="docutils literal notranslate"><span class="pre">h2</span></code>, <code class="docutils literal notranslate"><span class="pre">img</span></code> y <code class="docutils literal notranslate"><span class="pre">wiki</span></code> se han de eliminar del CSS global y añadirlos al estilo del componente <code class="docutils literal notranslate"><span class="pre">encabezado-cuestionario</span></code>.</p></li>
+<li><p>Gran parte del código necesario para interactuar con los servicios web de Flickr y Wikipedia lo puedes tomar de las funciones <code class="docutils literal notranslate"><span class="pre">addFlickr</span></code> y <code class="docutils literal notranslate"><span class="pre">addWikipedia</span></code> que ya tenías definidas, aunque los elementos que creaban estas funciones se añadían al DOM y ahora se añadirán al <em>shadow DOM</em>.</p></li>
+<li><p>Intenta, en principio, conseguir que algo como:</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">encabezado-cuestionario</span> <span class="na">data-tema</span><span class="o">=</span><span class="s">&quot;Berlín&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">encabezado-cuestionario</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>funcione en <code class="docutils literal notranslate"><span class="pre">index.html</span></code>. Cuando lo consigas, sustituye el encabezado de los cuestionarios iniciales existentes en <code class="docutils literal notranslate"><span class="pre">index.html</span></code> por el uso del elemento personalizado <code class="docutils literal notranslate"><span class="pre">encabezado-cuestionario</span></code>. Ya no es necesario, tampoco, tener que añadir el texto de la Wikipedia o la imagen de Flickr a los cuestionarios preexistentes mediante código explícito en JavaScript, sino que el nuevo elemento se encargará de ello.</p>
+<ul class="simple">
+<li><p>Repasa el tema de componentes web visto en clase antes de comenzar a escribir los componentes web. Pon el código en JavaScript que se encarga de acceder a los servicios de Flickr y Wikipedia en la función <code class="docutils literal notranslate"><span class="pre">connectedCallback</span></code> de la clase correspondiente y no en el constructor. Pon también en <code class="docutils literal notranslate"><span class="pre">connectedCallback</span></code> el acceso al atributo <code class="docutils literal notranslate"><span class="pre">data-tema</span></code>.</p></li>
+<li><p>Asegúrate también de que tu componente web se actualiza correctamente ante cambios dinámicos en el valor del atributo <code class="docutils literal notranslate"><span class="pre">data-tema</span></code>.</p></li>
+<li><p>Ten en cuenta a qué apunta <code class="docutils literal notranslate"><span class="pre">this</span></code> en cada momento; tu código del interior del método <code class="docutils literal notranslate"><span class="pre">then</span></code> asociado a una promesa <code class="docutils literal notranslate"><span class="pre">fetch</span></code> se ejecutará (cuando el servidor devuelva su respuesta) de forma asíncrona fuera del contexto del componente web; en ese caso, <code class="docutils literal notranslate"><span class="pre">this</span></code> no estará apuntando al componente web, por lo que para acceder a sus propiedades tendrás que o bien usar funciones flecha o bien utilizar correctamente una clausura:</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">connectedCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">componente</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w">  </span><span class="c1">// aquí this apunta al shadow host del componente web</span>
+<span class="linenos">3</span><span class="w">  </span><span class="nx">fetch</span><span class="p">(...)</span>
+<span class="linenos">4</span><span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(...)</span>
+<span class="linenos">5</span><span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">6</span><span class="w">    </span><span class="nx">componente</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(...).</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="linenos">7</span><span class="w">  </span><span class="p">})</span>
+<span class="linenos">8</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos">9</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Para terminar, puedes eliminar también las antiguas <code class="docutils literal notranslate"><span class="pre">addFlickr</span></code> y <code class="docutils literal notranslate"><span class="pre">addWikipedia</span></code> del código de JavaScript, así como sustituir su uso cuando se crean nuevos cuestionarios por código que se encargue de la inserción oportuna del componente web.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3><span class="section-number">9.5.5. </span>Captura de pantalla<a class="headerlink" href="#id3" title="Enlace permanente a este encabezado"></a></h3>
+<p>Observa <a class="reference external" href="_static/img/dai-p3-captura.png">en una imagen</a> cómo quedaría la página web una vez añadidos dos cuestionarios y algunas preguntas. Ten en cuenta que el texto descriptivo o las imágenes podrían no corresponderse exactamente con las que los servicios web de Wikipedia o Flickr ofrezcan en el momento en que pruebes tu práctica; en la imagen, además, no se han eliminado los números entre corchetes.</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">9.5.6. </span>Entrega de la práctica<a class="headerlink" href="#id4" title="Enlace permanente a este encabezado"></a></h3>
+<p>Asegúrate de que tanto tus ficheros iniciales como cualquier estado posterior del DOM se validan correctamente con los validadores HTML5 y CSS del W3C con excepción de los elementos personalizados, que posiblemente generen algún tipo de error. Además, usa Chrome Developer Tools o Firebug para comprobar que el estilo aplicado en cada punto del documento es correcto y para depurar tu código en JavaScript.</p>
+<p>Nota: recuerda mantener un tu identificador de usuario en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado <code class="docutils literal notranslate"><span class="pre">p3-dai.zip</span></code> a través del <cite>servidor web del Departamento</cite>. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, una carpeta <code class="docutils literal notranslate"><span class="pre">css</span></code> con el fichero <code class="docutils literal notranslate"><span class="pre">normal.css</span></code> y una carpeta <code class="docutils literal notranslate"><span class="pre">js</span></code> con el código en JavaScript.</p>
+<p>Por último, coloca en algún punto del pie de la página un fragmento de HTML como <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">id=&quot;tiempo&quot;&gt;[10</span> <span class="pre">horas]&lt;/span&gt;</span></code> donde has de sustituir el 10 por el número de horas aproximadas que te haya llevado hacer esta práctica.</p>
+</section>
+</section>
+<section id="practica-4-una-aplicacion-en-la-nube">
+<h2><span class="section-number">9.6. </span>Práctica 4: una aplicación en la nube 🖥️<a class="headerlink" href="#practica-4-una-aplicacion-en-la-nube" title="Enlace permanente a este encabezado"></a></h2>
+<p>Esta práctica tiene dos partes. En la primera parte vas a ampliar la práctica anterior, que solo tenía <em>front-end</em>, para añadirle un <em>back-end</em> que dé persistencia a la aplicación y permita gestionar una base de datos con la información de los cuestionarios. La aplicación resultante se implantará en la plataforma Google App Engine y los datos se almacenarán en una base de datos MySQL alojada en el servicio Google Cloud SQL, de manera muy similar a la aplicación del carrito que has estudiado en clase. Como en prácticas anteriores, no puedes usar ninguna librería, como jQuery o Angular, en la parte del cliente, con excepción de la librería para integrar Google Sign-in que se usará en la segunda parte de la práctica.</p>
+<p>La primera parte permitirá obtener un 8 como nota máxima de la práctica. Los dos puntos restantes corresponden a la segunda parte, que no es obligatorio que implementes ni para la entrega de esta práctica ni para el examen de prácticas, ya que el enunciado del examen supondrá que no ha sido implementada. En la segunda parte de la práctica vas a permitir que el usuario se identifique mediante su cuenta de Google de forma que los cuestionarios tendrán un usuario asociado en la base de datos; los cuestionarios y preguntas de un usuario no podrán ser vistos por el resto de usuarios.</p>
+<p>Cuando el usuario entre en la aplicación, se le mostrará el formulario para insertar nuevos cuestionarios; inicialmente no habrá ningún cuestionario creado y, por tanto, ya no aparecerán los cuestionarios de París ni Londres. La aplicación funcionará como una <em>aplicación de una única página</em> (en inglés, <em>SPA</em> por <em>single-page application</em>): cada vez que el usuario introduzca o elimine datos, los cuestionarios se actualizarán convenientemente en la página como hasta ahora, pero también lo harán en la base de datos del servidor.</p>
+<p>Como en el ejemplo del carrito visto en clase, el código del servidor estará escrito con Node.js y Express, y funcionará con una base de datos SQLite mientras se ejecute localmente y con MySQL cuando se ejecute desde Google App Engine. Al usar Knex.js, la mayor parte del código para ambas opciones será el mismo, como vimos en la aplicación del carrito. Asimismo, la aplicación será la encargada de crear el esquema de la base de datos si las tablas no existen.</p>
+<section id="comprobacion-de-la-aplicacion-del-carrito">
+<h3><span class="section-number">9.6.1. </span>Comprobación de la aplicación del carrito<a class="headerlink" href="#comprobacion-de-la-aplicacion-del-carrito" title="Enlace permanente a este encabezado"></a></h3>
+<p>Comienza asegurándote de que entiendes cómo funciona la apicación del carrito vista en clase y que eres capaz de ejecutarla localmente en <code class="docutils literal notranslate"><span class="pre">localhost</span></code> y en la nube de Google App Engine. Recuerda que las instrucciones sobre cómo configurar el entorno de trabajo y lanzar la aplicación tanto en modo local como en la nube se dieron en las secciones «<a class="reference internal" href="rest.html#label-local"><span class="std std-ref">Configuración del entorno de trabajo para ejecutar localmente una aplicación web</span></a>», «<a class="reference internal" href="nube.html#label-gcloud"><span class="std std-ref">Configuración del entorno de trabajo para Google Cloud Platform</span></a>» y «<a class="reference internal" href="nube.html#label-appengine"><span class="std std-ref">Publicación avanzada de la aplicación del carrito en Google App Engine integrada con Google Cloud SQL</span></a>».</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Recuerda que en Linux puedes instalar todo el software necesario rápidamente con ayuda del fichero <a class="reference external" href="https://www.dlsi.ua.es/~japerez/cursos/dai/dai-bundle-dev-20211005.tar.gz">dai-bundle-dev</a>: descárgalo, descomprímelo, edita y luego ejecuta el script <code class="docutils literal notranslate"><span class="pre">install.sh</span></code>.</p>
+</div>
+</section>
+<section id="incorporacion-e-implantacion-de-la-aplicacion-de-la-practica-anterior">
+<h3><span class="section-number">9.6.2. </span>Incorporación e implantación de la aplicación de la práctica anterior<a class="headerlink" href="#incorporacion-e-implantacion-de-la-aplicacion-de-la-practica-anterior" title="Enlace permanente a este encabezado"></a></h3>
+<p>Añade ahora en la carpeta adecuada de la aplicación del carrito, los ficheros de tu práctica 3 de forma que <em>index.html</em> esté alojado donde corresponda y el resto de elementos de tu aplicación mantengan su estructura relativa. Lanza la aplicación en modo local y comprueba que funciona correctamente. A continuación, implanta tu aplicación en la nube de Google App Engine y comprueba que, de nuevo, sigue funcionando correctamente.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El único cambio que quizás tengas que hacer para que tu aplicación funcione en la nube de Google vendría dado porque a la hora de indicar los tipos de letra de Google Fonts o las direcciones de acceso a las APIs de Wikipedia o Flickr hubieras usado el protocolo <em>http</em> en lugar de <em>https</em>; en ese caso, tendrías que cambiarlo ahora ya que a las aplicaciones de Google App Engine se accede mediante <em>https</em> y desde una página descargada de forma segura no es posible referenciar recursos con URLs no seguras.</p>
+</div>
+<p>Como la página ya no contiene inicialmente ningún cuestionario, puedes borrar de la función <em>init</em> el código que se encargaba de añadir a cada uno de los cuestionarios existentes la cruz de borrado y el formulario de inserción de preguntas.</p>
+</section>
+<section id="caracteristicas-comunes-de-los-servicios-web-a-implementar">
+<h3><span class="section-number">9.6.3. </span>Características comunes de los servicios web a implementar<a class="headerlink" href="#caracteristicas-comunes-de-los-servicios-web-a-implementar" title="Enlace permanente a este encabezado"></a></h3>
+<p>Los servicios web a implementar serán de tipo GET, POST o DELETE según su cometido y recibirán la información y la devolverán en formato JSON. La respuesta del servidor siempre seguirá el siguiente formato:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;result&quot;</span><span class="p">:</span><span class="o">...</span><span class="p">,</span><span class="s2">&quot;error&quot;</span><span class="p">:</span><span class="o">...</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Cuando la petición se haya podido atender correctamente, el atributo <code class="docutils literal notranslate"><span class="pre">result</span></code> contendrá la información relevante que haya que devolver al cliente y el atributo <code class="docutils literal notranslate"><span class="pre">error</span></code> valdrá <code class="docutils literal notranslate"><span class="pre">null</span></code>; el código de estado HTTP devuelto en este caso será 200. Por otro lado, si algún problema impide en tu código atender correctamente la solicitud (por ejemplo, se intenta eliminar un cuestionario inexistente), la respuesta del servidor contendrá la información adecuada en el atributo <code class="docutils literal notranslate"><span class="pre">error</span></code> y el atributo <code class="docutils literal notranslate"><span class="pre">result</span></code> valdrà <code class="docutils literal notranslate"><span class="pre">null</span></code>; el código de estado devuelto en este caso será 404. Una situación típica de error que has de controlar es que los parámetros esperados de cada servicio web sean incorrectos o no existan.</p>
+<p>Cada vez que en el código de JavaScript realices una petición Fetch a uno de los servicios del <em>back-end</em>, tendrás que comprobar si el JSON devuelto contiene un valor distinto de <code class="docutils literal notranslate"><span class="pre">null</span></code> en la propiedad <code class="docutils literal notranslate"><span class="pre">error</span></code>; en ese caso, la aplicación mostrará una ventana de alerta (función <code class="docutils literal notranslate"><span class="pre">alert</span></code>) con un error informativo seguido del contenido de <code class="docutils literal notranslate"><span class="pre">error</span></code>; además, todas tus peticiones Fetch definirán una función que muestre una ventana de alerta similar ante el resto de posibles situaciones de error (por ejemplo, no se puede establecer la conexión con el servidor).</p>
+<p>Ninguna de las acciones que se tengan que efectuar sobre la página actual del navegador como consecuencia de una acción de inserción o borrado por parte del usuario se llevarán a cabo si el servidor devuelve un error (por ejemplo, no se añadirá un cuestionario a la página actual si el servidor no informa de que lo ha añadido con éxito a la base de datos). Ante estas situaciones de error, como ya se ha comentado, habrá, además, que mostrar una ventana de alerta.</p>
+</section>
+<section id="almacenamiento-de-los-cuestionarios">
+<h3><span class="section-number">9.6.4. </span>Almacenamiento de los cuestionarios<a class="headerlink" href="#almacenamiento-de-los-cuestionarios" title="Enlace permanente a este encabezado"></a></h3>
+<p>En esta práctica crearás servicios web siguiendo el patrón REST para lo siguiente:</p>
+<ul class="simple">
+<li><p>añadir un tema de cuestionario (POST) y devolver el id asignado en la base de datos;</p></li>
+<li><p>recuperar todos los temas (GET);</p></li>
+<li><p>borrar un tema a partir de su id y todas sus preguntas (DELETE);</p></li>
+<li><p>añadir una pregunta y su correspondiente respuesta a un cuestionario dado el id del tema (POST) y devolver el id de la pregunta en la base de datos;</p></li>
+<li><p>obtener todas las preguntas y respuestas dado el id del tema (GET);</p></li>
+<li><p>borrar una pregunta dado su id (DELETE).</p></li>
+</ul>
+<p>Usa URLs con patrones similares a los de la aplicación del carrito del tema de servicios web.</p>
+</section>
+<section id="representacion-de-los-datos-en-la-base-de-datos">
+<h3><span class="section-number">9.6.5. </span>Representación de los datos en la base de datos<a class="headerlink" href="#representacion-de-los-datos-en-la-base-de-datos" title="Enlace permanente a este encabezado"></a></h3>
+<p>La base de datos contendrá una tabla para representar los cuestionarios y otra para representar las preguntas. Cada cuestionario vendrá representado por un identificador único generado automáticamente (clave primaria) y su tema. Cada pregunta vendrá representada por un identificador único (clave primaria), el identificador de su tema (clave ajena), el texto de la pregunta y su respuesta correcta.</p>
+<p>Conéctate tanto a la base de datos SQLite (cuando pruebes la aplicación en local) como a MySQL (en Google App Engine) para comprobar que las tablas se están rellenando o actualizando correctamente tras cada llamada a un servicio web.</p>
+<p>Crea atributos nuevos en el código HTML generado (recuerda que han de comenzar por el prefijo <code class="docutils literal notranslate"><span class="pre">data-</span></code>) para guardar para cada cuestionario y pregunta sus identificadores en la base de datos; de esta manera, resultará sencillo poder indicarle al servidor que, por ejemplo, borre un determinado cuestionario o una determinada pregunta.</p>
+</section>
+<section id="gestion-de-los-temas-de-los-cuestionarios">
+<h3><span class="section-number">9.6.6. </span>Gestión de los temas de los cuestionarios<a class="headerlink" href="#gestion-de-los-temas-de-los-cuestionarios" title="Enlace permanente a este encabezado"></a></h3>
+<p>Comienza creando un servicio web que añada un nuevo tema a la base de datos. Como ya se ha comentado, el cuestionario solo se añade a la página actual si la respuesta del servicio es positiva; en otro caso, la solicitud del usuario de crear un nuevo cuestionario no tiene efecto sobre la página del navegador. Este servicio no permite tener más de un cuestionario con el mismo tema. Si, por ejemplo, ya existiera un cuestionario sobre Lugano en la base de datos, la respuesta sería (tu mensaje de error no ha de coincidir necesariamente):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;result&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;error&quot;</span><span class="p">:</span><span class="s2">&quot;el tema Lugano ya existe en la base de datos&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>A continuación, crea un servicio web que elimine de la base de datos un tema. Después, modifica el código JavaScript del cliente para que invoque este servicio cuando proceda borrar un cuestionario. El cuestionario solo se elimina de la página actual si la respuesta del servicio es positiva. A diferencia de prácticas anteriores, por tanto, en esta es posible que al borrar la última pregunta de un cuestionario, este no desaparezca; esto puede ocurrir ya que la pregunta se borra en primer lugar y, una vez borrada, se ha de proceder a intentar borrar el cuestionario que la incluía; si este último borrado falla, la pregunta eliminada no se recupera. El servicio devolverá en la respuesta en JSON un error si el identificador del tema indicado en los datos de la petición no existe en la base de datos.</p>
+<p>Ahora crea un servicio que liste los temas disponibles en la base de datos. Añade el código necesario para invocar el nuevo servicio desde la función <em>init</em> de forma que se muestren los encabezados (y los formularios de inserción de preguntas) de los cuestionarios almacenados en la base de datos al cargar la aplicación. Observa que gran parte del código para lo anterior ya existe en la función <em>addCuestionario</em>, por lo que te puede interesar refactorizar y crear una nueva función con el código común. Asimismo, observa, que el identificador (<em>c1</em>, <em>c2</em>, etc.) asignado inicialmente a un cuestionario no tiene por qué mantenerse en la nueva aplicación.</p>
+<p>En estos momentos, tu aplicación ha de permitir crear nuevos formularios y añadirles preguntas. Los temas de los formularios se almacenan ya correctamente en la base de datos, por lo que, aunque se cierre la ventana de la aplicación, esta información se vuelve a mostrar al abrirla de nuevo. Las preguntas, sin embargo, se pierden si se recarga la aplicación; en el apartado siguiente vas a solucionarlo.</p>
+</section>
+<section id="gestion-de-las-preguntas-de-los-cuestionarios">
+<h3><span class="section-number">9.6.7. </span>Gestión de las preguntas de los cuestionarios<a class="headerlink" href="#gestion-de-las-preguntas-de-los-cuestionarios" title="Enlace permanente a este encabezado"></a></h3>
+<p>De forma análoga a como has hecho con los cuestionarios, vas a crear tres servicios web que permitan añadir, borrar y listar las preguntas asociadas a un cuestionario. Al igual que con los cuestionarios, no será posible añadir a la base de datos dos preguntas con el mismo enunciado para un tema concreto. Los posibles errores a detectar y las respuestas de los servicios son análogas a las del caso de los cuestionarios</p>
+<p>Comprueba que tu aplicación permite crear y eliminar tanto cuestionarios como preguntas y que los datos persisten correctamente aun cuando se recarga la aplicación.</p>
+</section>
+<section id="autenticacion-de-usuarios">
+<h3><span class="section-number">9.6.8. </span>Autenticación de usuarios<a class="headerlink" href="#autenticacion-de-usuarios" title="Enlace permanente a este encabezado"></a></h3>
+<p>En la segunda parte de la práctica (opcional, como se ha comentado más arriba), vas a permitir que los usuarios se identifiquen en la aplicación con su cuenta de Google usando la API de Google Sign-in como en el ejemplo de código explorado en la actividad <a class="reference internal" href="rest.html#label-signin"><span class="std std-ref">Autenticación de usuarios</span></a>. Añade los botones para identificarse y para salir de la aplicación como en dicho código. Mientras no haya un usuario logueado, la aplicación funcionará como hasta ahora; de esta forma seguirá funcionando en modo local incluso si no hay conexión a internet (por ejemplo, durante el examen). Cuando un usuario se identifique, los cuestionarios y preguntas que no le pertenecen se borrarán de la página web (pero no de la base de datos) y se cargarán los cuestionarios y preguntas que el usuario pudiera haber creado en una sesión anterior. Igualmente, cuando el usuario abandone la aplicación, sus cuestionarios y preguntas se borrarán de la página web (pero no de la base de datos) y se cargarán los cuestionarios y preguntas no vinculados a un usuario concreto.</p>
+<p>Asegúrate de que el sistema de autenticación de usuarios también funciona cuando la aplicación se despliega en Google App Engine.</p>
+</section>
+<section id="id5">
+<h3><span class="section-number">9.6.9. </span>Entrega de la práctica<a class="headerlink" href="#id5" title="Enlace permanente a este encabezado"></a></h3>
+<p>Asegúrate de que tanto tus ficheros iniciales como cualquier estado posterior del DOM se validan correctamente con los validadores HTML5 y CSS del W3C con excepción de los elementos personalizados, que posiblemente generen algún tipo de error. Además, usa Chrome Developer Tools o Firebug para comprobar que el estilo aplicado en cada punto del documento es correcto y para depurar tu código en JavaScript del lado del cliente; usa Visual Studio Code para depurar el código de Node.js de la parte del servidor.</p>
+<p><em>Nota:</em> recuerda mantener tu identificador de usuario en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado <code class="docutils literal notranslate"><span class="pre">p4-dai.zip</span></code> a través del <a class="reference external" href="https://pracdlsi.dlsi.ua.es/index.cgi?id=val">servidor web del Departamento</a>. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero <code class="docutils literal notranslate"><span class="pre">app.js</span></code>, los otros ficheros del servidor y las carpetas que sean necesarias. Asegúrate de borrar la carpeta <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> antes de crear el <em>zip</em> para que su contenido no se incluya en el fichero generado y evitar así que la práctica que entregues tenga más tamaño del necesario.</p>
+<p>Sube tu aplicación a Google App Engine e incluye en el pie de página de tu aplicación un enlace al URL correspondiente en <code class="docutils literal notranslate"><span class="pre">appspot.com</span></code>. Tu práctica será corregida descomprimiendo el fichero <em>zip</em>, haciendo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span>
+<span class="n">npm</span> <span class="n">start</span>
+</pre></div>
+</div>
+<p>y accediendo al URL correspondiente en <code class="docutils literal notranslate"><span class="pre">localhost</span></code>. También se evaluará usando el enlace a la aplicación en Google App Engine suministrado a pie de página, despertando previamente si procede la instancia de la base de datos de Google Cloud SQL.</p>
+<p>Por último, coloca en algún punto del pie de la página un fragmento de HTML como <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">id=&quot;tiempo&quot;&gt;[10</span> <span class="pre">horas]&lt;/span&gt;</span></code> donde has de sustituir el 10 por el número de horas aproximadas que te haya llevado hacer esta práctica.</p>
+</section>
+</section>
+<section id="apendice-ejemplos-de-posibles-ejercicios-para-el-examen-practico">
+<span id="label-ampliaciones"></span><h2><span class="section-number">9.7. </span>APÉNDICE: Ejemplos de posibles ejercicios para el examen práctico<a class="headerlink" href="#apendice-ejemplos-de-posibles-ejercicios-para-el-examen-practico" title="Enlace permanente a este encabezado"></a></h2>
+<p>Este apartado muestra algunos ejemplos de posibles ejercicios para el examen práctico. Un examen típico incluiría solo uno de ellos, pero sería posible también que hubiera dos o más ejercicios de menor complejidad. El tiempo de realización del examen suele estar en torno a los 110 minutos. No podrás hacer estos ejercicios hasta que hayas acabado la práctica 4, ya que se basan en ella. Ejercicios adicionales con los que podrías practicar son:</p>
+<ul class="simple">
+<li><p>permitir hacer un cuestionario <em>público</em> de forma que pueda consultarse a través de una URL propia;</p></li>
+<li><p>permitir que un cuestionario pueda borrarse sin necesidad de borrar anteriormente todas sus preguntas;</p></li>
+<li><p>permitir que los cuestionarios o las preguntas puedan moverse <em>arriba o abajo</em> en la ventana de la aplicación para ponerlos en un orden concreto;</p></li>
+<li><p>permitir que las preguntas puedan editarse;</p></li>
+<li><p>permitir que la aplicación use otros servicios web de terceros; posiblemente se te ocurran ideas cuando repases esta <a class="reference external" href="https://github.com/toddmotto/public-apis">lista de APIs públicas</a>;</p></li>
+<li><p>cualquier otra modificación de complejidad similar que se te pueda ocurrir; inspírate para ello en las aplicaciones web que usas, especialmente en aquellas que se basan en gestionar <em>listas de listas</em>.</p></li>
+</ul>
+<section id="colapsar-los-enunciados-de-las-preguntas">
+<h3><span class="section-number">9.7.1. </span>Colapsar los enunciados de las preguntas<a class="headerlink" href="#colapsar-los-enunciados-de-las-preguntas" title="Enlace permanente a este encabezado"></a></h3>
+<p>Modifica tu práctica 4 para que junto al título de cada cuestionario aparezca un elemento (un botón, por ejemplo) que permita colapsar o expandir la lista de preguntas asociadas a dicho cuestionario. Mientras la lista de preguntas esté colapsada, las preguntas no se mostrarán en pantalla, ni siquiera cuando se añada una nueva pregunta al cuestionario correspondiente. Cuando la lista de preguntas esté expandida, el comportamiento de la aplicación será similar al actual.</p>
+<p>El estado colapsado/expandido de un cuestionario se almacenará en la base de datos y se mantendrá aunque la aplicación se recargue. Al crear un nuevo cuestionario, este estará por defecto expandido.</p>
+<p>Para obtener la máxima nota será necesario, además, que cuando el cuestionario esté colapsado se indique el número de preguntas ocultas existentes.</p>
+<p>Lo siguiente son algunos consejos relativos a la implementación que no es obligatorio que sigas. Únicamente se dan a modo de recomendación y pueden estar más o menos incompletos según como sea tu implementación.</p>
+<ul class="simple">
+<li><p>Cada entrada de la tabla de cuestionarios de la base de datos tendrá un nuevo atributo (llamado, por ejemplo,  <code class="docutils literal notranslate"><span class="pre">colapsado</span></code>) que almacenará su estado de colapso.</p></li>
+<li><p>Comienza implementando dos servicios web: uno que devuelva en formato JSON el estado de colapso de un determinado cuestionario (referenciado mediante su id) y otro para cambiarlo.</p></li>
+<li><p>Para crear los servicios web anteriores, te puedes inspirar en los servicios que ya has implementado para listar cuestionarios o preguntas.</p></li>
+<li><p>Para modificar una entrada de la base de datos con Knex.js puedes usar un código como el siguiente que equivale a la instrucción SQL indicada en el comentario:</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">knex</span><span class="p">(</span><span class="s1">&#39;books&#39;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;published_date&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">)</span>
+<span class="linenos">3</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
+<span class="linenos">4</span><span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;archived&#39;</span>
+<span class="linenos">5</span><span class="p">});</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="c1">// SQL: update `books` set `status` = &#39;archived&#39; where `published_date` &lt; 2000</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Una posible manera de gestionar fácilmente el estado de expandido/colapsado de las preguntas de un cuestionario en el navegador es añadiendo un atributo <code class="docutils literal notranslate"><span class="pre">data-colapsado</span></code> (con valores <code class="docutils literal notranslate"><span class="pre">true</span></code> o <code class="docutils literal notranslate"><span class="pre">false</span></code>) al elemento <code class="docutils literal notranslate"><span class="pre">section</span></code> que rodea el cuestionario. Con algunas reglas de estilo sencillas basadas en la propiedad <code class="docutils literal notranslate"><span class="pre">display</span></code> de CSS podrás hacer que las preguntas de cada cuestionario se muestren o no en la aplicación según el valor de <code class="docutils literal notranslate"><span class="pre">data-colapsado</span></code>.</p></li>
+<li><p>Modifica tu código en JavaScript para que el atributo <code class="docutils literal notranslate"><span class="pre">data-colapsado</span></code> se añada con el valor adecuado tanto al crear un nuevo cuestionario como al recuperar la lista de cuestionarios del servidor. Para este segundo caso, tendrás que llamar al servicio que devuelve la información de colapso con cada tema de cuestionario. Recuerda cómo funcionan las clausuras en JavaScript si para lo anterior usaras un bucle que iterara sobre todos los temas y llamara con <em>fetch</em> al servicio web con cada uno de ellos; es posible en ese caso que te interese definir una variable con <code class="docutils literal notranslate"><span class="pre">let</span></code> (y no con <code class="docutils literal notranslate"><span class="pre">var</span></code>) para obtener el nodo <code class="docutils literal notranslate"><span class="pre">section</span></code> al que añadir el atributo:</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">for</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="cm">/* itera sobre los temas */</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* nodo section del cuestionario correspondiente */</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;...info-colapsado...&quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="nx">node</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;data-colapsado&quot;</span><span class="p">,...);</span><span class="w"> </span><span class="cm">/* clausura */</span>
+<span class="linenos">10</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos">11</span><span class="w">  </span><span class="p">)</span>
+<span class="linenos">12</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Añade un botón o simplemente texto al inicio de cada cuestionario que permita cambiar el estado de colapsado/expandido. Asóciale un nuevo manejador de evento y escribe su código inspirándote, por ejemplo, en el de la función ya existente que borra un cuestionario. Llama adecuadamente con <em>fetch</em> al servicio de cambio de estado de colapso desde la función del nuevo manejador de evento.</p></li>
+</ul>
+</section>
+<section id="destacar-algunas-preguntas-de-un-cuestionario">
+<h3><span class="section-number">9.7.2. </span>Destacar algunas preguntas de un cuestionario<a class="headerlink" href="#destacar-algunas-preguntas-de-un-cuestionario" title="Enlace permanente a este encabezado"></a></h3>
+<p>Modifica tu práctica 4 para que cada pregunta incluya un nuevo icono (por ejemplo, la estrella ★ con código Unicode U+2605 o un simple asterisco) junto al icono de borrado que permita <em>destacar</em> dicha pregunta. Una pregunta destacada se muestra la primera en la lista de preguntas de un cuestionario dado. Solo se puede destacar una pregunta como máximo en cada cuestionario. Cada clic sobre el icono de destacar activa o desactiva el estado de la pregunta. El color del icono ha de cambiar cuando la pregunta esté destacada. El estado de destacada de una pregunta se almacenará en la base de datos y se mantendrá aunque la aplicación se recargue. Al crear un nueva pregunta, esta estará por defecto no destacada.</p>
+<p>Cuando se cambia el estado de una pregunta destacada, esta no tiene que volver a su posición original en la lista de preguntas salvo, quizás, si se recarga la página. Además, no tienes que cambiar el siguiente comportamiento, que probablemente será el que tenga tu aplicación: al subir una pregunta al principio de la lista, esta pasará a ser la pregunta 1 y las siguientes se renumerarán en consonancia.</p>
+<p>Lo siguiente son algunos consejos relativos a la implementación que no es obligatorio que sigas. Únicamente se dan a modo de recomendación y pueden estar más o menos incompletos según como sea tu implementación.</p>
+<ul class="simple">
+<li><p>Cada entrada de tipo pregunta de la base de datos tendrá una nueva propiedad (llamada, por ejemplo, <code class="docutils literal notranslate"><span class="pre">destacada</span></code>) que almacenará su estado de destacada.</p></li>
+<li><p>Comienza añadiendo el nuevo icono al bloque en la misma función de tu código en Javascript en la que añades la cruz de borrado.</p></li>
+<li><p>En el DOM del documento representa el estado de una pregunta mediante un atributo <code class="docutils literal notranslate"><span class="pre">data-destacada</span></code> en el elemento del bloque correspondiente:</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bloque&quot;</span> <span class="na">data-destacada</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
+<span class="linenos">2</span>  ...
+<span class="linenos">3</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Asegúrate de que en la parte de tu código JavaScript encargada de crear una nueva pregunta se inicializa a falso el atributo <code class="docutils literal notranslate"><span class="pre">data-destacada</span></code>.</p></li>
+<li><p>Añade un manejador de evento para cuando se haga clic sobre el nuevo icono. Este manejador cambia el valor del atributo <code class="docutils literal notranslate"><span class="pre">data-destacada</span></code>.</p></li>
+<li><p>Para ahorrarte algunas conversiones, haz que cualquier nueva variable en tu código JavaScript que represente el estado de una pregunta sea de tipo cadena y no booleana.</p></li>
+<li><p>Modifica la hoja de estilo para que el nuevo icono se muestre junto a la cruz de borrado. Añade los estilos necesarios para que se muestre en rojo si la pregunta está destacada y en negro en otro caso.</p></li>
+<li><p>Modifica el manejador del evento del nuevo icono para que solo cambie el valor de <code class="docutils literal notranslate"><span class="pre">data-destacada</span></code> si no hay otra pregunta destacada en el cuestionario; si la hay, ha de mostrar una ventana de <em>alerta</em> y no hacer nada más.</p></li>
+<li><p>Crea un nuevo servicio web para cambiar el valor de la propiedad <code class="docutils literal notranslate"><span class="pre">destacada</span></code> de una pregunta en la base de datos. Es posible que te interese basarte en el codigo ya existente de algún otro servicio web.</p></li>
+<li><p>Para modificar una entrada de la base de datos con Knex.js puedes usar un código como el siguiente que equivale a la instrucción SQL indicada en el comentario:</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nx">knex</span><span class="p">(</span><span class="s1">&#39;books&#39;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;published_date&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">)</span>
+<span class="linenos">3</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
+<span class="linenos">4</span><span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;archived&#39;</span>
+<span class="linenos">5</span><span class="p">});</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="c1">// SQL: update `books` set `status` = &#39;archived&#39; where `published_date` &lt; 2000</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Cambia también el servicio web que se invoca al crear una nueva pregunta para que la propiedad <code class="docutils literal notranslate"><span class="pre">destacada</span></code> se inicialice adecuadamente.</p></li>
+<li><p>En el código del cliente, cuando el servidor no dé error al cambiar el estado de una pregunta, mueve la pregunta al inicio de la lista de preguntas del cuestionario; es posible que te venga bien usar la función <code class="docutils literal notranslate"><span class="pre">insertBeforeChild</span></code> para ello.</p></li>
+<li><p>Haz que al recargar la página y leer todas las preguntas de un cuestionario, la pregunta destacada se coloque al principio. Modifica los servicios web oportunos para que devuelvan en los datos en JSON la nueva propiedad. Modifica el código de la función <code class="docutils literal notranslate"><span class="pre">init</span></code> de JavaScript para que al leer las preguntas de cada cuestionario coloque al comienzo la pregunta destacada, si la hay.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="problemas.html" class="btn btn-neutral float-left" title="8. Problemas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022-2023, Juan Antonio Pérez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

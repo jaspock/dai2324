@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Desarrollo de Aplicaciones en Internet">
+  <title>Hypertext Transfer Protocol (HTTP)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/theme/simple.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://unpkg.com/reveal.js@3.9.2//css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.9.2//css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://unpkg.com/reveal.js@3.9.2//lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Hypertext Transfer Protocol (HTTP)</h1>
+  <p class="author">Desarrollo de Aplicaciones en Internet</p>
+</section>
+
+<section id="hypertext-transfer-protocol-http" class="slide level2">
+<h2>Hypertext Transfer Protocol (HTTP)</h2>
+<p>Desarrollo de Aplicaciones en Internet</p>
+<p>Fuente: <a href="http://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177">HTTP: The Protocol Every Web Developer Must Know</a></p>
+<p>Fuente: <a href="https://http2.github.io/faq/">HTTP/2 Frequently Asked Questions</a></p>
+</section>
+<section id="http" class="slide level2">
+<h2>HTTP</h2>
+<ul>
+<li>Internet y la web no son lo mismo.</li>
+<li>Hypertext Transfer Protocol (HTTP) es un protocolo de comunicación para la capa de aplicación.</li>
+<li>La comunicación se produce habitualmente sobre TCP/IP, pero podría utilizarse cualquier otro transporte. De hecho, HTTP/3 usa QUIC en lugar de TCP.</li>
+<li>El puerto por defecto es el 80, pero pueden usarse otros.</li>
+<li>Es un protocolo sin estado (<em>stateless</em>).</li>
+</ul>
+</section>
+<section id="http-1" class="slide level2">
+<h2>HTTP</h2>
+<ul>
+<li>La comunicación se produce mediante un mecanismo de petición/respuesta entre un cliente y un servidor.</li>
+<li>La última versión es HTTP/3 de 2019, pero muchos clientes o servidores aún usan los estándares HTTP/2 de 2015 o HTTP/1.1 de 1997.</li>
+</ul>
+</section>
+<section id="urls" class="slide level2">
+<h2>URLs</h2>
+<ul>
+<li>Uniform Resource Locators (URLs). <img data-src="https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-url-structure.png" alt="URL de ejemplo" /></li>
+</ul>
+</section>
+<section id="verbos" class="slide level2">
+<h2>Verbos</h2>
+<ul>
+<li>Indican la acción a realizar por el servidor.</li>
+<li>Intentan ser lo suficientemente generales para dar cabida a cualquier tipo de solicitud.</li>
+</ul>
+</section>
+<section id="verbos-1" class="slide level2">
+<h2>Verbos</h2>
+<ul>
+<li>Los verbos más usuales (existen otros como HEAD, TRACE, OPTIONS, etc.) son:
+<ul>
+<li>GET: obtener un determinado recurso; el URL contiene toda la información necesaria para identificarlo.</li>
+<li>POST: crear un nuevo recurso; estas peticiones usualmente llevan datos adicionales (<em>payload</em> o <em>body</em>) que definen el recurso a crear.</li>
+<li>PUT: actualizar un recurso ya existente; la petición puede llevar datos adicionales si es necesario.</li>
+<li>DELETE: borrar un recurso determinado.</li>
+</ul></li>
+</ul>
+</section>
+<section id="arquitecturas-rest" class="slide level2">
+<h2>Arquitecturas REST</h2>
+<ul>
+<li>Las arquitecturas (por ejemplo, de compartición de datos) que siguen un esquema como el de HTTP, esto es, peticiones sin estado basada en los verbos anteriores, se denominan REST.</li>
+</ul>
+</section>
+<section id="códigos-de-estado" class="slide level2">
+<h2>Códigos de estado</h2>
+<ul>
+<li>Son devueltos por el servidor junto con la información demandada.</li>
+<li>Se definen ciertos rangos según el tipo de respuesta:
+<ul>
+<li>1xx: mensajes informativos; por ejemplo, informar al cliente de que puede seguir enviando los datos de una petición.</li>
+<li>2xx: la solicitud fue procesada correctamente (200 OK, 206 Partial Content).</li>
+</ul></li>
+</ul>
+</section>
+<section id="códigos-de-estado-1" class="slide level2">
+<h2>Códigos de estado</h2>
+<ul>
+<li><p>Más rangos según el tipo de respuesta:</p>
+<ul>
+<li>3xx: el cliente ha de hacer alguna tarea adicional; por ejemplo, buscar el recurso en un URL diferente (301 Move Permanently, 303 See Other) o en su propia caché (304 Not Modified).</li>
+</ul></li>
+</ul>
+</section>
+<section id="códigos-de-estado-2" class="slide level2">
+<h2>Códigos de estado</h2>
+<ul>
+<li><p>Más rangos según el tipo de respuesta:</p>
+<ul>
+<li>4xx: la petición es incorrecta o el recurso no existe (400 Bad Request, 401 Unauthorized, 404 Not Found).</li>
+<li>5xx: indican fallos del servidor durante el procesamiento (501 Not Implemented, 503 Service Unavailable).</li>
+</ul></li>
+</ul>
+</section>
+<section id="ejemplo-de-peticiónrespuesta" class="slide level2">
+<h2>Ejemplo de petición/respuesta</h2>
+<pre><code>GET /index.html HTTP/1.1
+Host: www.example.com
+</code></pre>
+<pre><code>HTTP/1.1 200 OK
+Date: Mon, 23 May 2005 22:38:34 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Encoding: UTF-8
+Content-Length: 138
+Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT
+Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
+ETag: &quot;3f80f-1b6-3e1cb03b&quot;
+Accept-Ranges: bytes
+Connection: close
+
+&lt;html&gt;&lt;head&gt;&lt;title&gt;An Example Page&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;Hello World, this is a very simple HTML document.&lt;/body&gt;&lt;/html&gt;</code></pre>
+</section>
+<section id="ejemplo-de-peticiónrespuesta-1" class="slide level2">
+<h2>Ejemplo de petición/respuesta</h2>
+<ul>
+<li>Una línea en blanco separa las cabeceras del cuerpo del mensaje.</li>
+<li>El cuerpo del mensaje puede contener datos incompletos enviados en varias tandas si se usa la cabecera <code>Transfer-Encoding: chunked</code>.</li>
+<li>Las cabeceras contienen metadatos. El estándar define las cabeceras posibles como, por ejemplo, <code>Content-Type: application/json; charset=utf-8</code>.</li>
+</ul>
+</section>
+<section id="identificación" class="slide level2">
+<h2>Identificación</h2>
+<ul>
+<li>URLs recargadas con información de estado.</li>
+<li>Cookies: el servidor añade a su respuesta una cabecera como la siguiente y restringe la cookie a ciertos dominios:</li>
+</ul>
+<pre><code>Set-Cookie: session-id=12345ABC; username=juan</code></pre>
+<ul>
+<li>El navegador añade al mensaje de la petición cuando se accede a dichos dominios una cabecera como</li>
+</ul>
+<pre><code>Cookie: session-id=12345ABC; username=juan</code></pre>
+</section>
+<section id="más-características-de-http" class="slide level2">
+<h2>Más características de HTTP</h2>
+<ul>
+<li>Conexiones persistentes. En HTTP/1.0 era necesario crear una nueva conexión para cada petición, lo que introduce un retardo inicial elevado (debido al <em>handshaking</em>).</li>
+<li>En HTTP/1.1 aunque la conexión se mantiene viva y la latencia inicial se reduce, cada petición tiene que empezar cuando acabe la anterior.</li>
+<li>En HTTP/1.1 la conexión se seguía produciendo mediante el patrón petición/respuesta, es decir, el servidor no puede enviar datos al cliente sin una petición explícita.</li>
+</ul>
+</section>
+<section id="más-características" class="slide level2">
+<h2>Más características</h2>
+<ul>
+<li>HTTP/2 y HTTP/3 sí permiten que el servidor envíe datos sin peticiones explícitas (<em>server push</em>), lo que acelera la descarga de los elementos de una página web, que empieza a producirse antes de que el navegador sepa que los necesita.</li>
+<li>HTTP/1 y HTTP/1.1 usan un formato de texto; desde HTTP/2 es binario.</li>
+</ul>
+</section>
+<section id="más-características-de-http-1" class="slide level2">
+<h2>Más características de HTTP</h2>
+<ul>
+<li>Conexiones paralelas. HTTP/2 introduce <em>streams</em>, un mecanismo de multiplexación que permite varias peticiones y respuestas simultáneas (y mezcladas) sobre una misma conexión, lo que evita la necesidad de conexiones paralelas y la sobrecarga del sistema TCP, pero si hay error en un paquete correspondiente a una petición, los paquetes posteriores de otras peticiones quedan temporalmente bloqueados porque TCP no sabe que son de peticiones diferentes.</li>
+</ul>
+</section>
+<section id="más-características-de-http-2" class="slide level2">
+<h2>Más características de HTTP</h2>
+<ul>
+<li>HTTP/3 usa QUIC, un nuevo protocolo de transporte, que evita los problemas anteriores e introduce los <em>streams</em> como ciudadanos de primera clase.</li>
+</ul>
+</section>
+<section id="más-características-de-http-3" class="slide level2">
+<h2>Más características de HTTP</h2>
+<ul>
+<li>Autenticación. El cliente ha de enviar una contraseña. Normalmente se utiliza en conjunción con SSL.</li>
+</ul>
+</section>
+<section id="más-características-de-http-4" class="slide level2">
+<h2>Más características de HTTP</h2>
+<ul>
+<li>HTTPS (puerto 443). Comunicaciones seguras mediante el protocolo criptográfico Transport Layer Security (TLS) y su predecesor, Secure Sockets Layer (SSL); se usa el término SSL para referirse indistintamente a ambos. Son una capa intermedia entre HTTP y TCP, por lo que el paso de HTTP a HTTPS no supone esfuerzo para el desarrollador web, excepto porque es necesario que el servidor aporte un <em>certificado</em> aprobado por una autoridad certificadora.</li>
+</ul>
+</section>
+<section id="más-características-de-http-5" class="slide level2">
+<h2>Más características de HTTP</h2>
+<ul>
+<li>Caché. Puede estar en el navegador o en un proxy intermedio. El servidor puede usar cabeceras para indicar cuándo expira un cierto contenido y debe procederse a una <em>revalidación</em> con el servidor.</li>
+</ul>
+</section>
+<section id="software-para-clientes" class="slide level2">
+<h2>Software para clientes</h2>
+<ul>
+<li>El cliente puede ser un navegador (incluso un navegador <em>sin cabeza</em>) o cualquier otro tipo de programa.</li>
+</ul>
+</section>
+<section id="software-para-clientes-1" class="slide level2">
+<h2>Software para clientes</h2>
+<ul>
+<li>Un navegador está compuesto de:
+<ul>
+<li>interfaz de usuario</li>
+<li>motor de <em>renderizado</em> (<em>layout/rendering/web engine</em>): Webkit para Safari; Blink para Chrome, Chromium, Edge u Opera; Gecko para Firefox</li>
+<li>motor de JavaScript, habitualmente con compilación al vuelo (<em>just-in-time</em>): JavaScriptCore para Safari; V8 para Chrome, Chromium, Edge u Opera; SpiderMonkey para Firefox</li>
+</ul></li>
+</ul>
+</section>
+<section id="software-para-clientes-2" class="slide level2">
+<h2>Software para clientes</h2>
+<ul>
+<li><p>Más componentes de un navegador:</p>
+<ul>
+<li>componentes de red</li>
+<li>componentes de persistencia de datos</li>
+<li>etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="software-para-servidores" class="slide level2">
+<h2>Software para servidores</h2>
+<ul>
+<li>Apache HTTP Server</li>
+<li>Node.js</li>
+<li>Internet Information Services</li>
+<li>Nginx</li>
+<li>Lighttpd</li>
+<li>Apache Tomcat</li>
+<li>Jetty</li>
+<li>WebSphere</li>
+<li>WebLogic</li>
+<li>etc.</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@3.9.2//js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: {37:'prev',38:'prev',39:'next',40:'next'},
+        // Transition style
+        transition: 'linear', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://unpkg.com/reveal.js@3.9.2//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

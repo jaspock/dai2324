@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Componentes web &mdash; documentación de Desarrollo de Aplicaciones en Internet - </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="6. Implementación de servicios web" href="rest.html" />
+    <link rel="prev" title="4. Acceso a servicios web de terceros" href="servicios.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Desarrollo de Aplicaciones en Internet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marcado.html">1. Lenguajes de marcado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estilo.html">2. Lenguajes de estilo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cliente.html">3. Programar el lado del cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="servicios.html">4. Acceso a servicios web de terceros</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Componentes web</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduccion-a-los-componentes-web">5.1. Introducción a los componentes web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#un-ejemplo-sencillo-de-componente-web">5.2. Un ejemplo sencillo de componente web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caracteristicas-adicionales-de-los-componentes-web">5.3. Características adicionales de los componentes web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ejercicio-de-ampliacion-del-componente-web">5.4. Ejercicio de ampliación del componente web</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nube.html">7. Computación en la  nube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">8. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">9. Enunciados de las prácticas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Desarrollo de Aplicaciones en Internet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">5. </span>Componentes web</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/componentes.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="componentes-web">
+<h1><span class="section-number">5. </span>Componentes web<a class="headerlink" href="#componentes-web" title="Enlace permanente a este encabezado"></a></h1>
+<p>Los componentes web son un conjunto de estándares que permiten crear elementos de HTML reutilizables en diferentes aplicaciones web. Estos componentes encapsulan su comportamiento y apariencia de forma independiente al resto de la aplicación. La idea es que los programadores tengan a su disposición un abánico de componentes web específicos para las diferentes necesidades de su aplicación web (mostrar un selector de fecha, reproducir un fichero de audio, mostrar un mapa interactivo, etc.) y que puedan integrarlos cómodamente en sus aplicaciones. Aunque las tecnologías implicadas tienen ya cierto tiempo, su uso explícito por los programadores de aplicaciones web no está muy extendido todavía, en parte por la proliferación de <em>frameworks</em> y herramientas (<a class="reference external" href="https://angular.io/">Angular</a>, <a class="reference external" href="https://reactjs.org/">React</a>, <a class="reference external" href="https://vuejs.org/">Vue</a>, <a class="reference external" href="https://stenciljs.com/">Stencil</a>, <a class="reference external" href="https://ionicframework.com/">Ionic</a>, <a class="reference external" href="https://lit-element.polymer-project.org/">LitElement</a>…) que ofrecen una sintaxis de más alto nivel para su definición y uso, además de ampliar su funcionalidad. En la línea seguida en este curso de abordar las tecnologías web a niveles no muy elevados de abstracción, estudiaremos aquí las tecnologías subyacentes y crearemos nuestros componentes web con ellas.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Las habilidades que deberías adquirir con este tema incluyen las siguientes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Comprender la diferencia entre <em>shadow DOM</em> y <em>light DOM</em>.</p></li>
+<li><p>Entender cómo se modifica la representación de una página tras incluir un <em>shadow tree</em> en ella.</p></li>
+<li><p>Comprender la utilidad de encapsular partes de una página web en un componente web.</p></li>
+<li><p>Saber como crear componentes web mediante las API estándar.</p></li>
+<li><p>Saber cómo modificar la presentación de un componente sin modificar el DOM global.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<section id="introduccion-a-los-componentes-web">
+<span id="label-intro-comp"></span><h2><span class="section-number">5.1. </span>Introducción a los componentes web<a class="headerlink" href="#introduccion-a-los-componentes-web" title="Enlace permanente a este encabezado"></a></h2>
+<p>Los componentes web permiten crear elementos de HTML reutilizables. Por ejemplo, una librería de componentes web podría permitirnos insertar en una página web un <a class="reference external" href="https://explore.fast.design/components/fast-progress-ring">indicador del progreso</a> de una descarga con el siguiente fragmento de HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">fast-progress-ring</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;0&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">fast-progress-ring</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>El componente web podría definir adicionalmente una serie de funciones (una API) para interactuar con él desde nuestro código en JavaScript. El elemento HTML creará normalmente al iniciarlo algunos nodos de HTML adicionales. Cuando el navegador inserta en el DOM el subárbol resultante, crea una especie de <em>barrera protectora</em> que impide que los estilos aplicados al documento permeen a dicho subárbol y que funciones como <code class="docutils literal notranslate"><span class="pre">document.querySelector</span></code> puedan encontrar sus nodos; será necesario, como veremos, buscarlos mediante <code class="docutils literal notranslate"><span class="pre">nodo.shadowRoot.querySelector</span></code>, donde <code class="docutils literal notranslate"><span class="pre">nodo</span></code> es una referencia al nodo que incluye el subárbol DOM como, por ejemplo, <code class="docutils literal notranslate"><span class="pre">fast-progress-ring</span></code> en el caso anterior. Se facilita así que los componentes web tengan su propio estilo y comportamiento diferenciado de los del resto de la aplicación.</p>
+<p>La tecnología de los componentes web se basa principalmente en las siguientes tecnologías estandarizadas:</p>
+<ul class="simple">
+<li><p>el <em>DOM ensombrecido</em> (<em>shadow DOM</em>), que permite crear un subárbol DOM aislado del árbol DOM global (también llamado <em>DOM iluminado</em>, <em>light DOM</em>, nombre que se ha popularizado para diferenciar el DOM global del DOM ensombrecido);</p></li>
+<li><p>los <em>elementos personalizados</em> (<em>custom elements</em>), que permiten al desarrollador definir sus propios elementos de HTML; los elementos personalizados son elementos HTML como <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> o <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> pero definidos por nuestro código usando una serie de funciones estándar soportadas por los navegadores;</p></li>
+<li><p>más secundariamente, las <em>plantillas</em> (<em>templates</em>), que permiten encapsular bloques de contenido (HTML), presentación (CSS) y funcionalidad (JavaScript) de forma que no son tenidos en cuenta inmediatamente por el navegador y solo se <em>activan</em> posteriormente al ejecutar determinado código de JavaScript.</p></li>
+</ul>
+<figure class="align-default" id="id1" style="width: 70%">
+<a class="reference external image-reference" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM"><img alt="shadow DOM" src="https://media.prod.mdn.mozit.cloud/attachments/2018/01/29/15788/9d23f749f26b93a00f5c2aa72f00e720/shadow-dom.png" /></a>
+<figcaption>
+<p><span class="caption-text">El DOM ensombrecido tiene un nodo raíz virtual (<em>shadow-root</em>). El <em>shadow-host</em> es el nodo del componente web que alberga este subárbol.</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="un-ejemplo-sencillo-de-componente-web">
+<span id="label-ejemplo-comp"></span><h2><span class="section-number">5.2. </span>Un ejemplo sencillo de componente web<a class="headerlink" href="#un-ejemplo-sencillo-de-componente-web" title="Enlace permanente a este encabezado"></a></h2>
+<p>Vamos a ver las tecnologías de <em>shadow DOM</em>, elementos personalizados y plantillas juntas en acción, comenzando con el siguiente ejemplo (que puedes probar <a class="reference external" href="https://codepen.io/jaspock/pen/oNLqyKB">aquí</a>) de un componente web sencillo y bastante poco útil que iremos ampliando sucesivamente:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos"> 2</span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="linenos"> 3</span>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 4</span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Definición de componentes web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos"> 5</span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 6</span>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 7</span>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="p">&lt;</span><span class="nt">template</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;operaciones&quot;</span><span class="p">&gt;</span>
+<span class="linenos">10</span>      <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos">11</span><span class="w">        </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">          </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">steelblue</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">14</span><span class="w">        </span><span class="p">.</span><span class="nc">contenido</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">          </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">gainsboro</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">          </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">royalblue</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">18</span><span class="w">      </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>      <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">21</span><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Template instanciado&quot;</span><span class="p">);</span>
+<span class="linenos">22</span><span class="w">      </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Operaciones binarias<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos">25</span>      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;contenido&quot;</span><span class="p">&gt;</span>
+<span class="linenos">26</span>        Multiplicación: 3 x 2 = 6.
+<span class="linenos">27</span>      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">28</span>    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Definición de componentes web<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span>    <span class="p">&lt;</span><span class="nt">calcula-operaciones</span><span class="p">&gt;&lt;/</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">35</span><span class="w">      </span><span class="kd">class</span><span class="w"> </span><span class="nx">Operaciones</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">36</span><span class="w">        </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">37</span><span class="w">          </span><span class="k">super</span><span class="p">();</span>
+<span class="linenos">38</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#operaciones&#39;</span><span class="p">);</span>
+<span class="linenos">39</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">  </span><span class="c1">// true para clonar también los hijos</span>
+<span class="linenos">40</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">shadowRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span>
+<span class="linenos">41</span><span class="w">            </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;open&#39;</span>
+<span class="linenos">42</span><span class="w">          </span><span class="p">});</span>
+<span class="linenos">43</span><span class="w">          </span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">clone</span><span class="p">);</span>
+<span class="linenos">44</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">45</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">46</span><span class="w">      </span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;calcula-operaciones&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Operaciones</span><span class="p">);</span>
+<span class="linenos">47</span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">48</span>
+<span class="linenos">49</span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Fin de la pagina.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">50</span>
+<span class="linenos">51</span>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos">52</span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>La página web anterior incluye un elemento <code class="docutils literal notranslate"><span class="pre">&lt;template&gt;</span></code> cuyo contenido no es mostrado en principio por el motor del navegador; la idea es que un script de JavaScript se referirá posteriormente a esta plantilla (a través de su id) para instanciar un elemento e insertarlo convenientemente en el árbol DOM, como puedes observar en el constructor de la clase <code class="docutils literal notranslate"><span class="pre">Operaciones</span></code>. Como esta plantilla será instanciada dentro de un <em>shadow DOM</em>, los estilos CSS que incluye no modificarán a elementos de otras partes del árbol DOM. También se incluye en la plantilla código en JavaScript que no será ejecutado hasta que el componente se instancie. Por último, la plantilla contiene código HTML que será el que se inserte en el árbol DOM ensombrecido al instanciar el elemento.</p>
+<p>Como veremos a continuación, nuestro ejemplo define un elemento personalizado <code class="docutils literal notranslate"><span class="pre">&lt;calcula-operaciones&gt;</span></code> que se puede usar (es decir, instanciar) en una o más partes de nuestro documento HTML (aquí en la línea 32).</p>
+<p>La definición del elemento personalizado se hace mediante una clase (recuerda que desde ES6 puede usarse <code class="docutils literal notranslate"><span class="pre">class</span></code>) que deriva de <code class="docutils literal notranslate"><span class="pre">HTMLElement</span></code>. El nombre de la clase (<code class="docutils literal notranslate"><span class="pre">Operaciones</span></code> en este caso) se pasa al método <code class="docutils literal notranslate"><span class="pre">customElements.define</span></code> para definir el elemento HTML personalizado; el nombre del elemento ha de llevar obligatoriamente un guión para diferenciarlo de los elementos estándar de HTML. La clase <code class="docutils literal notranslate"><span class="pre">Operaciones</span></code> tiene en este ejemplo solo un método constructor que llama al constructor de la clase padre, clona la plantilla mediante el método <code class="docutils literal notranslate"><span class="pre">cloneNode</span></code>, crea un nodo ensombrecido vinculado a la instancia del elemento y, finalmente, añade el nodo clonado al nodo ensombrecido del elemento.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La referencia <code class="docutils literal notranslate"><span class="pre">this</span></code> en el constructor (o en cualquiera de los métodos de la clase) apunta al nodo del <em>shadow host</em> que incluirá el árbol ensombrecido, por lo que sobre ella se pueden invocar métodos como <code class="docutils literal notranslate"><span class="pre">this.attachShadow</span></code> o, como veremos más adelante, acceder al atributo <code class="docutils literal notranslate"><span class="pre">this.shadowRoot</span></code> para acceder al <em>shadow DOM</em> subyacente.</p>
+</div>
+<p>El <em>árbol ensombrecido</em> se comporta como un árbol DOM normal, salvo que no es visible desde fuera: por ejemplo, el elemento <code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;</span></code> del <em>DOM ensombrecido</em> no aparecerá nunca si buscamos nodos con <code class="docutils literal notranslate"><span class="pre">document.querySelectorAll(&quot;h1&quot;)</span></code> desde un script de fuera del componente web; además, los estilos que definamos para <code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;</span></code> dentro del <em>shadow DOM</em> no afectarán a los elementos del árbol principal y a la inversa. Si inspeccionamos el nodo correspondiente a <code class="docutils literal notranslate"><span class="pre">calcula-operaciones</span></code> (el <em>shadow host</em>) con las herramientas para desarrolladores del navegador, observaremos que contiene una etiqueta <code class="docutils literal notranslate"><span class="pre">#shadow-root</span></code> de la que cuelgan los nodos <code class="docutils literal notranslate"><span class="pre">h1</span></code> y <code class="docutils literal notranslate"><span class="pre">div</span></code> (además de <code class="docutils literal notranslate"><span class="pre">style</span></code> y <code class="docutils literal notranslate"><span class="pre">script</span></code>).</p>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>Algunos estilos definidos para el árbol <em>iluminado</em> sí que pueden afectar a los elementos del árbol <em>ensombrecido</em>. En concreto, el <a class="reference external" href="https://github.com/WICG/webcomponents/issues/314#issuecomment-137654422">criterio</a> es el siguiente:</p>
+<ol class="arabic simple">
+<li><p>Los estilos que se heredan desde nodos superiores también son heredados por defecto por los nodos ensombrecidos. Así, si la página principal tiene una regla de estilo como <code class="docutils literal notranslate"><span class="pre">body</span> <span class="pre">{color:purple}</span></code>, el texto del interior del componente web se mostrará en principio en color púrpura (aunque este comportamiento puede sobrescribirse mediante reglas locales).</p></li>
+<li><p>Por otro lado, los selectores de CSS aplicados en el nivel exterior no atravesarán por defecto las fronteras del árbol ensombrecido y no se emparejarán con sus nodos. Así, si la página principal tiene una regla de estilo como <code class="docutils literal notranslate"><span class="pre">h2</span> <span class="pre">{color:magenta}</span></code>, el color de los posibles encabezados de nivel 2 del componente web no se verá afectado por ella.</p></li>
+</ol>
+<p>Para aislar el componente web de la influencia descrita en el primer elemento, se puede usar la propiedad de CSS <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/all">all</a> y definir dentro de los estilos locales una regla como <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">{all:initial}</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando el atributo <code class="docutils literal notranslate"><span class="pre">mode</span></code> del objeto pasado como argumento a <code class="docutils literal notranslate"><span class="pre">attachShadow</span></code> toma el valor <em>open</em>, el código de JavaScript externo puede acceder al DOM ensombrecido mediante código como el siguiente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;calcula-operaciones&quot;</span><span class="p">).</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Esto, en principio, no es posible si <code class="docutils literal notranslate"><span class="pre">mode</span></code> vale <em>closed</em>. Realmente, aunque no los veremos, hay varios <a class="reference external" href="https://blog.revillweb.com/open-vs-closed-shadow-dom-9f3d7427d1af">trucos</a> que permiten acceder al árbol ensombrecido incluso aunque el atributo <code class="docutils literal notranslate"><span class="pre">mode</span></code> sea <em>closed</em>, por lo que se suele dejar a <em>open</em>. Se espera que el código externo no interactúe más de lo estrictamente necesario con el contenido del elemento personalizado.</p>
+</div>
+</section>
+<section id="caracteristicas-adicionales-de-los-componentes-web">
+<span id="label-avanzado-comp"></span><h2><span class="section-number">5.3. </span>Características adicionales de los componentes web<a class="headerlink" href="#caracteristicas-adicionales-de-los-componentes-web" title="Enlace permanente a este encabezado"></a></h2>
+<p>Permitamos ahora parametrizar los mensajes del componente web introducido en la actividad anterior. Para ello, vamos a incluir dentro de cada instancia del elemento <code class="docutils literal notranslate"><span class="pre">calcula-operaciones</span></code> dos bloques de código HTML identificados mediante un nombre indicado en el atributo <code class="docutils literal notranslate"><span class="pre">slot</span></code>. Dentro de la plantilla, podemos insertar el contenido de estos bloques usando el elemento <code class="docutils literal notranslate"><span class="pre">slot</span></code> e indicando en su atributo <code class="docutils literal notranslate"><span class="pre">name</span></code> el identificador del bloque a insertar. Además, vamos a mejorar también un poco el estilo del componente web rodeándolo con un borde; como se trata de un estilo asociado al elemento completo (el <em>shadow host</em>), usamos el selector de CSS <code class="docutils literal notranslate"><span class="pre">:host</span></code>. Observa en el ejemplo que podemos instanciar un componente web más de una vez en un mismo documento HTML.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos"> 2</span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="linenos"> 3</span>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 4</span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Definición de componentes web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos"> 5</span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 6</span>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 7</span>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="p">&lt;</span><span class="nt">template</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;operaciones&quot;</span><span class="p">&gt;</span>
+<span class="linenos">10</span>      <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos">11</span><span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">          </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">          </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">15</span><span class="w">        </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">          </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">steelblue</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">          </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="kt">%</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">          </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">          </span><span class="k">border-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">lightgray</span><span class="p">;</span>
+<span class="linenos">20</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">21</span><span class="w">        </span><span class="p">.</span><span class="nc">contenido</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">          </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">gainsboro</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">          </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">royalblue</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">25</span><span class="w">        </span><span class="p">:</span><span class="nd">host</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">26</span><span class="w">          </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">lightgray</span><span class="p">;</span>
+<span class="linenos">27</span><span class="w">          </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">28</span><span class="w">          </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">          </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">30</span><span class="w">          </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">31</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">32</span><span class="w">      </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span>      <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">35</span><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Template instanciado&quot;</span><span class="p">);</span>
+<span class="linenos">36</span><span class="w">      </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Sin título<span class="p">&lt;/</span><span class="nt">slot</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos">39</span>      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;contenido&quot;</span><span class="p">&gt;</span>
+<span class="linenos">40</span>        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;mult&quot;</span><span class="p">&gt;</span>Sin nombre<span class="p">&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span>: 3 x 2 = 6.
+<span class="linenos">41</span>      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">42</span>    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="linenos">43</span>
+<span class="linenos">44</span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Definición de componentes web<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span>    <span class="p">&lt;</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">47</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Operaciones binarias<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">48</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;mult&quot;</span><span class="p">&gt;</span>Multiplicación<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">49</span>    <span class="p">&lt;/</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">50</span>
+<span class="linenos">51</span>    <span class="p">&lt;</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">52</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Binary <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>operations<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">53</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;mult&quot;</span><span class="p">&gt;</span>Multiplication<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">54</span>    <span class="p">&lt;/</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">55</span>
+<span class="linenos">56</span>    <span class="p">&lt;</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">57</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;mult&quot;</span><span class="p">&gt;</span>Multiplicación<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">58</span>    <span class="p">&lt;/</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">59</span>
+<span class="linenos">60</span>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">61</span><span class="w">      </span><span class="kd">class</span><span class="w"> </span><span class="nx">Operaciones</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">62</span><span class="w">        </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">63</span><span class="w">          </span><span class="k">super</span><span class="p">();</span>
+<span class="linenos">64</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#operaciones&#39;</span><span class="p">);</span>
+<span class="linenos">65</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="linenos">66</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">shadowRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span>
+<span class="linenos">67</span><span class="w">            </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;open&#39;</span>
+<span class="linenos">68</span><span class="w">          </span><span class="p">});</span>
+<span class="linenos">69</span><span class="w">          </span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">clone</span><span class="p">);</span>
+<span class="linenos">70</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">71</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">72</span><span class="w">      </span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;calcula-operaciones&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Operaciones</span><span class="p">);</span>
+<span class="linenos">73</span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">74</span>
+<span class="linenos">75</span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Fin de la pagina.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">76</span>
+<span class="linenos">77</span>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos">78</span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Que el componente web realice siempre la multiplicación de los mismos números no tiene mucha gracia. Vamos a hacer que los valores a multiplicar se definan como atributos del elemento.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Recuerda que en HTML los atributos que no sean estándar han de tener el prefijo <code class="docutils literal notranslate"><span class="pre">data-</span></code>.</p>
+</div>
+<p>Según la especificación de los componentes web, en el constructor no se puede acceder a los atributos del elemento; por ello, el acceso con el método <code class="docutils literal notranslate"><span class="pre">this.getAttribute</span></code> lo dejamos para el método estándar <code class="docutils literal notranslate"><span class="pre">connectedCallback</span></code> que será invocado por el navegador tras instanciar el componente web:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos"> 2</span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="linenos"> 3</span>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 4</span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Definición de componentes web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos"> 5</span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 6</span>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 7</span>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="p">&lt;</span><span class="nt">template</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;operaciones&quot;</span><span class="p">&gt;</span>
+<span class="linenos">10</span>      <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos">11</span><span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">          </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">          </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">15</span><span class="w">        </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">          </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">steelblue</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">          </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="kt">%</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">          </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">          </span><span class="k">border-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">lightgray</span><span class="p">;</span>
+<span class="linenos">20</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">21</span><span class="w">        </span><span class="p">.</span><span class="nc">contenido</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">          </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">gainsboro</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">          </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">royalblue</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">25</span><span class="w">        </span><span class="p">:</span><span class="nd">host</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">26</span><span class="w">          </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">lightgray</span><span class="p">;</span>
+<span class="linenos">27</span><span class="w">          </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">28</span><span class="w">          </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">          </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">30</span><span class="w">          </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">31</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">32</span><span class="w">      </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span>      <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">35</span><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Template instanciado&quot;</span><span class="p">);</span>
+<span class="linenos">36</span><span class="w">      </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Sin título<span class="p">&lt;/</span><span class="nt">slot</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos">39</span>      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;contenido&quot;</span><span class="p">&gt;</span>
+<span class="linenos">40</span>        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;mult&quot;</span><span class="p">&gt;</span>Sin nombre<span class="p">&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span>:
+<span class="linenos">41</span>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;a&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> x <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> =
+<span class="linenos">42</span>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;resultado&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>.
+<span class="linenos">43</span>      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos">44</span>    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Definición de componentes web<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span>    <span class="p">&lt;</span><span class="nt">calcula-operaciones</span> <span class="na">data-a</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="na">data-b</span><span class="o">=</span><span class="s">&quot;5&quot;</span><span class="p">&gt;</span>
+<span class="linenos">49</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Operaciones binarias<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">50</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;mult&quot;</span><span class="p">&gt;</span>Multiplicación<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">51</span>    <span class="p">&lt;/</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">52</span>
+<span class="linenos">53</span>    <span class="p">&lt;</span><span class="nt">calcula-operaciones</span> <span class="na">data-a</span><span class="o">=</span><span class="s">&quot;8&quot;</span><span class="p">&gt;</span>
+<span class="linenos">54</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Binary operations<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">55</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;mult&quot;</span><span class="p">&gt;</span>Multiplication<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">56</span>    <span class="p">&lt;/</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">57</span>
+<span class="linenos">58</span>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">59</span><span class="w">      </span><span class="kd">class</span><span class="w"> </span><span class="nx">Operaciones</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">60</span><span class="w">        </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">61</span><span class="w">          </span><span class="k">super</span><span class="p">();</span>
+<span class="linenos">62</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#operaciones&#39;</span><span class="p">);</span>
+<span class="linenos">63</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="linenos">64</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">shadowRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span>
+<span class="linenos">65</span><span class="w">            </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;open&#39;</span>
+<span class="linenos">66</span><span class="w">          </span><span class="p">});</span>
+<span class="linenos">67</span><span class="w">          </span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">clone</span><span class="p">);</span>
+<span class="linenos">68</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">69</span>
+<span class="linenos">70</span><span class="w">        </span><span class="nx">connectedCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">71</span><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
+<span class="linenos">72</span><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
+<span class="linenos">73</span><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+<span class="linenos">74</span><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#b&#39;</span><span class="p">);</span>
+<span class="linenos">75</span><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
+<span class="linenos">76</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">resultado</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#resultado&#39;</span><span class="p">);</span>
+<span class="linenos">77</span><span class="w">          </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">*</span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
+<span class="linenos">78</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">79</span>
+<span class="linenos">80</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">81</span><span class="w">      </span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;calcula-operaciones&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Operaciones</span><span class="p">);</span>
+<span class="linenos">82</span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">83</span>
+<span class="linenos">84</span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Fin de la pagina.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">85</span>
+<span class="linenos">86</span>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos">87</span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>El estándar de HTML es muy claro al decir que en el constructor «the element’s attributes and children must not be inspected», que «work should be deferred to <code class="docutils literal notranslate"><span class="pre">connectedCallback</span></code> as much as possible» y que «the constructor should be used to set up initial state and default values, and to set up event listeners and possibly a shadow root». No obstante, dependiendo del navegador y de cuándo se ejecute el código es posible que aparentemente puedas <a class="reference external" href="https://stackoverflow.com/questions/43836886/failed-to-construct-customelement-error-when-javascript-file-is-placed-in-head#answer-43837330">saltarte estas restricciones</a>. Ten en cuenta que el comportamiento de tu código si, por ejemplo, accedes a los atributos en el constructor puede ser muy diferente (e incluso producir errores) en otros navegadores o en versiones diferentes del mismo navegador, por lo que es más que recomendable que no lo hagas.</p>
+</div>
+<p>Ahora vamos a modularizar y encapsular el diseño anterior para que otros puedan usar nuestro componente web sin tener que incluir todo lo anterior en su documento HTML:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos"> 2</span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="linenos"> 3</span>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 4</span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Definición de componentes web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos"> 5</span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos"> 6</span>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;calcula-operaciones.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos"> 7</span>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos"> 8</span>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Definición de componentes web<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>    <span class="p">&lt;</span><span class="nt">calcula-operaciones</span> <span class="na">data-a</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="na">data-b</span><span class="o">=</span><span class="s">&quot;5&quot;</span><span class="p">&gt;</span>
+<span class="linenos">13</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Operaciones binarias<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">14</span>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;mult&quot;</span><span class="p">&gt;</span>Multiplicación<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="linenos">15</span>    <span class="p">&lt;/</span><span class="nt">calcula-operaciones</span><span class="p">&gt;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Fin de la pagina.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos">20</span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>El contenido del fichero <code class="docutils literal notranslate"><span class="pre">calcula-operaciones.js</span></code> es el siguiente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;template&#39;</span><span class="p">);</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nx">template</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="linenos"> 5</span><span class="sb">    &lt;style&gt;</span>
+<span class="linenos"> 6</span><span class="sb">      * {</span>
+<span class="linenos"> 7</span><span class="sb">        margin: 0;</span>
+<span class="linenos"> 8</span><span class="sb">        padding: 0;</span>
+<span class="linenos"> 9</span><span class="sb">      }</span>
+<span class="linenos">10</span><span class="sb">      h1 {</span>
+<span class="linenos">11</span><span class="sb">        color: steelblue;</span>
+<span class="linenos">12</span><span class="sb">        font-size: 110%;</span>
+<span class="linenos">13</span><span class="sb">        margin-bottom: 10px;</span>
+<span class="linenos">14</span><span class="sb">        border-bottom: 1px solid lightgray;</span>
+<span class="linenos">15</span><span class="sb">      }</span>
+<span class="linenos">16</span><span class="sb">      .contenido {</span>
+<span class="linenos">17</span><span class="sb">        background-color: gainsboro;</span>
+<span class="linenos">18</span><span class="sb">        color: royalblue;</span>
+<span class="linenos">19</span><span class="sb">      }</span>
+<span class="linenos">20</span><span class="sb">      :host {</span>
+<span class="linenos">21</span><span class="sb">        border: 1px solid lightgray;</span>
+<span class="linenos">22</span><span class="sb">        padding: 5px;</span>
+<span class="linenos">23</span><span class="sb">        display: block;</span>
+<span class="linenos">24</span><span class="sb">        margin: 5px;</span>
+<span class="linenos">25</span><span class="sb">        margin-bottom: 15px;</span>
+<span class="linenos">26</span><span class="sb">      }</span>
+<span class="linenos">27</span><span class="sb">    &lt;/style&gt;</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="sb">    &lt;script&gt;</span>
+<span class="linenos">30</span><span class="sb">      console.log(&quot;Template instanciado&quot;);</span>
+<span class="linenos">31</span><span class="sb">    &lt;/script&gt;</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="sb">    &lt;h1&gt;&lt;slot name=&quot;title&quot;&gt;Sin título&lt;/slot&gt;&lt;/h1&gt;</span>
+<span class="linenos">34</span><span class="sb">    &lt;div class=&quot;contenido&quot;&gt;</span>
+<span class="linenos">35</span><span class="sb">      &lt;slot name=&quot;mult&quot;&gt;Sin nombre&lt;/slot&gt;:</span>
+<span class="linenos">36</span><span class="sb">      &lt;span id=&quot;a&quot;&gt;&lt;/span&gt; x &lt;span id=&quot;b&quot;&gt;&lt;/span&gt; =</span>
+<span class="linenos">37</span><span class="sb">      &lt;span id=&quot;resultado&quot;&gt;&lt;/span&gt;.</span>
+<span class="linenos">38</span><span class="sb">    &lt;/div&gt;`</span><span class="p">;</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="w">  </span><span class="kd">class</span><span class="w"> </span><span class="nx">Operaciones</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">41</span><span class="w">    </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">42</span><span class="w">      </span><span class="k">super</span><span class="p">();</span>
+<span class="linenos">43</span><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="linenos">44</span><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">shadowRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span>
+<span class="linenos">45</span><span class="w">        </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;open&#39;</span>
+<span class="linenos">46</span><span class="w">      </span><span class="p">});</span>
+<span class="linenos">47</span><span class="w">      </span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">clone</span><span class="p">);</span>
+<span class="linenos">48</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span><span class="w">    </span><span class="nx">connectedCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">51</span><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
+<span class="linenos">52</span><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
+<span class="linenos">53</span><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+<span class="linenos">54</span><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#b&#39;</span><span class="p">);</span>
+<span class="linenos">55</span><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
+<span class="linenos">56</span><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">resultado</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#resultado&#39;</span><span class="p">);</span>
+<span class="linenos">57</span><span class="w">      </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">*</span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
+<span class="linenos">58</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">59</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">60</span>
+<span class="linenos">61</span><span class="w">  </span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;calcula-operaciones&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Operaciones</span><span class="p">);</span>
+<span class="linenos">62</span>
+<span class="linenos">63</span><span class="p">})();</span>
+</pre></div>
+</div>
+<p>El código anterior se ha encapsulado dentro de lo que se conoce como una <em>función invocada inmediatamente</em> (<em>immediately-invoked function expressions</em>, IIFE), que permite no contaminar el espacio de nombres global con variables que podrían estar siendo también definidas en otras librerías, evitando así potenciales conflictos.</p>
+<p>Finalmente, vamos a sobrescribir el método estándar <code class="docutils literal notranslate"><span class="pre">attributeChangedCallback</span></code>, que se dispara cuando alguno de los atributos del componente web se inicializa o se cambia. Sin este código, si el valor del atributo <code class="docutils literal notranslate"><span class="pre">a</span></code> o <code class="docutils literal notranslate"><span class="pre">b</span></code> cambiara dinámicamente (mediante JavaScript), el resultado de la multiplicación no se actualizaría; puedes comprobarlo fácilmente cambiando el valor de uno de los atributos desde las Chrome DevTools. Dado que <code class="docutils literal notranslate"><span class="pre">attributeChangedCallback</span></code> se llama también cuando el atributo recibe valor por primera vez y dado que nuestra implementación de <code class="docutils literal notranslate"><span class="pre">connectedCallback</span></code> no hacía nada más que usar los atributos, podemos eliminar esta última función. El método <code class="docutils literal notranslate"><span class="pre">attributeChangedCallback</span></code> solo se invoca para aquellos atributos incluidos en la lista devuelta por el método <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">get</span> <span class="pre">observedAttributes()</span></code> (así evitamos que la función se invoque cuando se cambien otros atributos como <code class="docutils literal notranslate"><span class="pre">style</span></code> o <code class="docutils literal notranslate"><span class="pre">class</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Hemos cambiado también el cálculo de la multiplicación para que se realice en un servidor web externo, aunque esto estrictamente no tenga que ver con la tecnología de componentes web. Observa cómo, aunque en este caso no es necesario ya que los atributos deberían ser números (opcionalmente con un punto o un signo más o menos, que también son un caracteres válidos en URLs), hemos seguido la buena práctica de utilizar <code class="docutils literal notranslate"><span class="pre">encodeURI</span></code> para obtener un URL sin caracteres no aceptados. Los caracteres válidos en un URL son:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&amp;&#39;()*+,;=
+</pre></div>
+</div>
+<p>Cualquier otro carácter necesita ser convertido a la <em>codificación por ciento</em>, como ya hemos comentado otras veces.</p>
+</div>
+<p>El <a class="reference external" href="https://repl.it/&#64;jaspock/InstructiveWhoppingAmpersand">código final</a> de nuestro componente web es el siguiente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;template&#39;</span><span class="p">);</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nx">template</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="linenos"> 5</span><span class="sb">    &lt;style&gt;</span>
+<span class="linenos"> 6</span><span class="sb">      * {</span>
+<span class="linenos"> 7</span><span class="sb">        margin: 0;</span>
+<span class="linenos"> 8</span><span class="sb">        padding: 0;</span>
+<span class="linenos"> 9</span><span class="sb">      }</span>
+<span class="linenos">10</span><span class="sb">      h1 {</span>
+<span class="linenos">11</span><span class="sb">        color: steelblue;</span>
+<span class="linenos">12</span><span class="sb">        font-size: 110%;</span>
+<span class="linenos">13</span><span class="sb">        margin-bottom: 10px;</span>
+<span class="linenos">14</span><span class="sb">        border-bottom: 1px solid lightgray;</span>
+<span class="linenos">15</span><span class="sb">      }</span>
+<span class="linenos">16</span><span class="sb">      .contenido {</span>
+<span class="linenos">17</span><span class="sb">        background-color: gainsboro;</span>
+<span class="linenos">18</span><span class="sb">        color: royalblue;</span>
+<span class="linenos">19</span><span class="sb">      }</span>
+<span class="linenos">20</span><span class="sb">      :host {</span>
+<span class="linenos">21</span><span class="sb">        border: 1px solid lightgray;</span>
+<span class="linenos">22</span><span class="sb">        padding: 5px;</span>
+<span class="linenos">23</span><span class="sb">        display: block;</span>
+<span class="linenos">24</span><span class="sb">        margin: 5px;</span>
+<span class="linenos">25</span><span class="sb">        margin-bottom: 15px;</span>
+<span class="linenos">26</span><span class="sb">      }</span>
+<span class="linenos">27</span><span class="sb">    &lt;/style&gt;</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="sb">    &lt;script&gt;</span>
+<span class="linenos">30</span><span class="sb">      console.log(&quot;Template instanciado&quot;);</span>
+<span class="linenos">31</span><span class="sb">    &lt;/script&gt;</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="sb">    &lt;h1&gt;&lt;slot name=&quot;title&quot;&gt;Sin título&lt;/slot&gt;&lt;/h1&gt;</span>
+<span class="linenos">34</span><span class="sb">    &lt;div class=&quot;contenido&quot;&gt;</span>
+<span class="linenos">35</span><span class="sb">      &lt;slot name=&quot;mult&quot;&gt;Sin nombre&lt;/slot&gt;:</span>
+<span class="linenos">36</span><span class="sb">      &lt;span id=&quot;a&quot;&gt;&lt;/span&gt; x &lt;span id=&quot;b&quot;&gt;&lt;/span&gt; =</span>
+<span class="linenos">37</span><span class="sb">      &lt;span id=&quot;resultado&quot;&gt;&lt;/span&gt;.</span>
+<span class="linenos">38</span><span class="sb">    &lt;/div&gt;`</span><span class="p">;</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="w">  </span><span class="kd">class</span><span class="w"> </span><span class="nx">Operaciones</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">observedAttributes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;data-a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;data-b&#39;</span><span class="p">];</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">43</span>
+<span class="linenos">44</span><span class="w">    </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">45</span><span class="w">      </span><span class="k">super</span><span class="p">();</span>
+<span class="linenos">46</span><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="linenos">47</span><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">shadowRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span>
+<span class="linenos">48</span><span class="w">        </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;open&#39;</span>
+<span class="linenos">49</span><span class="w">      </span><span class="p">});</span>
+<span class="linenos">50</span><span class="w">      </span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">clone</span><span class="p">);</span>
+<span class="linenos">51</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">52</span>
+<span class="linenos">53</span><span class="w">    </span><span class="nx">actualizaPrimerOperando</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">54</span><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+<span class="linenos">55</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">56</span>
+<span class="linenos">57</span><span class="w">    </span><span class="nx">actualizaSegundoOperando</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">58</span><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#b&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
+<span class="linenos">59</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">60</span>
+<span class="linenos">61</span><span class="w">    </span><span class="nx">actualizaResultado</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">62</span><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">resultado</span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#resultado&#39;</span><span class="p">);</span>
+<span class="linenos">63</span><span class="w">      </span><span class="nx">fetch</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="sb">`https://api.mathjs.org/v4/?expr=</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="si">}</span><span class="sb">*</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="si">}</span><span class="sb">`</span><span class="p">))</span>
+<span class="linenos">64</span><span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span><span class="w"> </span><span class="p">)</span>
+<span class="linenos">65</span><span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">)</span>
+<span class="linenos">66</span><span class="w">      </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;error&#39;</span><span class="w"> </span><span class="p">);</span>
+<span class="linenos">67</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">68</span>
+<span class="linenos">69</span><span class="w">    </span><span class="nx">attributeChangedCallback</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">oldValue</span><span class="p">,</span><span class="nx">newValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">70</span><span class="w">      </span><span class="c1">// ningún uso de this es opcional en esta función</span>
+<span class="linenos">71</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">===</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">72</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span><span class="w"> </span><span class="nx">newValue</span><span class="p">;</span>
+<span class="linenos">73</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">actualizaPrimerOperando</span><span class="p">();</span>
+<span class="linenos">74</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">75</span><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">actualizaResultado</span><span class="p">();</span>
+<span class="linenos">76</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">77</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">===</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">78</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span><span class="w"> </span><span class="nx">newValue</span><span class="p">;</span>
+<span class="linenos">79</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">actualizaSegundoOperando</span><span class="p">();</span>
+<span class="linenos">80</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">81</span><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">actualizaResultado</span><span class="p">();</span>
+<span class="linenos">82</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">83</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">84</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">85</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">86</span>
+<span class="linenos">87</span><span class="w">  </span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&quot;calcula-operaciones&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Operaciones</span><span class="p">);</span>
+<span class="linenos">88</span>
+<span class="linenos">89</span><span class="p">})();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La palabra reservada <code class="docutils literal notranslate"><span class="pre">get</span></code> en JavaScript liga un atributo a un método (diremos que la función es un <em>getter</em> para la propiedad) de forma que aunque en el código cliente estemos accediendo a una propiedad en realidad estamos llamando a una función como puedes ver en el siguiente ejemplo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span><span class="w"> </span><span class="nx">Polygon</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">height</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">width</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">area</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">calcArea</span><span class="p">()</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nx">calcArea</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">14</span><span class="p">}</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="kd">var</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Polygon</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span>
+<span class="linenos">17</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">area</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Como el método de nuestro componente anterior es estático, nos podríamos referir a él como <code class="docutils literal notranslate"><span class="pre">Operaciones.observedAttributes</span></code>. Observa que, en cualquier caso, el código que termine accediendo a <code class="docutils literal notranslate"><span class="pre">Operaciones.observedAttributes</span></code> en el ejemplo anterior no es nuestro sino que forma parte de la API del navegador.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Consejo</p>
+<p>Si tu aplicación web tiene que funcionar en versiones de los navegadores de hace unos años, es posible que estos no tuvieran implementados todavía los estándares relacionados con los componentes web. Para que los componentes web funcionen en navegadores antiguos es necesario cargar el <a class="reference external" href="https://cdnjs.com/libraries/webcomponentsjs">polyfill</a> correspondiente. El nombre de <em>polyfill</em> se utiliza para referirse a una librería que añade a un navegador una funcionalidad que no tiene implementada. Otra forma de asegurar el funcionamiento en navegadores antiguos de programas que usan características recientes de JavaScript es mediante compiladores como <a class="reference external" href="https://github.com/babel/babel">Babel</a>.</p>
+</div>
+</section>
+<section id="ejercicio-de-ampliacion-del-componente-web">
+<h2><span class="section-number">5.4. </span>Ejercicio de ampliación del componente web<a class="headerlink" href="#ejercicio-de-ampliacion-del-componente-web" title="Enlace permanente a este encabezado"></a></h2>
+<p>Las actividades anteriores han introducido las tecnologías fundamentales relacionadas con los componentes web. Ahora puedes intentar modificar el <a class="reference external" href="https://repl.it/&#64;jaspock/InstructiveWhoppingAmpersand">código final</a> para introducirle algunas mejoras.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Modifica nuestro componente web para que desde el código cliente pueda indicarse qué operación realizar de entre las cuatro operaciones matemáticas básicas.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="servicios.html" class="btn btn-neutral float-left" title="4. Acceso a servicios web de terceros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="rest.html" class="btn btn-neutral float-right" title="6. Implementación de servicios web" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2022-2023, Juan Antonio Pérez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

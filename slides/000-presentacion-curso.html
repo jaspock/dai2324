@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Universitat d’Alacant">
+  <title>Desarrollo de Aplicaciones en Internet</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/theme/simple.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://unpkg.com/reveal.js@3.9.2//css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.9.2//css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://unpkg.com/reveal.js@3.9.2//lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Desarrollo de Aplicaciones en Internet</h1>
+  <p class="author">Universitat d’Alacant</p>
+  <p class="date">2023—2024</p>
+</section>
+
+<section id="profesor-y-tutoría" class="slide level2">
+<h2>Profesor y tutoría</h2>
+<ul>
+<li>Juan Antonio Pérez Ortiz, Departamento de Lenguajes y Sistemas Informáticos</li>
+<li>Edificio Politécnica 4, módulo 2, planta 2</li>
+<li>Tutoría previa reserva a través de UACloud</li>
+</ul>
+</section>
+<section id="contenido-de-la-asignatura" class="slide level2">
+<h2>Contenido de la asignatura</h2>
+<ul>
+<li>Lenguajes de marcado (HTML)</li>
+<li>Lenguajes de estilo (CSS)</li>
+<li>Programar el lado del navegador (JavaSript)</li>
+<li>Protocolos de la web (HTTP)</li>
+<li>Servicios web</li>
+<li>Componentes web</li>
+<li>Programar el lado del servidor (en Node.js)</li>
+<li>Computación en la nube</li>
+<li>Otros elementos del desarrollo web</li>
+</ul>
+</section>
+<section id="actividades" class="slide level2">
+<h2>Actividades</h2>
+<ul>
+<li>Actividades a realizar en casa (peso: 20%)</li>
+<li>Para la mayoría de los temas se seguirá un enfoque de clase invertida:
+<ul>
+<li>visionado de vídeos o lectura de materiales antes de clase</li>
+<li>realización de un pequeño cuestionario</li>
+<li>resolución de problemas en clase</li>
+</ul></li>
+<li>Es muy importante la implicación activa y realizar las actividades propuestas</li>
+</ul>
+</section>
+<section id="prácticas" class="slide level2">
+<h2>Prácticas</h2>
+<ul>
+<li>Desarrollo individual e incremental de una aplicación web</li>
+<li>Asistencia obligatoria, pero se admite un máximo de 4 faltas sin justificar</li>
+<li>Fechas aproximadas de entrega: 5 octubre, 2 noviembre, 23 noviembre, 21 diciembre</li>
+<li>Peso: 40% de la nota final (sin nota mínima)</li>
+</ul>
+</section>
+<section id="plagios" class="slide level2">
+<h2>Plagios</h2>
+<ul>
+<li>Se puede discutir con los compañeros diferentes soluciones o estrategias</li>
+<li>No se puede copiar código</li>
+<li>El plagio suele ser fácil de detectar. El esfuerzo para engañar a los sistemas antiplagio puede ser mayor que el de hacer la práctica</li>
+<li>El Reglamento para la Evaluación de los aprendizajes de la UA y la normativa de la EPS definen los procedimientos y sanciones en caso de fraude académico.</li>
+<li>La Ley de Convivencia Universitaria de 2022 es una norma de rango superior en este contexto.</li>
+</ul>
+</section>
+<section id="asistentes-basados-en-ia" class="slide level2">
+<h2>Asistentes basados en IA</h2>
+<ul>
+<li>No se prohíbe su uso explícitamente, pero…
+<ul>
+<li>son más útiles cuando ya conoces la materia</li>
+<li>no son infalibles: pueden generar código erróneo que no entiendas</li>
+<li>pueden generar código correcto que no entiendas o no intentes entender</li>
+<li>no estarán disponibles en los exámenes</li>
+<li>pueden generar código no trivial que sea considerado como plagio</li>
+</ul></li>
+</ul>
+</section>
+<section id="exámenes" class="slide level2">
+<h2>Exámenes</h2>
+<ul>
+<li>Examen teórico con problemas de respuesta corta y abierta como los que iremos viendo en clase (peso: 20%)</li>
+<li>Examen práctico de ampliación de la última práctica (peso: 20%)</li>
+<li>Ambos exámenes se realizan uno después del otro el día de la fecha oficial</li>
+</ul>
+</section>
+<section id="exámenes-1" class="slide level2">
+<h2>Exámenes</h2>
+<ul>
+<li>Nota mínima de 4 en ambos</li>
+<li>Las notas mayores de 4 en los exámenes de enero se guardan para la convocatoria de julio</li>
+<li>Se podrá consultar cierto material durante el examen como se anunciará más adelante</li>
+</ul>
+</section>
+<section id="contenidos" class="slide level2">
+<h2>Contenidos</h2>
+<ul>
+<li>Los contenidos concretos que aprendas no son tan importantes como las capacidades que desarrolles.</li>
+<li>Oblígate a preguntar con frecuencia. Cualquier persona en el proceso de aprender tiene dudas.</li>
+</ul>
+</section>
+<section id="profesional-en-tecnologías-de-la-información" class="slide level2">
+<h2>Profesional en Tecnologías de la Información</h2>
+<ul>
+<li>Explain and apply appropriate information technologies and employ appropriate methodologies to help an individual or organization achieve its goals and objectives;</li>
+<li>Function as a user advocate;</li>
+<li>Manage the information technology resources of an individual or organization;</li>
+</ul>
+</section>
+<section id="profesional-en-tecnologías-de-la-información-1" class="slide level2">
+<h2>Profesional en Tecnologías de la Información</h2>
+<ul>
+<li>Anticipate the changing direction of information technology and evaluate and communicate the likely utility of new technologies to an individual or organization;</li>
+<li>Understand and, in some cases, contribute to the scientific, mathematical and theoretical foundations on which information technologies are built;</li>
+</ul>
+</section>
+<section id="profesional-en-tecnologías-de-la-información-2" class="slide level2">
+<h2>Profesional en Tecnologías de la Información</h2>
+<ul>
+<li>Live and work as a contributing, well-rounded member of society.</li>
+<li>Tomado de ACM Special Interest Group for Information Technology Education, <a href="http://www.sigite.org/?page_id=22">SIGITE</a></li>
+</ul>
+</section>
+<section id="devops" class="slide level2">
+<h2>DevOps</h2>
+<ul>
+<li>DevOps is a set of software development practices that combine software development (Dev) and information-technology operations (Ops) to shorten the systems-development life cycle while delivering features, fixes, and updates frequently in close alignment with business objectives.</li>
+</ul>
+</section>
+<section id="devops-1" class="slide level2">
+<h2>DevOps</h2>
+<ul>
+<li>Coding – code development and review, source code management tools, code merging</li>
+<li>Building – continuous integration tools, build status</li>
+<li>Testing – continuous testing tools that provide quick and timely feedback on business risks</li>
+<li>Packaging – artifact repository, application pre-deployment staging</li>
+</ul>
+</section>
+<section id="devops-2" class="slide level2">
+<h2>DevOps</h2>
+<ul>
+<li>Releasing – change management, release approvals, release automation</li>
+<li>Configuring – infrastructure configuration and management, infrastructure as code tools</li>
+<li>Monitoring: applications performance monitoring, end-user experience</li>
+<li>Tomado de <a href="https://en.wikipedia.org/wiki/DevOps">Wikipedia</a>.</li>
+</ul>
+</section>
+<section id="apéndice" class="slide level2">
+<h2>Apéndice</h2>
+<p>Historia de la web e internet</p>
+</section>
+<section id="vannevar-bush" class="slide level2">
+<h2>Vannevar Bush</h2>
+<p>«Consider a future device for individual use, which is a sort of mechanized private file and library. It needs a name, and to coin one at random, “memex” will do. A memex is a device in which an individual stores all his books, records, and communications, and which is mechanized so that it may be consulted with exceeding speed and flexibility. It is an enlarged intimate supplement to his memory.»</p>
+<p>(continúa…)</p>
+</section>
+<section id="vannevar-bush-1" class="slide level2">
+<h2>Vannevar Bush</h2>
+<p>«It consists of a desk, and while it can presumably be operated from a distance, it is primarily the piece of furniture at which he works. On the top are slanting translucent screens, on which material can be projected for convenient reading. There is a keyboard, and sets of buttons and levers. Otherwise it looks like an ordinary desk.»</p>
+<p>Vannevar Bush, “As We May Think”, Atlantic Monthly, julio 1945.</p>
+</section>
+<section id="paul-baran" class="slide level2">
+<h2>Paul Baran</h2>
+<p>“The Internet is really the work of a thousand people”</p>
+<p>Paul Baran, 2001</p>
+<p>«The process of technological developments is like building a cathedral. Over the course of several hundred years, new people come along and each lays down a block on top of the old foundations, each saying, ‘I built a cathedral.’»</p>
+<p>(continúa…)</p>
+</section>
+<section id="paul-baran-1" class="slide level2">
+<h2>Paul Baran</h2>
+<p>«Next month another block is placed atop the previous one. Then comes along an historian who asks, ‘Well, who built the cathedral?’ Peter added some stones here, and Paul added a few more. If you are not careful you can con yourself into believing that you did the most important part. But the reality is that each contribution has to follow onto previous work. Everything is tied to everything else.»</p>
+<p>Paul Baran, 1990</p>
+</section>
+<section id="j.-c.-r.-licklider" class="slide level2">
+<h2>J. C. R. Licklider</h2>
+<p>«It seems reasonable to envision, for a time 10 or 15 years hence, a ‘thinking center’ that will incorporate the functions of present-day libraries together with anticipated advances in information storage and retrieval.»</p>
+<p>(continúa…)</p>
+</section>
+<section id="j.-c.-r.-licklider-1" class="slide level2">
+<h2>J. C. R. Licklider</h2>
+<p>«The picture readily enlarges itself into a network of such centers, connected to one another by wide-band communication lines and to individual users by leased-wire services. In such a system, the speed of the computers would be balanced, and the cost of the gigantic memories and the sophisticated programs would be divided by the number of users.»</p>
+<p>J. C. R. Licklider, “Man-Computer Symbiosis”, 1960.</p>
+</section>
+<section id="douglas-engelbart" class="slide level2">
+<h2>Douglas Engelbart</h2>
+<p>«Many years ago, I dreamed that digital technology could greatly augment our collective human capabilities for dealing with complex, urgent problems. Computers, high-speed communications, displays, interfaces–it’s as if suddenly, in an evolutionary sense, we’re getting a super new nervous system to upgrade our collective social organisms…»</p>
+<p>(continúa…)</p>
+</section>
+<section id="douglas-engelbart-1" class="slide level2">
+<h2>Douglas Engelbart</h2>
+<p>«Since the first of these dreams got fixed in my head, decades ago, I’ve struggled with the realization that the sooner the world gets serious about pursuing the possibilities, the greater the chance that we can reduce the hazards facing this careening vessel carrying us along.»</p>
+<p>Douglas Engelbart, “Dreaming of the Future”, BYTE Magazine, septiembre 1995.</p>
+</section>
+<section id="vinton-cerf" class="slide level2">
+<h2>Vinton Cerf</h2>
+<p>«One of the things that is peculiar and interesting about the Internet history is that the TCP/IP protocols were never patented. In fact, they were made available as widely as possible to the public as soon as possible…. The openness of those protocols and their availability was key to their adoption and widespread use. I think if Bob and I had not done that - if we had tried to, in some way, constrain and restrict access to those protocols, some other protocol suite would probably be the one we’d be using today.»</p>
+<p>Vinton Cerf, 2000</p>
+</section>
+<section id="tim-berners-lee" class="slide level2">
+<h2>Tim Berners-Lee</h2>
+<p>«The way the internet is designed is very much as a decentralised system. At the moment, because countries connect to each other in lots of different ways, there is no one off switch, there is no central place where you can turn it off.»</p>
+<p>«In order to be able to turn the whole thing off or really block, suppress one particular idea then the countries and governments would have to get together and agree and co-ordinate and turn it from a decentralised system to being a centralised system.»</p>
+<p>(continúa…)</p>
+</section>
+<section id="tim-berners-lee-1" class="slide level2">
+<h2>Tim Berners-Lee</h2>
+<p>«And if that does happen it is really important that everybody fights against that sort of direction.»</p>
+<p>Tim Berners-Lee, 2012</p>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@3.9.2//js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: {37:'prev',38:'prev',39:'next',40:'next'},
+        // Transition style
+        transition: 'linear', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://unpkg.com/reveal.js@3.9.2//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
