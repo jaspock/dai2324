@@ -19,22 +19,22 @@ Este es el calendario de cada uno de los entregables de la asignatura. No se adm
       - Porcentaje en la nota de prácticas
     * - P1
       - `Práctica 1: una página web con HTML5 🖥️`_
-      - 5 octubre 2022
+      - 5 octubre 2023
       - 8 horas
       - 20%
     * - P2
       - `Práctica 2: una aplicación web local 🖥️`_
-      - 2 noviembre 2022
+      - 2 noviembre 2023 (provisional)
       - 14 horas
       - 25%
     * - P3
       - `Práctica 3: una aplicación con acceso a servicios web de terceros y con componentes web 🖥️`_
-      - 23 noviembre 2022
+      - 23 noviembre 2023 (provisional)
       - 12 horas
       - 25%
     * - P4
       - `Práctica 4: una aplicación en la nube 🖥️`_
-      - 21 diciembre 2022
+      - 21 diciembre 2023 (provisional)
       - 20 horas
       - 30%
 
