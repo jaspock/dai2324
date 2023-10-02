@@ -46,18 +46,18 @@ Elementos más avanzados del lenguaje o las características adicionales a las q
 
 .. Important::
 
-  El izado (*hoisting*) es el mecanismo por el que las declaraciones de variables y funciones son desplazadas al comienzo del ámbito en el que se encuentran antes de la ejecución. En el caso de las variables, su declaración y su inicialización son dos cosas diferentes, por lo que el siguiente código imprime *undefined* y *Novokribirsk*:
+  El izado (*hoisting*) es el mecanismo por el que las declaraciones de variables y funciones son desplazadas al comienzo del ámbito en el que se encuentran antes de la ejecución. En el caso de las variables, su declaración y su inicialización son dos cosas diferentes, por lo que el siguiente código imprime *undefined*, *undefined* y *Novokribirsk*:
 
   .. code-block:: javascript
     :linenos:
 
     console.log(newcity);
     city();
-
     var newcity = "Novokribirsk";
+    city();
 
     function city() {
-      console.log("Kribirsk");
+      console.log(newcity);
     }
 
 
