@@ -598,7 +598,7 @@ Para acabar, daremos un ejemplo de herencia usando la notación clásica de Java
 
 Observa cómo al establecer el ``[[Prototype]]`` de ``Planeta.prototype`` a ``CuerpoCeleste.prototype`` con la llamada a ``Object.setPrototype``, estamos consiguiendo encadenar los prototipos de forma que cualquier objeto que se cree haciendo ``new Planeta()`` tendrá como prototipo un objeto cuyo prototipo apunta a la información de la clase base ``CuerpoCeleste``. Por otro lado, la función ``call`` permite llamar a una función con un determinado valor para ``this`` y con los argumentos que se deseen. La representación en el *heap* de todos los objetos implicados y sus dependencias es la siguiente:
 
-.. figure:: _static/img/planetas-protipos.png
+.. figure:: _static/img/planetas-prototipos.png
   :target: _static/img/planetas-prototipos.png
   :alt: objetos y prototipos en memoria
   :figwidth: 50 %
