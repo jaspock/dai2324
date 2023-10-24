@@ -601,7 +601,7 @@ Observa cómo al establecer el ``[[Prototype]]`` de ``Planeta.prototype`` a ``Cu
 .. figure:: _static/img/planetas-prototipos.png
   :target: _static/img/planetas-prototipos.png
   :alt: objetos y prototipos en memoria
-  :figwidth: 50 %
+  :figwidth: 80 %
 
   Representación en memoria de los objetos creados en el código de cuerpos celestes y planetas.
 
