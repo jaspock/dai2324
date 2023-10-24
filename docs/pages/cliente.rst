@@ -349,7 +349,18 @@ De cara a comprender mejor el capítulo sobre la vida secreta de los objetos, se
   
   Por otro lado, el valor por defecto del prototipo (visible) de una función es un objeto que contiene una única propiedad llamada ``constructor`` que apunta a la propia función.
 
-Un prototipo no deja de ser un objeto con una serie de funciones como el siguiente:
+.. Note::
+
+  El estándar de JavaScript solo permite usar ``__proto__`` en un contexto muy concreto para inicializar el prototipo de un objeto a la vez que este se define literalmente. Por ejemplo, el siguiente código crea un objeto ``x`` con el prototipo ``y``:
+
+  .. code-block:: javascript
+    :linenos:
+
+    let y = {a: 1};
+    let x = {b: 2, __proto__: y};
+    console.log(x.a+x.b);  // 3
+
+Un prototipo no deja de ser un objeto con una serie de atributos y funciones como el siguiente:
 
 .. code-block:: javascript
   :linenos:
@@ -400,7 +411,7 @@ Con estos ingredientes, podemos crear dos objetos que representen sendos okapis:
   o1.habla();
   o2.habla();
 
-Aunque cada okapi tiene su propio atributo ``edad`` (puedes imprimir ``o1.edad`` y ``o2.edad``), el código de la función ``habla`` no está duplicado en memoria, porque solo existe una instancia de la función (recuerda que las funciones son objetos de clase ``Function`` y podemos, por tanto, manejar referencias a ellas) dentro del prototipo. Cuando escribimos ``o1.edad`` el atributo se encuentra directamente en el objeto, pero cuando escribimos ``o1.habla()`` la función no es un atributo directo de ``o1``, sino que, al no encontrarlo en el objeto, el intérprete lo busca en su prototipo.
+Aunque cada okapi tiene su propio atributo ``edad`` (puedes imprimir ``o1.edad`` y ``o2.edad``), el código de la función ``habla`` no está duplicado en memoria, porque solo existe una instancia de la función (recuerda que las funciones son objetos de clase ``Function`` y podemos, por tanto, manejar referencias a ellas) dentro del prototipo. Cuando escribimos ``o1.edad`` el atributo se encuentra directamente en el objeto (en inglés se dice que el atributo es una *own property* del objeto), pero cuando escribimos ``o1.habla()``, la función no es un atributo directo de ``o1``, sino que, al no encontrarlo en el objeto, el intérprete lo busca en su prototipo (se dice que la función es una *inherited property* del objeto).
 
 Como hemos comentado, podemos acceder al prototipo del objeto con ``Object.getPrototypeOf(o1)`` y en muchos navegadores, aunque no recomendado, con ``o1.__proto__``. De hecho, en un navegador que soporte ``__proto__`` la comparación ``Object.getPrototypeOf(o1) === o1.__proto__`` devolverá ``true`` porque el prototipo no deja de ser un único objeto en memoria. También devolverá cierto la expresión ``o1.__proto__ === protoOkapi`` en nuestro caso. Ahora bien, si el prototipo de un objeto es a su vez un objeto, como hemos visto, ¿cuál es el resultado de ``o1.__proto__.__proto__`` o, dicho de otra forma, cuál es el prototipo del objeto ``protoOkapi``? Si mostramos el contenido de la expresión ``o1.__proto__.__proto__`` por la consola del navegador, veremos un objeto con una serie de métodos como ``toString``, entre otros. Estos métodos vienen del prototipo de ``Object``, es decir, ``Object.prototype``, que es el prototipo usado por defecto para los objetos para los que no se define un prototipo específico. La expresión ``Object.prototype === o1.__proto__.__proto__`` se evalúa, por tanto, a cierto.
 
@@ -423,7 +434,7 @@ Obviamente, si invocamos ``habla`` directamente haciendo ``protoOkapi.habla()``,
   o1.camina = function() { console.log("Caminando voy."); }
   o1.camina();
 
-Pero, al no pertenecer al prototipo, la función ``camina`` solo existe para el objeto ``o1``.
+Pero, al no pertenecer al prototipo, la función ``camina`` solo existe para el objeto ``o1``; se trataría, por tanto, de una *own property* del objeto. Si intentamos invocar ``o3.camina()``, obtendremos un error porque ``o3`` no tiene esa función. En cambio, si añadimos la función al prototipo, todos los objetos que lo usen tendrán acceso a ella.
 
 .. Note::
 
@@ -437,7 +448,7 @@ Pero, al no pertenecer al prototipo, la función ``camina`` solo existe para el 
       <div id="x">X</div>
     </div>
   
-  Cuando se hace clic en la equis mayúscula, el siguiente código de JavaScript muestra por consola la cadena ``w`` excepto en el segundo caso en el que se produce una excepción por tener ``this.parentNode`` el valor ``undefined``:
+  Cuando se hace clic en la equis mayúscula, el siguiente código de JavaScript muestra por consola la cadena ``w``, excepto en el segundo caso en el que se produce una excepción por tener ``this.parentNode`` el valor ``undefined``:
 
   .. code-block:: javascript
     :linenos:
@@ -480,7 +491,7 @@ Una representación gráfica de la disposición en memoria de los diferentes obj
   Representación en memoria de los objetos creados en el código de la actividad.
 
 
-JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear objetos. Esta segunda forma se basa en definir una *función constructora* y utilizar la palabra reservada ``new``:
+JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear objetos. Esta segunda forma se basa en definir una *función constructora*, asignar propiedades a su prototipo y utilizar la palabra reservada ``new``:
 
 .. code-block:: javascript
   :linenos:
@@ -506,7 +517,7 @@ JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear o
   - devuelve el objeto creado (que en este caso será asignado a la variable ``o4``).
 
 
-Cada vez que creamos una función, el objeto que la representa recibe un atributo ``prototype``, que es un objeto con un atributo ``constructor`` que referencia a la misma función. Además, como cualquier objeto de JavaScript, el objeto de la función tiene un prototipo interno que inicialmente se basa en el prototipo de la clase predefinida ``Object``, esto es, ``Object.prototype``, que contiene una serie de métodos básicos como ``toString``. Cuando sobre el objeto creado (``o4`` en nuestro caso) invocamos una función, esta se busca en primer lugar en los atributos del objeto; si no se encuentra allí, se busca en su prototipo (allí el intérprete encontraría, por ejemplo, la función ``charla``); si no se encuentra allí, se busca en el prototipo de su prototipo (allí el intérprete se encontraría con la función ``toString``) y así sucesivamente hasta llegar al prototipo de ``Object``. Observa el paralelismo de este comportamiento con la herencia de lenguajes de programación como Java o C++, aunque su implementación es muy diferente.
+Cada vez que creamos una función, el objeto que la representa recibe un atributo ``prototype``, que es un objeto con un atributo ``constructor`` que referencia a la misma función. Además, como cualquier objeto de JavaScript, el objeto de la función tiene un prototipo interno que inicialmente se basa en el prototipo de la clase predefinida ``Object`` (equivalentemente, la función ``Object()``), esto es, ``Object.prototype``, que contiene una serie de métodos básicos como ``toString``. Cuando sobre el objeto creado (``o4`` en nuestro caso) invocamos una función, esta se busca en primer lugar en los atributos del objeto; si no se encuentra allí, se busca en su prototipo (allí el intérprete encontraría, por ejemplo, la función ``charla``); si no se encuentra allí, se busca en el prototipo de su prototipo (allí el intérprete se encontraría con la función ``toString``) y así sucesivamente hasta llegar al prototipo de ``Object``. Observa el paralelismo de este comportamiento con la herencia de lenguajes de programación como Java o C++, aunque su implementación es muy diferente.
 
 .. Note::
 
@@ -549,6 +560,50 @@ Finalmente, encadenando prototipos podemos definir relaciones de herencia, lo qu
       this._empleados.push(empleado);
     }
   }
+
+Para acabar, daremos un ejemplo de herencia usando la notación clásica de JavaScript:
+
+.. code-block:: javascript
+  :linenos:
+
+  // Clase base
+  function CuerpoCeleste(nombre) {
+      this.nombre = nombre;
+  }
+
+  CuerpoCeleste.prototype.obtenerInformacion = function() {
+      return `${this.nombre} es un cuerpo celeste en el universo.`;
+  };
+
+  // Clase derivada
+  function Planeta(nombre, tieneVida) {
+      CuerpoCeleste.call(this, nombre);
+      this.tieneVida = tieneVida;
+  }
+
+  // Establece el [[Prototype]] de Planeta.prototype a CuerpoCeleste.prototype
+  Object.setPrototypeOf(Planeta.prototype, CuerpoCeleste.prototype);
+
+  Planeta.prototype.verificarVida = function() {
+      return this.tieneVida ? `¡El planeta ${this.nombre} tiene vida!` : `El planeta ${this.nombre} no tiene vida.`;
+  };
+
+  // Atributo estático
+  Planeta.cantidadPlanetasConocidos = 8;
+
+  let tierra = new Planeta('Tierra', true);
+  console.log(tierra.obtenerInformacion());  // Tierra es un cuerpo celeste en el universo.
+  console.log(tierra.verificarVida());       // ¡El planeta Tierra tiene vida!
+  console.log(Planeta.cantidadPlanetasConocidos); // 8
+
+Observa cómo al establecer el ``[[Prototype]]`` de ``Planeta.prototype`` a ``CuerpoCeleste.prototype`` con la llamada a ``Object.setPrototype``, estamos consiguiendo encadenar los prototipos de forma que cualquier objeto que se cree haciendo ``new Planeta()`` tendrá como prototipo un objeto cuyo prototipo apunta a la información de la clase base ``CuerpoCeleste``. Por otro lado, la función ``call`` permite llamar a una función con un determinado valor para ``this`` y con los argumentos que se deseen. La representación en el *heap* de todos los objetos implicados y sus dependencias es la siguiente:
+
+.. figure:: _static/img/planetas-protipos.png
+  :target: _static/img/planetas-prototipos.png
+  :alt: objetos y prototipos en memoria
+  :figwidth: 50 %
+
+  Representación en memoria de los objetos creados en el código de cuerpos celestes y planetas.
 
 
 .. _label-js-clausuras:
