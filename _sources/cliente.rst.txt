@@ -601,11 +601,15 @@ Observa cómo al establecer el ``[[Prototype]]`` de ``Planeta.prototype`` a ``Cu
 .. figure:: _static/img/planetas-prototipos.png
   :target: _static/img/planetas-prototipos.png
   :alt: objetos y prototipos en memoria
-  :figwidth: 80 %
+  :figwidth: 100 %
 
   Representación en memoria de los objetos creados en el código de cuerpos celestes y planetas.
 
+.. Note::
 
+  Observa cómo la variable estática del código anterior se ha implementado como una *own property* del objeto ``Planeta`` a la que podemos acceder mediante ``Planeta.cantidadPlanetasConocidos`` o también mediante ``tierra.constructor.cantidadPlanetasConocidos``. En principio, podríamos pensar que otra forma de implementar variables de clase sería añadiéndolas a ``Planeta.prototype`` mediante un código como ``Planeta.prototype.cantidadPlanetasConocidos = 8``. Sin embargo, aunque esto permitiría acceder en modo lectura a las variable desde los objetos instanciados (haciendo ``tierra.cantidadPlanetasConocidos``), en el momento en que intentáramos modificar el valor (por ejemplo, con ``tierra.cantidadPlanetasConocidos = 9``), estaríamos creando una nueva *own property* en el objeto ``tierra`` que ocultaría la variable de clase. Es por ello, que la forma correcta de implementar variables de clase es añadiéndolas directamente al objeto ``Planeta``.
+  
+  
 .. _label-js-clausuras:
 
 Ámbitos y clausuras
