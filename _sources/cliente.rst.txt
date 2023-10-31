@@ -315,7 +315,15 @@ Las herramientas para desarrolladores que incorporan los navegadores permiten de
         return x*x;
       }
     }
-  
+
+.. Note::
+
+  A la hora de depurar aplicaciones web, especialmente en lo que respecta a la gestión de eventos, suele ser importante poder identificar qué eventos están asociados con un determinado elemento del DOM y cuándo se activan. Las herramientas de desarrolladores de los navegadores permiten inspeccionar y depurarlos. En Google Chrome, por ejemplo, hay dos enfoques que puedes seguir para investigar los manejadores de eventos en tu aplicación: desde la pestaña *Elements* y utilizando la funcionalidad de pausa en eventos en la pestaña *Sources*.
+
+  Desde la pestaña *Elements*, puedes seleccionar cualquier elemento del DOM para examinar sus detalles, incluidos los eventos asociados a dicho elemento. Una vez seleccionado el elemento, en el panel lateral derecho encontrarás la sección de *Event Listeners*. Esta sección proporciona una lista detallada de todos los eventos que se han asociado con el elemento seleccionado, permitiendo incluso navegar al fragmento de código donde se define el manejador del evento.
+
+  Por otro lado, la funcionalidad de pausa en eventos se encuentra en la pestaña *Sources*. En el panel lateral derecho, despliega la sección de *Event Listener Breakpoints*. Aquí puedes marcar las casillas correspondientes a los tipos de eventos en los que estés interesado. Al hacerlo, el depurador se pausará automáticamente cada vez que se dispare uno de estos eventos, permitiéndote inspeccionar el estado de la aplicación en ese momento.
+
 .. _label-js-objetos:
 
 Objetos y prototipos
