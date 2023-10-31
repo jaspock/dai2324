@@ -118,7 +118,7 @@ Observa cómo todo el proceso puede verse como un *partido de tenis* en el que l
 
 Además, observa en el código anterior cómo hemos usado *cadenas con plantillas* (*template strings*) para imprimir los mensajes por consola. Las cadenas con plantillas de JavaScript usan comillas invertidas en lugar de rectas, pueden contener variables embebidas como en el ejemplo, y pueden también ocupar más de una línea.
 
-.. figure:: https://csharpcorner-mindcrackerinc.netdna-ssl.com/UploadFile/BlogImages/01262017214716PM/Screen%20Shot%202017-01-26%20at%208.28.19%20pm.png
+.. figure:: https://c-sharpcorner.com/UploadFile/BlogImages/01262017214716PM/Screen%20Shot%202017-01-26%20at%208.28.19%20pm.png
   :target: https://www.c-sharpcorner.com/blogs/overview-of-promises-in-javascript
   :alt: diagrama de los elementos implicados en una promesa
   
