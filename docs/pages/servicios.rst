@@ -317,7 +317,7 @@ Uno de los motivos de la introducción de las promesas en JavaScript fue precisa
   .. _`funciones asíncronas`: https://developers.google.com/web/fundamentals/primers/async-functions
 
 
-Finalmente, el código de la función ejecutora tiene un ``try..catch`` implicito a su alrededor. Por lo tanto, si dentro de la función ejecutora se lanza una excepción, esta se captura y se gestiona como un incumpliento de promesa. Así, el siguiente código:
+Finalmente, el código de la función ejecutora tiene un ``try..catch`` implicito a su alrededor. Por lo tanto, si dentro de la función ejecutora se lanza una excepción, esta se captura y se gestiona como un incumplimiento de promesa. Así, el siguiente código:
 
 .. code-block:: 
   :linenos:
@@ -349,6 +349,82 @@ Lo mismo pasa en los manejadores de promesas. Si lanzamos una excepción dentro 
     throw new Error(`${result}, pero luego algo salió mal`);
   }).catch(error => console.log(error.message));
 
+.. Note:: 
+
+  Este bloque es opcional y puedes saltártelo salvo que te gusten las emociones fuertes. Se muestra a continuación una aproximación a la implementación de la clase ``Promise`` de JavaScript que si bien no coincide con ninguna real, te puede ayudar a entender mejor su funcionamiento.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    class MyPromise {
+      constructor(executor) {
+        this.state = 'pending';
+        this.value = null;
+        this.callbacks = [];
+
+        const resolve = (value) => {
+          if (this.state !== 'pending') return;
+          this.state = 'fulfilled';
+          this.value = value;
+          this.callbacks.forEach(callback => this.handleCallback(callback));
+        };
+
+        const reject = (reason) => {
+          if (this.state !== 'pending') return;
+          this.state = 'rejected';
+          this.value = reason;
+          this.callbacks.forEach(callback => this.handleCallback(callback));
+        };
+
+        try {
+          executor(resolve, reject);
+        } catch (error) {
+          reject(error);
+        }
+      }
+
+      handleCallback({ onFulfilled, onRejected, resolve, reject }) {
+        if (this.state === 'fulfilled') {
+          return onFulfilled ? resolve(onFulfilled(this.value)) : resolve(this.value);
+        }
+        if (this.state === 'rejected') {
+          return onRejected ? reject(onRejected(this.value)) : reject(this.value);
+        }
+      }
+
+      then(onFulfilled, onRejected) {
+        return new MyPromise((resolve, reject) => {
+          const callback = { onFulfilled, onRejected, resolve, reject };
+          if (this.state === 'pending') {
+            this.callbacks.push(callback);
+          } else {
+            this.handleCallback(callback);
+          }
+        });
+      }
+
+      catch(onRejected) {
+        return this.then(null, onRejected);
+      }
+    }
+
+    const promise = new MyPromise((resolve, reject) => {
+      setTimeout(() => resolve("Hecho!"), 1000);
+    });
+
+    promise.then(value => console.log(value))
+          .then(() => console.log("Terminado"));
+
+    const promise2 = new MyPromise((resolve, reject) => {
+      setTimeout(() => reject("Error!"), 1000);
+    });
+
+    promise2.then(value => console.log(value))
+            .catch(reason => console.log(`Ha fallado: ${reason}`));
+
+
+
 
 .. _label-servicios-xhr:
 
@@ -362,7 +438,7 @@ A partir de finales de los noventa y especialmente en los primeros años del sig
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  Estudia el vídeo "`Los objetos de tipo XMLHttpRequest`_" en el que se realiza una traza del código que aparece a continuación para interactuar con un servicio web mediante un objeto de la clase ``XMLHttpRequest``.
+  Estudia el vídeo "`Los objetos de tipo XMLHttpRequest`_" en el que se realiza una traza del código que aparece a continuación para interactuar con un servicio web mediante un objeto de la clase ``XMLHttpRequest``. *Nota*: puede que la API usada en el ejemplo haya cambiado desde que se grabó el vídeo y que el código tenga que ser modificado, por ejemplo, para usar otro *endpoint*; el código que aparece a continuación en este documento puede que sea diferente al del vídeo por este motivo.
 
   .. _`Los objetos de tipo XMLHttpRequest`: https://drive.google.com/file/d/1G6eoew4ZyPd3rnpkXOWanjKY8ACL9nIB/view?usp=sharing
   
@@ -382,7 +458,8 @@ El siguiente es un ejemplo típico de uso de un objeto de tipo ``XMLHttpRequest`
   var xhr = new XMLHttpRequest();
   console.log(xhr.readyState);
 
-  var url= "https://ghibliapi.herokuapp.com/films/";
+  var url= "https://ghibli.rest/films";
+  // otro endpoint: https://ghibliapi.vercel.app/films/
   // Identifica el verbo, la URL y que la petición será asíncrona:
   xhr.open("GET", url, true);
   console.log(xhr.readyState);
@@ -408,12 +485,9 @@ El siguiente es un ejemplo típico de uso de un objeto de tipo ``XMLHttpRequest`
         var r= JSON.parse(xhr.responseText);
 
         // Los datos devueltos están en formato JSON y son de la forma 
-        // [ {"id": "0440483e", "title": "Princess Mononoke", 
-        // "description": "Ashitaka, a prince of the disappearing Ainu tribe...", 
-        // "director": ..., "producer": ...},   {"id": dc2e6bd1", "title": "Spirited Away",
-        // "description": "Spirited Away is an Oscar winning Japanese animated film about 
-        // a ten year old girl who wanders away from her parents...", "director": "Hayao 
-        // Miyazaki", ...},  {...},  {...} ] 
+        // [ {"id":"dc2e","title":"Spirited Away","original_title":"千と千尋の神隠し",
+        //    "description":"Spirited Away is a film about a ten year old girl...",...}, 
+        //   {...},  {...} ] 
         for (var i=0; i<r.length;i++) {
           resultado.textContent+= r[i].title+"; ";
         }
@@ -421,7 +495,7 @@ El siguiente es un ejemplo típico de uso de un objeto de tipo ``XMLHttpRequest`
     }
   };
   // Realiza la petición:
-  client.send(null);
+  xhr.send(null);
 
 
 Este código accede a modo de ejemplo a una `API web`_ sobre las películas del estudio Ghibli. Los datos devueltos por esta API web (y por muchas otras) están codificados en una notación independiente del lenguaje denominada JSON (por *JavaScript Object Notation*), que es muy parecida a la que se usa en JavaScript para definir literalmente un objeto.
@@ -440,7 +514,7 @@ Este código accede a modo de ejemplo a una `API web`_ sobre las películas del 
 
 Como ves en el código anterior, la función ``JSON.parse`` permite convertir una cadena en formato a JSON a objeto de JavaScript; para lo opuesto, puede usarse la función ``JSON.stringify``. En APIs web más antiguas se usaba el formato XML en lugar de JSON, de ahí el nombre de ``XMLHttpRequest``.
 
-.. _`API web`: https://ghibliapi.herokuapp.com/
+.. _`API web`: https://ghibli.rest/films
 
 
 .. admonition:: Hazlo tú ahora
@@ -449,7 +523,7 @@ Como ves en el código anterior, la función ``JSON.parse`` permite convertir un
   Prueba el código del ejemplo anterior (por ejemplo, en una web como CodePen o JSFiddle) para comprender su funcionamiento y estudia todo el tráfico de red mediante las Chrome DevTools. Asegúrate de crear un elemento con id ``results`` en el documento HTML. Escribe código para probar también otras APIs públicas, como la de información del juego `Clash Royale`_ o la de `Harry Potter`_.
 
   .. _`Clash Royale`: https://github.com/martincarrera/clash-royale-api
-  .. _`Harry Potter`: https://hp-api.herokuapp.com/
+  .. _`Harry Potter`: https://hp-api.onrender.com/
 
 
 .. _label-servicios-fetch:
@@ -464,7 +538,7 @@ En los últimos años, sin embargo, los navegadores han comenzado a implementar 
 
   var resultado= document.querySelector("#results");
   resultado.textContent= "";
-  fetch('https://ghibliapi.herokuapp.com/films/')
+  fetch('https://ghibli.rest/films')
   .then(function(response) {
     if (!response.ok) {
       throw Error(response.statusText);
@@ -511,7 +585,7 @@ También debería ser fácil de entender el siguiente código, que añade un pas
 
   var resultado= document.querySelector("#results");
   resultado.textContent= "";
-  fetch('https://ghibliapi.herokuapp.com/films/')
+  fetch('https://ghibli.rest/films')
   .then(function(response) {
     if (!response.ok) {
       throw Error(response.statusText);

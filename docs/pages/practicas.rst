@@ -29,7 +29,7 @@ Este es el calendario de cada uno de los entregables de la asignatura. No se adm
       - 25%
     * - P3
       - `Práctica 3: una aplicación con acceso a servicios web de terceros y con componentes web 🖥️`_
-      - 23 noviembre 2023 (provisional)
+      - 23 noviembre 2023
       - 12 horas
       - 25%
     * - P4
