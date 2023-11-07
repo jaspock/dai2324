@@ -104,7 +104,8 @@ Vamos a ver las tecnologías de *shadow DOM*, elementos personalizados y plantil
           constructor() {
             super();
             let template = document.querySelector('#operaciones');
-            let clone = template.content.cloneNode(true);  // true para clonar también los hijos
+            let clone = template.content.cloneNode(true);  
+            // true para clonar también los hijos
             let shadowRoot = this.attachShadow({
               mode: 'open'
             });
@@ -120,6 +121,8 @@ Vamos a ver las tecnologías de *shadow DOM*, elementos personalizados y plantil
   </html>
 
 La página web anterior incluye un elemento ``<template>`` cuyo contenido no es mostrado en principio por el motor del navegador; la idea es que un script de JavaScript se referirá posteriormente a esta plantilla (a través de su id) para instanciar un elemento e insertarlo convenientemente en el árbol DOM, como puedes observar en el constructor de la clase ``Operaciones``. Como esta plantilla será instanciada dentro de un *shadow DOM*, los estilos CSS que incluye no modificarán a elementos de otras partes del árbol DOM. También se incluye en la plantilla código en JavaScript que no será ejecutado hasta que el componente se instancie. Por último, la plantilla contiene código HTML que será el que se inserte en el árbol DOM ensombrecido al instanciar el elemento.
+
+El atributo ``content`` de un objeto de la clase ``HTMLTemplateElement`` (como ``template``en nuestro código) es un objeto de tipo ``DocumentFragment`` que representa a su vez un conjunto de nodos sin padre. 
 
 Como veremos a continuación, nuestro ejemplo define un elemento personalizado ``<calcula-operaciones>`` que se puede usar (es decir, instanciar) en una o más partes de nuestro documento HTML (aquí en la línea 32). 
 
