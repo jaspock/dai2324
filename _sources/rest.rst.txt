@@ -297,17 +297,17 @@ Comienza instalando `Node.js`_, el entorno que te permitirá ejecutar programas 
 
     sudo apt-get remove nodejs
 
-Este curso vamos a usar la versión 14 de Node.js. Descárgala con::
+Este curso vamos a usar la versión 20 de Node.js. Descárgala con::
 
-  curl -O https://nodejs.org/download/release/v14.18.0/node-v14.18.0-linux-x64.tar.gz
+  curl -O https://nodejs.org/download/release/v20.9.0/node-v20.9.0-linux-x64.tar.gz
 
 Descomprime el fichero anterior en tu directorio raíz::
 
-  tar xzf node-v14.18.0-linux-x64.tar.gz -C $HOME
+  tar xf node-v20.9.0-linux-x64.tar.xz -C $HOME
 
 Añade el directorio ``bin`` a la variable ``PATH`` del sistema::
 
-  echo 'export PATH=$HOME/node-v14.18.0-linux-x64/bin:$PATH' >> $HOME/.bashrc
+  echo 'export PATH=$HOME/node-v20.9.0-linux-x64/bin:$PATH' >> $HOME/.bashrc
 
 Abre un nuevo terminal para que el nuevo valor de la variable de entorno ``PATH`` se aplique. Ahora deberías poder ver la versión de Node.js instalada con::
 
@@ -315,18 +315,18 @@ Abre un nuevo terminal para que el nuevo valor de la variable de entorno ``PATH`
 
 La aplicación del carrito usa en modo local el gestor de base de datos *ligero* `SQLite3`_ para no depender de gestores más complejos. Cuando la aplicación se despliegue en la nube (un poco más adelante lo haremos en Google Cloud Platform), usará otros gestores de bases de datos, lo que explica las diferentes opciones dentro de la función ``conectaBD``. Comprueba si ya tienes SQLite instalado ejecutando ``sqlite3`` desde la línea de órdenes. Si no lo tienes, para el caso de Linux puedes descargar este fichero::
 
-  curl -O https://www.sqlite.org/2019/sqlite-tools-linux-x86-3300100.zip
+  curl -O https://www.sqlite.org/2023/sqlite-tools-linux-x64-3440000.zip
 
 .. _`SQLite3`: https://www.sqlite.org/index.html
 
 Descomprime el fichero anterior en tu directorio raíz y añade el nuevo directorio a la variable ``PATH`` del sistema::
 
-  unzip -q sqlite-tools-linux-x86-3300100.zip -d $HOME
-  echo 'export PATH=$HOME/sqlite-tools-linux-x86-3300100:$PATH' >> $HOME/.bashrc
+  unzip -q -o sqlite-tools-linux-x64-3440000.zip -d $HOME/sqlite-x64-3440000
+  echo 'export PATH=$HOME/sqlite-x64-3440000:$PATH' >> $HOME/.bashrc
 
 Abre un nuevo terminal para que el nuevo valor de la variable de entorno ``PATH`` se aplique. 
 
-Los binarios de SQLite están compilados para 32 bits, por lo que es posible que necesites instalar algunas librerías adicionales de 32 bits, ya que tu sistema es proablemente de 64 bits; la siguiente orden es para Ubuntu::
+Aunque es posible que ya no se aplique, los binarios antiguos de SQLite estaban compilados para 32 bits, por lo que era necesario instalar algunas librerías adicionales de 32 bits en los sistemas de 64 bits; la siguiente orden es para Ubuntu::
 
   sudo apt-get install libc6-i386 lib32z1
 
