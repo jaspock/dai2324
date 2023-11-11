@@ -28,7 +28,7 @@ REST es una arquitectura para implementar servicios web sobre el protocolo HTTP 
   
 En primer lugar, vamos a asignar a una variable de entorno el URL base de la API::
 
-  export endpoint=https://dai2324-japerez-a8845521.ey.r.appspot.com/carrito/v1
+  export endpoint=https://dai2324-japerez-carrito.ew.r.appspot.com/carrito/v1
 
 .. cambiar enlace a GAE en dos sitios de esta página
 
@@ -102,7 +102,7 @@ Ahora vamos a ver cómo interactuar con la API del carrito desde JavaScript (en 
   :language: html
   :linenos:
 
-.. _`gestión de carritos de la compra`: https://dai2324-japerez-a8845521.ey.r.appspot.com/carrito.html
+.. _`gestión de carritos de la compra`: https://dai2324-japerez-carrito.ew.r.appspot.com/carrito.html
 
 .. cambiar enlace a GAE en dos sitios de esta página
 
