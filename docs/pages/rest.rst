@@ -279,7 +279,7 @@ Puedes editar el fichero para indicar qué programas quieres instalar. El script
 
 El script, además, funciona sin problemas en el sistema Linux instalado en los ordenadores de los laboratorios, donde SQLite3 ya está instalado.
 
-.. _`dai-bundle-dev`: https://www.dlsi.ua.es/~japerez/cursos/dai/dai-bundle-dev-20211005.tar.gz
+.. _`dai-bundle-dev`: https://www.dlsi.ua.es/~japerez/cursos/dai/dai-bundle-dev-20231111.tar.gz
 
 Si todo ha ido bien, puedes saltar el siguiente apartado y pasar a ejecutar directamente la aplicación del carrito como se comenta en ":ref:`label-prueba-carrito`".
 
