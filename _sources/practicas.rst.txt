@@ -607,7 +607,7 @@ Comienza asegurándote de que entiendes cómo funciona la apicación del carrito
   
   .. Recuerda lo que se comenta al principio del apartado ":ref:`label-local`" sobre el hecho de que el sistema operativo *oficial* de la asignatura es Linux. El examen de prácticas se realizará sobre la versión de Linux instalada en los ordenadores de los laboratorios, por lo que es muy importante que aprendas a trabajar sobre ellos. Mientras trabajas en la práctica, en los ordenadores de los laboratorios solo necesitas instalar Node.js y el SDK de Google Cloud Platform (SQLite3 ya está instalado). El día del examen solo necesitas instalar Node.js, ya que no se pedirá en el examen que implantes nada en la nube.
   
-  .. _`dai-bundle-dev`: https://www.dlsi.ua.es/~japerez/cursos/dai/dai-bundle-dev-20211005.tar.gz
+  .. _`dai-bundle-dev`: https://www.dlsi.ua.es/~japerez/cursos/dai/dai-bundle-dev-20231111.tar.gz
 
 
 Incorporación e implantación de la aplicación de la práctica anterior
