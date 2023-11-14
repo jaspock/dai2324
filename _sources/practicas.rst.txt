@@ -211,12 +211,12 @@ Añade el siguiente código al principio del bloque ``main`` de tu documento:
   <div class="formulario" id="nuevoCuestionario">
     <ul>
       <li>
-        <label>Tema del cuestionario:</label>
-        <input type="text" name="tema" autofocus>
+        <label for="tema">Tema del cuestionario:</label>
+        <input type="text" name="tema" id="tema" autofocus>
       </li>
       <li>
-        <label>URL de la imagen:</label>
-        <input type="url" name="imagen">
+        <label for="imagen">URL de la imagen:</label>
+        <input type="url" name="imagen" id="imagen">
       </li>
       <li>
         <input type="button" name="crea" value="Crear nuevo cuestionario">
@@ -226,7 +226,7 @@ Añade el siguiente código al principio del bloque ``main`` de tu documento:
 
 Este código define los elementos necesarios para el formulario de creación de un nuevo cuestionario. Cada campo a insertar se representa en el formulario con una etiqueta (elemento ``<label>``) y una entrada (elemento ``<input>``); ambos se incluyen como elementos dentro de una lista. El botón que se añade como último elemento de la lista ejecutará al ser pulsado el código JavaScript de creación del cuestionario. Es importante que respetes escrupulosamente el fragmento de código anterior, incluyendo los nombres de las clases e identificadores.
 
-Date cuenta de que, en este caso, no usamos un elemento de tipo ``<form>``, sino un ``<div>`` para contener el formulario, con lo que no es necesario desactivar el envío de datos y la recarga automática de la página que ocurre con los formularios de tipo ``<form>``. 
+Date cuenta de que, en este caso, no usamos un elemento de tipo ``<form>``, sino un ``<div>`` para contener el formulario, con lo que no es necesario desactivar el envío de datos y la recarga automática de la página que ocurre con los formularios de tipo ``<form>``. Observa, además el uso del atributo `for` en las etiquetas para asociarlas con los campos de texto correspondientes; esto mejora la accesibilidad de la página.
 
 Todos los formularios de la aplicación han de permitir añadir nuevos cuestionarios o preguntas pulsando la tecla ``enter`` dentro del cuadro de texto, además de haciendo clic en el botón correspondiente. Tendrás que basarte para ello en el evento ``keydown`` y en propiedades como ``KeyboardEvent.key``; observa, de paso, que probablemente encontrarás mucha información en la web sobre eventos como ``keypress`` o propiedades como ``KeyboardEvent.keyCode``, pero ambas están obsoletas y desaparecerán de funcionas versiones de los navegadores. En el desarrollo web es importante que siempre te asegures de que las funciones o propiedades son las adecuadas; puedes consultar para ello webs de referencia como Mozilla Developer Network.
 
@@ -374,8 +374,8 @@ A diferencia del formulario de creación de cuestionarios, el formulario de adic
   <div class="formulario">
     <ul>
       <li>
-        <label>Enunciado de la pregunta:</label>
-        <input type="text" name="paris_pregunta">
+        <label for="paris_pregunta">Enunciado de la pregunta:</label>
+        <input type="text" name="paris_pregunta" id="paris_pregunta">
       </li>
       <li>
         <label>Respuesta:</label>
@@ -390,7 +390,7 @@ A diferencia del formulario de creación de cuestionarios, el formulario de adic
     </ul>
   </div>
 
-Un comentario sobre los atributos ``name`` de los botones de radio: dado que estos no pueden tener los mismos valores para los distintos formularios del documento (de otro modo, todos los botones de radio serían considerados como un único conjunto por el navegador y activar uno de ellos en un cuestionario desactivaría el resto de botones en los otros cuestionarios), en esta práctica has de añadir como prefijo de la cadena que elijas el valor del atributo ``id`` del elemento ``section`` correspondiente seguido de un carácter de subrayado. Tendrás que hacer algo similar para evitar duplicados con los atributos ``id`` y los correspondientes atributos ``for`` de los botones de radio y las etiquetas asociadas. Por tanto, los valores ``paris_pregunta``, ``paris_respuesta``, ``paris_v`` y ``paris_f`` del código anterior son meramente ilustrativos y han de ser sustituidos por los valores correctos en cada cuestionario.
+Un comentario sobre los atributos ``name`` de los botones de radio: dado que estos no pueden tener los mismos valores para los distintos formularios del documento (de otro modo, todos los botones de radio serían considerados como un único conjunto por el navegador y activar uno de ellos en un cuestionario desactivaría el resto de botones en los otros cuestionarios), en esta práctica has de añadir como prefijo de la cadena que elijas el valor del atributo ``id`` del elemento ``section`` correspondiente seguido de un carácter de subrayado. Tendrás que hacer algo similar para evitar duplicados con los atributos ``id`` y los correspondientes atributos ``for`` de los botones de radio, el enunciado de la pregunta y las etiquetas asociadas. Por tanto, los valores ``paris_pregunta``, ``paris_respuesta``, ``paris_v`` y ``paris_f`` del código anterior son meramente ilustrativos y han de ser sustituidos por los valores correctos en cada cuestionario.
 
 Para que las etiquetas (``<label>``) con verdadero y falso que acompañan a los botones de radio no estén excesivamente separadas entre ellas, añade una regla de CSS que establezca un ancho de ``5em`` para el selector ``label.radio``. Observa de paso cómo estos elementos favorecen la accesibilidad al indicar explícitamente mediante el atributo ``for`` el botón de radio al que complementan.
 
