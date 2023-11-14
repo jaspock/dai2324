@@ -36,30 +36,30 @@ En las semanas anteriores al estudio de este tema, el profesor compartirá conti
 
   Sigue las instrucciones que vienen a continuación para configurar tu entorno de trabajo para las actividades de este tema.
 
-Comienza instalando Node.js y SQLite como se estudió en el tema anterior en la sección ":ref:`label-local`". También necesitarás tener instalado `gcloud`_, un cliente de línea de órdenes (CLI) que permite interactuar con Google Cloud Platform desde la línea de órdenes y que forma pate del Google Cloud SDK (por el inglés *software development kit*). 
+Comienza instalando Node.js y SQLite como se estudió en el tema anterior en la sección ":ref:`label-local`". También necesitarás tener instalado `gcloud`_, un cliente de línea de órdenes (CLI) que permite interactuar con Google Cloud Platform desde la línea de órdenes. 
 
 .. Important::
 
-  El fichero ``dai-bundle-dev`` que se menciona al comienzo del apartado ":ref:`label-local`" del capítulo anterior también te permite instalar el SDK de Google Cloud Platform. Edita el script ``install.sh`` y cambia, si procede, el valor de las variables de entorno del comienzo para que instale el SDK.
+  El fichero ``dai-bundle-dev`` que se menciona al comienzo del apartado ":ref:`label-local`" del capítulo anterior también te permite instalar el CLI de Google Cloud. Edita el script ``install.sh`` y cambia, si procede, el valor de las variables de entorno del comienzo para que se instale.
 
-Las `instrucciones de instalación del SDK`_ cambian de un sistema operativo a otro; para el caso de Linux, y sin necesidad de tener privilegios de administrador, puedes ejecutar lo que sigue; sáltate este paso si has instalado el SDK con el script mencionado antes::
+Las `instrucciones de instalación del CLI`_ cambian de un sistema operativo a otro; para el caso de Linux, y sin necesidad de tener privilegios de administrador, puedes ejecutar lo que sigue; sáltate este paso si has instalado el SDK con el script mencionado antes::
 
   curl https://sdk.cloud.google.com | bash
 
 .. _`gcloud`: https://cloud.google.com/sdk/gcloud/?hl=EN
-.. _`instrucciones de instalación del SDK`: https://cloud.google.com/sdk/docs/downloads-interactive?hl=EN
+.. _`instrucciones de instalación del CLI`: https://cloud.google.com/sdk/docs/downloads-interactive?hl=EN
 
 Ahora cierra el terminal actual y abre uno nuevo para que se actualicen los valores de las variables de entorno. Una vez instalado, has de vincular el SDK con tu cuenta de Google Cloud Platform (en este caso, tu cuenta ``gcloud.ua.es``)::
 
   gcloud init
 
-Si posteriormente el SDK se desvinculara por algún motivo de tu cuenta, puedes volver a emparejarlo haciendo::
+Si posteriormente el sistema CLI se desvinculara por algún motivo de tu cuenta, puedes volver a emparejarlo haciendo::
 
   gcloud auth login
 
 Ahora tienes que ejecutar `este script`_ de Linux para crear un proyecto, vincularlo a tu cuenta y añadir al profesor como administrador. Antes de ejecutarlo edítalo y pon tu cuenta completa de ``gcloud`` en la variable ``ESTUDIANTE`` y la cuenta que el profesor te habrá indicado previamente en la variable ``PROFESOR``. Es posible que la ejecución del script se demore por unos minutos. 
 
-.. _`este script`: https://github.com/jaspock/dai2223/blob/main/code/gcp/config-gcloud.sh
+.. _`este script`: https://raw.githubusercontent.com/jaspock/dai2324/main/code/gcp/config-gcloud.sh
 
 .. Important::
 

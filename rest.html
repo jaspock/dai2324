@@ -130,7 +130,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl --request POST --header &#39;content-type:application/json&#39; -v $endpoint/creacarrito
 </pre></div>
 </div>
-<p>La opción <code class="docutils literal notranslate"><span class="pre">--request</span></code> indica el verbo a usar y la opción <code class="docutils literal notranslate"><span class="pre">--header</span></code> sirve para identificar las cabeceras de la petición; en este caso, usamos la cabecera <code class="docutils literal notranslate"><span class="pre">content-type</span></code> que se usa para indicar al servidor en qué formato (JSON, en este caso) queremos recibir los datos de la respuesta; el servidor podría ignorar nuestra solicitud si no soportara dicho formato, lo que no es el caso. Finalmente, la opción <code class="docutils literal notranslate"><span class="pre">--v</span></code> hace que <code class="docutils literal notranslate"><span class="pre">curl</span></code> muestre información más detallada sobre la petición y la respuesta. La petición anterior nos devolverá en formato JSON el nombre del carrito recién creado en el atributo <code class="docutils literal notranslate"><span class="pre">result.nombre</span></code>. Asigna dicho valor (por ejemplo, <code class="docutils literal notranslate"><span class="pre">fada6</span></code>) a la variable de entorno <code class="docutils literal notranslate"><span class="pre">carrito</span></code>:</p>
+<p>La opción <code class="docutils literal notranslate"><span class="pre">--request</span></code> indica el verbo a usar y la opción <code class="docutils literal notranslate"><span class="pre">--header</span></code> sirve para identificar las cabeceras de la petición; en este caso, usamos la cabecera <code class="docutils literal notranslate"><span class="pre">content-type</span></code> que se usa para indicar al servidor en qué formato (JSON, en este caso) queremos recibir los datos de la respuesta; el servidor podría ignorar nuestra solicitud si no soportara dicho formato, lo que no es el caso. Finalmente, la opción <code class="docutils literal notranslate"><span class="pre">-v</span></code> hace que <code class="docutils literal notranslate"><span class="pre">curl</span></code> muestre información más detallada sobre la petición y la respuesta. La petición anterior nos devolverá en formato JSON el nombre del carrito recién creado en el atributo <code class="docutils literal notranslate"><span class="pre">result.nombre</span></code>. Asigna dicho valor (por ejemplo, <code class="docutils literal notranslate"><span class="pre">fada6</span></code>) a la variable de entorno <code class="docutils literal notranslate"><span class="pre">carrito</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">carrito</span><span class="o">=</span><span class="n">fada6</span>
 </pre></div>
 </div>
@@ -903,11 +903,11 @@ El pequeño fragmento de código anterior y el código completo del servidor de 
 </div>
 </div>
 <p>Este curso vamos a usar la versión 20 de Node.js. Descárgala con:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nodejs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="n">v20</span><span class="mf">.9.0</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">v20</span><span class="mf">.9.0</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nodejs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="n">v20</span><span class="mf">.9.0</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">v20</span><span class="mf">.9.0</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">xz</span>
 </pre></div>
 </div>
 <p>Descomprime el fichero anterior en tu directorio raíz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tar xf node-v20.9.0-linux-x64.tar.xz -C $HOME
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tar xvf node-v20.9.0-linux-x64.tar.xz -C $HOME
 </pre></div>
 </div>
 <p>Añade el directorio <code class="docutils literal notranslate"><span class="pre">bin</span></code> a la variable <code class="docutils literal notranslate"><span class="pre">PATH</span></code> del sistema:</p>
@@ -923,15 +923,11 @@ El pequeño fragmento de código anterior y el código completo del servidor de 
 </pre></div>
 </div>
 <p>Descomprime el fichero anterior en tu directorio raíz y añade el nuevo directorio a la variable <code class="docutils literal notranslate"><span class="pre">PATH</span></code> del sistema:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>unzip -q -o sqlite-tools-linux-x64-3440000.zip -d $HOME/sqlite-x64-3440000
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>unzip -o sqlite-tools-linux-x64-3440000.zip -d $HOME/sqlite-x64-3440000
 echo &#39;export PATH=$HOME/sqlite-x64-3440000:$PATH&#39; &gt;&gt; $HOME/.bashrc
 </pre></div>
 </div>
 <p>Abre un nuevo terminal para que el nuevo valor de la variable de entorno <code class="docutils literal notranslate"><span class="pre">PATH</span></code> se aplique.</p>
-<p>Aunque es posible que ya no se aplique, los binarios antiguos de SQLite estaban compilados para 32 bits, por lo que era necesario instalar algunas librerías adicionales de 32 bits en los sistemas de 64 bits; la siguiente orden es para Ubuntu:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libc6</span><span class="o">-</span><span class="n">i386</span> <span class="n">lib32z1</span>
-</pre></div>
-</div>
 <p>Ahora deberías poder ver la versión de SQLite3 instalada con:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sqlite3</span> <span class="o">-</span><span class="n">version</span>
 </pre></div>
