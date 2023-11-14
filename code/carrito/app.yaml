@@ -1,4 +1,4 @@
-runtime: nodejs14
+runtime: nodejs20
 # Tiene que haber dos espacios en blanco antes de CARRITO_ENV:
 env_variables:
 #  CARRITO_ENV: 'gaesqlite3' # Google App Engine con SQLite3 (parcialmente persistente)

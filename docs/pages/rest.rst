@@ -38,7 +38,7 @@ El primer paso con la API del carrito suele ser obtener un identificador de carr
 
   curl --request POST --header 'content-type:application/json' -v $endpoint/creacarrito
 
-La opción ``--request`` indica el verbo a usar y la opción ``--header`` sirve para identificar las cabeceras de la petición; en este caso, usamos la cabecera ``content-type`` que se usa para indicar al servidor en qué formato (JSON, en este caso) queremos recibir los datos de la respuesta; el servidor podría ignorar nuestra solicitud si no soportara dicho formato, lo que no es el caso. Finalmente, la opción ``--v`` hace que ``curl`` muestre información más detallada sobre la petición y la respuesta. La petición anterior nos devolverá en formato JSON el nombre del carrito recién creado en el atributo ``result.nombre``. Asigna dicho valor (por ejemplo, ``fada6``) a la variable de entorno ``carrito``::
+La opción ``--request`` indica el verbo a usar y la opción ``--header`` sirve para identificar las cabeceras de la petición; en este caso, usamos la cabecera ``content-type`` que se usa para indicar al servidor en qué formato (JSON, en este caso) queremos recibir los datos de la respuesta; el servidor podría ignorar nuestra solicitud si no soportara dicho formato, lo que no es el caso. Finalmente, la opción ``-v`` hace que ``curl`` muestre información más detallada sobre la petición y la respuesta. La petición anterior nos devolverá en formato JSON el nombre del carrito recién creado en el atributo ``result.nombre``. Asigna dicho valor (por ejemplo, ``fada6``) a la variable de entorno ``carrito``::
 
   carrito=fada6
 
@@ -299,11 +299,11 @@ Comienza instalando `Node.js`_, el entorno que te permitirá ejecutar programas 
 
 Este curso vamos a usar la versión 20 de Node.js. Descárgala con::
 
-  curl -O https://nodejs.org/download/release/v20.9.0/node-v20.9.0-linux-x64.tar.gz
+  curl -O https://nodejs.org/download/release/v20.9.0/node-v20.9.0-linux-x64.tar.xz
 
 Descomprime el fichero anterior en tu directorio raíz::
 
-  tar xf node-v20.9.0-linux-x64.tar.xz -C $HOME
+  tar xvf node-v20.9.0-linux-x64.tar.xz -C $HOME
 
 Añade el directorio ``bin`` a la variable ``PATH`` del sistema::
 
@@ -321,14 +321,12 @@ La aplicación del carrito usa en modo local el gestor de base de datos *ligero*
 
 Descomprime el fichero anterior en tu directorio raíz y añade el nuevo directorio a la variable ``PATH`` del sistema::
 
-  unzip -q -o sqlite-tools-linux-x64-3440000.zip -d $HOME/sqlite-x64-3440000
+  unzip -o sqlite-tools-linux-x64-3440000.zip -d $HOME/sqlite-x64-3440000
   echo 'export PATH=$HOME/sqlite-x64-3440000:$PATH' >> $HOME/.bashrc
 
 Abre un nuevo terminal para que el nuevo valor de la variable de entorno ``PATH`` se aplique. 
 
-Aunque es posible que ya no se aplique, los binarios antiguos de SQLite estaban compilados para 32 bits, por lo que era necesario instalar algunas librerías adicionales de 32 bits en los sistemas de 64 bits; la siguiente orden es para Ubuntu::
-
-  sudo apt-get install libc6-i386 lib32z1
+.. Los binarios antiguos de SQLite solo estaban compilados para 32 bits, por lo que era necesario instalar algunas librerías adicionales de 32 bits en los sistemas de 64 bits; la siguiente orden es para Ubuntu:: sudo apt-get install libc6-i386 lib32z1
 
 Ahora deberías poder ver la versión de SQLite3 instalada con::
 
