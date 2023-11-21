@@ -24,12 +24,12 @@
 
   <!-- documentación: https://developers.google.com/identity/gsi/web/guides/overview -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js" async defer></script>
+  <script src="https://unpkg.com/jwt-decode@4.0.0/build/cjs/index.js" async defer></script>
 
   <script>
     function handleCredentialResponse(response) {
       console.log("Encoded JWT ID token: " + response.credential);
-      const responsePayload = jwt_decode(response.credential);
+      const responsePayload = jwtDecode(response.credential); 
       console.log("ID: " + responsePayload.sub);
       console.log('Full Name: ' + responsePayload.name);
       console.log('Given Name: ' + responsePayload.given_name);
