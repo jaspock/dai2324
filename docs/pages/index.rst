@@ -82,8 +82,8 @@ Actividades previas a las clases
 --------------------------------
 
 .. - Para la última sesión de clase (19/12/2023) no hay actividades previas a realizar. Se estudiará en clase la plataforma Docker, pero sin necesidad de una preparación anterior por parte del estudiante.
-.. - Antes de la clase del 05/12/2023: realiza la actividad ":ref:`label-comp-nube`", que incluye la lectura de una definición concisa de lo que es la computación en la nube y el visionado de unos vídeos; a continuación, contesta el `test sobre computación en la nube`_ (plazo límite: 04/12/2023, 23:59 horas). Después, realiza la actividad ":ref:`label-appengine`", en la que aprenderás a desplegar en la nube la aplicación del carrito, lo que necesitarás saber hacer por ti mismo como paso final de la práctica 4.
 
+- Antes de la clase del 05/12/2023: realiza la actividad ":ref:`label-comp-nube`", que incluye la lectura de una definición concisa de lo que es la computación en la nube y el visionado de unos vídeos; a continuación, contesta el `test sobre computación en la nube`_ (plazo límite: 04/12/2023, 23:59 horas). Después, realiza la actividad ":ref:`label-appengine`", en la que aprenderás a desplegar en la nube la aplicación del carrito, lo que necesitarás saber hacer por ti mismo como paso final de la práctica 4.
 - Antes de la clase del 28/11/2023: sigue (si no lo hiciste ya) la actividad ":ref:`label-gcloud`", donde se muestra cómo configurar tu entorno de trabajo para poder trabajar con la nube de Google, y, a continuación, la actividad ":ref:`label-gcp`" en la que tendrás que ver unos vídeos (duración: 40 minutos), leer unos tutoriales y realizar un pequeño ejercicio. A continuación, contesta el `test sobre Google Cloud Platform`_ (plazo límite: 27/11/2023, 23:59 horas)
 - Antes de la clase del 21/11/2023: practica con lo que se comenta en las actividades siguientes: ":ref:`label-local`", ":ref:`label-prueba-carrito`", ":ref:`label-api-cambio`", ":ref:`label-gcp-deploy`" y ":ref:`label-cors`". A continuación, contesta el `test sobre despliegue de aplicaciones web`_ (plazo límite: 20/11/2023, 23:59 horas)
 - Antes de la clase del 14/11/2023: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-curl`", ":ref:`label-cliente-rest`" y ":ref:`label-servidor-rest`"; la última incluye un vídeo con una traza de la aplicación del carrito (duración: 28 minutos; unos 20 a 1,5x). Para poder practicar con el código de esas actividades, tendrás que configurar tu entorno de trabajo como se indica en la actividad ":ref:`label-local`". A continuación, contesta el `test sobre implementación de servicios web`_ (plazo límite: 13/11/2023, 23:59 horas).
@@ -146,8 +146,15 @@ Puedes obtener una copia local de estas páginas (por ejemplo, para poder consul
   wget --mirror --no-parent --convert-links --page-requisites https://jaspock.github.io/dai2324/index.html
 
 
-Cómo compartir código con el profesor en clase, tutorías virtuales o consultas por escrito
-------------------------------------------------------------------------------------------
+Contenidos
+----------
+
+La asignatura aborda el estudio de las tecnologías de desarrollo de aplicaciones web, tanto desde el punto de vista del cliente como del servidor, pero enfatizando los elementos más fundamentales y evitando centrarnos en un framework concreto en la medida de lo posible. Los frameworks pueden llegar a ser tremendamente útiles y ahorrar mucho trabajo, pero suelen ocultar detalles de bajo nivel que son necesarios si queremos poder adaptarnos rápidamente a otros frameworks o utilizar elementos del desarrollo web no cubiertos por el framework en cuestión. Sin ánimo de polarizar el debate y reconociendo la utilidad de los frameworks, algunos desarrolladores han alertado de potenciales problemas con argumentos como los que puedes leer en `este tweet`.
+
+.. _`este tweet`: https://x.com/JaimeObregon/status/1724726104311669150
+
+Cómo compartir código con el profesor
+-------------------------------------
 
 Si quieres que el profesor pueda ayudarte con algún código que estás desarrollando, mandar un pantallazo no es la mejor opción. Envíale el código completo, por ejemplo, compartiendo con `su usuario`_ un repositorio privado de Github.
 
