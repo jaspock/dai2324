@@ -29,6 +29,8 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 05 dic nov
+      - Ya puedes consultar en la `web del departamento`_ las notas de la práctica 3. Los apartados marcados con un asterisco cuentan la mitad que los otros.
     * - 14 nov
       - Ya puedes consultar en la `web del departamento`_ las notas de la práctica 2. Los apartados marcados con un asterisco cuentan la cuarta parte que los otros.
     * - 17 oct
@@ -81,8 +83,7 @@ Novedades
 Actividades previas a las clases
 --------------------------------
 
-.. - Para la última sesión de clase (19/12/2023) no hay actividades previas a realizar. Se estudiará en clase la plataforma Docker, pero sin necesidad de una preparación anterior por parte del estudiante.
-
+- Para la próxima sesión de clase (12/12/2023) no hay actividades previas a realizar. Se estudiará en clase la plataforma Docker, pero sin necesidad de una preparación anterior por parte del estudiante. Así podrás avanzar más en la práctica 4 o simplemente desconectar un poco durante los varios días festivos :-)
 - Antes de la clase del 05/12/2023: realiza la actividad ":ref:`label-comp-nube`", que incluye la lectura de una definición concisa de lo que es la computación en la nube y el visionado de unos vídeos; a continuación, contesta el `test sobre computación en la nube`_ (plazo límite: 04/12/2023, 23:59 horas). Después, realiza la actividad ":ref:`label-appengine`", en la que aprenderás a desplegar en la nube la aplicación del carrito, lo que necesitarás saber hacer por ti mismo como paso final de la práctica 4.
 - Antes de la clase del 28/11/2023: sigue (si no lo hiciste ya) la actividad ":ref:`label-gcloud`", donde se muestra cómo configurar tu entorno de trabajo para poder trabajar con la nube de Google, y, a continuación, la actividad ":ref:`label-gcp`" en la que tendrás que ver unos vídeos (duración: 40 minutos), leer unos tutoriales y realizar un pequeño ejercicio. A continuación, contesta el `test sobre Google Cloud Platform`_ (plazo límite: 27/11/2023, 23:59 horas)
 - Antes de la clase del 21/11/2023: practica con lo que se comenta en las actividades siguientes: ":ref:`label-local`", ":ref:`label-prueba-carrito`", ":ref:`label-api-cambio`", ":ref:`label-gcp-deploy`" y ":ref:`label-cors`". A continuación, contesta el `test sobre despliegue de aplicaciones web`_ (plazo límite: 20/11/2023, 23:59 horas)
