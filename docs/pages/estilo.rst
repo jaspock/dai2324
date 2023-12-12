@@ -854,6 +854,7 @@ En esta actividad vas a estudiar algunos elementos adicionales del lenguaje de e
   Estudia el `vídeo completo sobre la rejilla`_ (``grid``) de CSS del desarrollador Miguel Ángel Durán. Toma nota de las principales ideas y de las propiedades relevantes. Opcionalmente, puedes jugar al juego del `jardín con grid`_ para practicar de forma divertida con lo aprendido.`
   
   .. _`vídeo completo sobre la rejilla`: https://youtu.be/iTjkiI8QQsM?si=EoFA7Qzy-wMqxM8F
+  .. _`jardín con grid`: https://cssgridgarden.com/
   
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
