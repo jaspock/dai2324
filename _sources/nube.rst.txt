@@ -314,17 +314,17 @@ Desde el terminal web podemos seleccionar nuestra base de datos con ``use <bd>;`
 Ejecución de contenedores en la nube
 ------------------------------------
 
-Docker es una plataforma que nos permite distribuir *contenedores*, que incluyen aplicaciones completas y sus dependencias a todos los niveles (sistema operativo, entornos de ejecución, librerías, programas adicionales, ficheros de configuración, etc.). Los contenedores son instancias de una *imagen*. Cada imagen se define mediante un fichero de texto usualmente denominado ``Dockerfile``.
+Docker es una plataforma que nos permite desplegar *contenedores*, que incluyen aplicaciones completas y sus dependencias a todos los niveles (sistema operativo, entornos de ejecución, librerías, programas adicionales, ficheros de configuración, etc.). Los contenedores son instancias de una *imagen*. Cada imagen se define mediante un fichero de texto usualmente denominado ``Dockerfile``.
 
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  Lee la página de `introducción a Docker`_. Después, lee el tutorial sobre cómo `crear una imagen`_ y `lanzar un contenedor`_ para una aplicación web basada en Node.js.
+  Lee la página de `introducción a Docker`_. Después, lee el tutorial sobre cómo `lanzar un contenedor`_ y `configurar un contenedor`_ para una aplicación web basada en Node.js.
 
   .. _`introducción a Docker`: https://docs.docker.com/get-started/overview/
-  .. _`crear una imagen`: https://docs.docker.com/language/nodejs/build-images/
-  .. _`lanzar un contenedor`: https://docs.docker.com/language/nodejs/run-containers/
-
+  .. _`lanzar un contenedor`: https://docs.docker.com/language/nodejs/containerize/
+  .. _`configurar un contenedor`: https://docs.docker.com/language/nodejs/develop/
+  
 En esta actividad vamos a ver cómo crear una imagen de nuestra aplicación del carrito y lanzar contenedores basados en ellas. Ambas acciones las realizaremos tanto localmente (para ello necesitas tener instalado ``docker`` en tu ordenador) como en Google Cloud Platform. A diferencia del ``Dockerfile`` del tutorial anterior, no nos basaremos en una `imagen del registro que ya contiene Node.js`_ (según se indicaba en la orden ``FROM``), sino que, para mostrar un ejemplo más general, nuestra imagen se basará en una imagen de Ubuntu.
 
 .. _`imagen del registro que ya contiene Node.js`: https://hub.docker.com/_/node
@@ -336,7 +336,9 @@ Para instalar Docker en Ubuntu se puede hacer::
   sudo gpasswd -a $USER docker
   newgrp docker
 
-Las tres últimas líneas son para poder ejecutar ``docker`` sin permisos de administrador.
+Las tres últimas líneas son para poder ejecutar ``docker`` sin permisos explícitos de administrador, aunque, en cualquier caso, la aplicación se ejecutará con estos permisos; alternativas de código abierto como `Podman`_ permiten ejecutar contenedores sin estos privilegios.
+
+.. _`Podman`: https://podman.io/
 
 Los dos ficheros relevantes de la aplicación del carrito para este apartado son ``.dockerignore`` (especifica qué ficheros o directorios ignorar en instrucciones como ``COPY``) y, principalmente, ``Dockerfile``, cuyo contenido es el siguiente:
 
