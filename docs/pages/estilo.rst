@@ -841,6 +841,27 @@ Las herramientas para desarrolladores que incorporan los navegadores permiten no
   .. _este: https://htmldog.com/guides/html/intermediate/sectioning/
 
 
+.. _label-extracss:
+
+Elementos adicionales de CSS
+----------------------------
+
+En esta actividad vas a estudiar algunos elementos adicionales del lenguaje de estilo CSS que son más o menos comunes en las páginas web modernas y que han quedado fuera de los contenidos anteriores. Esta actividad puede ser opcional para la asignatura según el curso académico, por lo que en principio solo has de seguirla si te lo ha indicado explícitamente tu profesor o si te interesa profundizar en el tema por tu cuenta.
+
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Estudia el `vídeo completo sobre la rejilla`_ (``grid``) de CSS del desarrollador Miguel Ángel Durán. Toma nota de las principales ideas y de las propiedades relevantes. Opcionalmente, puedes jugar al juego del `jardín con grid`_ para practicar de forma divertida con lo aprendido.`
+  
+  .. _`vídeo completo sobre la rejilla`: https://youtu.be/iTjkiI8QQsM?si=EoFA7Qzy-wMqxM8F
+  
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Estudia el `vídeo sobre animaciones`_ con CSS del desarrollador Miguel Ángel Durán, pero solo hasta 1:03:54. Toma nota de las principales ideas y de las propiedades relevantes. 
+
+  .. _`vídeo sobre animaciones`: https://youtu.be/RwjgfNX41TE?si=B3Xu2ujvVtjSSyD4
+
 
 Chuletas de resumen
 -------------------
