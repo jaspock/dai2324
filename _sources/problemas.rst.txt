@@ -1163,6 +1163,355 @@ Lenguajes de estilo
   .. examen julio 2020
 
 
+.. ------
+
+.. admonition:: :problema-contador-estilo:`Problema`
+  :class: problema
+
+  *Nota:* este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Considera el siguiente fragmento de HTML:
+
+  .. code-block: html
+    :linenos:
+
+    <div class="container">
+      <div class="cell">1</div>
+      <div class="cell">2</div>
+      <div class="cell">3</div>
+      <div class="cell">4</div>
+      <div class="cell menu">5</div>
+    </div>
+
+  Y los siguientes estilos de CSS:
+
+  .. code-block: css
+    :linenos:
+
+    .container {
+      display: grid;
+	  grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: repeat(@1, 2fr);
+      grid-gap: 10px;
+      text-align: center;
+      background-color: #eee;
+      border: 1px solid #000;
+      color: #000;
+      width: 500px;
+      height: 250px;
+      --bg-color: #658db5;
+    }
+
+    .cell {
+      background-color: var(--bg-color);
+	  padding: 25px;
+	  border-radius: 6px;
+    }
+
+    .menu {
+	  background-color: #898989;
+	  grid-column: @2;
+	  grid-row: @3 / 3;
+    }
+
+  Indica con qué sustituir ``@1``, ``@2``y ``@3`` en el código anterior para que el documento se muestre como sigue:
+
+  .. raw:: html
+
+    <div id="problema-grid1">
+      <script>
+        var root = document.querySelector('#problema-grid1').attachShadow({mode:'open'});
+        root.innerHTML = `
+          <style>
+              .container {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: repeat(2, 2fr);
+                grid-gap: 10px;
+                text-align: center;
+                background-color: #eee;
+                border: 1px solid #000;
+                color: #000;
+                width: 500px;
+                height: 250px;
+                --bg-color: #658db5;
+                }
+                .cell {
+                background-color: var(--bg-color);
+                padding: 25px;
+                border-radius: 6px;
+                }
+                .menu {
+                background-color: #898989;
+                grid-column: 3 ;
+                grid-row: 1 / 3;
+                }
+          </style>
+          <div class="container">
+            <div class="cell">1</div>
+            <div class="cell">2</div>
+            <div class="cell">3</div>
+            <div class="cell">4</div>
+            <div class="cell menu">5</div>
+          </div>`;
+      </script>
+    </div>
+
+  .. solución: @1=2, @2=3, @3=1
+
+.. ------
+
+.. admonition:: :problema-contador-estilo:`Problema`
+  :class: problema
+
+  *Nota:* este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Este problema incluye código que permite mostrar un *sprite* de 8x8 usando rejillas de CSS. El código HTML es el siguiente:
+
+  .. code-block: html
+    :linenos:
+
+    <div class="duck">
+      <!-- fila 1: -->
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 2: -->
+      <div class="i fondo"></div>
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 3: -->
+      <div class="i fondo"></div>
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 4: -->
+      <div class="i fondo"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <!-- fila 5: -->
+      <div class="i fondo"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i pato"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i pato"></div>
+      <!-- fila 6: -->
+      <div class="i pico"></div>
+      <div class="i pico"></div>
+      <div class="i pico"></div>
+      <div class="i pico"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 7: -->
+      <div class="i fondo"></div>
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 8: -->
+      <div class="i fondo"></div>
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+    </div>
+
+  Y los estilos de CSS son:
+
+  .. code-block: css
+    :linenos:
+
+    .duck {
+      display: grid;
+      grid-template-columns: repeat(@1, 10px);
+      grid-template-rows: repeat(@2, 10px);
+      grid-gap: 0;
+      border: 1px solid black;
+      width: 80px;
+      height: 80px;
+    }
+
+    .i {
+      width: @3;
+      height: @4;
+    }
+
+    .pato { background-color: white; }
+    .pico { background-color: yellow; }
+    .gafas { background-color: black; }
+    .fondo { background-color: gray; }
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3``, ``@4`` y ``@5`` en el código anterior para que se muestre un *sprite* de un pato con gafas de sol negras mirando a la izquierda como el siguiente:
+
+  .. raw:: html
+
+    <div id="problema-pato">
+      <script>
+        var root = document.querySelector('#problema-pato').attachShadow({mode:'open'});
+        root.innerHTML = `
+          <style>
+            .duck {
+              display: grid;
+              grid-template-columns: repeat(8, 10px);
+              grid-template-rows: repeat(8, 10px);
+              grid-gap: 0;
+              border: 1px solid black;
+              width: 80px;
+              height: 80px;
+            }
+
+            .i {
+              width: 10px;
+              height: 10px;
+            }
+
+            .pato { background-color: white; }
+            .pico { background-color: yellow; }
+            .gafas { @5; }
+            .fondo { background-color: gray; }
+
+          </style>
+      <div class="duck">
+      <!-- fila 1: -->
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 2: -->
+      <div class="i fondo"></div>
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 3: -->
+      <div class="i fondo"></div>
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 4: -->
+      <div class="i fondo"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <!-- fila 5: -->
+      <div class="i fondo"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i pato"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i gafas"></div>
+      <div class="i pato"></div>
+      <!-- fila 6: -->
+      <div class="i pico"></div>
+      <div class="i pico"></div>
+      <div class="i pico"></div>
+      <div class="i pico"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 7: -->
+      <div class="i fondo"></div>
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <!-- fila 8: -->
+      <div class="i fondo"></div>
+      <div class="i fondo"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+      <div class="i pato"></div>
+    </div>`;
+      </script>
+    </div>
+
+  .. solución: @1=@2=8, @3=@4=10px, @5=background-color:black
+
+.. ------
+
+.. admonition:: :problema-contador-estilo:`Problema`
+  :class: problema
+
+  *Nota:* este problema está basado en las animaciones de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Considera los siguientes estilos de CSS que permiten animar el carácter de la mano que saluda haciendo ``<span class="wave">👋🏾</span>``. La idea es que la mano se pause durante la segunda mitad de la animación y que el movimiento se repita indefinidamente:
+
+  .. code-block: css
+    :linenos:
+
+    .wave {
+      animation-name: wave-animation;
+      animation-duration: 2.5s;
+      animation-iteration-count: @1;
+      transform-origin: 70% 70%;
+      display: inline-block;
+    }
+
+    @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+      10% { transform: rotate(14.0deg) }
+      20% { transform: rotate(-8.0deg) }
+      30% { transform: rotate(14.0deg) }
+      40% { transform: rotate(-4.0deg) }
+      50% { transform: rotate(10.0deg) }
+      60% { transform: rotate(@2) } 
+      100% { transform: rotate(0.0deg) }
+    }
+
+  Indica con qué sustituir ``@1`` y ``@2`` para conseguir el efecto deseado. No es relevante para este problema, pero poner ``display`` a ``inline-block`` permite que la animación tenga realmente lugar porque estas no son posibles en elementos ``inline``. Por otro lado, el valor de ``transform-origin`` se ha ajustado para que la mano salude desde la muñeca y no desde el punto central.
+
+  .. solución: @1=infinite  @2=0.0deg
+
+
+
+
 Programar el lado del cliente
 -----------------------------
 

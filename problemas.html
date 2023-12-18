@@ -1004,6 +1004,161 @@
 </div>
 <p>Indica con qué sustituir las marcas <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;3</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;4</span></code> en el fragmento de CSS anterior para que cada elemento de la lista se muestre en el color que corresponde a su nombre, es decir, la palabra <em>chocolate</em> se muestre en color <code class="docutils literal notranslate"><span class="pre">chocolate</span></code>, etc. Asume que cualquier valor asignado a un atributo <code class="docutils literal notranslate"><span class="pre">class</span></code> puede estar asignado a otro atributo <code class="docutils literal notranslate"><span class="pre">class</span></code> en otras partes no mostradas del documento HTML y que cualquiera de los elementos HTML pueden estar siendo usados en otras partes del documento. Si hay más de una posibilidad para sustituir una determinada marca, pon la que menos caracteres ocupe.</p>
 </div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-estilo">Problema</span></p>
+<p><em>Nota:</em> este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Considera el siguiente fragmento de HTML:</p>
+<p>Y los siguientes estilos de CSS:</p>
+<p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2``y</span> <span class="pre">``&#64;3</span></code> en el código anterior para que el documento se muestre como sigue:</p>
+<div id="problema-grid1">
+  <script>
+    var root = document.querySelector('#problema-grid1').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+          .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: repeat(2, 2fr);
+            grid-gap: 10px;
+            text-align: center;
+            background-color: #eee;
+            border: 1px solid #000;
+            color: #000;
+            width: 500px;
+            height: 250px;
+            --bg-color: #658db5;
+            }
+            .cell {
+            background-color: var(--bg-color);
+            padding: 25px;
+            border-radius: 6px;
+            }
+            .menu {
+            background-color: #898989;
+            grid-column: 3 ;
+            grid-row: 1 / 3;
+            }
+      </style>
+      <div class="container">
+        <div class="cell">1</div>
+        <div class="cell">2</div>
+        <div class="cell">3</div>
+        <div class="cell">4</div>
+        <div class="cell menu">5</div>
+      </div>`;
+  </script>
+</div></div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-estilo">Problema</span></p>
+<p><em>Nota:</em> este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Este problema incluye código que permite mostrar un <em>sprite</em> de 8x8 usando rejillas de CSS. El código HTML es el siguiente:</p>
+<p>Y los estilos de CSS son:</p>
+<p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;3</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;4</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;5</span></code> en el código anterior para que se muestre un <em>sprite</em> de un pato con gafas de sol negras mirando a la izquierda como el siguiente:</p>
+<div id="problema-pato">
+  <script>
+    var root = document.querySelector('#problema-pato').attachShadow({mode:'open'});
+    root.innerHTML = `
+      <style>
+        .duck {
+          display: grid;
+          grid-template-columns: repeat(8, 10px);
+          grid-template-rows: repeat(8, 10px);
+          grid-gap: 0;
+          border: 1px solid black;
+          width: 80px;
+          height: 80px;
+        }
+
+        .i {
+          width: 10px;
+          height: 10px;
+        }
+
+        .pato { background-color: white; }
+        .pico { background-color: yellow; }
+        .gafas { @5; }
+        .fondo { background-color: gray; }
+
+      </style>
+  <div class="duck">
+  <!-- fila 1: -->
+  <div class="i fondo"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <!-- fila 2: -->
+  <div class="i fondo"></div>
+  <div class="i fondo"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <!-- fila 3: -->
+  <div class="i fondo"></div>
+  <div class="i fondo"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <!-- fila 4: -->
+  <div class="i fondo"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <!-- fila 5: -->
+  <div class="i fondo"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <div class="i pato"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <div class="i gafas"></div>
+  <div class="i pato"></div>
+  <!-- fila 6: -->
+  <div class="i pico"></div>
+  <div class="i pico"></div>
+  <div class="i pico"></div>
+  <div class="i pico"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <!-- fila 7: -->
+  <div class="i fondo"></div>
+  <div class="i fondo"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <!-- fila 8: -->
+  <div class="i fondo"></div>
+  <div class="i fondo"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+  <div class="i pato"></div>
+</div>`;
+  </script>
+</div></div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-estilo">Problema</span></p>
+<p><em>Nota:</em> este problema está basado en las animaciones de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Considera los siguientes estilos de CSS que permiten animar el carácter de la mano que saluda haciendo <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;wave&quot;&gt;👋🏾&lt;/span&gt;</span></code>. La idea es que la mano se pause durante la segunda mitad de la animación y que el movimiento se repita indefinidamente:</p>
+<p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code> para conseguir el efecto deseado. No es relevante para este problema, pero poner <code class="docutils literal notranslate"><span class="pre">display</span></code> a <code class="docutils literal notranslate"><span class="pre">inline-block</span></code> permite que la animación tenga realmente lugar porque estas no son posibles en elementos <code class="docutils literal notranslate"><span class="pre">inline</span></code>. Por otro lado, el valor de <code class="docutils literal notranslate"><span class="pre">transform-origin</span></code> se ha ajustado para que la mano salude desde la muñeca y no desde el punto central.</p>
+</div>
 </section>
 <section id="programar-el-lado-del-cliente">
 <h2><span class="section-number">8.3. </span>Programar el lado del cliente<a class="headerlink" href="#programar-el-lado-del-cliente" title="Enlace permanente a este encabezado"></a></h2>
