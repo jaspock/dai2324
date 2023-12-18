@@ -1168,7 +1168,9 @@ Lenguajes de estilo
 .. admonition:: :problema-contador-estilo:`Problema`
   :class: problema
 
-  *Nota:* este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Considera el siguiente fragmento de HTML:
+  *Nota:* este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos cursos académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. 
+  
+  Considera el siguiente fragmento de HTML:
 
   .. code-block:: html
     :linenos:
@@ -1262,7 +1264,9 @@ Lenguajes de estilo
 .. admonition:: :problema-contador-estilo:`Problema`
   :class: problema
 
-  *Nota:* este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Este problema incluye código que permite mostrar un *sprite* de 8x8 usando rejillas de CSS. El código HTML es el siguiente:
+  *Nota:* este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos cursos académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. 
+  
+  Este problema incluye código que permite mostrar un *sprite* de 8x8 píxels usando rejillas de CSS. El código HTML es el siguiente:
 
   .. code-block:: html
     :linenos:
@@ -1367,7 +1371,7 @@ Lenguajes de estilo
     .gafas { @5; }
     .fondo { background-color: gray; }
 
-  Indica con qué sustituir ``@1``, ``@2``, ``@3``, ``@4`` y ``@5`` en el código anterior para que se muestre un *sprite* de un pato con gafas de sol negras mirando a la izquierda como el siguiente:
+  Indica con qué sustituir ``@1``, ``@2``, ``@3``, ``@4`` y ``@5`` en el código anterior para que se muestre un *sprite* (tomado de [aquí](https://pixeljoint.com/pixelart/45130.htm)) de un pato con gafas de sol negras mirando a la izquierda como el siguiente:
 
   .. raw:: html
 
@@ -1481,7 +1485,9 @@ Lenguajes de estilo
 .. admonition:: :problema-contador-estilo:`Problema`
   :class: problema
 
-  *Nota:* este problema está basado en las animaciones de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Considera los siguientes estilos de CSS que permiten animar el carácter de la mano que saluda haciendo ``<span class="wave">👋🏾</span>``. La idea es que la mano se pause durante la segunda mitad de la animación y que el movimiento se repita indefinidamente:
+  *Nota:* este problema está basado en las animaciones de CSS, un tema que puede ser opcional en algunos cursos académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. 
+  
+  Considera los siguientes estilos de CSS que permiten animar el carácter de la mano que saluda (en realidad, cualquier carácter) haciendo ``<span class="wave">👋🏾</span>``. La idea es que la mano se pause durante la segunda mitad de la animación y que el movimiento se repita indefinidamente:
 
   .. code-block: css
     :linenos:
@@ -1505,7 +1511,7 @@ Lenguajes de estilo
       100% { transform: rotate(0.0deg) }
     }
 
-  Indica con qué sustituir ``@1`` y ``@2`` para conseguir el efecto deseado. No es relevante para este problema, pero poner ``display`` a ``inline-block`` permite que la animación tenga realmente lugar porque estas no son posibles en elementos ``inline``. Por otro lado, el valor de ``transform-origin`` se ha ajustado para que la mano salude desde la muñeca y no desde el punto central.
+  Indica con qué sustituir ``@1`` y ``@2`` para conseguir el efecto deseado. No es relevante para este problema, pero poner ``display`` a ``inline-block`` permite que la animación tenga realmente lugar porque estas no son posibles en elementos ``inline``. Por otro lado, el valor de ``transform-origin`` se ha ajustado para que la mano rote desde la muñeca y no desde el punto central.
 
   .. solución: @1=infinite  @2=0.0deg
 
