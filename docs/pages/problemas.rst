@@ -1170,7 +1170,7 @@ Lenguajes de estilo
 
   *Nota:* este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Considera el siguiente fragmento de HTML:
 
-  .. code-block: html
+  .. code-block:: html
     :linenos:
 
     <div class="container">
@@ -1183,12 +1183,12 @@ Lenguajes de estilo
 
   Y los siguientes estilos de CSS:
 
-  .. code-block: css
+  .. code-block:: css
     :linenos:
 
     .container {
       display: grid;
-	  grid-template-columns: 1fr 1fr 1fr;
+	    grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: repeat(@1, 2fr);
       grid-gap: 10px;
       text-align: center;
@@ -1202,17 +1202,17 @@ Lenguajes de estilo
 
     .cell {
       background-color: var(--bg-color);
-	  padding: 25px;
-	  border-radius: 6px;
+	    padding: 25px;
+	    border-radius: 6px;
     }
 
     .menu {
-	  background-color: #898989;
-	  grid-column: @2;
-	  grid-row: @3 / 3;
+	    background-color: #898989;
+	    grid-column: @2;
+	    grid-row: @3 / 3;
     }
 
-  Indica con qué sustituir ``@1``, ``@2``y ``@3`` en el código anterior para que el documento se muestre como sigue:
+  Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el código anterior para que el documento se muestre como sigue:
 
   .. raw:: html
 
@@ -1264,7 +1264,7 @@ Lenguajes de estilo
 
   *Nota:* este problema está basado en la rejilla de CSS, un tema que puede ser opcional en algunos años académicos; asegúrate de si este año lo es o no antes de intentar resolverlo. Este problema incluye código que permite mostrar un *sprite* de 8x8 usando rejillas de CSS. El código HTML es el siguiente:
 
-  .. code-block: html
+  .. code-block:: html
     :linenos:
 
     <div class="duck">
@@ -1344,7 +1344,7 @@ Lenguajes de estilo
 
   Y los estilos de CSS son:
 
-  .. code-block: css
+  .. code-block:: css
     :linenos:
 
     .duck {
@@ -1364,7 +1364,7 @@ Lenguajes de estilo
 
     .pato { background-color: white; }
     .pico { background-color: yellow; }
-    .gafas { background-color: black; }
+    .gafas { @5; }
     .fondo { background-color: gray; }
 
   Indica con qué sustituir ``@1``, ``@2``, ``@3``, ``@4`` y ``@5`` en el código anterior para que se muestre un *sprite* de un pato con gafas de sol negras mirando a la izquierda como el siguiente:
@@ -1393,7 +1393,7 @@ Lenguajes de estilo
 
             .pato { background-color: white; }
             .pico { background-color: yellow; }
-            .gafas { @5; }
+            .gafas { background-color: black; }
             .fondo { background-color: gray; }
 
           </style>
