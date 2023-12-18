@@ -1020,7 +1020,7 @@
 <p>Y los siguientes estilos de CSS:</p>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>.container {
 <span class="linenos"> 2</span>  display: grid;
-<span class="linenos"> 3</span>        grid-template-columns: 1fr 1fr 1fr;
+<span class="linenos"> 3</span>  grid-template-columns: 1fr 1fr 1fr;
 <span class="linenos"> 4</span>  grid-template-rows: repeat(@1, 2fr);
 <span class="linenos"> 5</span>  grid-gap: 10px;
 <span class="linenos"> 6</span>  text-align: center;
@@ -1034,14 +1034,14 @@
 <span class="linenos">14</span>
 <span class="linenos">15</span>.cell {
 <span class="linenos">16</span>  background-color: var(--bg-color);
-<span class="linenos">17</span>        padding: 25px;
-<span class="linenos">18</span>        border-radius: 6px;
+<span class="linenos">17</span>  padding: 25px;
+<span class="linenos">18</span>  border-radius: 6px;
 <span class="linenos">19</span>}
 <span class="linenos">20</span>
 <span class="linenos">21</span>.menu {
-<span class="linenos">22</span>        background-color: #898989;
-<span class="linenos">23</span>        grid-column: @2;
-<span class="linenos">24</span>        grid-row: @3 / 3;
+<span class="linenos">22</span>  background-color: #898989;
+<span class="linenos">23</span>  grid-column: @2;
+<span class="linenos">24</span>  grid-row: @3 / 3;
 <span class="linenos">25</span>}
 </pre></div>
 </div>
@@ -1293,6 +1293,26 @@
 <p class="admonition-title"><span class="problema-contador-estilo">Problema</span></p>
 <p><em>Nota:</em> este problema está basado en las animaciones de CSS, un tema que puede ser opcional en algunos cursos académicos; asegúrate de si este año lo es o no antes de intentar resolverlo.</p>
 <p>Considera los siguientes estilos de CSS que permiten animar el carácter de la mano que saluda (en realidad, cualquier carácter) haciendo <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;wave&quot;&gt;👋🏾&lt;/span&gt;</span></code>. La idea es que la mano se pause durante la segunda mitad de la animación y que el movimiento se repita indefinidamente:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>.wave {
+<span class="linenos"> 2</span>  animation-name: wave-animation;
+<span class="linenos"> 3</span>  animation-duration: 2.5s;
+<span class="linenos"> 4</span>  animation-iteration-count: @1;
+<span class="linenos"> 5</span>  transform-origin: 70% 70%;
+<span class="linenos"> 6</span>  display: inline-block;
+<span class="linenos"> 7</span>}
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>@keyframes wave-animation {
+<span class="linenos">10</span>  0% { transform: rotate( 0.0deg) }
+<span class="linenos">11</span>  10% { transform: rotate(14.0deg) }
+<span class="linenos">12</span>  20% { transform: rotate(-8.0deg) }
+<span class="linenos">13</span>  30% { transform: rotate(14.0deg) }
+<span class="linenos">14</span>  40% { transform: rotate(-4.0deg) }
+<span class="linenos">15</span>  50% { transform: rotate(10.0deg) }
+<span class="linenos">16</span>  60% { transform: rotate(@2) }
+<span class="linenos">17</span>  100% { transform: rotate(0.0deg) }
+<span class="linenos">18</span>}
+</pre></div>
+</div>
 <p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code> para conseguir el efecto deseado. No es relevante para este problema, pero poner <code class="docutils literal notranslate"><span class="pre">display</span></code> a <code class="docutils literal notranslate"><span class="pre">inline-block</span></code> permite que la animación tenga realmente lugar porque estas no son posibles en elementos <code class="docutils literal notranslate"><span class="pre">inline</span></code>. Por otro lado, el valor de <code class="docutils literal notranslate"><span class="pre">transform-origin</span></code> se ha ajustado para que la mano rote desde la muñeca y no desde el punto central.</p>
 </div>
 </section>

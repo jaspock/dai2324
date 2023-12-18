@@ -1190,7 +1190,7 @@ Lenguajes de estilo
 
     .container {
       display: grid;
-	    grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: repeat(@1, 2fr);
       grid-gap: 10px;
       text-align: center;
@@ -1204,14 +1204,14 @@ Lenguajes de estilo
 
     .cell {
       background-color: var(--bg-color);
-	    padding: 25px;
-	    border-radius: 6px;
+      padding: 25px;
+      border-radius: 6px;
     }
 
     .menu {
-	    background-color: #898989;
-	    grid-column: @2;
-	    grid-row: @3 / 3;
+      background-color: #898989;
+      grid-column: @2;
+      grid-row: @3 / 3;
     }
 
   Indica con qué sustituir ``@1``, ``@2`` y ``@3`` en el código anterior para que el documento se muestre como sigue:
@@ -1489,7 +1489,7 @@ Lenguajes de estilo
   
   Considera los siguientes estilos de CSS que permiten animar el carácter de la mano que saluda (en realidad, cualquier carácter) haciendo ``<span class="wave">👋🏾</span>``. La idea es que la mano se pause durante la segunda mitad de la animación y que el movimiento se repita indefinidamente:
 
-  .. code-block: css
+  .. code-block:: css
     :linenos:
 
     .wave {
