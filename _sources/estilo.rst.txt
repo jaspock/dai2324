@@ -865,7 +865,12 @@ En esta actividad vas a estudiar algunos elementos adicionales del lenguaje de e
 
 .. Note:: 
 
-  Algunos vídeos más compactos sobre los elementos anteriores que te pueden servir para afianzar ideas son los siguientes: [rejilla](https://youtu.be/-kgGATnsPbs?si=ZRjGthXg2LaR2Xg1), [transiciones](https://youtu.be/Nloq6uzF8RQ?si=3kvXwOLyHS_nB8Ng), [uso de transiciones](https://youtu.be/YYlFFMc0RAg?si=P1gUYskfnQcCQx-6), [animaciones](https://youtu.be/YszONjKpgg4?si=tjAA9AvnUGZMC2V7).
+  Algunos vídeos más compactos sobre los elementos anteriores que te pueden servir para afianzar ideas son los siguientes: `rejilla`_, `transiciones`_, `uso de transiciones`_ y `animaciones`_.
+
+  .. _`rejilla`: https://youtu.be/-kgGATnsPbs?si=ZRjGthXg2LaR2Xg1
+  .. _`transiciones`: https://youtu.be/Nloq6uzF8RQ?si=3kvXwOLyHS_nB8Ng
+  .. _`uso de transiciones`: https://youtu.be/YYlFFMc0RAg?si=P1gUYskfnQcCQx-6
+  .. _`animaciones`: https://youtu.be/YszONjKpgg4?si=tjAA9AvnUGZMC2V7
 
 
 Chuletas de resumen
