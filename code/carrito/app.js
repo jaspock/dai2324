@@ -246,7 +246,7 @@ app.delete(config.app.base+'/:carrito/productos/:item', async (req, res) => {
     }
     existe= await existeItem(req.params.item,req.params.carrito);
     if (!existe) {
-      res.status(404).send({ result:null,error:`item ${req.paramsº.item} no existente` });
+      res.status(404).send({ result:null,error:`item ${req.params.item} no existente` });
       return;
     }
     await knex('productos').where('carrito',req.params.carrito).andWhere('item',req.params.item).del();
