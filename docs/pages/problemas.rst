@@ -1187,6 +1187,7 @@ Lenguajes de estilo
 
   .. code-block:: css
     :linenos:
+    :force:
 
     .container {
       display: grid;
@@ -1350,6 +1351,7 @@ Lenguajes de estilo
 
   .. code-block:: css
     :linenos:
+    :force:
 
     .duck {
       display: grid;
@@ -1491,6 +1493,7 @@ Lenguajes de estilo
 
   .. code-block:: css
     :linenos:
+    :force:
 
     .wave {
       animation-name: wave-animation;
