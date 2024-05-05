@@ -1018,31 +1018,31 @@
 </pre></div>
 </div>
 <p>Y los siguientes estilos de CSS:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>.container {
-<span class="linenos"> 2</span>  display: grid;
-<span class="linenos"> 3</span>  grid-template-columns: 1fr 1fr 1fr;
-<span class="linenos"> 4</span>  grid-template-rows: repeat(@1, 2fr);
-<span class="linenos"> 5</span>  grid-gap: 10px;
-<span class="linenos"> 6</span>  text-align: center;
-<span class="linenos"> 7</span>  background-color: #eee;
-<span class="linenos"> 8</span>  border: 1px solid #000;
-<span class="linenos"> 9</span>  color: #000;
-<span class="linenos">10</span>  width: 500px;
-<span class="linenos">11</span>  height: 250px;
-<span class="linenos">12</span>  --bg-color: #658db5;
-<span class="linenos">13</span>}
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="err">@</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">fr</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="n">grid-gap</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#eee</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#000</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#000</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">  </span><span class="nv">--bg-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#658db5</span><span class="p">;</span>
+<span class="linenos">13</span><span class="p">}</span>
 <span class="linenos">14</span>
-<span class="linenos">15</span>.cell {
-<span class="linenos">16</span>  background-color: var(--bg-color);
-<span class="linenos">17</span>  padding: 25px;
-<span class="linenos">18</span>  border-radius: 6px;
-<span class="linenos">19</span>}
+<span class="linenos">15</span><span class="p">.</span><span class="nc">cell</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--bg-color</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos">19</span><span class="p">}</span>
 <span class="linenos">20</span>
-<span class="linenos">21</span>.menu {
-<span class="linenos">22</span>  background-color: #898989;
-<span class="linenos">23</span>  grid-column: @2;
-<span class="linenos">24</span>  grid-row: @3 / 3;
-<span class="linenos">25</span>}
+<span class="linenos">21</span><span class="p">.</span><span class="nc">menu</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#898989</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">  </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="o">@</span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">  </span><span class="k">grid-row</span><span class="p">:</span><span class="w"> </span><span class="o">@</span><span class="mi">3</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos">25</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;3</span></code> en el código anterior para que el documento se muestre como sigue:</p>
@@ -1165,25 +1165,25 @@
 </pre></div>
 </div>
 <p>Y los estilos de CSS son:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>.duck {
-<span class="linenos"> 2</span>  display: grid;
-<span class="linenos"> 3</span>  grid-template-columns: repeat(@1, 10px);
-<span class="linenos"> 4</span>  grid-template-rows: repeat(@2, 10px);
-<span class="linenos"> 5</span>  grid-gap: 0;
-<span class="linenos"> 6</span>  border: 1px solid black;
-<span class="linenos"> 7</span>  width: 80px;
-<span class="linenos"> 8</span>  height: 80px;
-<span class="linenos"> 9</span>}
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">.</span><span class="nc">duck</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="err">@</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="err">@</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="n">grid-gap</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="p">}</span>
 <span class="linenos">10</span>
-<span class="linenos">11</span>.i {
-<span class="linenos">12</span>  width: @3;
-<span class="linenos">13</span>  height: @4;
-<span class="linenos">14</span>}
+<span class="linenos">11</span><span class="p">.</span><span class="nc">i</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="o">@</span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="o">@</span><span class="mi">4</span><span class="p">;</span>
+<span class="linenos">14</span><span class="p">}</span>
 <span class="linenos">15</span>
-<span class="linenos">16</span>.pato { background-color: white; }
-<span class="linenos">17</span>.pico { background-color: yellow; }
-<span class="linenos">18</span>.gafas { @5; }
-<span class="linenos">19</span>.fondo { background-color: gray; }
+<span class="linenos">16</span><span class="p">.</span><span class="nc">pato</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">17</span><span class="p">.</span><span class="nc">pico</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">yellow</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">18</span><span class="p">.</span><span class="nc">gafas</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">@5</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">19</span><span class="p">.</span><span class="nc">fondo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">gray</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;3</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;4</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;5</span></code> en el código anterior para que se muestre un <em>sprite</em> (tomado de [aquí](<a class="reference external" href="https://pixeljoint.com/pixelart/45130.htm">https://pixeljoint.com/pixelart/45130.htm</a>)) de un pato con gafas de sol negras mirando a la izquierda como el siguiente:</p>
@@ -1293,24 +1293,24 @@
 <p class="admonition-title"><span class="problema-contador-estilo">Problema</span></p>
 <p><em>Nota:</em> este problema está basado en las animaciones de CSS, un tema que puede ser opcional en algunos cursos académicos; asegúrate de si este año lo es o no antes de intentar resolverlo.</p>
 <p>Considera los siguientes estilos de CSS que permiten animar el carácter de la mano que saluda (en realidad, cualquier carácter) haciendo <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;wave&quot;&gt;👋🏾&lt;/span&gt;</span></code>. La idea es que la mano se pause durante la segunda mitad de la animación y que el movimiento se repita indefinidamente:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>.wave {
-<span class="linenos"> 2</span>  animation-name: wave-animation;
-<span class="linenos"> 3</span>  animation-duration: 2.5s;
-<span class="linenos"> 4</span>  animation-iteration-count: @1;
-<span class="linenos"> 5</span>  transform-origin: 70% 70%;
-<span class="linenos"> 6</span>  display: inline-block;
-<span class="linenos"> 7</span>}
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">.</span><span class="nc">wave</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="k">animation-name</span><span class="p">:</span><span class="w"> </span><span class="n">wave-animation</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">animation-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="kt">s</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">animation-iteration-count</span><span class="p">:</span><span class="w"> </span><span class="o">@</span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="k">transform-origin</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="kt">%</span><span class="w"> </span><span class="mi">70</span><span class="kt">%</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline-block</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="p">}</span>
 <span class="linenos"> 8</span>
-<span class="linenos"> 9</span>@keyframes wave-animation {
-<span class="linenos">10</span>  0% { transform: rotate( 0.0deg) }
-<span class="linenos">11</span>  10% { transform: rotate(14.0deg) }
-<span class="linenos">12</span>  20% { transform: rotate(-8.0deg) }
-<span class="linenos">13</span>  30% { transform: rotate(14.0deg) }
-<span class="linenos">14</span>  40% { transform: rotate(-4.0deg) }
-<span class="linenos">15</span>  50% { transform: rotate(10.0deg) }
-<span class="linenos">16</span>  60% { transform: rotate(@2) }
-<span class="linenos">17</span>  100% { transform: rotate(0.0deg) }
-<span class="linenos">18</span>}
+<span class="linenos"> 9</span><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">wave-animation</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">0</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="w"> </span><span class="mf">0.0</span><span class="kt">deg</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nt">10</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mf">14.0</span><span class="kt">deg</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">12</span><span class="w">  </span><span class="nt">20</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mf">-8.0</span><span class="kt">deg</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">13</span><span class="w">  </span><span class="nt">30</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mf">14.0</span><span class="kt">deg</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">14</span><span class="w">  </span><span class="nt">40</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mf">-4.0</span><span class="kt">deg</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nt">50</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mf">10.0</span><span class="kt">deg</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">16</span><span class="w">  </span><span class="nt">60</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="err">@</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">17</span><span class="w">  </span><span class="nt">100</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mf">0.0</span><span class="kt">deg</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">18</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code> para conseguir el efecto deseado. No es relevante para este problema, pero poner <code class="docutils literal notranslate"><span class="pre">display</span></code> a <code class="docutils literal notranslate"><span class="pre">inline-block</span></code> permite que la animación tenga realmente lugar porque estas no son posibles en elementos <code class="docutils literal notranslate"><span class="pre">inline</span></code>. Por otro lado, el valor de <code class="docutils literal notranslate"><span class="pre">transform-origin</span></code> se ha ajustado para que la mano rote desde la muñeca y no desde el punto central.</p>
